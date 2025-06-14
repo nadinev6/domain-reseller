@@ -1,0 +1,61 @@
+{
+  "header": {
+    "domains": "Domains",
+    "pricing": "Pricing",
+    "linkInBio": "Link-in-bio",
+    "support": "Support",
+    "account": "Account"
+  },
+  "search": {
+    "title": "Find your perfect Name",
+    "subtitle": "Secure your online presence with a domain name that stands out.",
+    "placeholder": "Find your perfect domain...",
+    "button": "Search"
+  },
+  "domain": {
+    "available": "Available",
+    "taken": "Taken",
+    "price": "{{price}}/year",
+    "addToCart": "Add to Cart",
+    "removeFromCart": "Remove",
+    "viewMore": "View more details",
+    "similarDomains": "View similar domains"
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty",
+    "continueShopping": "Continue Shopping",
+    "total": "Total",
+    "checkout": "Proceed to Checkout",
+    "points": "You'll earn {{points}} points with this purchase!"
+  },
+  "domains": {
+    "pricing": {
+      "title": "Domain Pricing",
+      "subtitle": "Find the perfect domain extension for your online presence",
+      "searchPlaceholder": "Search TLDs...",
+      "register": "Register",
+      "transfer": "Transfer",
+      "renew": "Renew",
+      "calculator": "Domain Calculator",
+      "years": "Years",
+      "totalPrice": "Total Price",
+      "reset": "Reset",
+      "downloadPriceList": "Download Price List"
+    }
+  },
+  "dashboard": {
+    "welcome": "Welcome back, {{name}}!",
+    "subtitle": "Manage your domains and account settings",
+    "domains": {
+      "title": "Domain Portfolio",
+      "status": {
+        "active": "Active",
+        "pending": "Pending"
+      },
+      "expires": "Expires: {{date}}",
+      "manage": "Manage",
+      "addNew": "Add New Domain"
+    }
+  }
+}

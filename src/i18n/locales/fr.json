@@ -1,0 +1,61 @@
+{
+  "header": {
+    "domains": "Domaines",
+    "pricing": "Tarifs",
+    "linkInBio": "Lien en bio",
+    "support": "Assistance",
+    "account": "Compte"
+  },
+  "search": {
+    "title": "Trouvez votre nom parfait",
+    "subtitle": "Sécurisez votre présence en ligne avec un nom de domaine qui se démarque.",
+    "placeholder": "Trouvez votre domaine parfait...",
+    "button": "Rechercher"
+  },
+  "domain": {
+    "available": "Disponible",
+    "taken": "Indisponible",
+    "price": "{{price}}/an",
+    "addToCart": "Ajouter au panier",
+    "removeFromCart": "Retirer",
+    "viewMore": "Voir plus de détails",
+    "similarDomains": "Voir les domaines similaires"
+  },
+  "cart": {
+    "title": "Votre Panier",
+    "empty": "Votre panier est vide",
+    "continueShopping": "Continuer les achats",
+    "total": "Total",
+    "checkout": "Procéder au paiement",
+    "points": "Vous gagnerez {{points}} points avec cet achat !"
+  },
+  "domains": {
+    "pricing": {
+      "title": "Tarifs des Domaines",
+      "subtitle": "Trouvez l'extension de domaine parfaite pour votre présence en ligne",
+      "searchPlaceholder": "Rechercher des TLDs...",
+      "register": "Enregistrer",
+      "transfer": "Transférer",
+      "renew": "Renouveler",
+      "calculator": "Calculateur de Domaine",
+      "years": "Années",
+      "totalPrice": "Prix Total",
+      "reset": "Réinitialiser",
+      "downloadPriceList": "Télécharger la Liste des Prix"
+    }
+  },
+  "dashboard": {
+    "welcome": "Bienvenue, {{name}} !",
+    "subtitle": "Gérez vos domaines et paramètres de compte",
+    "domains": {
+      "title": "Portfolio de domaines",
+      "status": {
+        "active": "Actif",
+        "pending": "En attente"
+      },
+      "expires": "Expire le : {{date}}",
+      "manage": "Gérer",
+      "addNew": "Ajouter un nouveau domaine"
+    }
+  }
+}
