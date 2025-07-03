@@ -2,7 +2,7 @@
   "header": {
     "domains": "Domaines",
     "pricing": "Tarifs",
-    "linkInBio": "Lien en bio",
+    "cardStudio": "Studio de Cartes",
     "support": "Assistance",
     "account": "Compte"
   },
@@ -56,6 +56,18 @@
       "expires": "Expire le : {{date}}",
       "manage": "Gérer",
       "addNew": "Ajouter un nouveau domaine"
+    }
+  },
+  "cardStudio": {
+    "title": "Studio de Cartes de Médias Sociaux",
+    "subtitle": "Créez de superbes cartes de médias sociaux avec notre constructeur glisser-déposer",
+    "getStarted": "Commencer",
+    "examples": "Voir les Exemples",
+    "features": {
+      "dragDrop": "Constructeur Glisser-Déposer",
+      "templates": "Modèles Professionnels",
+      "responsive": "Responsive Mobile",
+      "customDomain": "Domaine Personnalisé"
     }
   }
 }

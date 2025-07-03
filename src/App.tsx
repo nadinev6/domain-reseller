@@ -6,6 +6,7 @@ import DomainResults from './components/DomainResults';
 import Cart from './components/Cart';
 import GameElement from './components/GameElement';
 import DomainsPage from './pages/DomainsPage';
+import SocialMediaCardStudio from './pages/SocialMediaCardStudio';
 import Dashboard from './components/dashboard/Dashboard';
 import { CartProvider } from './context/CartContext';
 import { CurrencyProvider } from './context/CurrencyContext';
@@ -37,6 +38,7 @@ function App() {
             <Header toggleCart={() => setIsCartOpen(!isCartOpen)} />
             <Routes>
               <Route path="/domains" element={<DomainsPage />} />
+              <Route path="/card-studio" element={<SocialMediaCardStudio />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/" element={
                 <main>

@@ -2,7 +2,7 @@
   "header": {
     "domains": "Domains",
     "pricing": "Pricing",
-    "linkInBio": "Link-in-bio",
+    "cardStudio": "Card Studio",
     "support": "Support",
     "account": "Account"
   },
@@ -56,6 +56,18 @@
       "expires": "Expires: {{date}}",
       "manage": "Manage",
       "addNew": "Add New Domain"
+    }
+  },
+  "cardStudio": {
+    "title": "Social Media Card Studio",
+    "subtitle": "Create stunning social media cards with our drag-and-drop builder",
+    "getStarted": "Get Started",
+    "examples": "View Examples",
+    "features": {
+      "dragDrop": "Drag & Drop Builder",
+      "templates": "Professional Templates",
+      "responsive": "Mobile Responsive",
+      "customDomain": "Custom Domain"
     }
   }
 }
