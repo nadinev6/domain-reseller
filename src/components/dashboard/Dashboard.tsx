@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, CreditCard, MessageCircleQuestionMark, Domain, ChevronRight, Bell } from 'lucide-react';
+import { Shield, CreditCard, HelpCircle, Domain, ChevronRight, Bell } from 'lucide-react';
 import AccountOverview from './AccountOverview';
 import BillingSection from './BillingSection';
 import SupportSection from './SupportSection';
@@ -49,7 +49,7 @@ const Dashboard: React.FC = () => {
                 
                 <button className="w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 flex items-center justify-between group transition-colors duration-200">
                   <span className="flex items-center">
-                    <MessageCircleQuestionMark size={18} className="text-indigo-600 mr-3" />
+                    <HelpCircle size={18} className="text-indigo-600 mr-3" />
                     Open Support Ticket
                   </span>
                   <ChevronRight size={16} className="text-gray-400 group-hover:text-indigo-600 transition-colors duration-200" />
