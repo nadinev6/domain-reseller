@@ -1,5 +1,5 @@
 import React from 'react';
-import { TicketHelp, MessageCircle, Clock } from 'lucide-react';
+import { MessageCircleQuestionMark, MessageCircle, Clock } from 'lucide-react';
 
 const SupportSection: React.FC = () => {
   const tickets = [
