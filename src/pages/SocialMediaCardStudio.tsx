@@ -4,10 +4,10 @@ import { Palette, Smartphone, MousePointer, Globe, ArrowRight, Sparkles } from '
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
-import ProtectedRoute from '../components/auth/ProtectedRoute';
 import { useAuth } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
 
-const SocialMediaCardStudioContent: React.FC = () => {
+const SocialMediaCardStudio: React.FC = () => {
   const { t } = useTranslation();
   const { user } = useAuth();
 
@@ -60,11 +60,13 @@ const SocialMediaCardStudioContent: React.FC = () => {
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white py-20">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <div className="mb-4">
-            <span className="inline-block px-4 py-2 bg-white/20 rounded-full text-sm font-medium">
-              Welcome back, {user?.user_metadata?.full_name || user?.email}!
-            </span>
-          </div>
+          {user && (
+            <div className="mb-4">
+              <span className="inline-block px-4 py-2 bg-white/20 rounded-full text-sm font-medium">
+                Welcome back, {user?.user_metadata?.full_name || user?.email}!
+              </span>
+            </div>
+          )}
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200">
             {t('cardStudio.title')}
           </h1>
@@ -72,10 +74,19 @@ const SocialMediaCardStudioContent: React.FC = () => {
             {t('cardStudio.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
-              {t('cardStudio.getStarted')}
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
+            {user ? (
+              <Link to="/card-studio/editor">
+                <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
+                  {t('cardStudio.getStarted')}
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
+            ) : (
+              <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
+                {t('cardStudio.signUpToStart')}
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            )}
             <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-indigo-600 text-lg px-8 py-3">
               {t('cardStudio.examples')}
             </Button>
@@ -158,9 +169,17 @@ const SocialMediaCardStudioContent: React.FC = () => {
                       <CardDescription className="text-gray-600">
                         {example.description}
                       </CardDescription>
-                      <Button variant="outline" className="w-full mt-4 group-hover:bg-indigo-50 group-hover:border-indigo-300 transition-colors duration-300">
-                        Use This Template
-                      </Button>
+                      {user ? (
+                        <Link to="/card-studio/editor">
+                          <Button variant="outline" className="w-full mt-4 group-hover:bg-indigo-50 group-hover:border-indigo-300 transition-colors duration-300">
+                            Use This Template
+                          </Button>
+                        </Link>
+                      ) : (
+                        <Button variant="outline" className="w-full mt-4 group-hover:bg-indigo-50 group-hover:border-indigo-300 transition-colors duration-300">
+                          Sign Up to Use Template
+                        </Button>
+                      )}
                     </CardContent>
                   </Card>
                 ))}
@@ -197,21 +216,22 @@ const SocialMediaCardStudioContent: React.FC = () => {
           <p className="text-xl text-indigo-100 mb-8">
             Join thousands of creators who are already using our studio to build their online presence
           </p>
-          <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
-            Start Building Now
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
+          {user ? (
+            <Link to="/card-studio/editor">
+              <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
+                Start Building Now
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
+          ) : (
+            <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
+              Sign Up to Start Building
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          )}
         </div>
       </div>
     </div>
-  );
-};
-
-const SocialMediaCardStudio: React.FC = () => {
-  return (
-    <ProtectedRoute>
-      <SocialMediaCardStudioContent />
-    </ProtectedRoute>
   );
 };
 

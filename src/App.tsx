@@ -7,6 +7,7 @@ import Cart from './components/Cart';
 import GameElement from './components/GameElement';
 import DomainsPage from './pages/DomainsPage';
 import SocialMediaCardStudio from './pages/SocialMediaCardStudio';
+import CardStudioEditor from './pages/CardStudioEditor';
 import Dashboard from './components/dashboard/Dashboard';
 import { CartProvider } from './context/CartContext';
 import { CurrencyProvider } from './context/CurrencyContext';
@@ -41,6 +42,7 @@ function App() {
               <Routes>
                 <Route path="/domains" element={<DomainsPage />} />
                 <Route path="/card-studio" element={<SocialMediaCardStudio />} />
+                <Route path="/card-studio/editor" element={<CardStudioEditor />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/" element={
                   <main>

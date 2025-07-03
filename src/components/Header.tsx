@@ -50,9 +50,14 @@ const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
                 <ul className="flex space-x-8">
                   <li><Link to="/domains" className="hover:text-amber-300 transition-colors duration-200">{t('header.domains')}</Link></li>
                   <li><Link to="/pricing" className="hover:text-amber-300 transition-colors duration-200">{t('header.pricing')}</Link></li>
-                  {user && (
-                    <li><Link to="/card-studio" className="hover:text-amber-300 transition-colors duration-200">{t('header.cardStudio')}</Link></li>
-                  )}
+                  <li>
+                    <Link 
+                      to={user ? "/card-studio/editor" : "/card-studio"} 
+                      className="hover:text-amber-300 transition-colors duration-200"
+                    >
+                      {t('header.cardStudio')}
+                    </Link>
+                  </li>
                   <li><Link to="/support" className="hover:text-amber-300 transition-colors duration-200">{t('header.support')}</Link></li>
                 </ul>
               </nav>
@@ -128,9 +133,14 @@ const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
               <ul className="space-y-2">
                 <li><Link to="/domains" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">{t('header.domains')}</Link></li>
                 <li><Link to="/pricing" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">{t('header.pricing')}</Link></li>
-                {user && (
-                  <li><Link to="/card-studio" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">{t('header.cardStudio')}</Link></li>
-                )}
+                <li>
+                  <Link 
+                    to={user ? "/card-studio/editor" : "/card-studio"} 
+                    className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200"
+                  >
+                    {t('header.cardStudio')}
+                  </Link>
+                </li>
                 <li><Link to="/support" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">{t('header.support')}</Link></li>
                 {user ? (
                   <>
