@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, CreditCard, TicketHelp, Domain, ChevronRight, Bell } from 'lucide-react';
+import { Shield, CreditCard, MessageCircleQuestionMark, Domain, ChevronRight, Bell } from 'lucide-react';
 import AccountOverview from './AccountOverview';
 import BillingSection from './BillingSection';
 import SupportSection from './SupportSection';
