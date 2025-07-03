@@ -4,9 +4,12 @@ import { Palette, Smartphone, MousePointer, Globe, ArrowRight, Sparkles } from '
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+import ProtectedRoute from '../components/auth/ProtectedRoute';
+import { useAuth } from '../context/AuthContext';
 
-const SocialMediaCardStudio: React.FC = () => {
+const SocialMediaCardStudioContent: React.FC = () => {
   const { t } = useTranslation();
+  const { user } = useAuth();
 
   const features = [
     {
@@ -57,6 +60,11 @@ const SocialMediaCardStudio: React.FC = () => {
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white py-20">
         <div className="max-w-6xl mx-auto px-4 text-center">
+          <div className="mb-4">
+            <span className="inline-block px-4 py-2 bg-white/20 rounded-full text-sm font-medium">
+              Welcome back, {user?.user_metadata?.full_name || user?.email}!
+            </span>
+          </div>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200">
             {t('cardStudio.title')}
           </h1>
@@ -196,6 +204,14 @@ const SocialMediaCardStudio: React.FC = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+const SocialMediaCardStudio: React.FC = () => {
+  return (
+    <ProtectedRoute>
+      <SocialMediaCardStudioContent />
+    </ProtectedRoute>
   );
 };
 

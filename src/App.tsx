@@ -10,6 +10,7 @@ import SocialMediaCardStudio from './pages/SocialMediaCardStudio';
 import Dashboard from './components/dashboard/Dashboard';
 import { CartProvider } from './context/CartContext';
 import { CurrencyProvider } from './context/CurrencyContext';
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
   const [searchResults, setSearchResults] = React.useState([]);
@@ -32,32 +33,34 @@ function App() {
   
   return (
     <Router>
-      <CurrencyProvider>
-        <CartProvider>
-          <div className="min-h-screen bg-gray-50">
-            <Header toggleCart={() => setIsCartOpen(!isCartOpen)} />
-            <Routes>
-              <Route path="/domains" element={<DomainsPage />} />
-              <Route path="/card-studio" element={<SocialMediaCardStudio />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/" element={
-                <main>
-                  <DomainSearch onSearch={handleSearch} />
-                  <DomainResults results={searchResults} loading={isSearching} />
-                  {(searchResults.length > 0 && !isSearching) && (
-                    <GameElement 
-                      points={userGameData.points}
-                      profileCompleteness={userGameData.profileCompleteness}
-                      badges={userGameData.badges}
-                    />
-                  )}
-                </main>
-              } />
-            </Routes>
-            <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-          </div>
-        </CartProvider>
-      </CurrencyProvider>
+      <AuthProvider>
+        <CurrencyProvider>
+          <CartProvider>
+            <div className="min-h-screen bg-gray-50">
+              <Header toggleCart={() => setIsCartOpen(!isCartOpen)} />
+              <Routes>
+                <Route path="/domains" element={<DomainsPage />} />
+                <Route path="/card-studio" element={<SocialMediaCardStudio />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/" element={
+                  <main>
+                    <DomainSearch onSearch={handleSearch} />
+                    <DomainResults results={searchResults} loading={isSearching} />
+                    {(searchResults.length > 0 && !isSearching) && (
+                      <GameElement 
+                        points={userGameData.points}
+                        profileCompleteness={userGameData.profileCompleteness}
+                        badges={userGameData.badges}
+                      />
+                    )}
+                  </main>
+                } />
+              </Routes>
+              <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+            </div>
+          </CartProvider>
+        </CurrencyProvider>
+      </AuthProvider>
     </Router>
   );
 }
