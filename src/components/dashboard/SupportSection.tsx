@@ -48,7 +48,7 @@ const SupportSection: React.FC = () => {
       </div>
       
       <div className="mt-4 p-4 rounded-lg bg-indigo-50 flex items-start">
-        <TicketHelp size={20} className="text-indigo-600 mr-3 mt-0.5" />
+        <MessageCircleQuestionMark size={20} className="text-indigo-600 mr-3 mt-0.5" />
         <div>
           <h3 className="font-medium text-indigo-900">Need Help?</h3>
           <p className="text-sm text-indigo-700 mt-1">
