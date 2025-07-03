@@ -12,7 +12,7 @@ const SupportSection: React.FC = () => {
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold">Support</h2>
         <button className="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors duration-200 flex items-center">
-          <TicketHelp size={16} className="mr-2" />
+          <MessageCircleQuestionMark size={16} className="mr-2" />
           New Ticket
         </button>
       </div>
