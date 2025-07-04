@@ -8,6 +8,7 @@ import CurrencySelector from './CurrencySelector';
 import LanguageSelector from './LanguageSelector';
 import AuthDialog from './auth/AuthDialog';
 import { Button } from './ui/button';
+import { AnimatedShinyText } from '../components/magicui/animated-shiny-text';
 
 interface HeaderProps {
   toggleCart: () => void;
@@ -112,7 +113,9 @@ const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
                         onClick={() => handleAuthClick('signup')}
                         className="border-white text-white hover:bg-white hover:text-indigo-600"
                       >
-                        Sign Up
+                        <AnimatedShinyText className="text-white !mx-0 !max-w-none">
+                          Sign Up
+                        </AnimatedShinyText>
                       </Button>
                     </div>
                   )}
@@ -169,7 +172,9 @@ const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
                         onClick={() => handleAuthClick('signup')}
                         className="block w-full text-left py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200"
                       >
-                        Sign Up
+                        <AnimatedShinyText className="text-white !mx-0 !max-w-none">
+                          Sign Up
+                        </AnimatedShinyText>
                       </button>
                     </li>
                   </>

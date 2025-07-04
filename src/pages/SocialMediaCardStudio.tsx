@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../co
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
+import { AnimatedShinyText } from '../components/magicui/animated-shiny-text';
 
 const SocialMediaCardStudio: React.FC = () => {
   const { t } = useTranslation();
@@ -77,18 +78,24 @@ const SocialMediaCardStudio: React.FC = () => {
             {user ? (
               <Link to="/card-studio/editor">
                 <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
-                  {t('cardStudio.getStarted')}
+                  <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
+                    {t('cardStudio.getStarted')}
+                  </AnimatedShinyText>
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
             ) : (
               <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
-                {t('cardStudio.signUpToStart')}
+                <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
+                  {t('cardStudio.signUpToStart')}
+                </AnimatedShinyText>
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             )}
             <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-indigo-600 text-lg px-8 py-3">
-              {t('cardStudio.examples')}
+              <AnimatedShinyText className="text-white hover:text-indigo-600 !mx-0 !max-w-none">
+                {t('cardStudio.examples')}
+              </AnimatedShinyText>
             </Button>
           </div>
         </div>
@@ -219,13 +226,17 @@ const SocialMediaCardStudio: React.FC = () => {
           {user ? (
             <Link to="/card-studio/editor">
               <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
-                Start Building Now
+                <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
+                  Start Building Now
+                </AnimatedShinyText>
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
           ) : (
             <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
-              Sign Up to Start Building
+              <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
+                Sign Up to Start Building
+              </AnimatedShinyText>
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           )}
