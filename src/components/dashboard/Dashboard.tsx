@@ -5,6 +5,7 @@ import BillingSection from './BillingSection';
 import SupportSection from './SupportSection';
 import SecuritySection from './SecuritySection';
 import NotificationsPanel from './NotificationsPanel';
+import SavedCardsSection from './SavedCardsSection';
 
 const Dashboard: React.FC = () => {
   return (
@@ -20,6 +21,7 @@ const Dashboard: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="md:col-span-2 space-y-6">
             <AccountOverview />
+            <SavedCardsSection />
             <BillingSection />
             <SupportSection />
             <SecuritySection />

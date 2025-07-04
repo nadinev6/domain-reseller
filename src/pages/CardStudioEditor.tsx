@@ -1,13 +1,18 @@
 import React, { useState, useCallback } from 'react';
-import { Save, Download, Undo, Redo, Eye } from 'lucide-react';
+import { useSearchParams } from 'react-router-dom';
+import { Save, Download, Undo, Redo, Eye, Loader2 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import ProtectedRoute from '../components/auth/ProtectedRoute';
 import Toolbox from '../components/card-studio/Toolbox';
 import EditorCanvas from '../components/card-studio/EditorCanvas';
 import PropertiesPanel from '../components/card-studio/PropertiesPanel';
 import { CardElement } from '../types';
+import { useAuth } from '../context/AuthContext';
+import { supabase } from '../lib/supabase';
+import { SavedCard } from '../types';
 
 const CardStudioEditorContent: React.FC = () => {
+  const [searchParams] = useSearchParams();
   const [elements, setElements] = useState<CardElement[]>([]);
   const [selectedElement, setSelectedElement] = useState<CardElement | null>(null);
   const [multiSelectedElementIds, setMultiSelectedElementIds] = useState<string[]>([]);
@@ -18,6 +23,48 @@ const CardStudioEditorContent: React.FC = () => {
   });
   const [history, setHistory] = useState<CardElement[][]>([[]]);
   const [historyIndex, setHistoryIndex] = useState(0);
+  const [isSaving, setIsSaving] = useState(false);
+  const { user } = useAuth();
+
+  // Load card from URL parameter if provided
+  React.useEffect(() => {
+    const loadCardId = searchParams.get('load');
+    if (loadCardId && user) {
+      loadSavedCard(loadCardId);
+    }
+  }, [searchParams, user]);
+
+  const loadSavedCard = async (cardId: string) => {
+    try {
+      const { data, error } = await supabase
+        .from('user_cards')
+        .select('*')
+        .eq('id', cardId)
+        .eq('user_id', user?.id)
+        .single();
+
+      if (error) {
+        console.error('Error loading card:', error);
+        alert('Failed to load card. It may have been deleted or you may not have permission to access it.');
+        return;
+      }
+
+      if (data) {
+        const { elements: loadedElements, canvasSettings: loadedCanvasSettings } = data.card_data;
+        setElements(loadedElements);
+        setCanvasSettings(loadedCanvasSettings);
+        
+        // Reset history with loaded state
+        setHistory([loadedElements]);
+        setHistoryIndex(0);
+        setSelectedElement(null);
+        setMultiSelectedElementIds([]);
+      }
+    } catch (error) {
+      console.error('Unexpected error loading card:', error);
+      alert('An unexpected error occurred while loading the card.');
+    }
+  };
 
   const handleElementClick = useCallback((element: CardElement | null, event: React.MouseEvent) => {
     if (!element) {
@@ -194,7 +241,66 @@ const CardStudioEditorContent: React.FC = () => {
     }
   }, [history, historyIndex]);
 
-  const saveCard = useCallback(() => {
+  const saveCard = useCallback(async () => {
+    if (!user) {
+      alert('You must be signed in to save cards');
+      return;
+    }
+
+    // Prompt user for card title
+    const title = window.prompt('Enter a name for your card:', 'My Card');
+    if (!title || title.trim() === '') {
+      return; // User cancelled or entered empty title
+    }
+
+    setIsSaving(true);
+
+    try {
+      // Prepare card data
+      const cardData = {
+        elements,
+        canvasSettings,
+        timestamp: new Date().toISOString()
+      };
+
+      // Save to Supabase
+      const { data, error } = await supabase
+        .from('user_cards')
+        .insert({
+          user_id: user.id,
+          title: title.trim(),
+          card_data: cardData
+        })
+        .select()
+        .single();
+
+      if (error) {
+        console.error('Error saving card:', error);
+        alert('Failed to save card. Please try again.');
+        return;
+      }
+
+      // Success feedback
+      alert(`Card "${title}" saved successfully!`);
+      
+      // Optional: Also save to localStorage as backup
+      const savedCards = JSON.parse(localStorage.getItem('savedCards') || '[]');
+      savedCards.push({
+        id: data.id,
+        title: data.title,
+        ...cardData
+      });
+      localStorage.setItem('savedCards', JSON.stringify(savedCards));
+
+    } catch (error) {
+      console.error('Unexpected error saving card:', error);
+      alert('An unexpected error occurred. Please try again.');
+    } finally {
+      setIsSaving(false);
+    }
+  }, [elements, canvasSettings, user]);
+
+  const saveCardLegacy = useCallback(() => {
     const cardData = {
       elements,
       canvasSettings,
@@ -206,8 +312,7 @@ const CardStudioEditorContent: React.FC = () => {
     savedCards.push(cardData);
     localStorage.setItem('savedCards', JSON.stringify(savedCards));
     
-    // TODO: Implement actual save to Supabase
-    alert('Card saved!');
+    alert('Card saved to local storage!');
   }, [elements, canvasSettings]);
 
   const exportCard = useCallback(() => {
@@ -257,8 +362,12 @@ const CardStudioEditorContent: React.FC = () => {
             Export
           </Button>
           <Button size="sm" onClick={saveCard} className="flex items-center">
-            <Save className="w-4 h-4 mr-1" />
-            Save
+            {isSaving ? (
+              <Loader2 className="w-4 h-4 mr-1 animate-spin" />
+            ) : (
+              <Save className="w-4 h-4 mr-1" />
+            )}
+            {isSaving ? 'Saving...' : 'Save'}
           </Button>
         </div>
       </div>

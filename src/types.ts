@@ -53,3 +53,20 @@ export interface CardTemplate {
   canvasHeight: number;
   backgroundColor: string;
 }
+
+export interface SavedCard {
+  id: string;
+  title: string;
+  user_id: string;
+  card_data: {
+    elements: CardElement[];
+    canvasSettings: {
+      width: number;
+      height: number;
+      backgroundColor: string;
+    };
+    timestamp: string;
+  };
+  created_at: string;
+  updated_at: string;
+}
