@@ -129,21 +129,32 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
     
     switch (element.type) {
       case 'text':
+        const textStyle: React.CSSProperties = {
+          ...baseStyle,
+          fontSize: element.fontSize,
+          fontWeight: element.fontWeight,
+          textAlign: element.textAlign,
+          fontFamily: element.fontFamily,
+          display: 'flex',
+          alignItems: 'center',
+          padding: '8px',
+          backgroundColor: 'transparent',
+          overflow: 'hidden'
+        };
+
+        // Apply gradient or solid color
+        if (element.isGradientText && element.gradientColor1 && element.gradientColor2) {
+          textStyle.background = `linear-gradient(${element.gradientDirection || 'to right'}, ${element.gradientColor1}, ${element.gradientColor2})`;
+          textStyle.WebkitBackgroundClip = 'text';
+          textStyle.WebkitTextFillColor = 'transparent';
+          textStyle.backgroundClip = 'text';
+        } else {
+          textStyle.color = element.color;
+        }
+
         content = (
           <div
-            style={{
-              ...baseStyle,
-              fontSize: element.fontSize,
-              fontWeight: element.fontWeight,
-              color: element.color,
-              textAlign: element.textAlign,
-              fontFamily: element.fontFamily,
-              display: 'flex',
-              alignItems: 'center',
-              padding: '8px',
-              backgroundColor: 'transparent',
-              overflow: 'hidden'
-            }}
+            style={textStyle}
             onMouseDown={(e) => handleElementMouseDown(e, element)}
           >
             {element.content || t('cardStudio.editor.defaultText')}

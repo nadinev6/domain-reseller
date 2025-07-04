@@ -35,7 +35,11 @@ const CardStudioEditorContent: React.FC = () => {
         fontWeight: 'normal',
         color: '#000000',
         textAlign: 'left' as const,
-        fontFamily: 'Inter, sans-serif'
+        fontFamily: 'Inter, sans-serif',
+        isGradientText: false,
+        gradientColor1: '#3b82f6',
+        gradientColor2: '#8b5cf6',
+        gradientDirection: 'to right'
       }),
       ...(elementType === 'image' && {
         src: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400',

@@ -22,6 +22,11 @@ export interface CardElement {
   color?: string;
   textAlign?: 'left' | 'center' | 'right';
   fontFamily?: string;
+  // Gradient text properties
+  isGradientText?: boolean;
+  gradientColor1?: string;
+  gradientColor2?: string;
+  gradientDirection?: string;
   // Image-specific properties
   src?: string;
   alt?: string;

@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { t } from 'lingo.dev/react';
-import { Settings, Palette, Type, Image, Square, MousePointer, Save } from 'lucide-react';
+import { Settings, Palette, Type, Image, Square, MousePointer, Save, Smile } from 'lucide-react';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import { Button } from '../ui/button';
 import { CardElement } from '../../types';
+
+// Common emojis for the magic box
+const EMOJI_CATEGORIES = {
+  faces: ['😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇', '🙂', '🙃', '😉', '😌', '😍', '🥰', '😘', '😗', '😙', '😚', '😋', '😛', '😝', '😜', '🤪'],
+  hearts: ['❤️', '🧡', '💛', '💚', '💙', '💜', '🖤', '🤍', '🤎', '💔', '❣️', '💕', '💞', '💓', '💗', '💖', '💘', '💝'],
+  symbols: ['✨', '⭐', '🌟', '💫', '⚡', '🔥', '💥', '💢', '💯', '✅', '❌', '⚠️', '🚀', '🎯', '🎪', '🎨', '🎭', '🎪'],
+  objects: ['💎', '👑', '🏆', '🎁', '🎉', '🎊', '🎈', '🎀', '💰', '💳', '📱', '💻', '⌚', '📷', '🎵', '🎶', '🔔', '💡']
+};
 
 interface PropertiesPanelProps {
   selectedElement: CardElement | null;
@@ -25,6 +33,8 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
 }) => {
 
   const [savedColors, setSavedColors] = useState<string[]>([]);
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [activeEmojiCategory, setActiveEmojiCategory] = useState<keyof typeof EMOJI_CATEGORIES>('faces');
 
   // Load saved colors from localStorage on component mount
   useEffect(() => {
@@ -63,6 +73,15 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
   // Apply saved color to canvas background
   const applySavedColor = (color: string) => {
     handleCanvasUpdate('backgroundColor', color);
+  };
+
+  // Add emoji to text content
+  const addEmoji = (emoji: string) => {
+    if (selectedElement && selectedElement.type === 'text') {
+      const currentContent = selectedElement.content || '';
+      handleElementUpdate('content', currentContent + emoji);
+      setShowEmojiPicker(false);
+    }
   };
 
   const handleElementUpdate = (field: string, value: any) => {
@@ -148,13 +167,62 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
             
             <div>
               <Label htmlFor="content">{t('cardStudio.editor.textContent')}</Label>
-              <textarea
-                id="content"
-                className="w-full p-2 border border-gray-300 rounded-md resize-none"
-                rows={3}
-                value={selectedElement.content || ''}
-                onChange={(e) => handleElementUpdate('content', e.target.value)}
-              />
+              <div className="relative">
+                <textarea
+                  id="content"
+                  className="w-full p-2 pr-10 border border-gray-300 rounded-md resize-none"
+                  rows={3}
+                  value={selectedElement.content || ''}
+                  onChange={(e) => handleElementUpdate('content', e.target.value)}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+                  className="absolute top-2 right-2 p-1 text-gray-400 hover:text-indigo-600 transition-colors duration-200"
+                  title="Add emoji"
+                >
+                  <Smile className="w-4 h-4" />
+                </button>
+              </div>
+              
+              {/* Emoji Picker */}
+              {showEmojiPicker && (
+                <div className="absolute z-50 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg p-3 w-64">
+                  <div className="flex space-x-1 mb-2">
+                    {Object.keys(EMOJI_CATEGORIES).map((category) => (
+                      <button
+                        key={category}
+                        onClick={() => setActiveEmojiCategory(category as keyof typeof EMOJI_CATEGORIES)}
+                        className={`px-2 py-1 text-xs rounded transition-colors duration-200 ${
+                          activeEmojiCategory === category
+                            ? 'bg-indigo-100 text-indigo-700'
+                            : 'text-gray-600 hover:bg-gray-100'
+                        }`}
+                      >
+                        {category.charAt(0).toUpperCase() + category.slice(1)}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="grid grid-cols-6 gap-1 max-h-32 overflow-y-auto">
+                    {EMOJI_CATEGORIES[activeEmojiCategory].map((emoji, index) => (
+                      <button
+                        key={index}
+                        onClick={() => addEmoji(emoji)}
+                        className="p-1 text-lg hover:bg-gray-100 rounded transition-colors duration-200"
+                        title={`Add ${emoji}`}
+                      >
+                        {emoji}
+                      </button>
+                    ))}
+                  </div>
+                  <button
+                    onClick={() => setShowEmojiPicker(false)}
+                    className="mt-2 w-full text-xs text-gray-500 hover:text-gray-700 transition-colors duration-200"
+                  >
+                    Close
+                  </button>
+                </div>
+              )}
             </div>
 
             <div className="grid grid-cols-2 gap-2">
@@ -182,14 +250,71 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
               </div>
             </div>
 
-            <div>
-              <Label htmlFor="color">{t('cardStudio.editor.textColor')}</Label>
-              <Input
-                id="color"
-                type="color"
-                value={selectedElement.color || '#000000'}
-                onChange={(e) => handleElementUpdate('color', e.target.value)}
-              />
+            {/* Text Color / Gradient Section */}
+            <div className="space-y-3">
+              <div className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  id="gradientToggle"
+                  checked={selectedElement.isGradientText || false}
+                  onChange={(e) => handleElementUpdate('isGradientText', e.target.checked)}
+                  className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                />
+                <Label htmlFor="gradientToggle" className="text-sm">Enable Gradient Text</Label>
+              </div>
+              
+              {selectedElement.isGradientText ? (
+                <div className="space-y-3">
+                  <div className="grid grid-cols-2 gap-2">
+                    <div>
+                      <Label htmlFor="gradientColor1" className="text-xs">Color 1</Label>
+                      <Input
+                        id="gradientColor1"
+                        type="color"
+                        value={selectedElement.gradientColor1 || '#3b82f6'}
+                        onChange={(e) => handleElementUpdate('gradientColor1', e.target.value)}
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="gradientColor2" className="text-xs">Color 2</Label>
+                      <Input
+                        id="gradientColor2"
+                        type="color"
+                        value={selectedElement.gradientColor2 || '#8b5cf6'}
+                        onChange={(e) => handleElementUpdate('gradientColor2', e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <Label htmlFor="gradientDirection" className="text-xs">Direction</Label>
+                    <select
+                      id="gradientDirection"
+                      className="w-full p-2 border border-gray-300 rounded-md text-sm"
+                      value={selectedElement.gradientDirection || 'to right'}
+                      onChange={(e) => handleElementUpdate('gradientDirection', e.target.value)}
+                    >
+                      <option value="to right">Left to Right</option>
+                      <option value="to left">Right to Left</option>
+                      <option value="to bottom">Top to Bottom</option>
+                      <option value="to top">Bottom to Top</option>
+                      <option value="45deg">Diagonal ↗</option>
+                      <option value="-45deg">Diagonal ↘</option>
+                      <option value="135deg">Diagonal ↖</option>
+                      <option value="-135deg">Diagonal ↙</option>
+                    </select>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <Label htmlFor="color">{t('cardStudio.editor.textColor')}</Label>
+                  <Input
+                    id="color"
+                    type="color"
+                    value={selectedElement.color || '#000000'}
+                    onChange={(e) => handleElementUpdate('color', e.target.value)}
+                  />
+                </div>
+              )}
             </div>
 
             <div>
