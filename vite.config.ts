@@ -7,7 +7,7 @@ import { LingoDotDevEngine } from "lingo.dev/sdk";
 export default defineConfig({
   plugins: [
     react(),
-     lingoCompiler.vite({
+     LingoDotDevEngine.vite({
       // Configure supported locales
       locales: ['en', 'fr', 'mg'], // Added Malagasy (mg)
       // Default locale
