@@ -3,7 +3,6 @@ import { Check, X, ChevronDown, ChevronUp, ShoppingCart } from 'lucide-react';
 import { DomainResult } from '../types';
 import { useCart } from '../hooks/useCart';
 import { useCurrency } from '../context/CurrencyContext';
-import { t } from 'lingo.dev/react';
 
 interface DomainCardProps {
   domain: DomainResult;
@@ -41,11 +40,11 @@ const DomainCard: React.FC<DomainCardProps> = ({ domain }) => {
             <h3 className="text-lg md:text-xl font-bold text-gray-800">{domain.name}</h3>
             {domain.available ? (
               <span className="text-green-600 flex items-center text-sm">
-                <Check size={16} className="mr-1" /> {t('domain.available')}
+                <Check size={16} className="mr-1" /> Available
               </span>
             ) : (
               <span className="text-red-500 flex items-center text-sm">
-                <X size={16} className="mr-1" /> {t('domain.taken')}
+                <X size={16} className="mr-1" /> Taken
               </span>
             )}
           </div>
@@ -53,7 +52,7 @@ const DomainCard: React.FC<DomainCardProps> = ({ domain }) => {
           {domain.available && (
             <div className="mt-2 flex items-baseline">
               <span className="text-xl font-bold text-indigo-600">
-                {t('domain.price', { price: formatPrice(domain.price) })}
+                {`${formatPrice(domain.price)}/year`}
               </span>
             </div>
           )}
@@ -70,7 +69,7 @@ const DomainCard: React.FC<DomainCardProps> = ({ domain }) => {
               }`}
             >
               <ShoppingCart size={16} className="mr-1" />
-              {inCart ? t('domain.removeFromCart') : t('domain.addToCart')}
+              {inCart ? 'Remove' : 'Add to Cart'}
             </button>
           )}
           
@@ -91,7 +90,7 @@ const DomainCard: React.FC<DomainCardProps> = ({ domain }) => {
           {domain.available && (
             <div className="pt-2">
               <button className="text-indigo-600 hover:text-indigo-800 transition-colors duration-200 font-medium">
-                {t('domain.similarDomains')}
+                View similar domains
               </button>
             </div>
           )}

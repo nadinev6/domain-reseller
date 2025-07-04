@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { t } from 'lingo.dev/react';
-import { Save, Download, Undo, Redo, Eye, Settings } from 'lucide-react';
+import { Save, Download, Undo, Redo, Eye } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import ProtectedRoute from '../components/auth/ProtectedRoute';
 import Toolbox from '../components/card-studio/Toolbox';
@@ -30,7 +29,7 @@ const CardStudioEditorContent: React.FC = () => {
       zIndex: elements.length + 1,
       // Default properties based on type
       ...(elementType === 'text' && {
-        content: t('cardStudio.editor.defaultText'),
+        content: 'Your text here',
         fontSize: 16,
         fontWeight: 'normal',
         color: '#000000',
@@ -53,7 +52,7 @@ const CardStudioEditorContent: React.FC = () => {
         borderColor: '#000000'
       }),
       ...(elementType === 'button' && {
-        buttonText: t('cardStudio.editor.defaultButtonText'),
+        buttonText: 'Click me',
         buttonColor: '#3b82f6',
         buttonTextColor: '#ffffff',
         href: '#',
@@ -70,7 +69,7 @@ const CardStudioEditorContent: React.FC = () => {
     newHistory.push(newElements);
     setHistory(newHistory);
     setHistoryIndex(newHistory.length - 1);
-  }, [elements, history, historyIndex, t]);
+  }, [elements, history, historyIndex]);
 
   const updateElement = useCallback((id: string, updates: Partial<CardElement>) => {
     const newElements = elements.map(el => 
@@ -135,13 +134,13 @@ const CardStudioEditorContent: React.FC = () => {
     localStorage.setItem('savedCards', JSON.stringify(savedCards));
     
     // TODO: Implement actual save to Supabase
-    alert(t('cardStudio.editor.cardSaved'));
-  }, [elements, canvasSettings, t]);
+    alert('Card saved!');
+  }, [elements, canvasSettings]);
 
   const exportCard = useCallback(() => {
     // TODO: Implement export functionality
-    alert(t('cardStudio.editor.exportFeatureComingSoon'));
-  }, [t]);
+    alert('Export feature coming soon!');
+  }, []);
 
   return (
     <div className="h-screen bg-gray-100 flex flex-col">
@@ -149,7 +148,7 @@ const CardStudioEditorContent: React.FC = () => {
       <div className="bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <h1 className="text-xl font-semibold text-gray-900">
-            {t('cardStudio.editor.title')}
+            Card Studio Editor
           </h1>
           <div className="flex items-center space-x-2">
             <Button
@@ -160,7 +159,7 @@ const CardStudioEditorContent: React.FC = () => {
               className="flex items-center"
             >
               <Undo className="w-4 h-4 mr-1" />
-              {t('cardStudio.editor.undo')}
+              Undo
             </Button>
             <Button
               variant="outline"
@@ -170,7 +169,7 @@ const CardStudioEditorContent: React.FC = () => {
               className="flex items-center"
             >
               <Redo className="w-4 h-4 mr-1" />
-              {t('cardStudio.editor.redo')}
+              Redo
             </Button>
           </div>
         </div>
@@ -178,15 +177,15 @@ const CardStudioEditorContent: React.FC = () => {
         <div className="flex items-center space-x-2">
           <Button variant="outline" size="sm" className="flex items-center">
             <Eye className="w-4 h-4 mr-1" />
-            {t('cardStudio.editor.preview')}
+            Preview
           </Button>
           <Button variant="outline" size="sm" onClick={exportCard} className="flex items-center">
             <Download className="w-4 h-4 mr-1" />
-            {t('cardStudio.editor.export')}
+            Export
           </Button>
           <Button size="sm" onClick={saveCard} className="flex items-center">
             <Save className="w-4 h-4 mr-1" />
-            {t('cardStudio.editor.save')}
+            Save
           </Button>
         </div>
       </div>

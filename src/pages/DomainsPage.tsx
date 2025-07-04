@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Search, ArrowRight, RefreshCw, Download } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyContext';
-import { t } from 'lingo.dev/react';
 
 interface TLD {
   name: string;
@@ -52,8 +51,8 @@ const DomainsPage: React.FC = () => {
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-7xl mx-auto px-4">
         <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 mb-8 text-white">
-          <h1 className="text-3xl font-bold mb-2">{t('domains.pricing.title')}</h1>
-          <p className="text-indigo-100">{t('domains.pricing.subtitle')}</p>
+          <h1 className="text-3xl font-bold mb-2">Domain Pricing</h1>
+          <p className="text-indigo-100">Find the perfect domain extension for your online presence</p>
         </div>
 
         <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
@@ -63,7 +62,7 @@ const DomainsPage: React.FC = () => {
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder={t('domains.pricing.searchPlaceholder')}
+              placeholder="Search TLDs..."
               className="flex-1 p-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>

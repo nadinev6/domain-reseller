@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { t } from 'lingo.dev/react';
 import { Settings, Palette, Type, Image, Square, MousePointer, Save, Smile } from 'lucide-react';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
@@ -104,7 +103,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
       <div className="space-y-4">
         <div className="grid grid-cols-2 gap-2">
           <div>
-            <Label htmlFor="x">{t('cardStudio.editor.positionX')}</Label>
+            <Label htmlFor="x">X Position</Label>
             <Input
               id="x"
               type="number"
@@ -113,7 +112,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
             />
           </div>
           <div>
-            <Label htmlFor="y">{t('cardStudio.editor.positionY')}</Label>
+            <Label htmlFor="y">Y Position</Label>
             <Input
               id="y"
               type="number"
@@ -125,7 +124,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
         
         <div className="grid grid-cols-2 gap-2">
           <div>
-            <Label htmlFor="width">{t('cardStudio.editor.width')}</Label>
+            <Label htmlFor="width">Width</Label>
             <Input
               id="width"
               type="number"
@@ -134,7 +133,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
             />
           </div>
           <div>
-            <Label htmlFor="height">{t('cardStudio.editor.height')}</Label>
+            <Label htmlFor="height">Height</Label>
             <Input
               id="height"
               type="number"
@@ -145,7 +144,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
         </div>
 
         <div>
-          <Label htmlFor="rotation">{t('cardStudio.editor.rotation')}</Label>
+          <Label htmlFor="rotation">Rotation</Label>
           <Input
             id="rotation"
             type="number"
@@ -162,11 +161,11 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
           <div className="space-y-6">
             <div className="flex items-center space-x-2 text-indigo-600">
               <Type className="w-5 h-5" />
-              <h3 className="font-semibold">{t('cardStudio.editor.textProperties')}</h3>
+              <h3 className="font-semibold">Text Properties</h3>
             </div>
             
             <div>
-              <Label htmlFor="content">{t('cardStudio.editor.textContent')}</Label>
+              <Label htmlFor="content">Text Content</Label>
               <div className="relative">
                 <textarea
                   id="content"
@@ -227,7 +226,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
 
             <div className="grid grid-cols-2 gap-2">
               <div>
-                <Label htmlFor="fontSize">{t('cardStudio.editor.fontSize')}</Label>
+                <Label htmlFor="fontSize">Font Size</Label>
                 <Input
                   id="fontSize"
                   type="number"
@@ -236,7 +235,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
                 />
               </div>
               <div>
-                <Label htmlFor="fontWeight">{t('cardStudio.editor.fontWeight')}</Label>
+                <Label htmlFor="fontWeight">Font Weight</Label>
                 <select
                   id="fontWeight"
                   className="w-full p-2 border border-gray-300 rounded-md"
@@ -306,7 +305,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
                 </div>
               ) : (
                 <div>
-                  <Label htmlFor="color">{t('cardStudio.editor.textColor')}</Label>
+                  <Label htmlFor="color">Text Color</Label>
                   <Input
                     id="color"
                     type="color"
@@ -318,7 +317,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
             </div>
 
             <div>
-              <Label htmlFor="textAlign">{t('cardStudio.editor.textAlign')}</Label>
+              <Label htmlFor="textAlign">Text Align</Label>
               <select
                 id="textAlign"
                 className="w-full p-2 border border-gray-300 rounded-md"
@@ -340,11 +339,11 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
           <div className="space-y-6">
             <div className="flex items-center space-x-2 text-purple-600">
               <Image className="w-5 h-5" />
-              <h3 className="font-semibold">{t('cardStudio.editor.imageProperties')}</h3>
+              <h3 className="font-semibold">Image Properties</h3>
             </div>
             
             <div>
-              <Label htmlFor="src">{t('cardStudio.editor.imageUrl')}</Label>
+              <Label htmlFor="src">Image URL</Label>
               <Input
                 id="src"
                 type="url"
@@ -354,7 +353,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
             </div>
 
             <div>
-              <Label htmlFor="alt">{t('cardStudio.editor.altText')}</Label>
+              <Label htmlFor="alt">Alt Text</Label>
               <Input
                 id="alt"
                 value={selectedElement.alt || ''}
@@ -363,7 +362,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
             </div>
 
             <div>
-              <Label htmlFor="objectFit">{t('cardStudio.editor.objectFit')}</Label>
+              <Label htmlFor="objectFit">Object Fit</Label>
               <select
                 id="objectFit"
                 className="w-full p-2 border border-gray-300 rounded-md"
@@ -377,7 +376,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
             </div>
 
             <div>
-              <Label htmlFor="borderRadius">{t('cardStudio.editor.borderRadius')}</Label>
+              <Label htmlFor="borderRadius">Border Radius</Label>
               <Input
                 id="borderRadius"
                 type="number"
@@ -395,11 +394,11 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
           <div className="space-y-6">
             <div className="flex items-center space-x-2 text-green-600">
               <Square className="w-5 h-5" />
-              <h3 className="font-semibold">{t('cardStudio.editor.shapeProperties')}</h3>
+              <h3 className="font-semibold">Shape Properties</h3>
             </div>
             
             <div>
-              <Label htmlFor="backgroundColor">{t('cardStudio.editor.backgroundColor')}</Label>
+              <Label htmlFor="backgroundColor">Background Color</Label>
               <Input
                 id="backgroundColor"
                 type="color"
@@ -409,7 +408,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
             </div>
 
             <div>
-              <Label htmlFor="borderRadius">{t('cardStudio.editor.borderRadius')}</Label>
+              <Label htmlFor="borderRadius">Border Radius</Label>
               <Input
                 id="borderRadius"
                 type="number"
@@ -420,7 +419,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
 
             <div className="grid grid-cols-2 gap-2">
               <div>
-                <Label htmlFor="borderWidth">{t('cardStudio.editor.borderWidth')}</Label>
+                <Label htmlFor="borderWidth">Border Width</Label>
                 <Input
                   id="borderWidth"
                   type="number"
@@ -429,7 +428,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
                 />
               </div>
               <div>
-                <Label htmlFor="borderColor">{t('cardStudio.editor.borderColor')}</Label>
+                <Label htmlFor="borderColor">Border Color</Label>
                 <Input
                   id="borderColor"
                   type="color"
@@ -448,11 +447,11 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
           <div className="space-y-6">
             <div className="flex items-center space-x-2 text-orange-600">
               <MousePointer className="w-5 h-5" />
-              <h3 className="font-semibold">{t('cardStudio.editor.buttonProperties')}</h3>
+              <h3 className="font-semibold">Button Properties</h3>
             </div>
             
             <div>
-              <Label htmlFor="buttonText">{t('cardStudio.editor.buttonText')}</Label>
+              <Label htmlFor="buttonText">Button Text</Label>
               <Input
                 id="buttonText"
                 value={selectedElement.buttonText || ''}
@@ -462,7 +461,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
 
             <div className="grid grid-cols-2 gap-2">
               <div>
-                <Label htmlFor="buttonColor">{t('cardStudio.editor.buttonColor')}</Label>
+                <Label htmlFor="buttonColor">Button Color</Label>
                 <Input
                   id="buttonColor"
                   type="color"
@@ -471,7 +470,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
                 />
               </div>
               <div>
-                <Label htmlFor="buttonTextColor">{t('cardStudio.editor.buttonTextColor')}</Label>
+                <Label htmlFor="buttonTextColor">Button Text Color</Label>
                 <Input
                   id="buttonTextColor"
                   type="color"
@@ -482,7 +481,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
             </div>
 
             <div>
-              <Label htmlFor="href">{t('cardStudio.editor.buttonLink')}</Label>
+              <Label htmlFor="href">Button Link</Label>
               <Input
                 id="href"
                 type="url"
@@ -492,7 +491,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
             </div>
 
             <div>
-              <Label htmlFor="borderRadius">{t('cardStudio.editor.borderRadius')}</Label>
+              <Label htmlFor="borderRadius">Border Radius</Label>
               <Input
                 id="borderRadius"
                 type="number"
@@ -514,7 +513,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
     <div className="h-full flex flex-col">
       <div className="p-4 border-b border-gray-200">
         <h2 className="text-lg font-semibold text-gray-900">
-          {t('cardStudio.editor.properties')}
+          Properties
         </h2>
       </div>
 
@@ -523,13 +522,13 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
         <div>
           <div className="flex items-center space-x-2 text-gray-700 mb-4">
             <Settings className="w-5 h-5" />
-            <h3 className="font-semibold">{t('cardStudio.editor.canvasSettings')}</h3>
+            <h3 className="font-semibold">Canvas Settings</h3>
           </div>
           
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-2">
               <div>
-                <Label htmlFor="canvasWidth">{t('cardStudio.editor.canvasWidth')}</Label>
+                <Label htmlFor="canvasWidth">Canvas Width</Label>
                 <Input
                   id="canvasWidth"
                   type="number"
@@ -538,7 +537,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
                 />
               </div>
               <div>
-                <Label htmlFor="canvasHeight">{t('cardStudio.editor.canvasHeight')}</Label>
+                <Label htmlFor="canvasHeight">Canvas Height</Label>
                 <Input
                   id="canvasHeight"
                   type="number"
@@ -549,7 +548,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
             </div>
 
             <div>
-              <Label htmlFor="canvasBackground">{t('cardStudio.editor.canvasBackground')}</Label>
+              <Label htmlFor="canvasBackground">Canvas Background</Label>
               <Input
                 id="canvasBackground"
                 type="color"
@@ -632,8 +631,8 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
         ) : (
           <div className="text-center py-8 text-gray-500">
             <Palette className="w-12 h-12 mx-auto mb-4 opacity-50" />
-            <p className="font-medium">{t('cardStudio.editor.noElementSelected')}</p>
-            <p className="text-sm">{t('cardStudio.editor.selectElementToEdit')}</p>
+            <p className="font-medium">No Element Selected</p>
+            <p className="text-sm">Click on an element to edit its properties</p>
           </div>
         )}
       </div>
