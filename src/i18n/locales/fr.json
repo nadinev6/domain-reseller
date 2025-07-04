@@ -2,7 +2,7 @@
   "header": {
     "domains": "Domaines",
     "pricing": "Tarifs",
-    "cardStudio": "Studio de Cartes",
+    "cardStudio": "Mon VibePage",
     "support": "Assistance",
     "account": "Compte"
   },
@@ -59,7 +59,7 @@
     }
   },
   "cardStudio": {
-    "title": "Studio de Cartes de Médias Sociaux",
+    "title": "Studio Mon VibePage",
     "subtitle": "Créez de superbes cartes de médias sociaux avec notre constructeur glisser-déposer",
     "getStarted": "Commencer",
     "signUpToStart": "S'inscrire pour Commencer",
@@ -71,7 +71,7 @@
       "customDomain": "Domaine Personnalisé"
     },
     "editor": {
-      "title": "Éditeur de Studio de Cartes",
+      "title": "Éditeur Studio Mon VibePage",
       "toolbox": "Boîte à Outils",
       "toolboxDesc": "Glissez les éléments vers le canevas ou cliquez pour ajouter",
       "properties": "Propriétés",

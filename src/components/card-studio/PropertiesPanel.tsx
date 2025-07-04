@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { t } from 'lingo.dev/react';
-import { Settings, Palette, Type, Image, Square, MousePointer } from 'lucide-react';
+import { Settings, Palette, Type, Image, Square, MousePointer, Save } from 'lucide-react';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import { Button } from '../ui/button';
@@ -23,6 +23,47 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
   canvasSettings,
   onUpdateCanvasSettings
 }) => {
+
+  const [savedColors, setSavedColors] = useState<string[]>([]);
+
+  // Load saved colors from localStorage on component mount
+  useEffect(() => {
+    const stored = localStorage.getItem('vibepage-saved-colors');
+    if (stored) {
+      try {
+        const colors = JSON.parse(stored);
+        setSavedColors(Array.isArray(colors) ? colors : []);
+      } catch (error) {
+        console.error('Error loading saved colors:', error);
+        setSavedColors([]);
+      }
+    }
+  }, []);
+
+  // Save current canvas background color to palette
+  const saveCurrentColor = () => {
+    const currentColor = canvasSettings.backgroundColor;
+    const newColors = [...savedColors];
+    
+    // If color already exists, don't add it again
+    if (newColors.includes(currentColor)) {
+      return;
+    }
+    
+    // Add new color, keep only 5 colors max (remove oldest if needed)
+    newColors.push(currentColor);
+    if (newColors.length > 5) {
+      newColors.shift(); // Remove the oldest color
+    }
+    
+    setSavedColors(newColors);
+    localStorage.setItem('vibepage-saved-colors', JSON.stringify(newColors));
+  };
+
+  // Apply saved color to canvas background
+  const applySavedColor = (color: string) => {
+    handleCanvasUpdate('backgroundColor', color);
+  };
 
   const handleElementUpdate = (field: string, value: any) => {
     if (selectedElement) {
@@ -390,6 +431,48 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
                 value={canvasSettings.backgroundColor}
                 onChange={(e) => handleCanvasUpdate('backgroundColor', e.target.value)}
               />
+            </div>
+
+            <div className="mt-4">
+              <div className="flex items-center justify-between mb-2">
+                <Label className="text-sm font-medium">Color Palette</Label>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={saveCurrentColor}
+                  className="flex items-center text-xs"
+                >
+                  <Save className="w-3 h-3 mr-1" />
+                  Save Current
+                </Button>
+              </div>
+              <div className="grid grid-cols-5 gap-2">
+                {Array.from({ length: 5 }).map((_, index) => {
+                  const color = savedColors[index];
+                  return (
+                    <button
+                      key={index}
+                      onClick={() => color && applySavedColor(color)}
+                      className={`w-8 h-8 rounded border-2 transition-all duration-200 ${
+                        color 
+                          ? 'border-gray-300 hover:border-indigo-400 hover:scale-110' 
+                          : 'border-dashed border-gray-200 bg-gray-50'
+                      }`}
+                      style={{ 
+                        backgroundColor: color || 'transparent',
+                        cursor: color ? 'pointer' : 'default'
+                      }}
+                      disabled={!color}
+                      title={color ? `Apply color: ${color}` : 'Empty slot'}
+                    />
+                  );
+                })}
+              </div>
+              {savedColors.length === 0 && (
+                <p className="text-xs text-gray-500 mt-2">
+                  Save colors to quickly apply them to your canvas background
+                </p>
+              )}
             </div>
 
             <div className="flex space-x-2">

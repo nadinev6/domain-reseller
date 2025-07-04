@@ -59,7 +59,7 @@
     }
   },
   "cardStudio": {
-    "title": "VibePage Studio",
+    "title": "My VibePage Studio",
     "subtitle": "Create stunning social media cards with our drag-and-drop builder",
     "getStarted": "Get Started",
     "signUpToStart": "Sign Up to Get Started",
@@ -71,7 +71,7 @@
       "customDomain": "Custom Domain"
     },
     "editor": {
-      "title": "VibePage Studio Editor",
+      "title": "My VibePage Studio Editor",
       "toolbox": "Toolbox",
       "toolboxDesc": "Drag elements to canvas or click to add",
       "properties": "Properties",
