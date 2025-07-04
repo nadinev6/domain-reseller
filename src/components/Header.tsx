@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Menu, X, User, ShoppingCart, LogOut } from 'lucide-react';
 import { useCart } from '../hooks/useCart';
 import { useAuth } from '../context/AuthContext';
-import { t } from 'lingo.dev/react';
 import CurrencySelector from './CurrencySelector';
 import LanguageSelector from './LanguageSelector';
 import AuthDialog from './auth/AuthDialog';
@@ -48,17 +47,17 @@ const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
               </Link>
               <nav className="hidden md:block">
                 <ul className="flex space-x-8">
-                  <li><Link to="/domains" className="hover:text-amber-300 transition-colors duration-200">{t('header.domains')}</Link></li>
-                  <li><Link to="/pricing" className="hover:text-amber-300 transition-colors duration-200">{t('header.pricing')}</Link></li>
+                  <li><Link to="/domains" className="hover:text-amber-300 transition-colors duration-200">Domains</Link></li>
+                  <li><Link to="/pricing" className="hover:text-amber-300 transition-colors duration-200">Pricing</Link></li>
                   <li>
                     <Link 
                       to={user ? "/card-studio/editor" : "/card-studio"} 
                       className="hover:text-amber-300 transition-colors duration-200"
                     >
-                      {t('header.cardStudio')}
+                      Card Studio
                     </Link>
                   </li>
-                  <li><Link to="/support" className="hover:text-amber-300 transition-colors duration-200">{t('header.support')}</Link></li>
+                  <li><Link to="/support" className="hover:text-amber-300 transition-colors duration-200">Support</Link></li>
                 </ul>
               </nav>
             </div>
@@ -133,20 +132,20 @@ const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
           {navOpen && (
             <nav className="mt-4 md:hidden">
               <ul className="space-y-2">
-                <li><Link to="/domains" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">{t('header.domains')}</Link></li>
-                <li><Link to="/pricing" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">{t('header.pricing')}</Link></li>
+                <li><Link to="/domains" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">Domains</Link></li>
+                <li><Link to="/pricing" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">Pricing</Link></li>
                 <li>
                   <Link 
                     to={user ? "/card-studio/editor" : "/card-studio"} 
                     className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200"
                   >
-                    {t('header.cardStudio')}
+                    Card Studio
                   </Link>
                 </li>
-                <li><Link to="/support" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">{t('header.support')}</Link></li>
+                <li><Link to="/support" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">Support</Link></li>
                 {user ? (
                   <>
-                    <li><Link to="/dashboard" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">{t('header.account')}</Link></li>
+                    <li><Link to="/dashboard" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">Account</Link></li>
                     <li>
                       <button 
                         onClick={handleSignOut}

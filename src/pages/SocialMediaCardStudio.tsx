@@ -1,5 +1,4 @@
 import React from 'react';
-import { t } from 'lingo.dev/react';
 import { Palette, Smartphone, MousePointer, Globe, ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
@@ -14,22 +13,22 @@ const SocialMediaCardStudio: React.FC = () => {
   const features = [
     {
       icon: <MousePointer className="w-8 h-8 text-indigo-600" />,
-      title: t('cardStudio.features.dragDrop'),
+      title: <>Drag & Drop Builder</>,
       description: 'Intuitive drag-and-drop interface for effortless card creation'
     },
     {
       icon: <Sparkles className="w-8 h-8 text-purple-600" />,
-      title: t('cardStudio.features.templates'),
+      title: <>Professional Templates</>,
       description: 'Choose from dozens of professionally designed templates'
     },
     {
       icon: <Smartphone className="w-8 h-8 text-pink-600" />,
-      title: t('cardStudio.features.responsive'),
+      title: <>Mobile Responsive</>,
       description: 'Cards automatically adapt to all screen sizes and devices'
     },
     {
       icon: <Globe className="w-8 h-8 text-green-600" />,
-      title: t('cardStudio.features.customDomain'),
+      title: <>Custom Domain</>,
       description: 'Connect your purchased domain for a professional presence'
     }
   ];
@@ -68,17 +67,17 @@ const SocialMediaCardStudio: React.FC = () => {
             </div>
           )}
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200">
-            {t('cardStudio.title')}
+            Social Media Card Studio
           </h1>
           <p className="text-xl md:text-2xl text-indigo-100 mb-8 max-w-3xl mx-auto">
-            {t('cardStudio.subtitle')}
+            Create stunning social media cards with our drag-and-drop builder
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {user ? (
               <Link to="/card-studio/editor">
                 <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
                   <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
-                    {t('cardStudio.getStarted')}
+                    Get Started
                   </AnimatedShinyText>
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
@@ -86,14 +85,14 @@ const SocialMediaCardStudio: React.FC = () => {
             ) : (
               <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
                 <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
-                  {t('cardStudio.signUpToStart')}
+                  Sign Up to Get Started
                 </AnimatedShinyText>
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             )}
             <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-indigo-600 text-lg px-8 py-3">
               <AnimatedShinyText className="text-indigo-600 hover:text-indigo-600 !mx-0 !max-w-none">
-                {t('cardStudio.examples')}
+                View Examples
               </AnimatedShinyText>
             </Button>
           </div>

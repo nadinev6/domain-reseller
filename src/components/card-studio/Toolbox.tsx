@@ -1,5 +1,4 @@
 import React from 'react';
-import { t } from 'lingo.dev/react';
 import { Type, Image, Square, MousePointer } from 'lucide-react';
 import { CardElement } from '../../types';
 
@@ -13,26 +12,26 @@ const Toolbox: React.FC<ToolboxProps> = ({ onAddElement }) => {
     {
       type: 'text' as const,
       icon: <Type className="w-5 h-5" />,
-      label: t('cardStudio.editor.textElement'),
-      description: t('cardStudio.editor.textElementDesc')
+      label: <>Text</>,
+      description: 'Add text content'
     },
     {
       type: 'image' as const,
       icon: <Image className="w-5 h-5" />,
-      label: t('cardStudio.editor.imageElement'),
-      description: t('cardStudio.editor.imageElementDesc')
+      label: <>Image</>,
+      description: 'Add images'
     },
     {
       type: 'shape' as const,
       icon: <Square className="w-5 h-5" />,
-      label: t('cardStudio.editor.shapeElement'),
-      description: t('cardStudio.editor.shapeElementDesc')
+      label: <>Shape</>,
+      description: 'Add shapes and backgrounds'
     },
     {
       type: 'button' as const,
       icon: <MousePointer className="w-5 h-5" />,
-      label: t('cardStudio.editor.buttonElement'),
-      description: t('cardStudio.editor.buttonElementDesc')
+      label: <>Button</>,
+      description: 'Add interactive buttons'
     }
   ];
 
@@ -53,10 +52,10 @@ const Toolbox: React.FC<ToolboxProps> = ({ onAddElement }) => {
     <div className="h-full flex flex-col">
       <div className="p-4 border-b border-gray-200">
         <h2 className="text-lg font-semibold text-gray-900">
-          {t('cardStudio.editor.toolbox')}
+          Toolbox
         </h2>
         <p className="text-sm text-gray-600 mt-1">
-          {t('cardStudio.editor.toolboxDesc')}
+          Drag elements to canvas or click to add
         </p>
       </div>
 
@@ -88,11 +87,11 @@ const Toolbox: React.FC<ToolboxProps> = ({ onAddElement }) => {
 
       <div className="p-4 border-t border-gray-200 bg-gray-50">
         <div className="text-xs text-gray-600">
-          <p className="font-medium mb-1">{t('cardStudio.editor.howToUse')}</p>
+          <p className="font-medium mb-1">How to use:</p>
           <ul className="space-y-1">
-            <li>• {t('cardStudio.editor.dragToCanvas')}</li>
-            <li>• {t('cardStudio.editor.clickToAdd')}</li>
-            <li>• {t('cardStudio.editor.selectToEdit')}</li>
+            <li>• Drag elements to canvas</li>
+            <li>• Click to add to center</li>
+            <li>• Select element to edit</li>
           </ul>
         </div>
       </div>

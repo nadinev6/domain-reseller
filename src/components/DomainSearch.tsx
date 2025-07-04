@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 import { searchDomains } from '../utils/domainUtils';
 import { DomainResult } from '../types';
-import { t } from 'lingo.dev/react';
 
 interface DomainSearchProps {
   onSearch: (results: DomainResult[]) => void;
@@ -30,10 +29,10 @@ const DomainSearch: React.FC<DomainSearchProps> = ({ onSearch }) => {
     <div className="w-full max-w-4xl mx-auto px-4 mt-8 md:mt-16">
       <div className="text-center mb-8">
         <h1 className="text-3xl md:text-5xl font-extrabold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
-          {t('search.title')}
+          Find your perfect Name
         </h1>
         <p className="text-lg text-gray-600 mb-8">
-          {t('search.subtitle')}
+          Secure your online presence with a domain name that stands out.
         </p>
       </div>
       
@@ -42,7 +41,7 @@ const DomainSearch: React.FC<DomainSearchProps> = ({ onSearch }) => {
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder={t('search.placeholder')}
+          placeholder="Find your perfect domain..."
           className="w-full p-4 pl-5 pr-16 text-lg border-2 border-gray-300 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all duration-200"
         />
         <button
@@ -57,7 +56,7 @@ const DomainSearch: React.FC<DomainSearchProps> = ({ onSearch }) => {
           ) : (
             <>
               <Search size={20} className="mr-1" />
-              <span className="hidden md:inline">{t('search.button')}</span>
+              <span className="hidden md:inline">Search</span>
             </>
           )}
         </button>

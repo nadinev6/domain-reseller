@@ -1,5 +1,4 @@
 import React, { useRef, useCallback } from 'react';
-import { t } from 'lingo.dev/react';
 import { Trash2, Copy, RotateCw } from 'lucide-react';
 import { CardElement } from '../../types';
 
@@ -157,7 +156,7 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
             style={textStyle}
             onMouseDown={(e) => handleElementMouseDown(e, element)}
           >
-            {element.content || t('cardStudio.editor.defaultText')}
+            {element.content || 'Your text here'}
           </div>
         );
         break;
@@ -215,7 +214,7 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
             }}
             onMouseDown={(e) => handleElementMouseDown(e, element)}
           >
-            {element.buttonText || t('cardStudio.editor.defaultButtonText')}
+            {element.buttonText || 'Click me'}
           </button>
         );
         break;
@@ -232,21 +231,21 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
             <button
               onClick={() => duplicateElement(element)}
               className="p-1 hover:bg-gray-100 rounded"
-              title={t('cardStudio.editor.duplicate')}
+              title="Duplicate"
             >
               <Copy className="w-3 h-3" />
             </button>
             <button
               onClick={() => onUpdateElement(element.id, { rotation: (element.rotation || 0) + 15 })}
               className="p-1 hover:bg-gray-100 rounded"
-              title={t('cardStudio.editor.rotate')}
+              title="Rotate"
             >
               <RotateCw className="w-3 h-3" />
             </button>
             <button
               onClick={() => onDeleteElement(element.id)}
               className="p-1 hover:bg-red-100 text-red-600 rounded"
-              title={t('cardStudio.editor.delete')}
+              title="Delete"
             >
               <Trash2 className="w-3 h-3" />
             </button>
@@ -278,8 +277,8 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
           <div className="absolute inset-0 flex items-center justify-center text-gray-400 pointer-events-none">
             <div className="text-center">
               <div className="text-4xl mb-2">🎨</div>
-              <p className="text-lg font-medium">{t('cardStudio.editor.emptyCanvas')}</p>
-              <p className="text-sm">{t('cardStudio.editor.emptyCanvasDesc')}</p>
+              <p className="text-lg font-medium">Start Creating</p>
+              <p className="text-sm">Drag elements from the toolbox or click to add them</p>
             </div>
           </div>
         )}

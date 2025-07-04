@@ -13,7 +13,7 @@ import { CartProvider } from './context/CartContext';
 import { CurrencyProvider } from './context/CurrencyContext';
 import { AuthProvider } from './context/AuthContext';
 
-function App() {
+export default function App() {
   const [searchResults, setSearchResults] = React.useState([]);
   const [isSearching, setIsSearching] = React.useState(false);
   const [isCartOpen, setIsCartOpen] = React.useState(false);
@@ -66,5 +66,3 @@ function App() {
     </Router>
   );
 }
-
-export default App;
