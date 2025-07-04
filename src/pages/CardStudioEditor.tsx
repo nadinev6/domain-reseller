@@ -10,6 +10,7 @@ import { CardElement } from '../types';
 const CardStudioEditorContent: React.FC = () => {
   const [elements, setElements] = useState<CardElement[]>([]);
   const [selectedElement, setSelectedElement] = useState<CardElement | null>(null);
+  const [multiSelectedElementIds, setMultiSelectedElementIds] = useState<string[]>([]);
   const [canvasSettings, setCanvasSettings] = useState({
     width: 800,
     height: 600,
@@ -17,6 +18,40 @@ const CardStudioEditorContent: React.FC = () => {
   });
   const [history, setHistory] = useState<CardElement[][]>([[]]);
   const [historyIndex, setHistoryIndex] = useState(0);
+
+  const handleElementClick = useCallback((element: CardElement | null, event: React.MouseEvent) => {
+    if (!element) {
+      // Clicked on canvas background - clear all selections
+      setSelectedElement(null);
+      setMultiSelectedElementIds([]);
+      return;
+    }
+
+    const isCtrlOrCmd = event.ctrlKey || event.metaKey;
+    
+    if (isCtrlOrCmd) {
+      // Multi-select mode
+      if (multiSelectedElementIds.includes(element.id)) {
+        // Remove from multi-selection
+        const newSelection = multiSelectedElementIds.filter(id => id !== element.id);
+        setMultiSelectedElementIds(newSelection);
+        
+        // If this was the selected element, clear it or set to another selected element
+        if (selectedElement?.id === element.id) {
+          const remainingElement = elements.find(el => newSelection.includes(el.id));
+          setSelectedElement(remainingElement || null);
+        }
+      } else {
+        // Add to multi-selection
+        setMultiSelectedElementIds(prev => [...prev, element.id]);
+        setSelectedElement(element);
+      }
+    } else {
+      // Single select mode
+      setSelectedElement(element);
+      setMultiSelectedElementIds([]);
+    }
+  }, [multiSelectedElementIds, selectedElement, elements]);
 
   const addElement = useCallback((elementType: CardElement['type'], x: number, y: number) => {
     const newElement: CardElement = {
@@ -63,6 +98,7 @@ const CardStudioEditorContent: React.FC = () => {
     const newElements = [...elements, newElement];
     setElements(newElements);
     setSelectedElement(newElement);
+    setMultiSelectedElementIds([]);
     
     // Add to history
     const newHistory = history.slice(0, historyIndex + 1);
@@ -71,37 +107,72 @@ const CardStudioEditorContent: React.FC = () => {
     setHistoryIndex(newHistory.length - 1);
   }, [elements, history, historyIndex]);
 
-  const updateElement = useCallback((id: string, updates: Partial<CardElement>) => {
-    const newElements = elements.map(el => 
-      el.id === id ? { ...el, ...updates } : el
-    );
+  const updateElement = useCallback((id: string, updates: Partial<CardElement>, isDrag: boolean = false) => {
+    let newElements;
+    
+    if (isDrag && multiSelectedElementIds.length > 0 && multiSelectedElementIds.includes(id)) {
+      // Apply drag delta to all multi-selected elements
+      const deltaX = updates.x !== undefined ? updates.x - (elements.find(el => el.id === id)?.x || 0) : 0;
+      const deltaY = updates.y !== undefined ? updates.y - (elements.find(el => el.id === id)?.y || 0) : 0;
+      
+      newElements = elements.map(el => {
+        if (multiSelectedElementIds.includes(el.id)) {
+          return {
+            ...el,
+            x: el.x + deltaX,
+            y: el.y + deltaY
+          };
+        }
+        return el;
+      });
+    } else {
+      // Single element update
+      newElements = elements.map(el => 
+        el.id === id ? { ...el, ...updates } : el
+      );
+    }
+    
     setElements(newElements);
     
     if (selectedElement?.id === id) {
       setSelectedElement({ ...selectedElement, ...updates });
     }
 
-    // Add to history
-    const newHistory = history.slice(0, historyIndex + 1);
-    newHistory.push(newElements);
-    setHistory(newHistory);
-    setHistoryIndex(newHistory.length - 1);
-  }, [elements, selectedElement, history, historyIndex]);
+    // Add to history (but not for every drag movement to avoid performance issues)
+    if (!isDrag) {
+      const newHistory = history.slice(0, historyIndex + 1);
+      newHistory.push(newElements);
+      setHistory(newHistory);
+      setHistoryIndex(newHistory.length - 1);
+    }
+  }, [elements, selectedElement, multiSelectedElementIds, history, historyIndex]);
 
   const deleteElement = useCallback((id: string) => {
-    const newElements = elements.filter(el => el.id !== id);
+    let elementsToDelete: string[];
+    
+    if (multiSelectedElementIds.length > 0) {
+      // Delete all multi-selected elements
+      elementsToDelete = multiSelectedElementIds;
+    } else {
+      // Delete single element
+      elementsToDelete = [id];
+    }
+    
+    const newElements = elements.filter(el => !elementsToDelete.includes(el.id));
     setElements(newElements);
     
-    if (selectedElement?.id === id) {
+    // Clear selections if any deleted element was selected
+    if (selectedElement && elementsToDelete.includes(selectedElement.id)) {
       setSelectedElement(null);
     }
+    setMultiSelectedElementIds([]);
 
     // Add to history
     const newHistory = history.slice(0, historyIndex + 1);
     newHistory.push(newElements);
     setHistory(newHistory);
     setHistoryIndex(newHistory.length - 1);
-  }, [elements, selectedElement, history, historyIndex]);
+  }, [elements, selectedElement, multiSelectedElementIds, history, historyIndex]);
 
   const undo = useCallback(() => {
     if (historyIndex > 0) {
@@ -109,6 +180,7 @@ const CardStudioEditorContent: React.FC = () => {
       setHistoryIndex(newIndex);
       setElements(history[newIndex]);
       setSelectedElement(null);
+      setMultiSelectedElementIds([]);
     }
   }, [history, historyIndex]);
 
@@ -118,6 +190,7 @@ const CardStudioEditorContent: React.FC = () => {
       setHistoryIndex(newIndex);
       setElements(history[newIndex]);
       setSelectedElement(null);
+      setMultiSelectedElementIds([]);
     }
   }, [history, historyIndex]);
 
@@ -203,7 +276,8 @@ const CardStudioEditorContent: React.FC = () => {
             <EditorCanvas
               elements={elements}
               selectedElement={selectedElement}
-              onSelectElement={setSelectedElement}
+              multiSelectedElementIds={multiSelectedElementIds}
+              onElementClick={handleElementClick}
               onUpdateElement={updateElement}
               onDeleteElement={deleteElement}
               onAddElement={addElement}

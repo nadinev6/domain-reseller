@@ -5,8 +5,9 @@ import { CardElement } from '../../types';
 interface EditorCanvasProps {
   elements: CardElement[];
   selectedElement: CardElement | null;
-  onSelectElement: (element: CardElement | null) => void;
-  onUpdateElement: (id: string, updates: Partial<CardElement>) => void;
+  multiSelectedElementIds: string[];
+  onElementClick: (element: CardElement | null, event: React.MouseEvent) => void;
+  onUpdateElement: (id: string, updates: Partial<CardElement>, isDrag?: boolean) => void;
   onDeleteElement: (id: string) => void;
   onAddElement: (type: CardElement['type'], x: number, y: number) => void;
   canvasSettings: {
@@ -19,7 +20,8 @@ interface EditorCanvasProps {
 const EditorCanvas: React.FC<EditorCanvasProps> = ({
   elements,
   selectedElement,
-  onSelectElement,
+  multiSelectedElementIds,
+  onElementClick,
   onUpdateElement,
   onDeleteElement,
   onAddElement,
@@ -37,6 +39,12 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
     startY: 0,
     elementId: null
   });
+
+  // Grid guidelines state
+  const [showHorizontalGuide, setShowHorizontalGuide] = useState(false);
+  const [showVerticalGuide, setShowVerticalGuide] = useState(false);
+  const [horizontalGuideY, setHorizontalGuideY] = useState(0);
+  const [verticalGuideX, setVerticalGuideX] = useState(0);
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -63,7 +71,7 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
 
   const handleElementMouseDown = useCallback((e: React.MouseEvent, element: CardElement) => {
     e.stopPropagation();
-    onSelectElement(element);
+    onElementClick(element, e);
     
     dragRef.current = {
       isDragging: true,
@@ -71,30 +79,58 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
       startY: e.clientY - element.y,
       elementId: element.id
     };
-  }, [onSelectElement]);
+  }, [onElementClick]);
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (dragRef.current.isDragging && dragRef.current.elementId) {
       const newX = e.clientX - dragRef.current.startX;
       const newY = e.clientY - dragRef.current.startY;
       
+      // Constrain to canvas bounds
+      const constrainedX = Math.max(0, Math.min(newX, canvasSettings.width - 100));
+      const constrainedY = Math.max(0, Math.min(newY, canvasSettings.height - 100));
+      
+      // Calculate element center for grid guidelines
+      const elementWidth = elements.find(el => el.id === dragRef.current.elementId)?.width || 100;
+      const elementHeight = elements.find(el => el.id === dragRef.current.elementId)?.height || 100;
+      const elementCenterX = constrainedX + elementWidth / 2;
+      const elementCenterY = constrainedY + elementHeight / 2;
+      
+      // Canvas center
+      const canvasCenterX = canvasSettings.width / 2;
+      const canvasCenterY = canvasSettings.height / 2;
+      
+      // Check alignment with center (within 5px threshold)
+      const threshold = 5;
+      const isAlignedVertically = Math.abs(elementCenterX - canvasCenterX) <= threshold;
+      const isAlignedHorizontally = Math.abs(elementCenterY - canvasCenterY) <= threshold;
+      
+      setShowVerticalGuide(isAlignedVertically);
+      setShowHorizontalGuide(isAlignedHorizontally);
+      setVerticalGuideX(canvasCenterX);
+      setHorizontalGuideY(canvasCenterY);
+      
       onUpdateElement(dragRef.current.elementId, {
-        x: Math.max(0, Math.min(newX, canvasSettings.width - 100)),
-        y: Math.max(0, Math.min(newY, canvasSettings.height - 100))
-      });
+        x: constrainedX,
+        y: constrainedY
+      }, true);
     }
-  }, [onUpdateElement, canvasSettings]);
+  }, [onUpdateElement, canvasSettings, elements]);
 
   const handleMouseUp = useCallback(() => {
     dragRef.current.isDragging = false;
     dragRef.current.elementId = null;
+    
+    // Hide grid guidelines
+    setShowHorizontalGuide(false);
+    setShowVerticalGuide(false);
   }, []);
 
   const handleCanvasClick = useCallback((e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
-      onSelectElement(null);
+      onElementClick(null, e);
     }
-  }, [onSelectElement]);
+  }, [onElementClick]);
 
   const duplicateElement = useCallback((element: CardElement) => {
     const newElement = {
@@ -110,6 +146,7 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
 
   const renderElement = (element: CardElement) => {
     const isSelected = selectedElement?.id === element.id;
+    const isMultiSelected = multiSelectedElementIds.includes(element.id);
     
     const baseStyle: React.CSSProperties = {
       position: 'absolute',
@@ -120,7 +157,11 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
       zIndex: element.zIndex,
       transform: element.rotation ? `rotate(${element.rotation}deg)` : undefined,
       cursor: 'move',
-      border: isSelected ? '2px solid #3b82f6' : '1px solid transparent',
+      border: isSelected 
+        ? '2px solid #3b82f6' 
+        : isMultiSelected 
+        ? '2px solid #8b5cf6' 
+        : '1px solid transparent',
       borderRadius: element.borderRadius || 0
     };
 
@@ -226,7 +267,7 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
     return (
       <div key={element.id} className="relative">
         {content}
-        {isSelected && (
+        {(isSelected || isMultiSelected) && (
           <div className="absolute -top-8 left-0 flex space-x-1 bg-white border border-gray-200 rounded shadow-lg p-1">
             <button
               onClick={() => duplicateElement(element)}
@@ -272,6 +313,20 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
         onClick={handleCanvasClick}
       >
         {elements.map(renderElement)}
+        
+        {/* Grid Guidelines */}
+        {showVerticalGuide && (
+          <div
+            className="absolute top-0 bottom-0 w-0.5 bg-indigo-400 pointer-events-none z-50"
+            style={{ left: verticalGuideX }}
+          />
+        )}
+        {showHorizontalGuide && (
+          <div
+            className="absolute left-0 right-0 h-0.5 bg-indigo-400 pointer-events-none z-50"
+            style={{ top: horizontalGuideY }}
+          />
+        )}
         
         {elements.length === 0 && (
           <div className="absolute inset-0 flex items-center justify-center text-gray-400 pointer-events-none">
