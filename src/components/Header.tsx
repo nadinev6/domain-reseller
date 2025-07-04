@@ -40,7 +40,7 @@ const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
                 <div className="w-10 h-10 rounded-full overflow-hidden mr-2">
                   <img 
                     src="https://i.imghippo.com/files/XSY6887eA.jpeg" 
-                    alt="Namely Logo"
+                    alt="VibePage Logo"
                     className="w-full h-full object-cover"
                   />
                 </div>
