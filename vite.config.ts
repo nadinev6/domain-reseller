@@ -21,7 +21,7 @@ export default defineConfig({
         // model: 'llama-3.1-70b-versatile'
       },
       // Translation file output directory
-      outDir: './src/locales',
+      lingoDir: './src/locales',
       // Enable development mode features
       dev: {
         // Show translation keys in development
