@@ -93,7 +93,7 @@ const SocialMediaCardStudio: React.FC = () => {
               </Button>
             )}
             <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-indigo-600 text-lg px-8 py-3">
-              <AnimatedShinyText className="text-white hover:text-indigo-600 !mx-0 !max-w-none">
+              <AnimatedShinyText className="text-indigo-600 hover:text-indigo-600 !mx-0 !max-w-none">
                 {t('cardStudio.examples')}
               </AnimatedShinyText>
             </Button>
