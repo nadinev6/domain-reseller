@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import lingo from 'lingo.dev';
+import lingoCompiler from 'lingo.dev/compiler'; 
 
 
 // https://vitejs.dev/config/
