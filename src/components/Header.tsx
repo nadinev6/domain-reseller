@@ -113,7 +113,7 @@ const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
                         onClick={() => handleAuthClick('signup')}
                         className="border-white text-white hover:bg-white hover:text-indigo-600"
                       >
-                        <AnimatedShinyText className="text-white !mx-0 !max-w-none">
+                        <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
                           Sign Up
                         </AnimatedShinyText>
                       </Button>
