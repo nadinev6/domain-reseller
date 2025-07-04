@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { t } from 'lingo.dev/react';
 import { Settings, Palette, Type, Image, Square, MousePointer } from 'lucide-react';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
@@ -23,7 +23,6 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
   canvasSettings,
   onUpdateCanvasSettings
 }) => {
-  const { t } = useTranslation();
 
   const handleElementUpdate = (field: string, value: any) => {
     if (selectedElement) {

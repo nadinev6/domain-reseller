@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Search, ArrowRight, RefreshCw, Download } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyContext';
-import { useTranslation } from 'react-i18next';
+import { t } from 'lingo.dev/react';
 
 interface TLD {
   name: string;
@@ -36,7 +36,6 @@ const DomainsPage: React.FC = () => {
   const [years, setYears] = useState(1);
   const [operation, setOperation] = useState<'register' | 'transfer' | 'renew'>('register');
   const { formatPrice } = useCurrency();
-  const { t } = useTranslation();
 
   const filteredTlds = useMemo(() => {
     return tlds.filter(tld => 

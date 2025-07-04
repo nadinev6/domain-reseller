@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 import { searchDomains } from '../utils/domainUtils';
 import { DomainResult } from '../types';
-import { useTranslation } from 'react-i18next';
+import { t } from 'lingo.dev/react';
 
 interface DomainSearchProps {
   onSearch: (results: DomainResult[]) => void;
@@ -11,7 +11,6 @@ interface DomainSearchProps {
 const DomainSearch: React.FC<DomainSearchProps> = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isSearching, setIsSearching] = useState(false);
-  const { t } = useTranslation();
   
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();

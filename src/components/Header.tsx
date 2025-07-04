@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Menu, X, User, ShoppingCart, LogOut } from 'lucide-react';
 import { useCart } from '../hooks/useCart';
 import { useAuth } from '../context/AuthContext';
-import { useTranslation } from 'react-i18next';
+import { t } from 'lingo.dev/react';
 import CurrencySelector from './CurrencySelector';
 import LanguageSelector from './LanguageSelector';
 import AuthDialog from './auth/AuthDialog';
@@ -20,7 +20,6 @@ const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
   const [authDialogTab, setAuthDialogTab] = React.useState<'signin' | 'signup'>('signin');
   const { cartItems } = useCart();
   const { user, signOut, loading } = useAuth();
-  const { t } = useTranslation();
 
   const handleAuthClick = (tab: 'signin' | 'signup') => {
     setAuthDialogTab(tab);

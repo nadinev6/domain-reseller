@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { t } from 'lingo.dev/react';
 import { Type, Image, Square, MousePointer } from 'lucide-react';
 import { CardElement } from '../../types';
 
@@ -8,7 +8,6 @@ interface ToolboxProps {
 }
 
 const Toolbox: React.FC<ToolboxProps> = ({ onAddElement }) => {
-  const { t } = useTranslation();
 
   const tools = [
     {

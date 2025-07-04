@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
+import { t } from 'lingo.dev/react';
 import { Save, Download, Undo, Redo, Eye, Settings } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import ProtectedRoute from '../components/auth/ProtectedRoute';
@@ -9,7 +9,6 @@ import PropertiesPanel from '../components/card-studio/PropertiesPanel';
 import { CardElement } from '../types';
 
 const CardStudioEditorContent: React.FC = () => {
-  const { t } = useTranslation();
   const [elements, setElements] = useState<CardElement[]>([]);
   const [selectedElement, setSelectedElement] = useState<CardElement | null>(null);
   const [canvasSettings, setCanvasSettings] = useState({

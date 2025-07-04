@@ -3,7 +3,7 @@ import { Check, X, ChevronDown, ChevronUp, ShoppingCart } from 'lucide-react';
 import { DomainResult } from '../types';
 import { useCart } from '../hooks/useCart';
 import { useCurrency } from '../context/CurrencyContext';
-import { useTranslation } from 'react-i18next';
+import { t } from 'lingo.dev/react';
 
 interface DomainCardProps {
   domain: DomainResult;
@@ -13,7 +13,6 @@ const DomainCard: React.FC<DomainCardProps> = ({ domain }) => {
   const [expanded, setExpanded] = useState(false);
   const { addToCart, removeFromCart, isInCart } = useCart();
   const { formatPrice } = useCurrency();
-  const { t } = useTranslation();
   
   const inCart = isInCart(domain.id);
   
