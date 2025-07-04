@@ -8,7 +8,7 @@ import lingoCompiler from 'lingo.dev/compiler';
 export default defineConfig({
   plugins: [
     react(),
-    lingo({
+     lingoCompiler.vite({
       // Configure supported locales
       locales: ['en', 'fr', 'mg'], // Added Malagasy (mg)
       // Default locale
