@@ -1,13 +1,13 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import { LingoDotDevEngine } from "lingo.dev/sdk";
+import lingo from 'lingo.dev/compiler';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-     LingoDotDevEngine.vite({
+    lingo({
       // Configure supported locales
       locales: ['en', 'fr', 'mg'], // Added Malagasy (mg)
       // Default locale
@@ -18,10 +18,10 @@ export default defineConfig({
         provider: 'lingo',
         // Alternative: Use Groq (requires GROQ_API_KEY)
         // provider: 'groq',
-         model: 'llama-3.1-70b-versatile'
+        // model: 'llama-3.1-70b-versatile'
       },
       // Translation file output directory
-      outDir: './src/locales', 
+      outDir: './src/locales',
       // Enable development mode features
       dev: {
         // Show translation keys in development
