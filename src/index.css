@@ -47,8 +47,6 @@
     --input: 217.2 32.6% 17.5%;
     --ring: 224.3 76.3% 94.1%;
   }
-
-  
 }
 
 @layer base {
@@ -86,6 +84,15 @@
   }
   to {
     transform: translateX(100%);
+  }
+}
+
+@keyframes shiny-text {
+  0%, 90%, 100% {
+    background-position: calc(-100% - var(--shiny-width)) 0;
+  }
+  30%, 60% {
+    background-position: calc(100% + var(--shiny-width)) 0;
   }
 }
 
@@ -134,12 +141,7 @@ button, a, input {
   background-position: bottom;
 }
 
-
-  @keyframes shiny-text {
-  0%, 90%, 100% {
-    background-position: calc(-100% - var(--shiny-width)) 0;
-    }
-  30%, 60% {
-    background-position: calc(100% + var(--shiny-width)) 0;
-    }
-  }
+/* Shiny text animation utility class */
+.animate-shiny-text {
+  animation: shiny-text 2s ease-in-out infinite;
+}
