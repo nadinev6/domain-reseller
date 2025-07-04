@@ -11,8 +11,8 @@ export default {
     provider: 'lingo',
     
     // Alternative providers you can use:
-    // provider: 'groq',
-    // model: 'llama-3.1-70b-versatile',
+     provider: 'groq',
+     model: 'llama-3.1-70b-versatile',
     
     // provider: 'openai',
     // model: 'gpt-4',
