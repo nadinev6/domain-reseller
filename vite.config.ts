@@ -18,7 +18,7 @@ export default defineConfig({
         provider: 'lingo',
         // Alternative: Use Groq (requires GROQ_API_KEY)
         // provider: 'groq',
-        // model: 'llama-3.1-70b-versatile'
+         model: 'llama-3.1-70b-versatile'
       },
       // Translation file output directory
       outDir: './src/locales', 
