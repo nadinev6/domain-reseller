@@ -44,7 +44,7 @@ const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="text-2xl font-bold tracking-tight mr-9"><span className="tapered">Name</span>ly</div>
+                <div className="text-2xl font-bold tracking-tight mr-9"><span className="tapered">Vibe</span>Page</div>
               </Link>
               <nav className="hidden md:block">
                 <ul className="flex space-x-8">
