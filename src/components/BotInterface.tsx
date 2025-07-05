@@ -2,6 +2,20 @@ import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, Send, Minimize2, Maximize2, X } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
+import { useTamboState } from '../hooks/useTamboState';
+import { z } from 'zod';
+
+// Zod schema for bot interface state
+const BotInterfaceStateSchema = z.object({
+  isCollapsed: z.boolean(),
+  messages: z.array(z.object({
+    id: z.string(),
+    type: z.enum(['user', 'bot']),
+    content: z.string(),
+    timestamp: z.date()
+  })),
+  isTyping: z.boolean()
+});
 
 interface Message {
   id: string;
@@ -27,6 +41,22 @@ const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollap
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Register component state with Tambo
+  useTamboState({
+    componentName: 'BotInterface',
+    state: {
+      isCollapsed,
+      messages,
+      isTyping
+    },
+    actions: {
+      onToggleCollapse,
+      sendMessage: handleSendMessage,
+      setInputValue
+    },
+    schema: BotInterfaceStateSchema
+  });
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });

@@ -3,6 +3,13 @@ import { Search } from 'lucide-react';
 import { searchDomains } from '../utils/domainUtils';
 import { DomainResult } from '../types';
 import { useTamboState } from '../hooks/useTamboState';
+import { z } from 'zod';
+
+// Zod schema for this component's state
+const DomainSearchStateSchema = z.object({
+  searchTerm: z.string(),
+  isSearching: z.boolean()
+});
 
 interface DomainSearchProps {
   onSearch: (results: DomainResult[]) => void;
@@ -25,7 +32,8 @@ const DomainSearch: React.FC<DomainSearchProps> = ({ onSearch }) => {
         setSearchTerm(term);
         handleSearch({ preventDefault: () => {} } as React.FormEvent);
       }
-    }
+    },
+    schema: DomainSearchStateSchema
   });
   
   const handleSearch = (e: React.FormEvent) => {

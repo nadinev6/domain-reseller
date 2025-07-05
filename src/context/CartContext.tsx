@@ -1,6 +1,14 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { DomainResult } from '../types';
 import { useTamboState } from '../hooks/useTamboState';
+import { z } from 'zod';
+
+// Zod schema for cart state
+const CartStateSchema = z.object({
+  items: z.array(z.any()), // Using z.any() for now since DomainResult is imported
+  total: z.number(),
+  itemCount: z.number()
+});
 
 interface CartContextType {
   cartItems: DomainResult[];
@@ -28,21 +36,6 @@ interface CartProviderProps {
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [cartItems, setCartItems] = useState<DomainResult[]>([]);
   
-  // Register cart state with Tambo
-  useTamboState({
-    componentName: 'Cart',
-    state: {
-      items: cartItems,
-      total: getTotalPrice(),
-      itemCount: cartItems.length
-    },
-    actions: {
-      addToCart,
-      removeFromCart,
-      clearCart
-    }
-  });
-  
   const addToCart = (domain: DomainResult) => {
     setCartItems((prev) => {
       // Avoid duplicates
@@ -68,6 +61,22 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const getTotalPrice = () => {
     return cartItems.reduce((total, item) => total + item.price, 0);
   };
+  
+  // Register cart state with Tambo
+  useTamboState({
+    componentName: 'Cart',
+    state: {
+      items: cartItems,
+      total: getTotalPrice(),
+      itemCount: cartItems.length
+    },
+    actions: {
+      addToCart,
+      removeFromCart,
+      clearCart
+    },
+    schema: CartStateSchema
+  });
   
   return (
     <CartContext.Provider value={{

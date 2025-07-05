@@ -11,6 +11,20 @@ import { useAuth } from '../context/AuthContext';
 import { supabase } from '../lib/supabase';
 import { SavedCard } from '../types';
 import { useTamboState } from '../hooks/useTamboState';
+import { z } from 'zod';
+
+// Zod schema for this component's state
+const CardStudioEditorStateSchema = z.object({
+  elements: z.array(z.any()), // Using z.any() for now since CardElement is complex
+  selectedElement: z.any().nullable(),
+  canvasSettings: z.object({
+    width: z.number(),
+    height: z.number(),
+    backgroundColor: z.string()
+  }),
+  historyIndex: z.number(),
+  isSaving: z.boolean()
+});
 
 const CardStudioEditorContent: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -37,6 +51,7 @@ const CardStudioEditorContent: React.FC = () => {
       historyIndex,
       isSaving
     },
+    schema: CardStudioEditorStateSchema
     actions: {
       addElement,
       updateElement,
