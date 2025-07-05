@@ -31,6 +31,24 @@ export default {
           },
           hash: "7c24c5590cc13478df43676f0fe7d1e0",
         },
+        "7/0/init/body/11/argument/11/1/1-placeholder": {
+          content: {
+            en: "Ask me anything about VibePage...",
+          },
+          hash: "7b79fbf096222fc0c96423683165dd2c",
+        },
+        "7/0/init/body/11/argument/3/1/3": {
+          content: {
+            en: "VibePage Assistant",
+          },
+          hash: "7c24c5590cc13478df43676f0fe7d1e0",
+        },
+        "7/0/init/body/4/consequent/1/argument/1/3": {
+          content: {
+            en: "Loading assistant...",
+          },
+          hash: "c86ac2c40d42c1ddb2e60e49103bb062",
+        },
         "9/0/init/body/11/argument/11/1/1-placeholder": {
           content: {
             en: "Ask me anything about VibePage...",
@@ -1330,6 +1348,42 @@ export default {
           content: {
             en: "Drag elements from the toolbox or click to add them",
             fr: "Faites glisser des éléments depuis la boîte à outils ou cliquez pour les ajouter",
+          },
+          hash: "cbd2d045a808f3da23bb3592c5572f53",
+        },
+        "4/0/init/body/15/0/init/body/5/argument/3/expression/right/1-title": {
+          content: {
+            en: "Duplicate",
+          },
+          hash: "27756566785c2b8463e21582c4bb619b",
+        },
+        "4/0/init/body/15/0/init/body/5/argument/3/expression/right/3-title": {
+          content: {
+            en: "Rotate",
+          },
+          hash: "971ee77cef4133c9ae97bb1a4017cdb8",
+        },
+        "4/0/init/body/15/0/init/body/5/argument/3/expression/right/5-title": {
+          content: {
+            en: "Delete",
+          },
+          hash: "8bcf303dd10a645b5baacb02b47d72c9",
+        },
+        "4/0/init/body/16/argument/1/9/expression/right/1/1": {
+          content: {
+            en: "🎨",
+          },
+          hash: "5a50aeff71fb46d223bc6eeeb90875d2",
+        },
+        "4/0/init/body/16/argument/1/9/expression/right/1/3": {
+          content: {
+            en: "Start Creating",
+          },
+          hash: "29896ef9fa320fc4d790885fc5638406",
+        },
+        "4/0/init/body/16/argument/1/9/expression/right/1/5": {
+          content: {
+            en: "Drag elements from the toolbox or click to add them",
           },
           hash: "cbd2d045a808f3da23bb3592c5572f53",
         },
@@ -2831,6 +2885,16 @@ export default {
             fr: "Fermer",
           },
           hash: "2c2e22f8424a1031de89063bd0022e16",
+        },
+      },
+    },
+    "context/CartContext.tsx": {
+      entries: {
+        "7/declaration/0/init/body/1/consequent/0/argument/1/3": {
+          content: {
+            en: "Loading cart...",
+          },
+          hash: "99b82d35bc15c1ba769eabc03d2e8db7",
         },
       },
     },
