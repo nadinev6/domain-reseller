@@ -1,165 +1,221 @@
-// src/App.tsx (Conceptual - adjust paths and actual component props/actions)
-
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { TamboProvider, useTambo } from '@tambo-ai/react'; // Assuming useTambo is available
+import React, { useState, useRef, useEffect } from 'react';
+import { MessageCircle, Send, Minimize2, Maximize2, X } from 'lucide-react';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
+import { useTamboState } from '../hooks/useTamboState';
 import { z } from 'zod';
 
-// Import your components
-import BotInterface from './components/BotInterface';
-import CardStudioEditor from './pages/CardStudioEditor';
-import DomainsPage from './pages/DomainsPage'; // Assuming this exists
-import Header from './components/Header';
-import { AuthProvider } from './context/AuthContext';
-import { CartProvider } from './context/CartContext';
-import { CurrencyProvider } from './context/CurrencyContext';
-
-// Define Zod schemas for component props/state that Tambo AI interacts with
-// These schemas describe what the AI can "send" to or "expect" from your components.
-
-// Schema for BotInterface's state/props that AI might control or observe
-const botInterfaceTamboSchema = z.object({
-  isCollapsed: z.boolean().describe("Whether the chat bot interface is collapsed or open."),
+// Zod schema for bot interface state
+const BotInterfaceStateSchema = z.object({
+  isCollapsed: z.boolean(),
   messages: z.array(z.object({
     id: z.string(),
     type: z.enum(['user', 'bot']),
     content: z.string(),
     timestamp: z.date()
-  })).describe("The list of messages in the chat."),
-  isTyping: z.boolean().describe("Whether the bot is currently typing a response."),
-  // If Tambo AI can directly call sendMessage or toggleCollapse, they need to be defined here
-  // For actions, you typically define them as functions the AI can call, not part of the state schema
+  })),
+  isTyping: z.boolean()
 });
 
-// Schema for CardStudioEditor's state/props that AI might control or observe
-const cardStudioEditorTamboSchema = z.object({
-  elements: z.array(z.any()).describe("The list of design elements on the card canvas."),
-  selectedElement: z.any().nullable().describe("The currently selected design element."),
-  canvasSettings: z.object({
-    width: z.number(),
-    height: z.number(),
-    backgroundColor: z.string()
-  }).describe("Settings for the card canvas."),
-  historyIndex: z.number().describe("Current index in the undo/redo history."),
-  isSaving: z.boolean().describe("Whether the card is currently being saved.")
-});
-
-// Define the components array for TamboProvider
-const tamboComponents = [
-  {
-    name: 'BotInterface',
-    description: 'An AI assistant chat interface that can answer questions about the application and guide users.',
-    component: BotInterface, // This is the actual React component
-    propsSchema: botInterfaceTamboSchema, // Schema for props AI might control/observe
-    actions: { // Actions the AI can trigger on this component
-      // These actions would typically be passed down as props to BotInterface
-      // and then called by the AI through Tambo's system.
-      // The implementation of these actions would be inside BotInterface.
-      sendMessage: z.function()
-        .args(z.string().describe("The message content to send."))
-        .returns(z.void())
-        .describe("Sends a message from the user to the bot."),
-      toggleCollapse: z.function()
-        .args()
-        .returns(z.void())
-        .describe("Toggles the visibility of the bot interface."),
-      setInputValue: z.function()
-        .args(z.string().describe("The new value for the input field."))
-        .returns(z.void())
-        .describe("Sets the text in the bot's input field.")
-    }
-  },
-  {
-    name: 'CardStudioEditor',
-    description: 'A powerful editor for designing and customizing social media cards with various elements.',
-    component: CardStudioEditor, // The actual React component
-    propsSchema: cardStudioEditorTamboSchema, // Schema for props AI might control/observe
-    actions: { // Actions the AI can trigger on this component
-      addElement: z.function()
-        .args(
-          z.enum(['text', 'image', 'shape', 'button']).describe("The type of element to add."),
-          z.number().describe("X coordinate for the new element."),
-          z.number().describe("Y coordinate for the new element.")
-        )
-        .returns(z.void())
-        .describe("Adds a new element to the card canvas."),
-      updateElement: z.function()
-        .args(
-          z.string().describe("ID of the element to update."),
-          z.any().describe("Partial updates for the element's properties.") // Refine z.any() with actual CardElement schema
-        )
-        .returns(z.void())
-        .describe("Updates properties of an existing element."),
-      deleteElement: z.function()
-        .args(z.string().describe("ID of the element to delete."))
-        .returns(z.void())
-        .describe("Deletes an element from the canvas."),
-      saveCard: z.function()
-        .args()
-        .returns(z.void())
-        .describe("Saves the current card design."),
-      undo: z.function()
-        .args()
-        .returns(z.void())
-        .describe("Undoes the last action in the editor."),
-      redo: z.function()
-        .args()
-        .returns(z.void())
-        .describe("Redoes the last undone action."),
-      setCanvasSettings: z.function()
-        .args(z.object({
-          width: z.number().optional(),
-          height: z.number().optional(),
-          backgroundColor: z.string().optional()
-        }).describe("New canvas settings."))
-        .returns(z.void())
-        .describe("Updates the canvas settings (width, height, background color).")
-    }
-  },
-  // Add DomainSearch component here if Tambo AI interacts with it
-  // {
-  //   name: 'DomainSearch',
-  //   description: 'A component for searching and purchasing domain names.',
-  //   component: DomainSearch,
-  //   propsSchema: domainSearchSchema, // You'd define this schema
-  //   actions: { /* ... related actions like performDomainSearch */ }
-  // }
-];
-
-function App() {
-  // In a real app, you'd get the API key from environment variables
-  const tamboApiKey = import.meta.env.VITE_TAMBO_API_KEY || 'YOUR_DEFAULT_TAMBO_API_KEY';
-
-  // State for bot collapse, managed by App or a higher-level context
-  const [isBotCollapsed, setIsBotCollapsed] = useState(false);
-  const toggleBotCollapse = () => setIsBotCollapsed(prev => !prev);
-
-  return (
-    <TamboProvider apiKey={tamboApiKey} components={tamboComponents}>
-      <AuthProvider>
-        <CurrencyProvider>
-          <CartProvider>
-            <BrowserRouter>
-              <Header /> {/* Your header component */}
-              <main className="flex-1">
-                <Routes>
-                  <Route path="/" element={<DomainsPage />} />
-                  <Route path="/card-studio" element={<CardStudioEditor />} />
-                  {/* Add other routes as needed */}
-                </Routes>
-              </main>
-              {/* Pass the actual state and actions to BotInterface */}
-              <BotInterface
-                isCollapsed={isBotCollapsed}
-                onToggleCollapse={toggleBotCollapse}
-              />
-            </BrowserRouter>
-          </CartProvider>
-        </CurrencyProvider>
-      </AuthProvider>
-    </TamboProvider>
-  );
+interface Message {
+  id: string;
+  type: 'user' | 'bot';
+  content: string;
+  timestamp: Date;
 }
 
-export default App;
+interface BotInterfaceProps {
+  isCollapsed: boolean;
+  onToggleCollapse: () => void;
+}
+
+const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollapse }) => {
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      id: '1',
+      type: 'bot',
+      content: 'Hello! I\'m your VibePage assistant. I can help you with domain searches, card creation, and answer questions about your projects. How can I assist you today?',
+      timestamp: new Date()
+    }
+  ]);
+  const [inputValue, setInputValue] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Define handleSendMessage before using it in useTamboState
+  const handleSendMessage = async () => {
+    if (!inputValue.trim()) return;
+
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      type: 'user',
+      content: inputValue,
+      timestamp: new Date()
+    };
+
+    setMessages(prev => [...prev, userMessage]);
+    setInputValue('');
+    setIsTyping(true);
+
+    // Simulate bot response (replace with actual Tambo integration)
+    setTimeout(() => {
+      const botMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        type: 'bot',
+        content: getBotResponse(inputValue),
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, botMessage]);
+      setIsTyping(false);
+    }, 1000);
+  };
+
+  // Register component state with Tambo
+  useTamboState({
+    componentName: 'BotInterface',
+    state: {
+      isCollapsed,
+      messages,
+      isTyping
+    },
+    actions: {
+      onToggleCollapse,
+      sendMessage: handleSendMessage,
+      setInputValue
+    },
+    schema: BotInterfaceStateSchema
+  });
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const getBotResponse = (userInput: string): string => {
+    const input = userInput.toLowerCase();
+    
+    if (input.includes('domain') || input.includes('search')) {
+      return 'I can help you search for domains! Try entering a domain name in the search box above, and I\'ll show you available options with pricing in different currencies.';
+    }
+    
+    if (input.includes('card') || input.includes('studio') || input.includes('design')) {
+      return 'The Card Studio is perfect for creating social media cards! You can drag and drop elements, customize colors and fonts, and even add gradient text effects. Would you like me to guide you through creating your first card?';
+    }
+    
+    if (input.includes('save') || input.includes('export')) {
+      return 'You can save your cards to your account and export them when ready. Make sure you\'re signed in to save your work permanently.';
+    }
+    
+    if (input.includes('price') || input.includes('cost') || input.includes('currency')) {
+      return 'Domain prices vary by extension. You can change the currency in the header, and I\'ll show prices in MGA, ZAR, USD, EUR, or GBP. Most .com domains start around $12.99/year.';
+    }
+    
+    return 'I\'m here to help with domains, card creation, and general questions about VibePage. Could you be more specific about what you\'d like assistance with?';
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
+    }
+  };
+
+  if (isCollapsed) {
+    return (
+      <div className="fixed bottom-4 right-4 z-50">
+        <Button
+          onClick={onToggleCollapse}
+          className="w-14 h-14 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg"
+        >
+          <MessageCircle className="w-6 h-6" />
+        </Button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="fixed bottom-0 right-0 w-full md:w-96 h-96 bg-white border-t md:border-l md:border-t border-gray-200 shadow-lg z-40 flex flex-col">
+      {/* Header */}
+      <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+        <div className="flex items-center space-x-2">
+          <MessageCircle className="w-5 h-5" />
+          <h3 className="font-semibold">VibePage Assistant</h3>
+        </div>
+        <div className="flex items-center space-x-1">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={onToggleCollapse}
+            className="text-white hover:bg-white/20 p-1"
+          >
+            <Minimize2 className="w-4 h-4" />
+          </Button>
+        </div>
+      </div>
+
+      {/* Messages */}
+      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+        {messages.map((message) => (
+          <div
+            key={message.id}
+            className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
+          >
+            <div
+              className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
+                message.type === 'user'
+                  ? 'bg-indigo-600 text-white'
+                  : 'bg-gray-100 text-gray-900'
+              }`}
+            >
+              <p className="text-sm">{message.content}</p>
+              <p className={`text-xs mt-1 ${
+                message.type === 'user' ? 'text-indigo-200' : 'text-gray-500'
+              }`}>
+                {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+              </p>
+            </div>
+          </div>
+        ))}
+        
+        {isTyping && (
+          <div className="flex justify-start">
+            <div className="bg-gray-100 text-gray-900 px-4 py-2 rounded-lg">
+              <div className="flex space-x-1">
+                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+              </div>
+            </div>
+          </div>
+        )}
+        
+        <div ref={messagesEndRef} />
+      </div>
+
+      {/* Input */}
+      <div className="p-4 border-t border-gray-200">
+        <div className="flex space-x-2">
+          <Input
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyPress={handleKeyPress}
+            placeholder="Ask me anything about VibePage..."
+            className="flex-1"
+          />
+          <Button
+            onClick={handleSendMessage}
+            disabled={!inputValue.trim() || isTyping}
+            className="px-3"
+          >
+            <Send className="w-4 h-4" />
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};
  
+export default BotInterface;
