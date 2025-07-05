@@ -678,6 +678,42 @@ export default {
           },
           hash: "cbd2d045a808f3da23bb3592c5572f53",
         },
+        "4/0/init/body/13/0/init/body/5/argument/3/expression/right/1-title": {
+          content: {
+            en: "Duplicate",
+          },
+          hash: "27756566785c2b8463e21582c4bb619b",
+        },
+        "4/0/init/body/13/0/init/body/5/argument/3/expression/right/3-title": {
+          content: {
+            en: "Rotate",
+          },
+          hash: "971ee77cef4133c9ae97bb1a4017cdb8",
+        },
+        "4/0/init/body/13/0/init/body/5/argument/3/expression/right/5-title": {
+          content: {
+            en: "Delete",
+          },
+          hash: "8bcf303dd10a645b5baacb02b47d72c9",
+        },
+        "4/0/init/body/14/argument/1/9/expression/right/1/1": {
+          content: {
+            en: "🎨",
+          },
+          hash: "5a50aeff71fb46d223bc6eeeb90875d2",
+        },
+        "4/0/init/body/14/argument/1/9/expression/right/1/3": {
+          content: {
+            en: "Start Creating",
+          },
+          hash: "29896ef9fa320fc4d790885fc5638406",
+        },
+        "4/0/init/body/14/argument/1/9/expression/right/1/5": {
+          content: {
+            en: "Drag elements from the toolbox or click to add them",
+          },
+          hash: "cbd2d045a808f3da23bb3592c5572f53",
+        },
         "4/0/init/body/9/0/init/body/4/argument/3/expression/right/1-title": {
           content: {
             en: "Duplicate",
@@ -1398,6 +1434,48 @@ export default {
           },
           hash: "66fcd54664fa6687ab5f2b4b652792bc",
         },
+        "8/0/init/body/0/argument/1/1/1": {
+          content: {
+            en: "Welcome back, Sarah!",
+          },
+          hash: "5b40bbf4d1a6201e0a276c3123826827",
+        },
+        "8/0/init/body/0/argument/1/1/3": {
+          content: {
+            en: "Manage your domains and account settings",
+          },
+          hash: "a3a0b15e419bef7673d6cff936815c09",
+        },
+        "8/0/init/body/0/argument/3/1/3/3/1": {
+          content: {
+            en: "Quick Actions",
+          },
+          hash: "157a51ac3ffbc527a52379a547499fe2",
+        },
+        "8/0/init/body/0/argument/3/1/3/3/3/1/1": {
+          content: {
+            en: "<element:Domain></element:Domain> Register New Domain",
+          },
+          hash: "8a498b55838209e3aa5a4f239bcbf1f1",
+        },
+        "8/0/init/body/0/argument/3/1/3/3/3/3/1": {
+          content: {
+            en: "<element:CreditCard></element:CreditCard> Update Payment Method",
+          },
+          hash: "1748727f713d5b1a98e15f1af700c9e1",
+        },
+        "8/0/init/body/0/argument/3/1/3/3/3/5/1": {
+          content: {
+            en: "<element:HelpCircle></element:HelpCircle> Open Support Ticket",
+          },
+          hash: "e03d24a3e85ec8d7fd92932915010754",
+        },
+        "8/0/init/body/0/argument/3/1/3/3/3/7/1": {
+          content: {
+            en: "<element:Shield></element:Shield> Security Settings",
+          },
+          hash: "66fcd54664fa6687ab5f2b4b652792bc",
+        },
       },
     },
     "components/dashboard/NotificationsPanel.tsx": {
@@ -1422,6 +1500,93 @@ export default {
             fr: "Voir toutes les notifications",
           },
           hash: "eda521ff8fad1d863d9c8e90e8dcf1ef",
+        },
+      },
+    },
+    "components/dashboard/SavedCardsSection.tsx": {
+      entries: {
+        "8/0/init/body/10/argument/1/1/1": {
+          content: {
+            en: "<element:Palette></element:Palette> Saved Cards",
+          },
+          hash: "53e406e3bfcc331bb3552e02a3f336d2",
+        },
+        "8/0/init/body/10/argument/1/1/3/1": {
+          content: {
+            en: "<element:Plus></element:Plus> New Card",
+          },
+          hash: "1877dac9a997fa34a292a7ae7da18396",
+        },
+        "8/0/init/body/10/argument/1/3": {
+          content: {
+            en: "Manage your saved social media card designs",
+          },
+          hash: "c234be5f20c6e115ba9fa297043c40a4",
+        },
+        "8/0/init/body/10/argument/3/1/expression/alternate/1/expression/0/body/1/argument/1/3/3/1":
+          {
+            content: {
+              en: "Elements: {preview.elementTypes}",
+            },
+            hash: "8d46a40eaa558ea0e044b3e4b49dc529",
+          },
+        "8/0/init/body/10/argument/3/1/expression/alternate/1/expression/0/body/1/argument/1/3/3/3":
+          {
+            content: {
+              en: "Size: {preview.canvasSize} • Created: <function:formatDate/>",
+            },
+            hash: "69c758a53c0f88e3274326ae64b40796",
+          },
+        "8/0/init/body/10/argument/3/1/expression/alternate/1/expression/0/body/1/argument/3/1-title":
+          {
+            content: {
+              en: "Preview card",
+            },
+            hash: "539016dc0f60924f29996490866082d8",
+          },
+        "8/0/init/body/10/argument/3/1/expression/alternate/1/expression/0/body/1/argument/3/3/1-title":
+          {
+            content: {
+              en: "Edit card",
+            },
+            hash: "f4e1e6972647e9a113a98eb68654bef3",
+          },
+        "8/0/init/body/10/argument/3/1/expression/alternate/1/expression/0/body/1/argument/3/5-title":
+          {
+            content: {
+              en: "Delete card",
+            },
+            hash: "18811ccf76fbb7a2772d648f7c5f0ea7",
+          },
+        "8/0/init/body/10/argument/3/1/expression/consequent/3": {
+          content: {
+            en: "No saved cards yet",
+          },
+          hash: "eaceea181f51142e5547d0c7a5ae8a6a",
+        },
+        "8/0/init/body/10/argument/3/1/expression/consequent/5": {
+          content: {
+            en: "Create your first social media card to get started",
+          },
+          hash: "a18df01c4a65fe0ac6bfd92d5c481b4e",
+        },
+        "8/0/init/body/10/argument/3/1/expression/consequent/7/1": {
+          content: {
+            en: "<element:Plus></element:Plus> Create Your First Card",
+          },
+          hash: "7d94a0971f2946a395a5c8616771d5e6",
+        },
+        "8/0/init/body/9/consequent/0/argument/1/1": {
+          content: {
+            en: "<element:Palette></element:Palette> Saved Cards",
+          },
+          hash: "53e406e3bfcc331bb3552e02a3f336d2",
+        },
+        "8/0/init/body/9/consequent/0/argument/3/1/3": {
+          content: {
+            en: "Loading your saved cards...",
+          },
+          hash: "3f7c0afb5fcf5898253b9257bdc0e063",
         },
       },
     },
@@ -1558,6 +1723,36 @@ export default {
     },
     "pages/CardStudioEditor.tsx": {
       entries: {
+        "12/0/init/body/20/argument/3/1/1": {
+          content: {
+            en: "Card Studio Editor",
+          },
+          hash: "b5742e7e35009781bb411280887c8fd6",
+        },
+        "12/0/init/body/20/argument/3/1/3/1": {
+          content: {
+            en: "<element:Undo></element:Undo> Undo",
+          },
+          hash: "08e3fdab92aa3e91696af146d278262a",
+        },
+        "12/0/init/body/20/argument/3/1/3/3": {
+          content: {
+            en: "<element:Redo></element:Redo> Redo",
+          },
+          hash: "d7909de12fc2a20aab1a96b3d9add99c",
+        },
+        "12/0/init/body/20/argument/3/3/1": {
+          content: {
+            en: "<element:Eye></element:Eye> Preview",
+          },
+          hash: "1a878634c88abdb0bda86cf849d7d3c4",
+        },
+        "12/0/init/body/20/argument/3/3/3": {
+          content: {
+            en: "<element:Download></element:Download> Export",
+          },
+          hash: "82c7fb0a52965a8cde48deeee9cd663b",
+        },
         "8/0/init/body/12/argument/3/1/1": {
           content: {
             en: "Card Studio Editor",
