@@ -68,11 +68,13 @@ const Header: React.FC = () => {
         <Button variant="ghost" size="sm" className="relative"
           // This is where you might add a "coming soon" message or disable
           onClick={() => alert('Cart functionality is coming soon!')} // Example: temporary alert
+          disabled={true}
           disabled={true} // Example: disable the button if not ready
+          onClick={() => alert('Cart functionality is coming soon!')}
         >
           <ShoppingCart className="w-5 h-5 text-gray-600" />
           {/* Display cart item count using the safely accessed variable */}
-          {cartItemCount > 0 && (
+          {cartItems && cartItems.length > 0 && (
             <span className="absolute -top-1 -right-1 bg-indigo-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
               {cartItemCount}
             </span>

@@ -73,19 +73,67 @@
         },
         "5/0/init/body/3/argument/3/1/3/1/expression/consequent/3": {
           "type": "element",
-          "hash": "fe95b8a3465d664c5f4a95720e6dc06e",
+          "hash": "28e0080c0053324bd9301ec717a55d66",
           "context": "",
           "skip": false,
           "overrides": {},
-          "content": "Your cart is empty"
+          "content": "Cart Coming Soon!"
         },
         "5/0/init/body/3/argument/3/1/3/1/expression/consequent/5": {
           "type": "element",
-          "hash": "c8511e3343d048ff236fbe3cf47d722d",
+          "hash": "748cfeee4e1c1fc2133557ba3314e9c8",
           "context": "",
           "skip": false,
           "overrides": {},
-          "content": "Continue Shopping"
+          "content": "We're working hard to bring you an amazing shopping experience. The cart functionality will be available soon."
+        },
+        "5/0/init/body/3/argument/3/1/3/1/expression/consequent/7/1": {
+          "type": "element",
+          "hash": "ce22554534e579c46b7e799b9b51f752",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "🚀 <element:strong>What's coming:</element:strong>"
+        },
+        "5/0/init/body/3/argument/3/1/3/1/expression/consequent/7/3/1": {
+          "type": "element",
+          "hash": "e29e4b8de7c0fb51449462ea98376c75",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "• Domain purchase and checkout"
+        },
+        "5/0/init/body/3/argument/3/1/3/1/expression/consequent/7/3/3": {
+          "type": "element",
+          "hash": "c9e29ea23f5a41995903f3931324fed7",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "• Multiple payment options"
+        },
+        "5/0/init/body/3/argument/3/1/3/1/expression/consequent/7/3/5": {
+          "type": "element",
+          "hash": "733e842a3008d36f8182f0948956a9e2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "• Order tracking and management"
+        },
+        "5/0/init/body/3/argument/3/1/3/1/expression/consequent/7/3/7": {
+          "type": "element",
+          "hash": "b3f8a51ff5f97c131ed4b84508e1f64b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "• Bulk domain operations"
+        },
+        "5/0/init/body/3/argument/3/1/3/1/expression/consequent/9": {
+          "type": "element",
+          "hash": "a40e13d59043684f83b6c33c84466501",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Continue Exploring"
         },
         "5/0/init/body/3/argument/3/1/5/expression/right/1/1": {
           "type": "element",
@@ -902,6 +950,94 @@
           "skip": false,
           "overrides": {},
           "content": "Sign Out"
+        },
+        "9/0/init/body/4/argument/1/3": {
+          "type": "element",
+          "hash": "ef1a9b6b8faa154fcb3d5ffe28b3143a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "VibePage"
+        },
+        "9/0/init/body/4/argument/1/7/1": {
+          "type": "element",
+          "hash": "f17b6b815781860c052902471757e9ee",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Home></element:Home> Domains"
+        },
+        "9/0/init/body/4/argument/1/7/3": {
+          "type": "element",
+          "hash": "c0457e4b9a98728a551267ad09b63aca",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Palette></element:Palette> Card Studio"
+        },
+        "9/0/init/body/4/argument/3/15/expression/alternate/1": {
+          "type": "element",
+          "hash": "ec7b8f314fe9bc6591006707484ede61",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Sign In"
+        },
+        "9/0/init/body/4/argument/3/15/expression/consequent/3/1/1": {
+          "type": "element",
+          "hash": "bb02df4f5acbda365715e042cce60b68",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:LayoutDashboard></element:LayoutDashboard> Dashboard"
+        },
+        "9/0/init/body/4/argument/3/15/expression/consequent/3/3": {
+          "type": "element",
+          "hash": "793f95d952c8ffd8ae92ddb8affe566e",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Sign Out"
+        },
+        "9/0/init/body/4/argument/3/3/3/1": {
+          "type": "element",
+          "hash": "a55180f43c30118a47fbf74404f78bc0",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "MGA"
+        },
+        "9/0/init/body/4/argument/3/3/3/3": {
+          "type": "element",
+          "hash": "1015d36a0c126e51c2e8a0daae063424",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "ZAR"
+        },
+        "9/0/init/body/4/argument/3/3/3/5": {
+          "type": "element",
+          "hash": "ccab1dedf8c4cc7e2110c7deba52e2a0",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "USD"
+        },
+        "9/0/init/body/4/argument/3/3/3/7": {
+          "type": "element",
+          "hash": "86870f31fd76d033f94d03d1c77114f4",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "EUR"
+        },
+        "9/0/init/body/4/argument/3/3/3/9": {
+          "type": "element",
+          "hash": "d22bc29e477030157b198f6f72b70330",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "GBP"
         }
       }
     },

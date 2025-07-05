@@ -42,17 +42,32 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
           </div>
           
           <div className="flex-1 overflow-y-auto p-4">
-            {cartItems.length === 0 ? (
+            {true ? ( // Always show coming soon message for now
               <div className="text-center py-10">
-                <div className="mx-auto w-16 h-16 text-gray-400">
-                  <ShoppingCart size={64} strokeWidth={1.5} />
+                <div className="mx-auto w-16 h-16 text-indigo-400 mb-4">
+                  <ShoppingCart size={64} strokeWidth={1.5} className="mx-auto" />
                 </div>
-                <p className="mt-4 text-gray-600">Your cart is empty</p>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Cart Coming Soon!</h3>
+                <p className="text-gray-600 mb-4">
+                  We're working hard to bring you an amazing shopping experience. 
+                  The cart functionality will be available soon.
+                </p>
+                <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-4 mb-4">
+                  <p className="text-sm text-indigo-700">
+                    🚀 <strong>What's coming:</strong>
+                  </p>
+                  <ul className="text-sm text-indigo-600 mt-2 space-y-1">
+                    <li>• Domain purchase and checkout</li>
+                    <li>• Multiple payment options</li>
+                    <li>• Order tracking and management</li>
+                    <li>• Bulk domain operations</li>
+                  </ul>
+                </div>
                 <button 
                   onClick={onClose}
-                  className="mt-4 px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition-colors duration-200"
+                  className="px-6 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition-colors duration-200"
                 >
-                  Continue Shopping
+                  Continue Exploring
                 </button>
               </div>
             ) : (
