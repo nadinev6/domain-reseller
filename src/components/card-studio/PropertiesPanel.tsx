@@ -90,16 +90,18 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
   };
 
   const handleElementUpdate = (field: string, value: any) => {
-    if (selectedElement) {
+    if (selectedElement && onUpdateElement) {
       onUpdateElement(selectedElement.id, { [field]: value });
     }
   };
 
   const handleCanvasUpdate = (field: string, value: any) => {
-    onUpdateCanvasSettings({
-      ...canvasSettings,
-      [field]: value
-    });
+    if (onUpdateCanvasSettings && canvasSettings) {
+      onUpdateCanvasSettings({
+        ...canvasSettings,
+        [field]: value
+      });
+    }
   };
 
   const renderElementProperties = () => {

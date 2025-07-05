@@ -92,8 +92,9 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
       const constrainedY = Math.max(0, Math.min(newY, canvasSettings.height - 100));
       
       // Calculate element center for grid guidelines
-      const elementWidth = elements.find(el => el.id === dragRef.current.elementId)?.width || 100;
-      const elementHeight = elements.find(el => el.id === dragRef.current.elementId)?.height || 100;
+      const currentElement = elements?.find(el => el.id === dragRef.current.elementId);
+      const elementWidth = currentElement?.width || 100;
+      const elementHeight = currentElement?.height || 100;
       const elementCenterX = constrainedX + elementWidth / 2;
       const elementCenterY = constrainedY + elementHeight / 2;
       
@@ -134,12 +135,14 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
   }, [onElementClick]);
 
   const duplicateElement = useCallback((element: CardElement) => {
+    if (!elements) return;
+    
     const newElement = {
       ...element,
       id: `element-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
       x: element.x + 20,
       y: element.y + 20,
-      zIndex: elements.length + 1
+      zIndex: (elements?.length || 0) + 1
     };
     
     onAddElement(newElement.type, newElement.x, newElement.y);
@@ -147,7 +150,7 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
 
   const renderElement = (element: CardElement) => {
     const isSelected = selectedElement?.id === element.id;
-    const isMultiSelected = multiSelectedElementIds.includes(element.id);
+    const isMultiSelected = multiSelectedElementIds?.includes(element.id) || false;
     
     const baseStyle: React.CSSProperties = {
       position: 'absolute',
@@ -373,7 +376,7 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
         onMouseUp={handleMouseUp}
         onClick={handleCanvasClick}
       >
-        {elements.map(renderElement)}
+        {elements?.map(renderElement) || []}
         
         {/* Grid Guidelines */}
         {showVerticalGuide && (
@@ -389,7 +392,7 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
           />
         )}
         
-        {elements.length === 0 && (
+        {(!elements || elements.length === 0) && (
           <div className="absolute inset-0 flex items-center justify-center text-gray-400 pointer-events-none">
             <div className="text-center">
               <div className="text-4xl mb-2">🎨</div>

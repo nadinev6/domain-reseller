@@ -102,6 +102,8 @@ const CardStudioEditorContent: React.FC = () => {
   }, [multiSelectedElementIds, selectedElement, elements]);
 
   const addElement = useCallback((elementType: CardElement['type'], x: number, y: number) => {
+    if (!elements) return;
+    
     const newElement: CardElement = {
       id: `element-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
       type: elementType,
@@ -109,7 +111,7 @@ const CardStudioEditorContent: React.FC = () => {
       y,
       width: elementType === 'text' ? 200 : elementType === 'button' ? 150 : 100,
       height: elementType === 'text' ? 40 : elementType === 'button' ? 40 : 100,
-      zIndex: elements.length + 1,
+      zIndex: (elements?.length || 0) + 1,
       // Default properties based on type
       ...(elementType === 'text' && {
         content: 'Your text here',
@@ -149,22 +151,25 @@ const CardStudioEditorContent: React.FC = () => {
     setMultiSelectedElementIds([]);
     
     // Add to history
-    const newHistory = history.slice(0, historyIndex + 1);
+    const newHistory = (history || [[]]).slice(0, historyIndex + 1);
     newHistory.push(newElements);
     setHistory(newHistory);
     setHistoryIndex(newHistory.length - 1);
   }, [elements, history, historyIndex]);
 
   const updateElement = useCallback((id: string, updates: Partial<CardElement>, isDrag: boolean = false) => {
+    if (!elements) return;
+    
     let newElements;
     
-    if (isDrag && multiSelectedElementIds.length > 0 && multiSelectedElementIds.includes(id)) {
+    if (isDrag && multiSelectedElementIds && multiSelectedElementIds.length > 0 && multiSelectedElementIds.includes(id)) {
       // Apply drag delta to all multi-selected elements
-      const deltaX = updates.x !== undefined ? updates.x - (elements.find(el => el.id === id)?.x || 0) : 0;
-      const deltaY = updates.y !== undefined ? updates.y - (elements.find(el => el.id === id)?.y || 0) : 0;
+      const currentElement = elements.find(el => el.id === id);
+      const deltaX = updates.x !== undefined && currentElement ? updates.x - currentElement.x : 0;
+      const deltaY = updates.y !== undefined && currentElement ? updates.y - currentElement.y : 0;
       
       newElements = elements.map(el => {
-        if (multiSelectedElementIds.includes(el.id)) {
+        if (multiSelectedElementIds && multiSelectedElementIds.includes(el.id)) {
           return {
             ...el,
             x: el.x + deltaX,
@@ -188,7 +193,7 @@ const CardStudioEditorContent: React.FC = () => {
 
     // Add to history (but not for every drag movement to avoid performance issues)
     if (!isDrag) {
-      const newHistory = history.slice(0, historyIndex + 1);
+      const newHistory = (history || [[]]).slice(0, historyIndex + 1);
       newHistory.push(newElements);
       setHistory(newHistory);
       setHistoryIndex(newHistory.length - 1);
@@ -196,9 +201,11 @@ const CardStudioEditorContent: React.FC = () => {
   }, [elements, selectedElement, multiSelectedElementIds, history, historyIndex]);
 
   const deleteElement = useCallback((id: string) => {
+    if (!elements) return;
+    
     let elementsToDelete: string[];
     
-    if (multiSelectedElementIds.length > 0) {
+    if (multiSelectedElementIds && multiSelectedElementIds.length > 0) {
       // Delete all multi-selected elements
       elementsToDelete = multiSelectedElementIds;
     } else {
@@ -216,14 +223,14 @@ const CardStudioEditorContent: React.FC = () => {
     setMultiSelectedElementIds([]);
 
     // Add to history
-    const newHistory = history.slice(0, historyIndex + 1);
+    const newHistory = (history || [[]]).slice(0, historyIndex + 1);
     newHistory.push(newElements);
     setHistory(newHistory);
     setHistoryIndex(newHistory.length - 1);
   }, [elements, selectedElement, multiSelectedElementIds, history, historyIndex]);
 
   const undo = useCallback(() => {
-    if (historyIndex > 0) {
+    if (history && historyIndex > 0) {
       const newIndex = historyIndex - 1;
       setHistoryIndex(newIndex);
       setElements(history[newIndex]);
@@ -233,7 +240,7 @@ const CardStudioEditorContent: React.FC = () => {
   }, [history, historyIndex]);
 
   const redo = useCallback(() => {
-    if (historyIndex < history.length - 1) {
+    if (history && historyIndex < history.length - 1) {
       const newIndex = historyIndex + 1;
       setHistoryIndex(newIndex);
       setElements(history[newIndex]);
@@ -334,7 +341,7 @@ const CardStudioEditorContent: React.FC = () => {
               variant="outline"
               size="sm"
               onClick={undo}
-              disabled={historyIndex <= 0}
+              disabled={!history || historyIndex <= 0}
               className="flex items-center"
             >
               <Undo className="w-4 h-4 mr-1" />
@@ -344,7 +351,7 @@ const CardStudioEditorContent: React.FC = () => {
               variant="outline"
               size="sm"
               onClick={redo}
-              disabled={historyIndex >= history.length - 1} 
+              disabled={!history || historyIndex >= history.length - 1}
               className="flex items-center"
             >
               <Redo className="w-4 h-4 mr-1" />
