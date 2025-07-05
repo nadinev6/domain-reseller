@@ -59,6 +59,22 @@
           "overrides": {},
           "content": "Loading assistant..."
         },
+        "8/declaration/body/11/argument/11/1/1-placeholder": {
+          "type": "attribute",
+          "hash": "7b79fbf096222fc0c96423683165dd2c",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Ask me anything about VibePage..."
+        },
+        "8/declaration/body/11/argument/3/1/3": {
+          "type": "element",
+          "hash": "7c24c5590cc13478df43676f0fe7d1e0",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "VibePage Assistant"
+        },
         "8/declaration/body/12/argument/11/1/1-placeholder": {
           "type": "attribute",
           "hash": "7b79fbf096222fc0c96423683165dd2c",
@@ -3257,6 +3273,18 @@
         }
       }
     },
+    "components/tambo/message-input.tsx": {
+      "scopes": {
+        "13/0/init/body/5/argument-aria-label": {
+          "type": "attribute",
+          "hash": "ff8160ca793b4337a2ae3b55ed91b165",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Chat Message Input"
+        }
+      }
+    },
     "components/ui/dialog.tsx": {
       "scopes": {
         "10/0/init/0/body/3/3/3": {
@@ -3278,6 +3306,90 @@
           "skip": false,
           "overrides": {},
           "content": "Loading cart..."
+        }
+      }
+    },
+    "pages/AdvancedCardStudioEditor.tsx": {
+      "scopes": {
+        "13/0/init/body/21/argument/3/1/1": {
+          "type": "element",
+          "hash": "c0a4963adabd2fbfa8d7ed01400b2004",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Advanced Card Studio Editor"
+        },
+        "13/0/init/body/21/argument/3/1/3/1": {
+          "type": "element",
+          "hash": "08e3fdab92aa3e91696af146d278262a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Undo></element:Undo> Undo"
+        },
+        "13/0/init/body/21/argument/3/1/3/3": {
+          "type": "element",
+          "hash": "d7909de12fc2a20aab1a96b3d9add99c",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Redo></element:Redo> Redo"
+        },
+        "13/0/init/body/21/argument/3/3/1": {
+          "type": "element",
+          "hash": "1a878634c88abdb0bda86cf849d7d3c4",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Eye></element:Eye> Preview"
+        },
+        "13/0/init/body/21/argument/3/3/3": {
+          "type": "element",
+          "hash": "82c7fb0a52965a8cde48deeee9cd663b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Download></element:Download> Export"
+        },
+        "14/0/init/body/21/argument/3/1/1": {
+          "type": "element",
+          "hash": "c0a4963adabd2fbfa8d7ed01400b2004",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Advanced Card Studio Editor"
+        },
+        "14/0/init/body/21/argument/3/1/3/1": {
+          "type": "element",
+          "hash": "08e3fdab92aa3e91696af146d278262a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Undo></element:Undo> Undo"
+        },
+        "14/0/init/body/21/argument/3/1/3/3": {
+          "type": "element",
+          "hash": "d7909de12fc2a20aab1a96b3d9add99c",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Redo></element:Redo> Redo"
+        },
+        "14/0/init/body/21/argument/3/3/1": {
+          "type": "element",
+          "hash": "1a878634c88abdb0bda86cf849d7d3c4",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Eye></element:Eye> Preview"
+        },
+        "14/0/init/body/21/argument/3/3/3": {
+          "type": "element",
+          "hash": "82c7fb0a52965a8cde48deeee9cd663b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Download></element:Download> Export"
         }
       }
     },
@@ -4051,6 +4163,30 @@
           "overrides": {},
           "content": "Start Building Now"
         },
+        "9/0/init/body/5/argument/15/1/5/expression/consequent/1/1/1": {
+          "type": "element",
+          "hash": "b56ef4180feafa91b59c4e7760733a9b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Start Standard Editor"
+        },
+        "9/0/init/body/5/argument/15/1/5/expression/consequent/3/3/1": {
+          "type": "element",
+          "hash": "4e8ba67b78cd0b9f571c8e4d327d178b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Start Advanced Editor"
+        },
+        "9/0/init/body/5/argument/15/1/5/expression/consequent/5/1": {
+          "type": "element",
+          "hash": "016f1f9686dce16a49213617d2fc156b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Get AI Template Suggestions"
+        },
         "9/0/init/body/5/argument/15/1/7/expression/right/1": {
           "type": "element",
           "hash": "b33530969f97a4c48a058710df094342",
@@ -4093,11 +4229,11 @@
         },
         "9/0/init/body/5/argument/3/1/7/1/expression/consequent/1/1/1": {
           "type": "element",
-          "hash": "012a1d4fc9b058937596f79b059d6b78",
+          "hash": "9289bf52463a591615ba84706a30503a",
           "context": "",
           "skip": false,
           "overrides": {},
-          "content": "Open Editor"
+          "content": "Open Standard Editor"
         },
         "9/0/init/body/5/argument/3/1/7/1/expression/consequent/3/1": {
           "type": "element",
@@ -4106,6 +4242,30 @@
           "skip": false,
           "overrides": {},
           "content": "Start with Template"
+        },
+        "9/0/init/body/5/argument/3/1/7/1/expression/consequent/3/3/1": {
+          "type": "element",
+          "hash": "a88c0545bcc49f6d96edc370de9a8e06",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Open Advanced Editor"
+        },
+        "9/0/init/body/5/argument/3/1/7/1/expression/consequent/5/1": {
+          "type": "element",
+          "hash": "77436fa1faec25e9cb1d0a9ccae6e8a2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Get AI Template Ideas"
+        },
+        "9/0/init/body/5/argument/3/1/7/3/1": {
+          "type": "element",
+          "hash": "2cbc596b013add7dec72e6cc8f27cc2c",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "View Examples"
         },
         "9/0/init/body/5/argument/7/1/1/1": {
           "type": "element",

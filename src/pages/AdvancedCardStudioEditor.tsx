@@ -1,4 +1,4 @@
-// src/pages/AdvancedCardStudioEditor.tsx
+ src/pages/AdvancedCardStudioEditor.tsx
 import React, { useState, useCallback, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Save, Download, Undo, Redo, Eye, Loader2 } from 'lucide-react';
@@ -11,7 +11,7 @@ import { CardElement } from '../types';
 import { useAuth } from '../context/AuthContext';
 import { supabase } from '../lib/supabase';
 import { useTambo, useTamboStreamingProps } from '@tambo-ai/react';
-import { MessageInput } from '@tambo-ai/react/components'; // Assuming this path after npx tambo add message-input
+import { MessageInput } from '../components/tambo/message-input';
 
 const AdvancedCardStudioEditorContent: React.FC = () => {
   const [searchParams] = useSearchParams();
