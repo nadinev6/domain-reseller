@@ -217,4 +217,4 @@ const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollap
   );
 };
 
-export default BotInterface; 
+export default BotInterface;  
