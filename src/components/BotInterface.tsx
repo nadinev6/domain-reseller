@@ -22,7 +22,7 @@ interface BotInterfaceProps {
   onToggleCollapse: () => void;
 }
 
-const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollapse }) => {
+export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInterfaceProps) {
   const [messages, setMessages] = useTamboComponentState<Message[]>([
     {
       id: '1',
@@ -248,6 +248,3 @@ const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollap
       </div>
     </div>
   );
-};
- 
-export default BotInterface;
