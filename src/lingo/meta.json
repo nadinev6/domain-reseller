@@ -2839,6 +2839,46 @@
           "overrides": {},
           "content": "<element:Download></element:Download> Export"
         },
+        "15/0/init/body/21/argument/3/1/1": {
+          "type": "element",
+          "hash": "b5742e7e35009781bb411280887c8fd6",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Card Studio Editor"
+        },
+        "15/0/init/body/21/argument/3/1/3/1": {
+          "type": "element",
+          "hash": "08e3fdab92aa3e91696af146d278262a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Undo></element:Undo> Undo"
+        },
+        "15/0/init/body/21/argument/3/1/3/3": {
+          "type": "element",
+          "hash": "d7909de12fc2a20aab1a96b3d9add99c",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Redo></element:Redo> Redo"
+        },
+        "15/0/init/body/21/argument/3/3/1": {
+          "type": "element",
+          "hash": "1a878634c88abdb0bda86cf849d7d3c4",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Eye></element:Eye> Preview"
+        },
+        "15/0/init/body/21/argument/3/3/3": {
+          "type": "element",
+          "hash": "82c7fb0a52965a8cde48deeee9cd663b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Download></element:Download> Export"
+        },
         "8/0/init/body/12/argument/3/1/1": {
           "type": "element",
           "hash": "b5742e7e35009781bb411280887c8fd6",
