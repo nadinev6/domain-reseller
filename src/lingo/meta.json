@@ -1562,6 +1562,62 @@
           "skip": false,
           "overrides": {},
           "content": "<element:Shield></element:Shield> Security Settings"
+        },
+        "8/0/init/body/0/argument/1/1/1": {
+          "type": "element",
+          "hash": "5b40bbf4d1a6201e0a276c3123826827",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Welcome back, Sarah!"
+        },
+        "8/0/init/body/0/argument/1/1/3": {
+          "type": "element",
+          "hash": "a3a0b15e419bef7673d6cff936815c09",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Manage your domains and account settings"
+        },
+        "8/0/init/body/0/argument/3/1/3/3/1": {
+          "type": "element",
+          "hash": "157a51ac3ffbc527a52379a547499fe2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Quick Actions"
+        },
+        "8/0/init/body/0/argument/3/1/3/3/3/1/1": {
+          "type": "element",
+          "hash": "8a498b55838209e3aa5a4f239bcbf1f1",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Domain></element:Domain> Register New Domain"
+        },
+        "8/0/init/body/0/argument/3/1/3/3/3/3/1": {
+          "type": "element",
+          "hash": "1748727f713d5b1a98e15f1af700c9e1",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:CreditCard></element:CreditCard> Update Payment Method"
+        },
+        "8/0/init/body/0/argument/3/1/3/3/3/5/1": {
+          "type": "element",
+          "hash": "e03d24a3e85ec8d7fd92932915010754",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:HelpCircle></element:HelpCircle> Open Support Ticket"
+        },
+        "8/0/init/body/0/argument/3/1/3/3/3/7/1": {
+          "type": "element",
+          "hash": "66fcd54664fa6687ab5f2b4b652792bc",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Shield></element:Shield> Security Settings"
         }
       }
     },
@@ -1743,6 +1799,46 @@
     },
     "pages/CardStudioEditor.tsx": {
       "scopes": {
+        "12/0/init/body/20/argument/3/1/1": {
+          "type": "element",
+          "hash": "b5742e7e35009781bb411280887c8fd6",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Card Studio Editor"
+        },
+        "12/0/init/body/20/argument/3/1/3/1": {
+          "type": "element",
+          "hash": "08e3fdab92aa3e91696af146d278262a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Undo></element:Undo> Undo"
+        },
+        "12/0/init/body/20/argument/3/1/3/3": {
+          "type": "element",
+          "hash": "d7909de12fc2a20aab1a96b3d9add99c",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Redo></element:Redo> Redo"
+        },
+        "12/0/init/body/20/argument/3/3/1": {
+          "type": "element",
+          "hash": "1a878634c88abdb0bda86cf849d7d3c4",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Eye></element:Eye> Preview"
+        },
+        "12/0/init/body/20/argument/3/3/3": {
+          "type": "element",
+          "hash": "82c7fb0a52965a8cde48deeee9cd663b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Download></element:Download> Export"
+        },
         "8/0/init/body/12/argument/3/1/1": {
           "type": "element",
           "hash": "b5742e7e35009781bb411280887c8fd6",
