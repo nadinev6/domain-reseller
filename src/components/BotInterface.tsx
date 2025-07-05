@@ -42,30 +42,7 @@ const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollap
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Register component state with Tambo
-  useTamboState({
-    componentName: 'BotInterface',
-    state: {
-      isCollapsed,
-      messages,
-      isTyping
-    },
-    actions: {
-      onToggleCollapse,
-      sendMessage: handleSendMessage,
-      setInputValue
-    },
-    schema: BotInterfaceStateSchema
-  });
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-
+  // Define handleSendMessage before using it in useTamboState
   const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
 
@@ -92,6 +69,30 @@ const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollap
       setIsTyping(false);
     }, 1000);
   };
+
+  // Register component state with Tambo
+  useTamboState({
+    componentName: 'BotInterface',
+    state: {
+      isCollapsed,
+      messages,
+      isTyping
+    },
+    actions: {
+      onToggleCollapse,
+      sendMessage: handleSendMessage,
+      setInputValue
+    },
+    schema: BotInterfaceStateSchema
+  });
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   const getBotResponse = (userInput: string): string => {
     const input = userInput.toLowerCase();
@@ -217,4 +218,4 @@ const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollap
   );
 };
 
-export default BotInterface;   
+export default BotInterface;
