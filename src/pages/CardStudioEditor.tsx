@@ -51,8 +51,8 @@ const CardStudioEditorContent: React.FC = () => {
       historyIndex,
       isSaving
     },
-    schema: CardStudioEditorStateSchema
-    actions: {,
+    schema: CardStudioEditorStateSchema 
+    actions: {
       addElement,
       updateElement,
       deleteElement,
