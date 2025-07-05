@@ -61,7 +61,7 @@ const CardStudioEditorContent: React.FC = () => {
       redo,
       setCanvasSettings
     }
-  });
+  );
 
   // Load card from URL parameter if provided
   React.useEffect(() => {
