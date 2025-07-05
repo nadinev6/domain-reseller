@@ -238,7 +238,7 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
                   style={part.type === 'text' ? {
                     background: `linear-gradient(${element.gradientDirection || 'to right'}, ${element.gradientColor1}, ${element.gradientColor2})`,
                     WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
+                    WebkitTextFillColor: 'transparent';
                     backgroundClip: 'text'
                   } : {
                     color: 'inherit'
