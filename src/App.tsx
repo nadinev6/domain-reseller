@@ -1,6 +1,5 @@
-// src/App.tsx
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'; // Added useLocation
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import BotInterface from './components/BotInterface';
 import DomainSearch from './components/DomainSearch';
@@ -10,7 +9,6 @@ import GameElement from './components/GameElement';
 import DomainsPage from './pages/DomainsPage';
 import SocialMediaCardStudio from './pages/SocialMediaCardStudio';
 import CardStudioEditor from './pages/CardStudioEditor';
-import AdvancedCardStudioEditor from './pages/AdvancedCardStudioEditor'; // Added
 import Dashboard from './components/dashboard/Dashboard';
 import { CartProvider } from './context/CartContext';
 import { CurrencyProvider } from './context/CurrencyContext';
@@ -36,10 +34,6 @@ export default function App() {
       setIsSearching(false);
     }, 800);
   };
-
-  const location = useLocation(); // Get current location
-  // Determine if BotInterface should be hidden
-  const hideBotInterface = location.pathname.startsWith('/card-studio/editor') || location.pathname.startsWith('/card-studio/advanced-editor');
   
   return (
     <Router>
@@ -56,7 +50,6 @@ export default function App() {
                 <Route path="/domains" element={<DomainsPage />} />
                 <Route path="/card-studio" element={<SocialMediaCardStudio />} />
                 <Route path="/card-studio/editor" element={<CardStudioEditor />} />
-                <Route path="/card-studio/advanced-editor" element={<AdvancedCardStudioEditor />} /> {/* New Route */}
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/" element={
                   <main>
@@ -73,12 +66,10 @@ export default function App() {
                 } />
               </Routes>
               <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-              {!hideBotInterface && ( // Conditionally render BotInterface
-                <BotInterface 
-                  isCollapsed={isBotCollapsed}
-                  onToggleCollapse={() => setIsBotCollapsed(!isBotCollapsed)}
-                />
-              )}
+              <BotInterface 
+                isCollapsed={isBotCollapsed}
+                onToggleCollapse={() => setIsBotCollapsed(!isBotCollapsed)}
+              />
             </div>
           </CartProvider>
         </CurrencyProvider>

@@ -1,4 +1,3 @@
-// src/pages/SocialMediaCardStudio.tsx
 import React from 'react';
 import { Palette, Smartphone, MousePointer, Globe, ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '../components/ui/button';
@@ -11,7 +10,7 @@ import { useTambo } from '@tambo-ai/react';
 
 const SocialMediaCardStudio: React.FC = () => {
   const { user } = useAuth();
-  const { sendSuggestions } = useTambo('BotInterface'); // Keep this for general bot interaction
+  const { sendSuggestions } = useTambo('BotInterface');
 
   const features = [
     {
@@ -97,17 +96,9 @@ const SocialMediaCardStudio: React.FC = () => {
                 <Link to="/card-studio/editor">
                   <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
                     <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
-                      Open Standard Editor
+                      Open Editor
                     </AnimatedShinyText>
                     <ArrowRight className="ml-2 w-5 h-5" />
-                  </Button>
-                </Link>
-                <Link to="/card-studio/advanced-editor"> {/* New button for Advanced Editor */}
-                  <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
-                    <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
-                      Open Advanced Editor
-                    </AnimatedShinyText>
-                    <Sparkles className="ml-2 w-5 h-5" />
                   </Button>
                 </Link>
                 <Button 
@@ -117,7 +108,7 @@ const SocialMediaCardStudio: React.FC = () => {
                   onClick={() => handleTemplateStart('card')}
                 >
                   <AnimatedShinyText className="text-indigo-600 hover:text-indigo-600 !mx-0 !max-w-none">
-                    Get AI Template Ideas
+                    Start with Template
                   </AnimatedShinyText>
                   <Sparkles className="ml-2 w-5 h-5" />
                 </Button>
@@ -130,11 +121,6 @@ const SocialMediaCardStudio: React.FC = () => {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             )}
-            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-indigo-600 text-lg px-8 py-3">
-              <AnimatedShinyText className="text-indigo-600 hover:text-indigo-600 !mx-0 !max-w-none">
-                View Examples
-              </AnimatedShinyText>
-            </Button>
           </div>
         </div>
       </div>
@@ -272,41 +258,33 @@ const SocialMediaCardStudio: React.FC = () => {
             Join thousands of creators who are already using our studio to build their online presence
           </p>
           {user ? (
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/card-studio/editor">
-                <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
-                  <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
-                    Start Standard Editor
-                  </AnimatedShinyText>
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
-              <Link to="/card-studio/advanced-editor"> {/* New button for Advanced Editor */}
-                <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
-                  <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
-                    Start Advanced Editor
-                  </AnimatedShinyText>
-                  <Sparkles className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-indigo-600 text-lg px-8 py-3 ml-4"
-                onClick={() => handleTemplateStart('professional card')}
-              >
-                <AnimatedShinyText className="text-indigo-600 hover:text-indigo-600 !mx-0 !max-w-none">
-                  Get AI Template Suggestions
+            <Link to="/card-studio/editor">
+              <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
+                <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
+                  Start Building Now
                 </AnimatedShinyText>
-                <Sparkles className="ml-2 w-5 h-5" />
+                <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-            </div>
+            </Link>
           ) : (
             <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
               <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
                 Sign Up to Start Building
               </AnimatedShinyText>
               <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          )}
+          {user && (
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-white text-white hover:bg-white hover:text-indigo-600 text-lg px-8 py-3 ml-4"
+              onClick={() => handleTemplateStart('professional card')}
+            >
+              <AnimatedShinyText className="text-indigo-600 hover:text-indigo-600 !mx-0 !max-w-none">
+                Get AI Template Suggestions
+              </AnimatedShinyText>
+              <Sparkles className="ml-2 w-5 h-5" />
             </Button>
           )}
         </div>

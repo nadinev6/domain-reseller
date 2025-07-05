@@ -1,4 +1,3 @@
-// src/pages/CardStudioEditor.tsx
 import React, { useState, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Save, Download, Undo, Redo, Eye, Loader2 } from 'lucide-react';
@@ -11,24 +10,42 @@ import { CardElement } from '../types';
 import { useAuth } from '../context/AuthContext';
 import { supabase } from '../lib/supabase';
 import { SavedCard } from '../types';
-// import { useTamboComponentState } from '@tambo-ai/react'; // Removed
+import { useTamboComponentState } from '@tambo-ai/react';
 
 const CardStudioEditorContent: React.FC = () => {
   const [searchParams] = useSearchParams();
-  const [elements, setElements] = useState<CardElement[]>([]); // Changed from useTamboComponentState
-  const [selectedElement, setSelectedElement] = useState<CardElement | null>(null); // Changed from useTamboComponentState
-  const [multiSelectedElementIds, setMultiSelectedElementIds] = useState<string[]>([]); // Changed from useTamboComponentState
-  const [canvasSettings, setCanvasSettings] = useState({ // Changed from useTamboComponentState
+  const [elements, setElements] = useTamboComponentState<CardElement[]>([]);
+  const [selectedElement, setSelectedElement] = useTamboComponentState<CardElement | null>(null);
+  const [multiSelectedElementIds, setMultiSelectedElementIds] = useTamboComponentState<string[]>([]);
+  const [canvasSettings, setCanvasSettings] = useTamboComponentState({
     width: 800,
     height: 600,
     backgroundColor: '#ffffff'
   });
-  const [history, setHistory] = useState<CardElement[][]>([[]]);
-  const [historyIndex, setHistoryIndex] = useState(0); // Changed from useTamboComponentState
-  const [isSaving, setIsSaving] = useState(false); // Changed from useTamboComponentState
+  const [history, setHistory] = useTamboComponentState<CardElement[][]>([[]]);
+  const [historyIndex, setHistoryIndex] = useTamboComponentState(0);
+  const [isSaving, setIsSaving] = useTamboComponentState(false);
   const { user } = useAuth();
 
-  // Removed top-level check for undefined states as useState initializes immediately
+  // Top-level check to ensure all useTamboComponentState variables are initialized
+  if (
+    elements === undefined ||
+    selectedElement === undefined ||
+    multiSelectedElementIds === undefined ||
+    canvasSettings === undefined ||
+    history === undefined ||
+    historyIndex === undefined ||
+    isSaving === undefined
+  ) {
+    return (
+      <div className="h-screen bg-gray-100 flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4 text-indigo-600" />
+          <p className="text-gray-600">Initializing Card Studio...</p>
+        </div>
+      </div>
+    );
+  }
 
   // Load card from URL parameter if provided
   React.useEffect(() => {
