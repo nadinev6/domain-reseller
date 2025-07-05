@@ -344,7 +344,7 @@ const CardStudioEditorContent: React.FC = () => {
               variant="outline"
               size="sm"
               onClick={redo}
-              disabled={historyIndex >= (history ?? []).length - 1} // FIX APPLIED HERE (Line 397)
+              disabled={historyIndex >= history.length - 1} 
               className="flex items-center"
             >
               <Redo className="w-4 h-4 mr-1" />
