@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import BotInterface from './components/BotInterface';
 import DomainSearch from './components/DomainSearch';
@@ -34,6 +34,9 @@ export default function App() {
       setIsSearching(false);
     }, 800);
   };
+
+  const location = useLocation();
+  const hideBotInterface = location.pathname.startsWith('/card-studio/editor');
   
   return (
     <Router>
@@ -66,10 +69,12 @@ export default function App() {
                 } />
               </Routes>
               <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-              <BotInterface 
-                isCollapsed={isBotCollapsed}
-                onToggleCollapse={() => setIsBotCollapsed(!isBotCollapsed)}
-              />
+              {!hideBotInterface && (
+                <BotInterface 
+                  isCollapsed={isBotCollapsed}
+                  onToggleCollapse={() => setIsBotCollapsed(!isBotCollapsed)}
+                />
+              )}
             </div>
           </CartProvider>
         </CurrencyProvider>

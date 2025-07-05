@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from 'react';
 import { MessageCircle, Send, Minimize2 } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
-import { useTamboComponentState } from '@tambo-ai/react';
 
 interface Suggestion {
   text: string;
@@ -23,7 +22,7 @@ interface BotInterfaceProps {
 }
 
 export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInterfaceProps) {
-  const [messages, setMessages] = useTamboComponentState<Message[]>([
+  const [messages, setMessages] = React.useState<Message[]>([
     {
       id: '1',
       type: 'bot',
@@ -31,35 +30,9 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
       timestamp: new Date()
     }
   ]);
-  const [inputValue, setInputValue] = useTamboComponentState('');
-  const [isTyping, setIsTyping] = useTamboComponentState(false);
+  const [inputValue, setInputValue] = React.useState('');
+  const [isTyping, setIsTyping] = React.useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  // Top-level check to ensure all useTamboComponentState variables are initialized
-  if (messages === undefined || inputValue === undefined || isTyping === undefined) {
-    if (isCollapsed) {
-      return (
-        <div className="fixed bottom-4 right-4 z-50">
-          <Button
-            onClick={onToggleCollapse}
-            className="w-14 h-14 rounded-full bg-gray-400 text-white shadow-lg"
-            disabled
-          >
-            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-          </Button>
-        </div>
-      );
-    }
-    
-    return (
-      <div className="fixed bottom-0 right-0 w-full md:w-96 h-96 bg-white border-t md:border-l md:border-t border-gray-200 shadow-lg z-40 flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-6 h-6 border-2 border-indigo-600 border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
-          <p className="text-gray-600 text-sm">Loading assistant...</p>
-        </div>
-      </div>
-    );
-  }
 
   const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
@@ -168,7 +141,7 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
 
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
-        {messages?.map((message) => (
+        {messages.map((message) => (
           <div key={message.id}>
             <div
               className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
@@ -210,7 +183,7 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
               </div>
             )}
           </div>
-        )) || []}
+        ))}
         
         {isTyping && (
           <div className="flex justify-start">
