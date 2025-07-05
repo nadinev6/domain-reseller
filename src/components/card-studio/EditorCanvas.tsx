@@ -1,7 +1,6 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 import { Trash2, Copy, RotateCw } from 'lucide-react';
 import { CardElement } from '../../types';
-import React, { useRef, useCallback } from 'react';
 
 
 interface EditorCanvasProps {
