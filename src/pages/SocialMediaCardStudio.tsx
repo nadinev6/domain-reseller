@@ -6,9 +6,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs'
 import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 import { AnimatedShinyText } from '../components/magicui/animated-shiny-text';
+import { useTambo } from '@tambo-ai/react';
 
 const SocialMediaCardStudio: React.FC = () => {
   const { user } = useAuth();
+  const { sendSuggestions } = useTambo('BotInterface');
 
   const features = [
     {
@@ -54,6 +56,22 @@ const SocialMediaCardStudio: React.FC = () => {
     }
   ];
 
+  const handleTemplateStart = (templateType: string) => {
+    if (!sendSuggestions) return;
+    
+    const suggestions = [
+      { text: 'Create a blank card', action: 'Create a blank card template' },
+      { text: 'Add header and image', action: 'Create a card with header text and image placeholder' },
+      { text: 'Business card layout', action: 'Create a professional business card template' },
+      { text: 'Social media post', action: 'Create a social media post template with text and image' }
+    ];
+    
+    sendSuggestions(
+      `I'd like to help you create a ${templateType}! Here are some quick options to get started:`,
+      suggestions
+    );
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Hero Section */}
@@ -74,14 +92,27 @@ const SocialMediaCardStudio: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {user ? (
-              <Link to="/card-studio/editor">
-                <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
-                  <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
-                    Get Started
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link to="/card-studio/editor">
+                  <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
+                    <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
+                      Open Editor
+                    </AnimatedShinyText>
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </Link>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-white text-white hover:bg-white hover:text-indigo-600 text-lg px-8 py-3"
+                  onClick={() => handleTemplateStart('card')}
+                >
+                  <AnimatedShinyText className="text-indigo-600 hover:text-indigo-600 !mx-0 !max-w-none">
+                    Start with Template
                   </AnimatedShinyText>
-                  <ArrowRight className="ml-2 w-5 h-5" />
+                  <Sparkles className="ml-2 w-5 h-5" />
                 </Button>
-              </Link>
+              </div>
             ) : (
               <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
                 <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
@@ -90,11 +121,6 @@ const SocialMediaCardStudio: React.FC = () => {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             )}
-            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-indigo-600 text-lg px-8 py-3">
-              <AnimatedShinyText className="text-indigo-600 hover:text-indigo-600 !mx-0 !max-w-none">
-                View Examples
-              </AnimatedShinyText>
-            </Button>
           </div>
         </div>
       </div>
@@ -185,6 +211,16 @@ const SocialMediaCardStudio: React.FC = () => {
                           Sign Up to Use Template
                         </Button>
                       )}
+                      {user && (
+                        <Button 
+                          variant="ghost" 
+                          size="sm"
+                          className="w-full mt-2 text-indigo-600 hover:text-indigo-800"
+                          onClick={() => handleTemplateStart(example.title.toLowerCase())}
+                        >
+                          Get AI Help with This Style
+                        </Button>
+                      )}
                     </CardContent>
                   </Card>
                 ))}
@@ -236,6 +272,19 @@ const SocialMediaCardStudio: React.FC = () => {
                 Sign Up to Start Building
               </AnimatedShinyText>
               <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          )}
+          {user && (
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-white text-white hover:bg-white hover:text-indigo-600 text-lg px-8 py-3 ml-4"
+              onClick={() => handleTemplateStart('professional card')}
+            >
+              <AnimatedShinyText className="text-indigo-600 hover:text-indigo-600 !mx-0 !max-w-none">
+                Get AI Template Suggestions
+              </AnimatedShinyText>
+              <Sparkles className="ml-2 w-5 h-5" />
             </Button>
           )}
         </div>

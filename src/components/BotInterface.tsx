@@ -1,13 +1,20 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { MessageCircle, Send, Minimize2 } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
+import { useTamboComponentState } from '@tambo-ai/react';
+
+interface Suggestion {
+  text: string;
+  action: string;
+}
 
 interface Message {
   id: string;
   type: 'user' | 'bot';
   content: string;
   timestamp: Date;
+  suggestions?: Suggestion[];
 }
 
 interface BotInterfaceProps {
@@ -16,7 +23,7 @@ interface BotInterfaceProps {
 }
 
 const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollapse }) => {
-  const [messages, setMessages] = useState<Message[]>([
+  const [messages, setMessages] = useTamboComponentState<Message[]>([
     {
       id: '1',
       type: 'bot',
@@ -24,9 +31,35 @@ const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollap
       timestamp: new Date()
     }
   ]);
-  const [inputValue, setInputValue] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
+  const [inputValue, setInputValue] = useTamboComponentState('');
+  const [isTyping, setIsTyping] = useTamboComponentState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Top-level check to ensure all useTamboComponentState variables are initialized
+  if (messages === undefined || inputValue === undefined || isTyping === undefined) {
+    if (isCollapsed) {
+      return (
+        <div className="fixed bottom-4 right-4 z-50">
+          <Button
+            onClick={onToggleCollapse}
+            className="w-14 h-14 rounded-full bg-gray-400 text-white shadow-lg"
+            disabled
+          >
+            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+          </Button>
+        </div>
+      );
+    }
+    
+    return (
+      <div className="fixed bottom-0 right-0 w-full md:w-96 h-96 bg-white border-t md:border-l md:border-t border-gray-200 shadow-lg z-40 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-6 h-6 border-2 border-indigo-600 border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
+          <p className="text-gray-600 text-sm">Loading assistant...</p>
+        </div>
+      </div>
+    );
+  }
 
   const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
@@ -53,6 +86,14 @@ const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollap
       setMessages(prev => [...prev, botMessage]);
       setIsTyping(false);
     }, 1000);
+  };
+
+  const handleSuggestionClick = (suggestion: Suggestion) => {
+    setInputValue(suggestion.action);
+    // Auto-send the suggestion
+    setTimeout(() => {
+      handleSendMessage();
+    }, 100);
   };
 
   const scrollToBottom = () => {
@@ -127,27 +168,49 @@ const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollap
 
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
-        {messages.map((message) => (
-          <div
-            key={message.id}
-            className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
-          >
+        {messages?.map((message) => (
+          <div key={message.id}>
             <div
-              className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
-                message.type === 'user'
-                  ? 'bg-indigo-600 text-white'
-                  : 'bg-gray-100 text-gray-900'
-              }`}
+              className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
             >
-              <p className="text-sm">{message.content}</p>
-              <p className={`text-xs mt-1 ${
-                message.type === 'user' ? 'text-indigo-200' : 'text-gray-500'
-              }`}>
-                {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-              </p>
+              <div
+                className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
+                  message.type === 'user'
+                    ? 'bg-indigo-600 text-white'
+                    : 'bg-gray-100 text-gray-900'
+                }`}
+              >
+                <p className="text-sm">{message.content}</p>
+                <p className={`text-xs mt-1 ${
+                  message.type === 'user' ? 'text-indigo-200' : 'text-gray-500'
+                }`}>
+                  {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                </p>
+              </div>
             </div>
+            
+            {/* Render suggestions if present */}
+            {message.suggestions && message.suggestions.length > 0 && (
+              <div className="flex justify-start mt-2">
+                <div className="max-w-xs lg:max-w-md">
+                  <div className="flex flex-wrap gap-2">
+                    {message.suggestions.map((suggestion, index) => (
+                      <Button
+                        key={index}
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleSuggestionClick(suggestion)}
+                        className="text-xs bg-white hover:bg-indigo-50 border-indigo-200 text-indigo-700 hover:text-indigo-800"
+                      >
+                        {suggestion.text}
+                      </Button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
-        ))}
+        )) || []}
         
         {isTyping && (
           <div className="flex justify-start">

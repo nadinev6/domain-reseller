@@ -98,6 +98,10 @@ const tamboComponents = [
         .args(z.string())
         .returns(z.void())
         .describe('Delete an element by ID'),
+      loadTemplate: z.function()
+        .args(z.array(CardElementSchema), CanvasSettingsSchema)
+        .returns(z.void())
+        .describe('Load a template with elements and canvas settings'),
       saveCard: z.function()
         .args()
         .returns(z.void())
@@ -169,11 +173,15 @@ const tamboComponents = [
     description: 'AI assistant chat interface for helping users with domain searches, card creation, and general questions.',
     propsSchema: z.object({
       isCollapsed: z.boolean().describe('Whether the bot interface is minimized'),
-      messages: z.array(z.object({
+      messages: z.array(z.object({ 
         id: z.string(),
         type: z.enum(['user', 'bot']),
         content: z.string(),
-        timestamp: z.date()
+        timestamp: z.date(),
+        suggestions: z.array(z.object({
+          text: z.string(),
+          action: z.string()
+        })).optional()
       })).optional().describe('Chat message history'),
       isTyping: z.boolean().optional().describe('Whether the bot is currently typing a response')
     }),
@@ -182,6 +190,13 @@ const tamboComponents = [
         .args(z.string())
         .returns(z.void())
         .describe('Send a message to the bot'),
+      sendSuggestions: z.function()
+        .args(z.string(), z.array(z.object({
+          text: z.string(),
+          action: z.string()
+        })))
+        .returns(z.void())
+        .describe('Send a bot message with clickable suggestions'),
       onToggleCollapse: z.function()
         .args()
         .returns(z.void())
