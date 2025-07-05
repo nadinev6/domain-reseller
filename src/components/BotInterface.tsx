@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { MessageCircle, Send, Minimize2 } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -22,6 +23,7 @@ interface BotInterfaceProps {
 }
 
 export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInterfaceProps) {
+  const location = useLocation();
   const [messages, setMessages] = React.useState<Message[]>([
     {
       id: '1',
@@ -33,6 +35,14 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
   const [inputValue, setInputValue] = React.useState('');
   const [isTyping, setIsTyping] = React.useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Check if BotInterface should be hidden based on current route
+  const shouldHide = location.pathname.startsWith('/card-studio/editor');
+  
+  // Don't render if on editor pages
+  if (shouldHide) {
+    return null;
+  }
 
   const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
