@@ -10,42 +10,21 @@ import { CardElement } from '../types';
 import { useAuth } from '../context/AuthContext';
 import { supabase } from '../lib/supabase';
 import { SavedCard } from '../types';
-import { useTamboComponentState } from '@tambo-ai/react';
 
 const CardStudioEditorContent: React.FC = () => {
   const [searchParams] = useSearchParams();
-  const [elements, setElements] = useTamboComponentState<CardElement[]>([]);
-  const [selectedElement, setSelectedElement] = useTamboComponentState<CardElement | null>(null);
-  const [multiSelectedElementIds, setMultiSelectedElementIds] = useTamboComponentState<string[]>([]);
-  const [canvasSettings, setCanvasSettings] = useTamboComponentState({
+  const [elements, setElements] = useState<CardElement[]>([]);
+  const [selectedElement, setSelectedElement] = useState<CardElement | null>(null);
+  const [multiSelectedElementIds, setMultiSelectedElementIds] = useState<string[]>([]);
+  const [canvasSettings, setCanvasSettings] = useState({
     width: 800,
     height: 600,
     backgroundColor: '#ffffff'
   });
-  const [history, setHistory] = useTamboComponentState<CardElement[][]>([[]]);
-  const [historyIndex, setHistoryIndex] = useTamboComponentState(0);
-  const [isSaving, setIsSaving] = useTamboComponentState(false);
+  const [history, setHistory] = useState<CardElement[][]>([[]]);
+  const [historyIndex, setHistoryIndex] = useState(0);
+  const [isSaving, setIsSaving] = useState(false);
   const { user } = useAuth();
-
-  // Top-level check to ensure all useTamboComponentState variables are initialized
-  if (
-    elements === undefined ||
-    selectedElement === undefined ||
-    multiSelectedElementIds === undefined ||
-    canvasSettings === undefined ||
-    history === undefined ||
-    historyIndex === undefined ||
-    isSaving === undefined
-  ) {
-    return (
-      <div className="h-screen bg-gray-100 flex items-center justify-center">
-        <div className="text-center">
-          <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4 text-indigo-600" />
-          <p className="text-gray-600">Initializing Card Studio...</p>
-        </div>
-      </div>
-    );
-  }
 
   // Load card from URL parameter if provided
   React.useEffect(() => {
@@ -122,8 +101,6 @@ const CardStudioEditorContent: React.FC = () => {
   }, [multiSelectedElementIds, selectedElement, elements]);
 
   const addElement = useCallback((elementType: CardElement['type'], x: number, y: number) => {
-    if (!elements) return;
-    
     const newElement: CardElement = {
       id: `element-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
       type: elementType,
@@ -131,7 +108,7 @@ const CardStudioEditorContent: React.FC = () => {
       y,
       width: elementType === 'text' ? 200 : elementType === 'button' ? 150 : 100,
       height: elementType === 'text' ? 40 : elementType === 'button' ? 40 : 100,
-      zIndex: (elements?.length || 0) + 1,
+      zIndex: elements.length + 1,
       // Default properties based on type
       ...(elementType === 'text' && {
         content: 'Your text here',
@@ -171,25 +148,23 @@ const CardStudioEditorContent: React.FC = () => {
     setMultiSelectedElementIds([]);
     
     // Add to history
-    const newHistory = (history || [[]]).slice(0, historyIndex + 1);
+    const newHistory = history.slice(0, historyIndex + 1);
     newHistory.push(newElements);
     setHistory(newHistory);
     setHistoryIndex(newHistory.length - 1);
   }, [elements, history, historyIndex]);
 
   const updateElement = useCallback((id: string, updates: Partial<CardElement>, isDrag: boolean = false) => {
-    if (!elements) return;
-    
     let newElements;
     
-    if (isDrag && multiSelectedElementIds && multiSelectedElementIds.length > 0 && multiSelectedElementIds.includes(id)) {
+    if (isDrag && multiSelectedElementIds.length > 0 && multiSelectedElementIds.includes(id)) {
       // Apply drag delta to all multi-selected elements
       const currentElement = elements.find(el => el.id === id);
       const deltaX = updates.x !== undefined && currentElement ? updates.x - currentElement.x : 0;
       const deltaY = updates.y !== undefined && currentElement ? updates.y - currentElement.y : 0;
       
       newElements = elements.map(el => {
-        if (multiSelectedElementIds && multiSelectedElementIds.includes(el.id)) {
+        if (multiSelectedElementIds.includes(el.id)) {
           return {
             ...el,
             x: el.x + deltaX,
@@ -213,7 +188,7 @@ const CardStudioEditorContent: React.FC = () => {
 
     // Add to history (but not for every drag movement to avoid performance issues)
     if (!isDrag) {
-      const newHistory = (history || [[]]).slice(0, historyIndex + 1);
+      const newHistory = history.slice(0, historyIndex + 1);
       newHistory.push(newElements);
       setHistory(newHistory);
       setHistoryIndex(newHistory.length - 1);
@@ -221,11 +196,9 @@ const CardStudioEditorContent: React.FC = () => {
   }, [elements, selectedElement, multiSelectedElementIds, history, historyIndex]);
 
   const deleteElement = useCallback((id: string) => {
-    if (!elements) return;
-    
     let elementsToDelete: string[];
     
-    if (multiSelectedElementIds && multiSelectedElementIds.length > 0) {
+    if (multiSelectedElementIds.length > 0) {
       // Delete all multi-selected elements
       elementsToDelete = multiSelectedElementIds;
     } else {
@@ -243,14 +216,14 @@ const CardStudioEditorContent: React.FC = () => {
     setMultiSelectedElementIds([]);
 
     // Add to history
-    const newHistory = (history || [[]]).slice(0, historyIndex + 1);
+    const newHistory = history.slice(0, historyIndex + 1);
     newHistory.push(newElements);
     setHistory(newHistory);
     setHistoryIndex(newHistory.length - 1);
   }, [elements, selectedElement, multiSelectedElementIds, history, historyIndex]);
 
   const undo = useCallback(() => {
-    if (history && historyIndex > 0) {
+    if (historyIndex > 0) {
       const newIndex = historyIndex - 1;
       setHistoryIndex(newIndex);
       setElements(history[newIndex]);
@@ -260,7 +233,7 @@ const CardStudioEditorContent: React.FC = () => {
   }, [history, historyIndex]);
 
   const redo = useCallback(() => {
-    if (history && historyIndex < history.length - 1) {
+    if (historyIndex < history.length - 1) {
       const newIndex = historyIndex + 1;
       setHistoryIndex(newIndex);
       setElements(history[newIndex]);
@@ -328,21 +301,6 @@ const CardStudioEditorContent: React.FC = () => {
     }
   }, [elements, canvasSettings, user]);
 
-  const saveCardLegacy = useCallback(() => {
-    const cardData = {
-      elements,
-      canvasSettings,
-      timestamp: new Date().toISOString()
-    };
-    
-    // For now, save to localStorage
-    const savedCards = JSON.parse(localStorage.getItem('savedCards') || '[]');
-    savedCards.push(cardData);
-    localStorage.setItem('savedCards', JSON.stringify(savedCards));
-    
-    alert('Card saved to local storage!');
-  }, [elements, canvasSettings]);
-
   const exportCard = useCallback(() => {
     // TODO: Implement export functionality
     alert('Export feature coming soon!');
@@ -361,7 +319,7 @@ const CardStudioEditorContent: React.FC = () => {
               variant="outline"
               size="sm"
               onClick={undo}
-              disabled={!history || historyIndex <= 0}
+              disabled={historyIndex <= 0}
               className="flex items-center"
             >
               <Undo className="w-4 h-4 mr-1" />
@@ -371,7 +329,7 @@ const CardStudioEditorContent: React.FC = () => {
               variant="outline"
               size="sm"
               onClick={redo}
-              disabled={!history || historyIndex >= history.length - 1}
+              disabled={historyIndex >= history.length - 1}
               className="flex items-center"
             >
               <Redo className="w-4 h-4 mr-1" />
