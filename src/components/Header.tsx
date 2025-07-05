@@ -1,115 +1,201 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingCart, User, Search, Home, LayoutDashboard, DollarSign, Euro, PoundSterling, Megaphone, Palette } from 'lucide-react';
-import { Button } from './ui/button';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui/dropdown-menu';
+import { Menu, X, User, ShoppingCart, LogOut } from 'lucide-react';
+import { useCart } from '../hooks/useCart';
 import { useAuth } from '../context/AuthContext';
-import { useCart } from '../context/CartContext'; // Ensure this import is present
-import { useCurrency } from '../context/CurrencyContext';
-import LanguageSelector from './LanguageSelector'; // Assuming this component exists
+import CurrencySelector from './CurrencySelector';
+import LanguageSelector from './LanguageSelector';
+import AuthDialog from './auth/AuthDialog';
+import { Button } from './ui/button';
+import { AnimatedShinyText } from '../components/magicui/animated-shiny-text';
 
-const Header: React.FC = () => {
-  const { user, signOut } = useAuth();
-  const { cartItems } = useCart(); // Get cartItems from the context
-  const { currency, setCurrency } = useCurrency();
+interface HeaderProps {
+  toggleCart: () => void;
+}
 
-  // This is the fix for the TypeError: Cannot read properties of undefined (reading 'length')
-  // It ensures that if cartItems is undefined or null, it defaults to an empty array []
-  const cartItemCount = (cartItems ?? []).length;
+const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
+  const [navOpen, setNavOpen] = React.useState(false);
+  const [authDialogOpen, setAuthDialogOpen] = React.useState(false);
+  const [authDialogTab, setAuthDialogTab] = React.useState<'signin' | 'signup'>('signin');
+  const { cartItems } = useCart();
+  const { user, signOut, loading } = useAuth();
 
+  const handleAuthClick = (tab: 'signin' | 'signup') => {
+    setAuthDialogTab(tab);
+    setAuthDialogOpen(true);
+  };
+
+  const handleSignOut = async () => {
+    await signOut();
+  };
+
+  // Handle cart click with coming soon message
+  const handleCartClick = () => {
+    alert('Cart functionality is coming soon!');
+  };
+  
   return (
-    <header className="bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between shadow-sm">
-      <div className="flex items-center space-x-6">
-        {/* Logo or Site Title */}
-        <Link to="/" className="text-2xl font-bold text-indigo-600 hover:text-indigo-700">
-          VibePage
-        </Link>
-
-        {/* Primary Navigation */}
-        <nav className="hidden md:flex space-x-4">
-          <Link to="/" className="text-gray-600 hover:text-indigo-600 flex items-center">
-            <Home className="w-4 h-4 mr-1" />
-            Domains
-          </Link>
-          <Link to="/card-studio" className="text-gray-600 hover:text-indigo-600 flex items-center">
-            <Palette className="w-4 h-4 mr-1" />
-            Card Studio
-          </Link>
-          {/* Add more navigation links as needed */}
-        </nav>
-      </div>
-
-      <div className="flex items-center space-x-4">
-        {/* Currency Selector */}
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" size="sm" className="flex items-center">
-              {currency === 'MGA' && 'MGA'}
-              {currency === 'ZAR' && 'ZAR'}
-              {currency === 'USD' && <DollarSign className="w-4 h-4" />}
-              {currency === 'EUR' && <Euro className="w-4 h-4" />}
-              {currency === 'GBP' && <PoundSterling className="w-4 h-4" />}
-              <span className="ml-1">{currency}</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem onClick={() => setCurrency('MGA')}>MGA</DropdownMenuItem>
-            <DropdownMenuItem onClick={() => setCurrency('ZAR')}>ZAR</DropdownMenuItem>
-            <DropdownMenuItem onClick={() => setCurrency('USD')}>USD</DropdownMenuItem>
-            <DropdownMenuItem onClick={() => setCurrency('EUR')}>EUR</DropdownMenuItem>
-            <DropdownMenuItem onClick={() => setCurrency('GBP')}>GBP</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-
-        {/* Language Selector */}
-        <LanguageSelector />
-
-        {/* Cart Button */}
-        <Button variant="ghost" size="sm" className="relative"
-          // This is where you might add a "coming soon" message or disable
-          onClick={() => alert('Cart functionality is coming soon!')} // Example: temporary alert
-          disabled={true}
-          disabled={true} // Example: disable the button if not ready
-          onClick={() => alert('Cart functionality is coming soon!')}
-        >
-          <ShoppingCart className="w-5 h-5 text-gray-600" />
-          {/* Display cart item count using the safely accessed variable */}
-          {cartItems && cartItems.length > 0 && (
-            <span className="absolute -top-1 -right-1 bg-indigo-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-              {cartItemCount}
-            </span>
-          )}
-        </Button>
-
-        {/* User Authentication */}
-        {user ? (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="flex items-center space-x-1">
-                <User className="w-5 h-5 text-gray-600" />
-                <span className="hidden sm:inline">{user.email || 'User'}</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <Link to="/dashboard">
-                <DropdownMenuItem>
-                  <LayoutDashboard className="w-4 h-4 mr-2" />
-                  Dashboard
-                </DropdownMenuItem>
+    <>
+      <header className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center">
+              <Link to="/" className="flex items-center">
+                <div className="w-10 h-10 rounded-full overflow-hidden mr-2">
+                  <img 
+                    src="https://i.imghippo.com/files/XSY6887eA.jpeg" 
+                    alt="VibePage Logo"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="text-2xl font-bold tracking-tight mr-9"><span className="tapered">Vibe</span>Page</div>
               </Link>
-              <DropdownMenuItem onClick={signOut}>
-                Sign Out
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        ) : (
-          <Link to="/auth">
-            <Button variant="outline" size="sm">Sign In</Button>
-          </Link>
-        )}
-      </div>
-    </header>
-  );
-};
+              <nav className="hidden md:block">
+                <ul className="flex space-x-8">
+                  <li><Link to="/domains" className="hover:text-amber-300 transition-colors duration-200">Domains</Link></li>
+                  <li><Link to="/pricing" className="hover:text-amber-300 transition-colors duration-200">Pricing</Link></li>
+                  <li>
+                    <Link 
+                      to={user ? "/card-studio/editor" : "/card-studio"} 
+                      className="hover:text-amber-300 transition-colors duration-200"
+                    >
+                      Card Studio
+                    </Link>
+                  </li>
+                  <li><Link to="/support" className="hover:text-amber-300 transition-colors duration-200">Support</Link></li>
+                </ul>
+              </nav>
+            </div>
+            
+            <div className="flex items-center space-x-4">
+              <LanguageSelector />
+              <CurrencySelector />
+              
+              <button 
+                onClick={handleCartClick}
+                disabled={true}
+                className="relative p-2 hover:bg-purple-700 rounded-full transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <ShoppingCart size={20} />
+                {cartItems && cartItems.length > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-amber-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                    {cartItems.length}
+                  </span>
+                )}
+              </button>
+              
+              {!loading && (
+                <>
+                  {user ? (
+                    <div className="hidden md:flex items-center space-x-2">
+                      <Link to="/dashboard" className="flex items-center hover:bg-purple-700 rounded-full p-2 transition-colors duration-200">
+                        <User size={20} />
+                      </Link>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={handleSignOut}
+                        className="text-white hover:bg-purple-700"
+                      >
+                        <LogOut size={16} className="mr-1" />
+                        Sign Out
+                      </Button>
+                    </div>
+                  ) : (
+                    <div className="hidden md:flex items-center space-x-2">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => handleAuthClick('signin')}
+                        className="text-white hover:bg-purple-700"
+                      >
+                        Sign In
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleAuthClick('signup')}
+                        className="border-white text-white hover:bg-white hover:text-indigo-600"
+                      >
+                        <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
+                          Sign Up
+                        </AnimatedShinyText>
+                      </Button>
+                    </div>
+                  )}
+                </>
+              )}
+              
+              <button 
+                className="md:hidden p-2 hover:bg-purple-700 rounded-full transition-colors duration-200"
+                onClick={() => setNavOpen(!navOpen)}
+              >
+                {navOpen ? <X size={20} /> : <Menu size={20} />}
+              </button>
+            </div>
+          </div>
+          
+          {navOpen && (
+            <nav className="mt-4 md:hidden">
+              <ul className="space-y-2">
+                <li><Link to="/domains" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">Domains</Link></li>
+                <li><Link to="/pricing" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">Pricing</Link></li>
+                <li>
+                  <Link 
+                    to={user ? "/card-studio/editor" : "/card-studio"} 
+                    className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200"
+                  >
+                    Card Studio
+                  </Link>
+                </li>
+                <li><Link to="/support" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">Support</Link></li>
+                {user ? (
+                  <>
+                    <li><Link to="/dashboard" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">Account</Link></li>
+                    <li>
+                      <button 
+                        onClick={handleSignOut}
+                        className="block w-full text-left py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200"
+                      >
+                        Sign Out
+                      </button>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <button 
+                        onClick={() => handleAuthClick('signin')}
+                        className="block w-full text-left py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200"
+                      >
+                        Sign In
+                      </button>
+                    </li>
+                    <li>
+                      <button 
+                        onClick={() => handleAuthClick('signup')}
+                        className="block w-full text-left py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200"
+                      >
+                        <AnimatedShinyText className="text-white !mx-0 !max-w-none">
+                          Sign Up
+                        </AnimatedShinyText>
+                      </button>
+                    </li>
+                  </>
+                )}
+              </ul>
+            </nav>
+          )}
+        </div>
+      </header>
 
-export default Header;
+      <AuthDialog 
+        isOpen={authDialogOpen} 
+        onClose={() => setAuthDialogOpen(false)}
+        defaultTab={authDialogTab}
+      />
+    </>
+  );
+}
+
+export default Header
