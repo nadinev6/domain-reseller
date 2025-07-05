@@ -248,3 +248,4 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
       </div>
     </div>
   );
+}
