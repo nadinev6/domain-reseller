@@ -28,6 +28,18 @@ interface CartProviderProps {
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [cartItems, setCartItems] = useTamboComponentState<DomainResult[]>([]);
   
+  // Top-level check to ensure cartItems is initialized
+  if (cartItems === undefined) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-6 h-6 border-2 border-indigo-600 border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
+          <p className="text-gray-600">Loading cart...</p>
+        </div>
+      </div>
+    );
+  }
+
   const addToCart = (domain: DomainResult) => {
     setCartItems((prev) => {
       // Avoid duplicates

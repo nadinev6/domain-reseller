@@ -27,6 +27,26 @@ const CardStudioEditorContent: React.FC = () => {
   const [isSaving, setIsSaving] = useTamboComponentState(false);
   const { user } = useAuth();
 
+  // Top-level check to ensure all useTamboComponentState variables are initialized
+  if (
+    elements === undefined ||
+    selectedElement === undefined ||
+    multiSelectedElementIds === undefined ||
+    canvasSettings === undefined ||
+    history === undefined ||
+    historyIndex === undefined ||
+    isSaving === undefined
+  ) {
+    return (
+      <div className="h-screen bg-gray-100 flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4 text-indigo-600" />
+          <p className="text-gray-600">Initializing Card Studio...</p>
+        </div>
+      </div>
+    );
+  }
+
   // Load card from URL parameter if provided
   React.useEffect(() => {
     const loadCardId = searchParams.get('load');

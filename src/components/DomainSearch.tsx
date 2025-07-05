@@ -12,6 +12,18 @@ const DomainSearch: React.FC<DomainSearchProps> = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useTamboComponentState('');
   const [isSearching, setIsSearching] = useTamboComponentState(false);
   
+  // Top-level check to ensure all useTamboComponentState variables are initialized
+  if (searchTerm === undefined || isSearching === undefined) {
+    return (
+      <div className="w-full max-w-4xl mx-auto px-4 mt-8 md:mt-16">
+        <div className="text-center mb-8">
+          <div className="w-8 h-8 border-2 border-indigo-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading search...</p>
+        </div>
+      </div>
+    );
+  }
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (!searchTerm.trim()) return;

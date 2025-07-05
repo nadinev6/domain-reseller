@@ -332,6 +332,13 @@ export default {
           },
           hash: "9a53935a8a92afc9b0a17a29679e6359",
         },
+        "6/0/init/body/2/consequent/0/argument/1/3": {
+          content: {
+            en: "Loading search...",
+            fr: "Recherche en cours...",
+          },
+          hash: "763f62dbca702f1964b0d0c29d2a7468",
+        },
         "6/0/init/body/3/argument/1/1": {
           content: {
             en: "Find your perfect Name",
@@ -2933,6 +2940,13 @@ export default {
             fr: "<element:Download></element:Download> Exporter",
           },
           hash: "82c7fb0a52965a8cde48deeee9cd663b",
+        },
+        "13/0/init/body/9/consequent/0/argument/1/3": {
+          content: {
+            en: "Initializing Card Studio...",
+            fr: "Initialisation de Card Studio...",
+          },
+          hash: "b094aff4ba0b5e0e0f427d3a0a2185d2",
         },
         "15/0/init/body/21/argument/3/1/1": {
           content: {
