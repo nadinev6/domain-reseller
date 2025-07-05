@@ -187,7 +187,7 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
         // Apply gradient or solid color
         if (element.isGradientText && element.gradientColor1 && element.gradientColor2) {
           // For gradient text, we need to handle emojis separately
-          const content = element.content || 'Your text here';
+          const rawTextContent = element.content || 'Your text here';
           const emojiRegex = /[\u{1F600}-\u{1F64F}]|[\u{1F300}-\u{1F5FF}]|[\u{1F680}-\u{1F6FF}]|[\u{1F1E0}-\u{1F1FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]/gu;
           
           // Split content into parts (text and emojis)
@@ -195,12 +195,12 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
           let lastIndex = 0;
           let match;
           
-          while ((match = emojiRegex.exec(content)) !== null) {
+          while ((match = emojiRegex.exec(rawTextContent)) !== null) {
             // Add text before emoji
             if (match.index > lastIndex) {
               parts.push({
                 type: 'text',
-                content: content.slice(lastIndex, match.index)
+                content: rawTextContent.slice(lastIndex, match.index)
               });
             }
             // Add emoji
@@ -212,10 +212,10 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
           }
           
           // Add remaining text
-          if (lastIndex < content.length) {
+          if (lastIndex < rawTextContent.length) {
             parts.push({
               type: 'text',
-              content: content.slice(lastIndex)
+              content: rawTextContent.slice(lastIndex)
             });
           }
           
@@ -223,7 +223,7 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
           if (parts.length === 0) {
             parts.push({
               type: 'text',
-              content: content
+              content: rawTextContent
             });
           }
           
@@ -238,7 +238,7 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
                   style={part.type === 'text' ? {
                     background: `linear-gradient(${element.gradientDirection || 'to right'}, ${element.gradientColor1}, ${element.gradientColor2})`,
                     WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent', 
+                    WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text'
                   } : {
                     color: 'inherit'
