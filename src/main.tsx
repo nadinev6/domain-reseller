@@ -62,6 +62,16 @@ const tamboComponents = [
       searchTerm: z.string().describe('Current search term entered by user'),
       isSearching: z.boolean().describe('Whether a search is currently in progress'),
       results: z.array(DomainResultSchema).optional().describe('Array of domain search results')
+    }),
+    actionsSchema: z.object({
+      setSearchTerm: z.function()
+        .args(z.string())
+        .returns(z.void())
+        .describe('Update the search term'),
+      performSearch: z.function()
+        .args(z.string())
+        .returns(z.void())
+        .describe('Perform a domain search with the given term')
     })
   },
   {
@@ -74,6 +84,36 @@ const tamboComponents = [
       canvasSettings: CanvasSettingsSchema.describe('Canvas configuration including size and background'),
       historyIndex: z.number().describe('Current position in undo/redo history'),
       isSaving: z.boolean().describe('Whether the card is currently being saved')
+    }),
+    actionsSchema: z.object({
+      addElement: z.function()
+        .args(z.enum(['text', 'image', 'shape', 'button']), z.number(), z.number())
+        .returns(z.void())
+        .describe('Add a new element to the canvas'),
+      updateElement: z.function()
+        .args(z.string(), z.record(z.any()))
+        .returns(z.void())
+        .describe('Update an existing element by ID'),
+      deleteElement: z.function()
+        .args(z.string())
+        .returns(z.void())
+        .describe('Delete an element by ID'),
+      saveCard: z.function()
+        .args()
+        .returns(z.void())
+        .describe('Save the current card design'),
+      undo: z.function()
+        .args()
+        .returns(z.void())
+        .describe('Undo the last action'),
+      redo: z.function()
+        .args()
+        .returns(z.void())
+        .describe('Redo the last undone action'),
+      setCanvasSettings: z.function()
+        .args(CanvasSettingsSchema)
+        .returns(z.void())
+        .describe('Update canvas settings')
     })
   },
   {
@@ -84,6 +124,20 @@ const tamboComponents = [
       total: z.number().describe('Total price of all items in cart'),
       itemCount: z.number().describe('Number of items in cart'),
       isOpen: z.boolean().optional().describe('Whether the cart is currently open/visible')
+    }),
+    actionsSchema: z.object({
+      addToCart: z.function()
+        .args(DomainResultSchema)
+        .returns(z.void())
+        .describe('Add a domain to the cart'),
+      removeFromCart: z.function()
+        .args(z.string())
+        .returns(z.void())
+        .describe('Remove a domain from cart by ID'),
+      clearCart: z.function()
+        .args()
+        .returns(z.void())
+        .describe('Clear all items from cart')
     })
   },
   {
@@ -122,6 +176,16 @@ const tamboComponents = [
         timestamp: z.date()
       })).optional().describe('Chat message history'),
       isTyping: z.boolean().optional().describe('Whether the bot is currently typing a response')
+    }),
+    actionsSchema: z.object({
+      sendMessage: z.function()
+        .args(z.string())
+        .returns(z.void())
+        .describe('Send a message to the bot'),
+      onToggleCollapse: z.function()
+        .args()
+        .returns(z.void())
+        .describe('Toggle the bot interface collapsed state')
     })
   }
 ];

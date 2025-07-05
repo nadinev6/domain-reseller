@@ -1,21 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, Send, Minimize2, Maximize2, X } from 'lucide-react';
+import React, { useRef, useEffect } from 'react';
+import { MessageCircle, Send, Minimize2 } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
-import { useTamboState } from '../hooks/useTamboState';
-import { z } from 'zod';
-
-// Zod schema for bot interface state
-const BotInterfaceStateSchema = z.object({
-  isCollapsed: z.boolean(),
-  messages: z.array(z.object({
-    id: z.string(),
-    type: z.enum(['user', 'bot']),
-    content: z.string(),
-    timestamp: z.date()
-  })),
-  isTyping: z.boolean()
-});
+import { useTamboComponentState } from '@tambo-ai/react';
 
 interface Message {
   id: string;
@@ -30,7 +17,7 @@ interface BotInterfaceProps {
 }
 
 const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollapse }) => {
-  const [messages, setMessages] = useState<Message[]>([
+  const [messages, setMessages] = useTamboComponentState<Message[]>([
     {
       id: '1',
       type: 'bot',
@@ -38,11 +25,10 @@ const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollap
       timestamp: new Date()
     }
   ]);
-  const [inputValue, setInputValue] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
+  const [inputValue, setInputValue] = useTamboComponentState('');
+  const [isTyping, setIsTyping] = useTamboComponentState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Define handleSendMessage before using it in useTamboState
   const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
 
@@ -69,22 +55,6 @@ const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollap
       setIsTyping(false);
     }, 1000);
   };
-
-  // Register component state with Tambo
-  useTamboState({
-    componentName: 'BotInterface',
-    state: {
-      isCollapsed,
-      messages,
-      isTyping
-    },
-    actions: {
-      onToggleCollapse,
-      sendMessage: handleSendMessage,
-      setInputValue
-    },
-    schema: BotInterfaceStateSchema
-  });
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });

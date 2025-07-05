@@ -10,58 +10,22 @@ import { CardElement } from '../types';
 import { useAuth } from '../context/AuthContext';
 import { supabase } from '../lib/supabase';
 import { SavedCard } from '../types';
-import { useTamboState } from '../hooks/useTamboState';
-import { z } from 'zod';
-
-// Zod schema for this component's state
-const CardStudioEditorStateSchema = z.object({
-  elements: z.array(z.any()), // Using z.any() for now since CardElement is complex
-  selectedElement: z.any().nullable(),
-  canvasSettings: z.object({
-    width: z.number(),
-    height: z.number(),
-    backgroundColor: z.string()
-  }),
-  historyIndex: z.number(),
-  isSaving: z.boolean()
-});
+import { useTamboComponentState } from '@tambo-ai/react';
 
 const CardStudioEditorContent: React.FC = () => {
   const [searchParams] = useSearchParams();
-  const [elements, setElements] = useState<CardElement[]>([]);
-  const [selectedElement, setSelectedElement] = useState<CardElement | null>(null);
-  const [multiSelectedElementIds, setMultiSelectedElementIds] = useState<string[]>([]);
-  const [canvasSettings, setCanvasSettings] = useState({
+  const [elements, setElements] = useTamboComponentState<CardElement[]>([]);
+  const [selectedElement, setSelectedElement] = useTamboComponentState<CardElement | null>(null);
+  const [multiSelectedElementIds, setMultiSelectedElementIds] = useTamboComponentState<string[]>([]);
+  const [canvasSettings, setCanvasSettings] = useTamboComponentState({
     width: 800,
     height: 600,
     backgroundColor: '#ffffff'
   });
-  const [history, setHistory] = useState<CardElement[][]>([[]]);
-  const [historyIndex, setHistoryIndex] = useState(0);
-  const [isSaving, setIsSaving] = useState(false);
+  const [history, setHistory] = useTamboComponentState<CardElement[][]>([[]]);
+  const [historyIndex, setHistoryIndex] = useTamboComponentState(0);
+  const [isSaving, setIsSaving] = useTamboComponentState(false);
   const { user } = useAuth();
-
-  // Register component state with Tambo
-  useTamboState({
-    componentName: 'CardStudioEditor',
-    state: {
-      elements,
-      selectedElement,
-      canvasSettings,
-      historyIndex,
-      isSaving
-    },
-    schema: CardStudioEditorStateSchema, 
-    actions: {
-      addElement,
-      updateElement,
-      deleteElement,
-      saveCard,
-      undo,
-      redo,
-      setCanvasSettings
-    }
-  });
 
   // Load card from URL parameter if provided
   React.useEffect(() => {
