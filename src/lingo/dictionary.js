@@ -745,6 +745,375 @@ export default {
     },
     "components/card-studio/PropertiesPanel.tsx": {
       entries: {
+        "8/0/init/body/10/0/init/body/1/0/init/1/1/1": {
+          content: {
+            en: "X Position",
+            fr: "Position X",
+          },
+          hash: "436ea37348bccf75ea34ac6d55f847ed",
+        },
+        "8/0/init/body/10/0/init/body/1/0/init/1/3/1": {
+          content: {
+            en: "Y Position",
+            fr: "Position Y",
+          },
+          hash: "ca0092db4cc6bda38d7287a6d2cbade2",
+        },
+        "8/0/init/body/10/0/init/body/1/0/init/3/1/1": {
+          content: {
+            en: "Width",
+            fr: "Largeur",
+          },
+          hash: "93a6b8408b0004d45d15ab2a0a30ef1e",
+        },
+        "8/0/init/body/10/0/init/body/1/0/init/3/3/1": {
+          content: {
+            en: "Height",
+            fr: "Hauteur",
+          },
+          hash: "f4da6d7ecd26e3fa75cfea03abb60c00",
+        },
+        "8/0/init/body/10/0/init/body/1/0/init/5/1": {
+          content: {
+            en: "Rotation",
+            fr: "Rotation",
+          },
+          hash: "6915529f93126f984d3ffc4c0e43ad49",
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/1/3": {
+          content: {
+            en: "Text Properties",
+            fr: "Propriétés du texte",
+          },
+          hash: "84702c17fcc0f4e16cdf3f035079bd7a",
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/11/1": {
+          content: {
+            en: "Text Align",
+            fr: "Alignement du texte",
+          },
+          hash: "2f00654a3ceafed0f09fb34f636f1b43",
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/11/3/1": {
+          content: {
+            en: "Left",
+            fr: "Gauche",
+          },
+          hash: "f849afc23c62251a3c18c39642ea1955",
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/11/3/3": {
+          content: {
+            en: "Center",
+            fr: "Centre",
+          },
+          hash: "556b242f32350397dfebed7180908edf",
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/11/3/5": {
+          content: {
+            en: "Right",
+            fr: "Droite",
+          },
+          hash: "d2ecd32a214b897f3edddb395a04253d",
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/3/1": {
+          content: {
+            en: "Text Content",
+            fr: "Contenu du texte",
+          },
+          hash: "d23904030a893e7ac768f3df7279eb68",
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/3/3/1-placeholder": {
+          content: {
+            en: "Type your text here... Press Enter for new lines",
+            fr: "Écris ton texte ici... Appuie sur Entrée pour sauter des lignes",
+          },
+          hash: "a6ff00e1efa042d9d7aedb1102d32a06",
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/3/3/3-title": {
+          content: {
+            en: "Add emoji",
+            fr: "Ajouter un emoji",
+          },
+          hash: "58013d0a094524bbd7314e29d1fbda50",
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/3/7/expression/right/5": {
+          content: {
+            en: "Close",
+            fr: "Fermer",
+          },
+          hash: "a3ca1ea6dee147739081cf664c41ff16",
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/5/1/1": {
+          content: {
+            en: "Font Size",
+            fr: "Taille de police",
+          },
+          hash: "ca44d14429b2175a1b194793b4ab8f6b",
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/5/3/1": {
+          content: {
+            en: "Font Weight",
+            fr: "Graisse de police",
+          },
+          hash: "bfef83778146cf40550df9650d8a07da",
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/5/3/3/1": {
+          content: {
+            en: "Light",
+            fr: "Léger",
+          },
+          hash: "bb78ea2c6edd8662676c81a8a13ecb93",
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/5/3/3/3": {
+          content: {
+            en: "Normal",
+            fr: "Normal",
+          },
+          hash: "d51cbea62adaba2a8a681d100bd3b120",
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/5/3/3/5": {
+          content: {
+            en: "Bold",
+            fr: "Gras",
+          },
+          hash: "4d7306bc355ed2befd6a9237c5452ee6",
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/1/3": {
+          content: {
+            en: "Enable Gradient Text",
+            fr: "Activer le texte en dégradé",
+          },
+          hash: "696549ccb3b182c6c8e90965dee4a27b",
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/alternate/1":
+          {
+            content: {
+              en: "Text Color",
+              fr: "Couleur du texte",
+            },
+            hash: "9527379203f67a8b8458ec2e78f43303",
+          },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/consequent/1/1/1":
+          {
+            content: {
+              en: "Color 1",
+              fr: "Couleur 1",
+            },
+            hash: "a005ff79dbe2d1faea6e2848147bf6d9",
+          },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/consequent/1/3/1":
+          {
+            content: {
+              en: "Color 2",
+              fr: "Couleur 2",
+            },
+            hash: "def8de2d7cb8be45ed24c1ad3effafdd",
+          },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/consequent/3/1":
+          {
+            content: {
+              en: "Direction",
+              fr: "Direction",
+            },
+            hash: "2920314e7f25957f16577b544b4e860b",
+          },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/consequent/3/3/1":
+          {
+            content: {
+              en: "Left to Right",
+              fr: "Gauche à droite",
+            },
+            hash: "d794327d5f45cf1bf886122a606b215d",
+          },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/consequent/3/3/11":
+          {
+            content: {
+              en: "Diagonal ↘",
+              fr: "Diagonal ↘",
+            },
+            hash: "24ecd02fd6645fc65d1826dd00c1a47b",
+          },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/consequent/3/3/13":
+          {
+            content: {
+              en: "Diagonal ↖",
+              fr: "Diagonal ↖",
+            },
+            hash: "8db9bf8278810a4b8b0be8ee82b3f1b0",
+          },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/consequent/3/3/15":
+          {
+            content: {
+              en: "Diagonal ↙",
+              fr: "Diagonal ↙",
+            },
+            hash: "9a00256d637dff119a073c8297c62ddb",
+          },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/consequent/3/3/3":
+          {
+            content: {
+              en: "Right to Left",
+              fr: "Droite à gauche",
+            },
+            hash: "490e046b7dfe7e633f6bf825249eb438",
+          },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/consequent/3/3/5":
+          {
+            content: {
+              en: "Top to Bottom",
+              fr: "Haut vers bas",
+            },
+            hash: "f4ad52b4fc8577ef5f32dd04e9f025bd",
+          },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/consequent/3/3/7":
+          {
+            content: {
+              en: "Bottom to Top",
+              fr: "Bas vers haut",
+            },
+            hash: "29366c4067372da4dd61045e92f7dd68",
+          },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/consequent/3/3/9":
+          {
+            content: {
+              en: "Diagonal ↗",
+              fr: "Diagonal ↗",
+            },
+            hash: "309acbfa2c819c18a2a8f43ad583bacf",
+          },
+        "8/0/init/body/10/0/init/body/2/1/0/argument/1/3": {
+          content: {
+            en: "Image Properties",
+            fr: "Propriétés de l'image",
+          },
+          hash: "80483344f4be443bc4fb09a155276635",
+        },
+        "8/0/init/body/10/0/init/body/2/1/0/argument/3/1": {
+          content: {
+            en: "Image URL",
+            fr: "URL de l'image",
+          },
+          hash: "e6423e3684e357178fd8e7ed230bcd33",
+        },
+        "8/0/init/body/10/0/init/body/2/1/0/argument/5/1": {
+          content: {
+            en: "Alt Text",
+            fr: "Texte alternatif",
+          },
+          hash: "911ee833be426439ab983a44f85ec298",
+        },
+        "8/0/init/body/10/0/init/body/2/1/0/argument/7/1": {
+          content: {
+            en: "Object Fit",
+            fr: "Ajustement de l'objet",
+          },
+          hash: "0c92e0618248823814c790339dc6a852",
+        },
+        "8/0/init/body/10/0/init/body/2/1/0/argument/7/3/1": {
+          content: {
+            en: "Cover",
+            fr: "Cover",
+          },
+          hash: "d511c2477f3979a9c909963bdd37c502",
+        },
+        "8/0/init/body/10/0/init/body/2/1/0/argument/7/3/3": {
+          content: {
+            en: "Contain",
+            fr: "Contain",
+          },
+          hash: "7dcadc370caae3e920d2fc6f02b42b13",
+        },
+        "8/0/init/body/10/0/init/body/2/1/0/argument/7/3/5": {
+          content: {
+            en: "Fill",
+            fr: "Fill",
+          },
+          hash: "b7d55d58601edc42c2f2c32468ac6244",
+        },
+        "8/0/init/body/10/0/init/body/2/1/0/argument/9/1": {
+          content: {
+            en: "Border Radius",
+            fr: "Rayon de bordure",
+          },
+          hash: "63b8f3541a9792d705e67d5aca7b6451",
+        },
+        "8/0/init/body/10/0/init/body/2/2/0/argument/1/3": {
+          content: {
+            en: "Shape Properties",
+            fr: "Propriétés de forme",
+          },
+          hash: "020c5f50f3de628a6b2d5df7f008844a",
+        },
+        "8/0/init/body/10/0/init/body/2/2/0/argument/3/1": {
+          content: {
+            en: "Background Color",
+            fr: "Couleur d'arrière-plan",
+          },
+          hash: "856f00315294ce30bdfc740b46f52ea8",
+        },
+        "8/0/init/body/10/0/init/body/2/2/0/argument/5/1": {
+          content: {
+            en: "Border Radius",
+            fr: "Rayon de bordure",
+          },
+          hash: "63b8f3541a9792d705e67d5aca7b6451",
+        },
+        "8/0/init/body/10/0/init/body/2/2/0/argument/7/1/1": {
+          content: {
+            en: "Border Width",
+            fr: "Largeur de bordure",
+          },
+          hash: "bdfb261d68a77efe9b5bbaa2870e7233",
+        },
+        "8/0/init/body/10/0/init/body/2/2/0/argument/7/3/1": {
+          content: {
+            en: "Border Color",
+            fr: "Couleur de bordure",
+          },
+          hash: "aa478eb148515b6a2637fb144ff72028",
+        },
+        "8/0/init/body/10/0/init/body/2/3/0/argument/1/3": {
+          content: {
+            en: "Button Properties",
+            fr: "Propriétés du bouton",
+          },
+          hash: "6eee1d66869c2d31ba621a5a7f9a3719",
+        },
+        "8/0/init/body/10/0/init/body/2/3/0/argument/3/1": {
+          content: {
+            en: "Button Text",
+            fr: "Texte du bouton",
+          },
+          hash: "3304e88bcc3869f3a306634b541e1e07",
+        },
+        "8/0/init/body/10/0/init/body/2/3/0/argument/5/1/1": {
+          content: {
+            en: "Button Color",
+            fr: "Couleur du bouton",
+          },
+          hash: "334c6d40206f6b540833decd068c04e9",
+        },
+        "8/0/init/body/10/0/init/body/2/3/0/argument/5/3/1": {
+          content: {
+            en: "Button Text Color",
+            fr: "Couleur du texte du bouton",
+          },
+          hash: "299386f18dec3fd4cf02374a5a64a724",
+        },
+        "8/0/init/body/10/0/init/body/2/3/0/argument/7/1": {
+          content: {
+            en: "Button Link",
+            fr: "Lien du bouton",
+          },
+          hash: "c478e4a84bf5e460a3f2f2b2bf68c0aa",
+        },
+        "8/0/init/body/10/0/init/body/2/3/0/argument/9/1": {
+          content: {
+            en: "Border Radius",
+            fr: "Rayon de bordure",
+          },
+          hash: "63b8f3541a9792d705e67d5aca7b6451",
+        },
         "8/0/init/body/10/argument/1/1": {
           content: {
             en: "Properties",
@@ -830,6 +1199,111 @@ export default {
           hash: "f4d7ba8d85496bfb99aacf14082a6f57",
         },
         "8/0/init/body/10/argument/3/7/expression/alternate/5": {
+          content: {
+            en: "Click on an element to edit its properties",
+            fr: "Cliquez sur un élément pour modifier ses propriétés",
+          },
+          hash: "6c3a7be3a8ceaa94a7245c548b3e8725",
+        },
+        "8/0/init/body/11/argument/1/1": {
+          content: {
+            en: "Properties",
+            fr: "Propriétés",
+          },
+          hash: "cae94811588334c014b1fd9d23c55c26",
+        },
+        "8/0/init/body/11/argument/3/3/1/3": {
+          content: {
+            en: "Canvas Settings",
+            fr: "Paramètres du canevas",
+          },
+          hash: "57d4686d3979d8e950c285d3ea17fa66",
+        },
+        "8/0/init/body/11/argument/3/3/3/1/1/1": {
+          content: {
+            en: "Canvas Width",
+            fr: "Largeur du canevas",
+          },
+          hash: "b0d79e771bc3360549febd56787c1893",
+        },
+        "8/0/init/body/11/argument/3/3/3/1/3/1": {
+          content: {
+            en: "Canvas Height",
+            fr: "Hauteur du canevas",
+          },
+          hash: "ca7af6bfbb5fd0d90246faf8c1fc70a4",
+        },
+        "8/0/init/body/11/argument/3/3/3/3/1": {
+          content: {
+            en: "Canvas Background",
+            fr: "Arrière-plan du canevas",
+          },
+          hash: "48cf3793bb603216d5d1a16ccaad762b",
+        },
+        "8/0/init/body/11/argument/3/3/3/5/1/1": {
+          content: {
+            en: "Color Palette",
+            fr: "Palette de couleurs",
+          },
+          hash: "c5b02bc0c573ac8761f6753905dff2bf",
+        },
+        "8/0/init/body/11/argument/3/3/3/5/1/3/1": {
+          content: {
+            en: "<element:Save></element:Save> Save",
+            fr: "<element:Save></element:Save> Enregistrer",
+          },
+          hash: "d0b3103a68eea852444ca2f6a7e118fc",
+        },
+        "8/0/init/body/11/argument/3/3/3/5/1/3/1-title": {
+          content: {
+            en: "Save current canvas background color",
+            fr: "Sauvegarder la couleur d'arrière-plan actuelle",
+          },
+          hash: "06af2ef2c0d35d309337efe9e2c95865",
+        },
+        "8/0/init/body/11/argument/3/3/3/5/1/3/3-title": {
+          content: {
+            en: "Reset color palette",
+            fr: "Réinitialiser la palette de couleurs",
+          },
+          hash: "2e4606e6a28832d6e8fe25793b456568",
+        },
+        "8/0/init/body/11/argument/3/3/3/5/5/expression/right": {
+          content: {
+            en: "Save colors to quickly apply them to your canvas background",
+            fr: "Enregistrer les couleurs pour les appliquer rapidement à l'arrière-plan de votre canevas",
+          },
+          hash: "813465d53502502d011d67c6c3fb6c38",
+        },
+        "8/0/init/body/11/argument/3/3/3/7/1": {
+          content: {
+            en: "16:9",
+            fr: "16:9",
+          },
+          hash: "33881948e7c545965af2de9ca22c2fe6",
+        },
+        "8/0/init/body/11/argument/3/3/3/7/3": {
+          content: {
+            en: "1:1",
+            fr: "1:1",
+          },
+          hash: "5161d8108982ac336c4e54a32eafd6ff",
+        },
+        "8/0/init/body/11/argument/3/3/3/7/5": {
+          content: {
+            en: "3:4",
+            fr: "3:4",
+          },
+          hash: "130696089cca672d098d3c2dbf4b464a",
+        },
+        "8/0/init/body/11/argument/3/7/expression/alternate/3": {
+          content: {
+            en: "No Element Selected",
+            fr: "Aucun élément sélectionné",
+          },
+          hash: "f4d7ba8d85496bfb99aacf14082a6f57",
+        },
+        "8/0/init/body/11/argument/3/7/expression/alternate/5": {
           content: {
             en: "Click on an element to edit its properties",
             fr: "Cliquez sur un élément pour modifier ses propriétés",

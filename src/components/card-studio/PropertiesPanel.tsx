@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Settings, Palette, Type, Image, Square, MousePointer, Save, Smile } from 'lucide-react';
+import { Settings, Palette, Type, Image, Square, MousePointer, Save, Smile, RotateCcw } from 'lucide-react';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import { Button } from '../ui/button';
@@ -67,6 +67,12 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
     
     setSavedColors(newColors);
     localStorage.setItem('vibepage-saved-colors', JSON.stringify(newColors));
+  };
+
+  // Reset color palette
+  const resetColorPalette = () => {
+    setSavedColors([]);
+    localStorage.removeItem('vibepage-saved-colors');
   };
 
   // Apply saved color to canvas background
@@ -173,6 +179,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
                   rows={3}
                   value={selectedElement.content || ''}
                   onChange={(e) => handleElementUpdate('content', e.target.value)}
+                  placeholder="Type your text here... Press Enter for new lines"
                 />
                 <button
                   type="button"
@@ -239,12 +246,12 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
                 <select
                   id="fontWeight"
                   className="w-full p-2 border border-gray-300 rounded-md"
-                  value={selectedElement.fontWeight || 'normal'}
+                  value={selectedElement.fontWeight || '400'}
                   onChange={(e) => handleElementUpdate('fontWeight', e.target.value)}
                 >
-                  <option value="normal">Normal</option>
-                  <option value="bold">Bold</option>
-                  <option value="lighter">Light</option>
+                  <option value="300">Light</option>
+                  <option value="400">Normal</option>
+                  <option value="700">Bold</option>
                 </select>
               </div>
             </div>
@@ -560,15 +567,27 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
             <div className="mt-4">
               <div className="flex items-center justify-between mb-2">
                 <Label className="text-sm font-medium">Color Palette</Label>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={saveCurrentColor}
-                  className="flex items-center text-xs"
-                >
-                  <Save className="w-3 h-3 mr-1" />
-                  Save Current
-                </Button>
+                <div className="flex items-center space-x-1">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={saveCurrentColor}
+                    className="flex items-center text-xs"
+                    title="Save current canvas background color"
+                  >
+                    <Save className="w-3 h-3 mr-1" />
+                    Save
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={resetColorPalette}
+                    className="flex items-center text-xs"
+                    title="Reset color palette"
+                  >
+                    <RotateCcw className="w-3 h-3" />
+                  </Button>
+                </div>
               </div>
               <div className="grid grid-cols-5 gap-2">
                 {Array.from({ length: 5 }).map((_, index) => {

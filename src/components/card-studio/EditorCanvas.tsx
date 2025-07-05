@@ -180,27 +180,87 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
           alignItems: 'center',
           padding: '8px',
           backgroundColor: 'transparent',
-          overflow: 'hidden'
+          overflow: 'hidden',
+          whiteSpace: 'pre-wrap'
         };
 
         // Apply gradient or solid color
         if (element.isGradientText && element.gradientColor1 && element.gradientColor2) {
-          textStyle.background = `linear-gradient(${element.gradientDirection || 'to right'}, ${element.gradientColor1}, ${element.gradientColor2})`;
-          textStyle.WebkitBackgroundClip = 'text';
-          textStyle.WebkitTextFillColor = 'transparent';
-          textStyle.backgroundClip = 'text';
+          // For gradient text, we need to handle emojis separately
+          const content = element.content || 'Your text here';
+          const emojiRegex = /[\u{1F600}-\u{1F64F}]|[\u{1F300}-\u{1F5FF}]|[\u{1F680}-\u{1F6FF}]|[\u{1F1E0}-\u{1F1FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]/gu;
+          
+          // Split content into parts (text and emojis)
+          const parts = [];
+          let lastIndex = 0;
+          let match;
+          
+          while ((match = emojiRegex.exec(content)) !== null) {
+            // Add text before emoji
+            if (match.index > lastIndex) {
+              parts.push({
+                type: 'text',
+                content: content.slice(lastIndex, match.index)
+              });
+            }
+            // Add emoji
+            parts.push({
+              type: 'emoji',
+              content: match[0]
+            });
+            lastIndex = match.index + match[0].length;
+          }
+          
+          // Add remaining text
+          if (lastIndex < content.length) {
+            parts.push({
+              type: 'text',
+              content: content.slice(lastIndex)
+            });
+          }
+          
+          // If no emojis found, treat as single text part
+          if (parts.length === 0) {
+            parts.push({
+              type: 'text',
+              content: content
+            });
+          }
+          
+          content = (
+            <div
+              style={textStyle}
+              onMouseDown={(e) => handleElementMouseDown(e, element)}
+            >
+              {parts.map((part, index) => (
+                <span
+                  key={index}
+                  style={part.type === 'text' ? {
+                    background: `linear-gradient(${element.gradientDirection || 'to right'}, ${element.gradientColor1}, ${element.gradientColor2})`,
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text'
+                  } : {
+                    color: 'inherit'
+                  }}
+                >
+                  {part.content}
+                </span>
+              ))}
+            </div>
+          );
         } else {
           textStyle.color = element.color;
+          content = (
+            <div
+              style={textStyle}
+              onMouseDown={(e) => handleElementMouseDown(e, element)}
+            >
+              {element.content || 'Your text here'}
+            </div>
+          );
         }
 
-        content = (
-          <div
-            style={textStyle}
-            onMouseDown={(e) => handleElementMouseDown(e, element)}
-          >
-            {element.content || 'Your text here'}
-          </div>
-        );
         break;
         
       case 'image':

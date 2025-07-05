@@ -113,7 +113,7 @@ const CardStudioEditorContent: React.FC = () => {
       ...(elementType === 'text' && {
         content: 'Your text here',
         fontSize: 16,
-        fontWeight: 'normal',
+        fontWeight: '400',
         color: '#000000',
         textAlign: 'left' as const,
         fontFamily: 'Inter, sans-serif',

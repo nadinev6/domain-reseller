@@ -835,6 +835,414 @@
     },
     "components/card-studio/PropertiesPanel.tsx": {
       "scopes": {
+        "8/0/init/body/10/0/init/body/1/0/init/1/1/1": {
+          "type": "element",
+          "hash": "436ea37348bccf75ea34ac6d55f847ed",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "X Position"
+        },
+        "8/0/init/body/10/0/init/body/1/0/init/1/3/1": {
+          "type": "element",
+          "hash": "ca0092db4cc6bda38d7287a6d2cbade2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Y Position"
+        },
+        "8/0/init/body/10/0/init/body/1/0/init/3/1/1": {
+          "type": "element",
+          "hash": "93a6b8408b0004d45d15ab2a0a30ef1e",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Width"
+        },
+        "8/0/init/body/10/0/init/body/1/0/init/3/3/1": {
+          "type": "element",
+          "hash": "f4da6d7ecd26e3fa75cfea03abb60c00",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Height"
+        },
+        "8/0/init/body/10/0/init/body/1/0/init/5/1": {
+          "type": "element",
+          "hash": "6915529f93126f984d3ffc4c0e43ad49",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Rotation"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/1/3": {
+          "type": "element",
+          "hash": "84702c17fcc0f4e16cdf3f035079bd7a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Text Properties"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/11/1": {
+          "type": "element",
+          "hash": "2f00654a3ceafed0f09fb34f636f1b43",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Text Align"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/11/3/1": {
+          "type": "element",
+          "hash": "f849afc23c62251a3c18c39642ea1955",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Left"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/11/3/3": {
+          "type": "element",
+          "hash": "556b242f32350397dfebed7180908edf",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Center"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/11/3/5": {
+          "type": "element",
+          "hash": "d2ecd32a214b897f3edddb395a04253d",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Right"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/3/1": {
+          "type": "element",
+          "hash": "d23904030a893e7ac768f3df7279eb68",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Text Content"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/3/3/1-placeholder": {
+          "type": "attribute",
+          "hash": "a6ff00e1efa042d9d7aedb1102d32a06",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Type your text here... Press Enter for new lines"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/3/3/3-title": {
+          "type": "attribute",
+          "hash": "58013d0a094524bbd7314e29d1fbda50",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Add emoji"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/3/7/expression/right/5": {
+          "type": "element",
+          "hash": "a3ca1ea6dee147739081cf664c41ff16",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Close"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/5/1/1": {
+          "type": "element",
+          "hash": "ca44d14429b2175a1b194793b4ab8f6b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Font Size"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/5/3/1": {
+          "type": "element",
+          "hash": "bfef83778146cf40550df9650d8a07da",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Font Weight"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/5/3/3/1": {
+          "type": "element",
+          "hash": "bb78ea2c6edd8662676c81a8a13ecb93",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Light"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/5/3/3/3": {
+          "type": "element",
+          "hash": "d51cbea62adaba2a8a681d100bd3b120",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Normal"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/5/3/3/5": {
+          "type": "element",
+          "hash": "4d7306bc355ed2befd6a9237c5452ee6",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Bold"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/1/3": {
+          "type": "element",
+          "hash": "696549ccb3b182c6c8e90965dee4a27b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Enable Gradient Text"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/alternate/1": {
+          "type": "element",
+          "hash": "9527379203f67a8b8458ec2e78f43303",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Text Color"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/consequent/1/1/1": {
+          "type": "element",
+          "hash": "a005ff79dbe2d1faea6e2848147bf6d9",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Color 1"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/consequent/1/3/1": {
+          "type": "element",
+          "hash": "def8de2d7cb8be45ed24c1ad3effafdd",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Color 2"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/consequent/3/1": {
+          "type": "element",
+          "hash": "2920314e7f25957f16577b544b4e860b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Direction"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/consequent/3/3/1": {
+          "type": "element",
+          "hash": "d794327d5f45cf1bf886122a606b215d",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Left to Right"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/consequent/3/3/11": {
+          "type": "element",
+          "hash": "24ecd02fd6645fc65d1826dd00c1a47b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Diagonal ↘"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/consequent/3/3/13": {
+          "type": "element",
+          "hash": "8db9bf8278810a4b8b0be8ee82b3f1b0",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Diagonal ↖"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/consequent/3/3/15": {
+          "type": "element",
+          "hash": "9a00256d637dff119a073c8297c62ddb",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Diagonal ↙"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/consequent/3/3/3": {
+          "type": "element",
+          "hash": "490e046b7dfe7e633f6bf825249eb438",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Right to Left"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/consequent/3/3/5": {
+          "type": "element",
+          "hash": "f4ad52b4fc8577ef5f32dd04e9f025bd",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Top to Bottom"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/consequent/3/3/7": {
+          "type": "element",
+          "hash": "29366c4067372da4dd61045e92f7dd68",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Bottom to Top"
+        },
+        "8/0/init/body/10/0/init/body/2/0/0/argument/9/3/expression/consequent/3/3/9": {
+          "type": "element",
+          "hash": "309acbfa2c819c18a2a8f43ad583bacf",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Diagonal ↗"
+        },
+        "8/0/init/body/10/0/init/body/2/1/0/argument/1/3": {
+          "type": "element",
+          "hash": "80483344f4be443bc4fb09a155276635",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Image Properties"
+        },
+        "8/0/init/body/10/0/init/body/2/1/0/argument/3/1": {
+          "type": "element",
+          "hash": "e6423e3684e357178fd8e7ed230bcd33",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Image URL"
+        },
+        "8/0/init/body/10/0/init/body/2/1/0/argument/5/1": {
+          "type": "element",
+          "hash": "911ee833be426439ab983a44f85ec298",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Alt Text"
+        },
+        "8/0/init/body/10/0/init/body/2/1/0/argument/7/1": {
+          "type": "element",
+          "hash": "0c92e0618248823814c790339dc6a852",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Object Fit"
+        },
+        "8/0/init/body/10/0/init/body/2/1/0/argument/7/3/1": {
+          "type": "element",
+          "hash": "d511c2477f3979a9c909963bdd37c502",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Cover"
+        },
+        "8/0/init/body/10/0/init/body/2/1/0/argument/7/3/3": {
+          "type": "element",
+          "hash": "7dcadc370caae3e920d2fc6f02b42b13",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Contain"
+        },
+        "8/0/init/body/10/0/init/body/2/1/0/argument/7/3/5": {
+          "type": "element",
+          "hash": "b7d55d58601edc42c2f2c32468ac6244",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Fill"
+        },
+        "8/0/init/body/10/0/init/body/2/1/0/argument/9/1": {
+          "type": "element",
+          "hash": "63b8f3541a9792d705e67d5aca7b6451",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Border Radius"
+        },
+        "8/0/init/body/10/0/init/body/2/2/0/argument/1/3": {
+          "type": "element",
+          "hash": "020c5f50f3de628a6b2d5df7f008844a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Shape Properties"
+        },
+        "8/0/init/body/10/0/init/body/2/2/0/argument/3/1": {
+          "type": "element",
+          "hash": "856f00315294ce30bdfc740b46f52ea8",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Background Color"
+        },
+        "8/0/init/body/10/0/init/body/2/2/0/argument/5/1": {
+          "type": "element",
+          "hash": "63b8f3541a9792d705e67d5aca7b6451",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Border Radius"
+        },
+        "8/0/init/body/10/0/init/body/2/2/0/argument/7/1/1": {
+          "type": "element",
+          "hash": "bdfb261d68a77efe9b5bbaa2870e7233",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Border Width"
+        },
+        "8/0/init/body/10/0/init/body/2/2/0/argument/7/3/1": {
+          "type": "element",
+          "hash": "aa478eb148515b6a2637fb144ff72028",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Border Color"
+        },
+        "8/0/init/body/10/0/init/body/2/3/0/argument/1/3": {
+          "type": "element",
+          "hash": "6eee1d66869c2d31ba621a5a7f9a3719",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Button Properties"
+        },
+        "8/0/init/body/10/0/init/body/2/3/0/argument/3/1": {
+          "type": "element",
+          "hash": "3304e88bcc3869f3a306634b541e1e07",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Button Text"
+        },
+        "8/0/init/body/10/0/init/body/2/3/0/argument/5/1/1": {
+          "type": "element",
+          "hash": "334c6d40206f6b540833decd068c04e9",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Button Color"
+        },
+        "8/0/init/body/10/0/init/body/2/3/0/argument/5/3/1": {
+          "type": "element",
+          "hash": "299386f18dec3fd4cf02374a5a64a724",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Button Text Color"
+        },
+        "8/0/init/body/10/0/init/body/2/3/0/argument/7/1": {
+          "type": "element",
+          "hash": "c478e4a84bf5e460a3f2f2b2bf68c0aa",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Button Link"
+        },
+        "8/0/init/body/10/0/init/body/2/3/0/argument/9/1": {
+          "type": "element",
+          "hash": "63b8f3541a9792d705e67d5aca7b6451",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Border Radius"
+        },
         "8/0/init/body/10/argument/1/1": {
           "type": "element",
           "hash": "cae94811588334c014b1fd9d23c55c26",
@@ -932,6 +1340,126 @@
           "content": "No Element Selected"
         },
         "8/0/init/body/10/argument/3/7/expression/alternate/5": {
+          "type": "element",
+          "hash": "6c3a7be3a8ceaa94a7245c548b3e8725",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Click on an element to edit its properties"
+        },
+        "8/0/init/body/11/argument/1/1": {
+          "type": "element",
+          "hash": "cae94811588334c014b1fd9d23c55c26",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Properties"
+        },
+        "8/0/init/body/11/argument/3/3/1/3": {
+          "type": "element",
+          "hash": "57d4686d3979d8e950c285d3ea17fa66",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Canvas Settings"
+        },
+        "8/0/init/body/11/argument/3/3/3/1/1/1": {
+          "type": "element",
+          "hash": "b0d79e771bc3360549febd56787c1893",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Canvas Width"
+        },
+        "8/0/init/body/11/argument/3/3/3/1/3/1": {
+          "type": "element",
+          "hash": "ca7af6bfbb5fd0d90246faf8c1fc70a4",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Canvas Height"
+        },
+        "8/0/init/body/11/argument/3/3/3/3/1": {
+          "type": "element",
+          "hash": "48cf3793bb603216d5d1a16ccaad762b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Canvas Background"
+        },
+        "8/0/init/body/11/argument/3/3/3/5/1/1": {
+          "type": "element",
+          "hash": "c5b02bc0c573ac8761f6753905dff2bf",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Color Palette"
+        },
+        "8/0/init/body/11/argument/3/3/3/5/1/3/1": {
+          "type": "element",
+          "hash": "d0b3103a68eea852444ca2f6a7e118fc",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Save></element:Save> Save"
+        },
+        "8/0/init/body/11/argument/3/3/3/5/1/3/1-title": {
+          "type": "attribute",
+          "hash": "06af2ef2c0d35d309337efe9e2c95865",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Save current canvas background color"
+        },
+        "8/0/init/body/11/argument/3/3/3/5/1/3/3-title": {
+          "type": "attribute",
+          "hash": "2e4606e6a28832d6e8fe25793b456568",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Reset color palette"
+        },
+        "8/0/init/body/11/argument/3/3/3/5/5/expression/right": {
+          "type": "element",
+          "hash": "813465d53502502d011d67c6c3fb6c38",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Save colors to quickly apply them to your canvas background"
+        },
+        "8/0/init/body/11/argument/3/3/3/7/1": {
+          "type": "element",
+          "hash": "33881948e7c545965af2de9ca22c2fe6",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "16:9"
+        },
+        "8/0/init/body/11/argument/3/3/3/7/3": {
+          "type": "element",
+          "hash": "5161d8108982ac336c4e54a32eafd6ff",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "1:1"
+        },
+        "8/0/init/body/11/argument/3/3/3/7/5": {
+          "type": "element",
+          "hash": "130696089cca672d098d3c2dbf4b464a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "3:4"
+        },
+        "8/0/init/body/11/argument/3/7/expression/alternate/3": {
+          "type": "element",
+          "hash": "f4d7ba8d85496bfb99aacf14082a6f57",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "No Element Selected"
+        },
+        "8/0/init/body/11/argument/3/7/expression/alternate/5": {
           "type": "element",
           "hash": "6c3a7be3a8ceaa94a7245c548b3e8725",
           "context": "",
