@@ -6,12 +6,14 @@ export default {
         "6/0/init/body/10/argument/11/1/1-placeholder": {
           content: {
             en: "Ask me anything about VibePage...",
+            fr: "Demandez-moi n'importe quoi sur VibePage...",
           },
           hash: "7b79fbf096222fc0c96423683165dd2c",
         },
         "6/0/init/body/10/argument/3/1/3": {
           content: {
             en: "VibePage Assistant",
+            fr: "Assistant VibePage",
           },
           hash: "7c24c5590cc13478df43676f0fe7d1e0",
         },
@@ -263,90 +265,105 @@ export default {
         "6/0/init/body/4/argument/1/1": {
           content: {
             en: "Find your perfect Name",
+            fr: "Trouvez votre nom parfait",
           },
           hash: "f1b6030ec99cae54c5cf237013a57d3c",
         },
         "6/0/init/body/4/argument/1/3": {
           content: {
             en: "Secure your online presence with a domain name that stands out.",
+            fr: "Sécurisez votre présence en ligne avec un nom de domaine qui se démarque.",
           },
           hash: "f416b299e6bbd5fcb798b053c309beff",
         },
         "6/0/init/body/4/argument/3/1-placeholder": {
           content: {
             en: "Find your perfect domain...",
+            fr: "Trouvez votre domaine parfait...",
           },
           hash: "e57f05f613e97a9c46f5316eec170753",
         },
         "6/0/init/body/4/argument/3/3/1/expression/alternate/3": {
           content: {
             en: "Search",
+            fr: "Rechercher",
           },
           hash: "49dd6c21604b5e8d4153ff1aff2177e1",
         },
         "6/0/init/body/4/argument/5/1": {
           content: {
             en: ".co.za",
+            fr: ".co.za",
           },
           hash: "1cf95bf129f48bb5f34e3fd7bda2f0dc",
         },
         "6/0/init/body/4/argument/5/11": {
           content: {
             en: ".help",
+            fr: ".help",
           },
           hash: "9b337097bf042c704264b61d64eca62b",
         },
         "6/0/init/body/4/argument/5/13": {
           content: {
             en: ".net",
+            fr: ".net",
           },
           hash: "e8e11617e9dd30763d682f4e8eeb2c01",
         },
         "6/0/init/body/4/argument/5/15": {
           content: {
             en: ".mobi",
+            fr: ".mobi",
           },
           hash: "70fe87de0ffa4dc2e51cbf927426a9e5",
         },
         "6/0/init/body/4/argument/5/17": {
           content: {
             en: ".pw",
+            fr: ".pw",
           },
           hash: "c770d591c0cfa23ad65cabebd3248603",
         },
         "6/0/init/body/4/argument/5/19": {
           content: {
             en: ".mg",
+            fr: ".mg",
           },
           hash: "a08e1985f122c577a9787b7ce702e199",
         },
         "6/0/init/body/4/argument/5/21": {
           content: {
             en: "...and more",
+            fr: "...et plus encore",
           },
           hash: "077da010a219841ae8f60347e3b867d1",
         },
         "6/0/init/body/4/argument/5/3": {
           content: {
             en: ".za.com",
+            fr: ".za.com",
           },
           hash: "d7beaa54e8f6e070b61fccce10691489",
         },
         "6/0/init/body/4/argument/5/5": {
           content: {
             en: ".com",
+            fr: ".com",
           },
           hash: "1add49701edb29bf7300a852a4afce13",
         },
         "6/0/init/body/4/argument/5/7": {
           content: {
             en: ".net",
+            fr: ".net",
           },
           hash: "e8e11617e9dd30763d682f4e8eeb2c01",
         },
         "6/0/init/body/4/argument/5/9": {
           content: {
             en: ".biz",
+            fr: ".biz",
           },
           hash: "9a53935a8a92afc9b0a17a29679e6359",
         },
@@ -2367,30 +2384,35 @@ export default {
         "13/0/init/body/21/argument/3/1/1": {
           content: {
             en: "Card Studio Editor",
+            fr: "Éditeur Card Studio",
           },
           hash: "b5742e7e35009781bb411280887c8fd6",
         },
         "13/0/init/body/21/argument/3/1/3/1": {
           content: {
             en: "<element:Undo></element:Undo> Undo",
+            fr: "<element:Undo></element:Undo> Annuler",
           },
           hash: "08e3fdab92aa3e91696af146d278262a",
         },
         "13/0/init/body/21/argument/3/1/3/3": {
           content: {
             en: "<element:Redo></element:Redo> Redo",
+            fr: "<element:Redo></element:Redo> Rétablir",
           },
           hash: "d7909de12fc2a20aab1a96b3d9add99c",
         },
         "13/0/init/body/21/argument/3/3/1": {
           content: {
             en: "<element:Eye></element:Eye> Preview",
+            fr: "<element:Eye></element:Eye> Aperçu",
           },
           hash: "1a878634c88abdb0bda86cf849d7d3c4",
         },
         "13/0/init/body/21/argument/3/3/3": {
           content: {
             en: "<element:Download></element:Download> Export",
+            fr: "<element:Download></element:Download> Exporter",
           },
           hash: "82c7fb0a52965a8cde48deeee9cd663b",
         },
