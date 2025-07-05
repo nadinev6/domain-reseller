@@ -3866,6 +3866,238 @@
           "skip": false,
           "overrides": {},
           "content": "Our powerful studio gives you all the tools to create professional social media cards that stand out"
+        },
+        "9/0/init/body/2/0/init/0/1/value": {
+          "type": "element",
+          "hash": "e51fac6b60d289c140c25f954c62abfa",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Drag & Drop Builder"
+        },
+        "9/0/init/body/2/0/init/1/1/value": {
+          "type": "element",
+          "hash": "3b290cf5987b5c26f58adf0e37698947",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Professional Templates"
+        },
+        "9/0/init/body/2/0/init/2/1/value": {
+          "type": "element",
+          "hash": "a2496a207c757df6f723e8b371828d87",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Mobile Responsive"
+        },
+        "9/0/init/body/2/0/init/3/1/value": {
+          "type": "element",
+          "hash": "07fca8d8208e78bbc1f10b6d2f2b5fc1",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Custom Domain"
+        },
+        "9/0/init/body/5/argument/11/1/1/1": {
+          "type": "element",
+          "hash": "7dbf99bd0eedea8a5578b4c00569215f",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Inspiration Gallery"
+        },
+        "9/0/init/body/5/argument/11/1/1/3": {
+          "type": "element",
+          "hash": "9b5a704bd232512dcd8df558607d7ad2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "See what's possible with our Social Media Card Studio"
+        },
+        "9/0/init/body/5/argument/11/1/3/1/1": {
+          "type": "element",
+          "hash": "5e2e93f8e2a5f315b6fecdd0a0e6f55f",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "All"
+        },
+        "9/0/init/body/5/argument/11/1/3/1/3": {
+          "type": "element",
+          "hash": "7682c7966c6e718836388561e7e68cab",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Business"
+        },
+        "9/0/init/body/5/argument/11/1/3/1/5": {
+          "type": "element",
+          "hash": "97e922b5475e6ecaa86de338a34fbf12",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Creative"
+        },
+        "9/0/init/body/5/argument/11/1/3/1/7": {
+          "type": "element",
+          "hash": "1c619008563115c5c99acdab4e8c9717",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Personal"
+        },
+        "9/0/init/body/5/argument/11/1/3/3/1/1/expression/0/body/3/3/expression/alternate": {
+          "type": "element",
+          "hash": "9b0b9e088ac2e222b5dde5a4f9204ed9",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Sign Up to Use Template"
+        },
+        "9/0/init/body/5/argument/11/1/3/3/1/1/expression/0/body/3/3/expression/consequent/1": {
+          "type": "element",
+          "hash": "4d7d9d54fbd130566a540362f17a52f1",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Use This Template"
+        },
+        "9/0/init/body/5/argument/11/1/3/3/1/1/expression/0/body/3/5/expression/right": {
+          "type": "element",
+          "hash": "b703294c15ebd24ef75348362f591eb8",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Get AI Help with This Style"
+        },
+        "9/0/init/body/5/argument/11/1/3/5/1/1": {
+          "type": "element",
+          "hash": "0222c0d2eb58ccb70327d084428fad36",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Business templates coming soon..."
+        },
+        "9/0/init/body/5/argument/11/1/3/7/1/1": {
+          "type": "element",
+          "hash": "e49971ab779bbf1d599c9f02d7a2bf4c",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Creative templates coming soon..."
+        },
+        "9/0/init/body/5/argument/11/1/3/9/1/1": {
+          "type": "element",
+          "hash": "ac0c901441cebab2f736558ea991ae2d",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Personal templates coming soon..."
+        },
+        "9/0/init/body/5/argument/15/1/1": {
+          "type": "element",
+          "hash": "36cbb0cce28ee72f3b60c7e24c26cf0e",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Ready to create your first card?"
+        },
+        "9/0/init/body/5/argument/15/1/3": {
+          "type": "element",
+          "hash": "552b2e64f452681efd5f3225970e8926",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Join thousands of creators who are already using our studio to build their online presence"
+        },
+        "9/0/init/body/5/argument/15/1/5/expression/alternate/1": {
+          "type": "element",
+          "hash": "901132c04060fe35f5725ad495adb4df",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Sign Up to Start Building"
+        },
+        "9/0/init/body/5/argument/15/1/5/expression/consequent/1/1": {
+          "type": "element",
+          "hash": "0c5454b229eae33185b02395933ac69b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Start Building Now"
+        },
+        "9/0/init/body/5/argument/15/1/7/expression/right/1": {
+          "type": "element",
+          "hash": "b33530969f97a4c48a058710df094342",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Get AI Template Suggestions"
+        },
+        "9/0/init/body/5/argument/3/1/1/expression/right/1": {
+          "type": "element",
+          "hash": "5e3369e6a949a4e8822ede87cd1fd21d",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Welcome back, <expression/>!"
+        },
+        "9/0/init/body/5/argument/3/1/3": {
+          "type": "element",
+          "hash": "d8f94c4122abde34682c9489851382ab",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Social Media Card Studio"
+        },
+        "9/0/init/body/5/argument/3/1/5": {
+          "type": "element",
+          "hash": "ff14492f6c8c06d34fe42a12334122c8",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Create stunning social media cards with our drag-and-drop builder"
+        },
+        "9/0/init/body/5/argument/3/1/7/1/expression/alternate/1": {
+          "type": "element",
+          "hash": "71272233ac81369c70f181b8eaae7184",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Sign Up to Get Started"
+        },
+        "9/0/init/body/5/argument/3/1/7/1/expression/consequent/1/1/1": {
+          "type": "element",
+          "hash": "012a1d4fc9b058937596f79b059d6b78",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Open Editor"
+        },
+        "9/0/init/body/5/argument/3/1/7/1/expression/consequent/3/1": {
+          "type": "element",
+          "hash": "444b443c1b8d0966055e0d217eda64c1",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Start with Template"
+        },
+        "9/0/init/body/5/argument/7/1/1/1": {
+          "type": "element",
+          "hash": "9c71d8af3f47104b7d8beaafae559df3",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Everything you need to create stunning cards"
+        },
+        "9/0/init/body/5/argument/7/1/1/3": {
+          "type": "element",
+          "hash": "ec99cddeb585e3d6f5b5c9af0d6b6ae9",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Our powerful studio gives you all the tools to create professional social media cards that stand out"
         }
       }
     }
