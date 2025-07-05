@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
+import BotInterface from './components/BotInterface';
 import DomainSearch from './components/DomainSearch';
 import DomainResults from './components/DomainResults';
 import Cart from './components/Cart';
@@ -17,6 +18,8 @@ export default function App() {
   const [searchResults, setSearchResults] = React.useState([]);
   const [isSearching, setIsSearching] = React.useState(false);
   const [isCartOpen, setIsCartOpen] = React.useState(false);
+  const [isHeaderCollapsed, setIsHeaderCollapsed] = React.useState(false);
+  const [isBotCollapsed, setIsBotCollapsed] = React.useState(true);
   
   const userGameData = {
     points: 230,
@@ -37,8 +40,12 @@ export default function App() {
       <AuthProvider>
         <CurrencyProvider>
           <CartProvider>
-            <div className="min-h-screen bg-gray-50">
-              <Header toggleCart={() => setIsCartOpen(!isCartOpen)} />
+            <div className="min-h-screen bg-gray-50 relative">
+              <Header 
+                toggleCart={() => setIsCartOpen(!isCartOpen)}
+                isCollapsed={isHeaderCollapsed}
+                onToggleCollapse={() => setIsHeaderCollapsed(!isHeaderCollapsed)}
+              />
               <Routes>
                 <Route path="/domains" element={<DomainsPage />} />
                 <Route path="/card-studio" element={<SocialMediaCardStudio />} />
@@ -59,6 +66,10 @@ export default function App() {
                 } />
               </Routes>
               <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+              <BotInterface 
+                isCollapsed={isBotCollapsed}
+                onToggleCollapse={() => setIsBotCollapsed(!isBotCollapsed)}
+              />
             </div>
           </CartProvider>
         </CurrencyProvider>

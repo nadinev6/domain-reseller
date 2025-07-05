@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, User, ShoppingCart, LogOut } from 'lucide-react';
+import { Menu, X, User, ShoppingCart, LogOut, ChevronUp, ChevronDown } from 'lucide-react';
 import { useCart } from '../hooks/useCart';
 import { useAuth } from '../context/AuthContext';
 import CurrencySelector from './CurrencySelector';
@@ -11,9 +11,11 @@ import { AnimatedShinyText } from '../components/magicui/animated-shiny-text';
 
 interface HeaderProps {
   toggleCart: () => void;
+  isCollapsed: boolean;
+  onToggleCollapse: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
+const Header: React.FC<HeaderProps> = ({ toggleCart, isCollapsed, onToggleCollapse }) => {
   const [navOpen, setNavOpen] = React.useState(false);
   const [authDialogOpen, setAuthDialogOpen] = React.useState(false);
   const [authDialogTab, setAuthDialogTab] = React.useState<'signin' | 'signup'>('signin');
@@ -31,7 +33,9 @@ const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
   
   return (
     <>
-      <header className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md">
+      <header className={`bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md transition-all duration-300 ${
+        isCollapsed ? 'h-12 overflow-hidden' : 'h-auto'
+      }`}>
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
@@ -45,7 +49,7 @@ const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
                 </div>
                 <div className="text-2xl font-bold tracking-tight mr-9"><span className="tapered">Vibe</span>Page</div>
               </Link>
-              <nav className="hidden md:block">
+              <nav className={`hidden md:block transition-opacity duration-300 ${isCollapsed ? 'opacity-0' : 'opacity-100'}`}>
                 <ul className="flex space-x-8">
                   <li><Link to="/domains" className="hover:text-amber-300 transition-colors duration-200">Domains</Link></li>
                   <li><Link to="/pricing" className="hover:text-amber-300 transition-colors duration-200">Pricing</Link></li>
@@ -63,8 +67,12 @@ const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
             </div>
             
             <div className="flex items-center space-x-4">
-              <LanguageSelector />
-              <CurrencySelector />
+              <div className={`transition-opacity duration-300 ${isCollapsed ? 'opacity-0' : 'opacity-100'}`}>
+                <LanguageSelector />
+              </div>
+              <div className={`transition-opacity duration-300 ${isCollapsed ? 'opacity-0' : 'opacity-100'}`}>
+                <CurrencySelector />
+              </div>
               
               <button 
                 onClick={toggleCart}
@@ -120,6 +128,14 @@ const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
                 </>
               )}
               
+              <button
+                onClick={onToggleCollapse}
+                className="p-2 hover:bg-purple-700 rounded-full transition-colors duration-200"
+                title={isCollapsed ? 'Expand header' : 'Collapse header'}
+              >
+                {isCollapsed ? <ChevronDown size={20} /> : <ChevronUp size={20} />}
+              </button>
+              
               <button 
                 className="md:hidden p-2 hover:bg-purple-700 rounded-full transition-colors duration-200"
                 onClick={() => setNavOpen(!navOpen)}
@@ -129,7 +145,7 @@ const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
             </div>
           </div>
           
-          {navOpen && (
+          {navOpen && !isCollapsed && (
             <nav className="mt-4 md:hidden">
               <ul className="space-y-2">
                 <li><Link to="/domains" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">Domains</Link></li>

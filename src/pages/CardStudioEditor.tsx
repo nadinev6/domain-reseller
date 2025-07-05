@@ -10,6 +10,7 @@ import { CardElement } from '../types';
 import { useAuth } from '../context/AuthContext';
 import { supabase } from '../lib/supabase';
 import { SavedCard } from '../types';
+import { useTamboState } from '../hooks/useTamboState';
 
 const CardStudioEditorContent: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -25,6 +26,27 @@ const CardStudioEditorContent: React.FC = () => {
   const [historyIndex, setHistoryIndex] = useState(0);
   const [isSaving, setIsSaving] = useState(false);
   const { user } = useAuth();
+
+  // Register component state with Tambo
+  useTamboState({
+    componentName: 'CardStudioEditor',
+    state: {
+      elements,
+      selectedElement,
+      canvasSettings,
+      historyIndex,
+      isSaving
+    },
+    actions: {
+      addElement,
+      updateElement,
+      deleteElement,
+      saveCard,
+      undo,
+      redo,
+      setCanvasSettings
+    }
+  });
 
   // Load card from URL parameter if provided
   React.useEffect(() => {

@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { DomainResult } from '../types';
+import { useTamboState } from '../hooks/useTamboState';
 
 interface CartContextType {
   cartItems: DomainResult[];
@@ -26,6 +27,21 @@ interface CartProviderProps {
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [cartItems, setCartItems] = useState<DomainResult[]>([]);
+  
+  // Register cart state with Tambo
+  useTamboState({
+    componentName: 'Cart',
+    state: {
+      items: cartItems,
+      total: getTotalPrice(),
+      itemCount: cartItems.length
+    },
+    actions: {
+      addToCart,
+      removeFromCart,
+      clearCart
+    }
+  });
   
   const addToCart = (domain: DomainResult) => {
     setCartItems((prev) => {

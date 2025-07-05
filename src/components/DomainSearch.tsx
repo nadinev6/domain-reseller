@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 import { searchDomains } from '../utils/domainUtils';
 import { DomainResult } from '../types';
+import { useTamboState } from '../hooks/useTamboState';
 
 interface DomainSearchProps {
   onSearch: (results: DomainResult[]) => void;
@@ -10,6 +11,22 @@ interface DomainSearchProps {
 const DomainSearch: React.FC<DomainSearchProps> = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isSearching, setIsSearching] = useState(false);
+  
+  // Register component state with Tambo
+  useTamboState({
+    componentName: 'DomainSearch',
+    state: {
+      searchTerm,
+      isSearching
+    },
+    actions: {
+      setSearchTerm,
+      performSearch: (term: string) => {
+        setSearchTerm(term);
+        handleSearch({ preventDefault: () => {} } as React.FormEvent);
+      }
+    }
+  });
   
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
