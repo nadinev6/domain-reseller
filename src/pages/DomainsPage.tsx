@@ -34,13 +34,13 @@ const DomainsPage: React.FC = () => {
   const [selectedTld, setSelectedTld] = useState<TLD | null>(null);
   const [years, setYears] = useState(1);
   const [operation, setOperation] = useState<'register' | 'transfer' | 'renew'>('register');
-  const { formatPrice } = useCurrency();
+  const { formatPrice, currency } = useCurrency();
 
   const filteredTlds = useMemo(() => {
     return tlds.filter(tld => 
       tld.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-  }, [searchTerm]);
+  }, [searchTerm, currency]);
 
   const calculatePrice = (tld: TLD) => {
     const basePrice = tld[operation];
