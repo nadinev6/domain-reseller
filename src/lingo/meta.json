@@ -3673,6 +3673,290 @@
         }
       }
     },
+    "pages/PricingPage.tsx": {
+      "scopes": {
+        "7/0/init/body/9/argument/1/11/1/1": {
+          "type": "element",
+          "hash": "5961a72f10680dbaa81a734f77c34f77",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "How the VibePage Points System Works"
+        },
+        "7/0/init/body/9/argument/1/11/1/3": {
+          "type": "element",
+          "hash": "915801911f7c608dee08848cb11ad55a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Earn points with subscriptions and purchases, then use them for domains and premium features"
+        },
+        "7/0/init/body/9/argument/1/11/3/3/1": {
+          "type": "element",
+          "hash": "5e9419b578e831bba5dd2c181615105f",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Points Value Examples:"
+        },
+        "7/0/init/body/9/argument/1/11/3/3/3/1/1": {
+          "type": "element",
+          "hash": "ecf07bc599934a7eb7ff2087623bb2db",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": ".com domain registration:"
+        },
+        "7/0/init/body/9/argument/1/11/3/3/3/1/3": {
+          "type": "element",
+          "hash": "dded8101ea821d41e6a2346e7ec96540",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "~300 points"
+        },
+        "7/0/init/body/9/argument/1/11/3/3/3/3/1": {
+          "type": "element",
+          "hash": "bd0625b62ade67eaf4d2852086a2bcd7",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": ".co.za domain registration:"
+        },
+        "7/0/init/body/9/argument/1/11/3/3/3/3/3": {
+          "type": "element",
+          "hash": "c1b8abd7049085bee30e741c3fadaa05",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "~100 points"
+        },
+        "7/0/init/body/9/argument/1/11/3/3/3/5/1": {
+          "type": "element",
+          "hash": "05f04fffd3c107b211858d7d75a7884b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Premium card template:"
+        },
+        "7/0/init/body/9/argument/1/11/3/3/3/5/3": {
+          "type": "element",
+          "hash": "ee321c17164a8374f28d66fe00577ab8",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "50 points"
+        },
+        "7/0/init/body/9/argument/1/11/3/3/3/7/1": {
+          "type": "element",
+          "hash": "d96e39597aa262031771a4c3bb61e848",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Priority support ticket:"
+        },
+        "7/0/init/body/9/argument/1/11/3/3/3/7/3": {
+          "type": "element",
+          "hash": "364308a3f9fa2b1bde001c260a6a9ca8",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "25 points"
+        },
+        "7/0/init/body/9/argument/1/15/1/1": {
+          "type": "element",
+          "hash": "212c5c784d5580b2f8b9481cb102cb4c",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Frequently Asked Questions"
+        },
+        "7/0/init/body/9/argument/1/15/3/1/1/1": {
+          "type": "element",
+          "hash": "918b508956060a33ca7e5ce451f2d7a8",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Can I change my plan anytime?"
+        },
+        "7/0/init/body/9/argument/1/15/3/1/1/3": {
+          "type": "element",
+          "hash": "2b07895aafa308149355350cf3efca09",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Yes! You can upgrade or downgrade your plan at any time. Changes take effect at your next billing cycle."
+        },
+        "7/0/init/body/9/argument/1/15/3/1/3/1": {
+          "type": "element",
+          "hash": "84831d84ecee86466e503e52c60e0a53",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Do points expire?"
+        },
+        "7/0/init/body/9/argument/1/15/3/1/3/3": {
+          "type": "element",
+          "hash": "2e8b35449345e6152197edf1a4e234f3",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Points from subscriptions never expire as long as you maintain an active subscription. Bonus points from purchases expire after 12 months."
+        },
+        "7/0/init/body/9/argument/1/15/3/1/5/1": {
+          "type": "element",
+          "hash": "ab0cf4bda4f1b390d84d331241e5a527",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "What happens if I cancel?"
+        },
+        "7/0/init/body/9/argument/1/15/3/1/5/3": {
+          "type": "element",
+          "hash": "45fb0e17d18e0becc7c58c54aa68ab61",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "You'll retain access to all features until the end of your billing period. Your points will remain available for 30 days after cancellation."
+        },
+        "7/0/init/body/9/argument/1/15/3/1/7/1": {
+          "type": "element",
+          "hash": "83e913994f4b5862cba03e0f5f01b79e",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Can I use points for domain renewals?"
+        },
+        "7/0/init/body/9/argument/1/15/3/1/7/3": {
+          "type": "element",
+          "hash": "152a447a65dcdbead7c522f48856608e",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Yes! Points can be used for domain registrations, transfers, and renewals. The point value varies by domain extension."
+        },
+        "7/0/init/body/9/argument/1/19/1": {
+          "type": "element",
+          "hash": "21b834a33212960be9e1828d32ef4d91",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Ready to get started?"
+        },
+        "7/0/init/body/9/argument/1/19/3": {
+          "type": "element",
+          "hash": "1bc54dbc983361f0cf0252ccfe371ce2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Join thousands of users who are already building their online presence with VibePage. Start with our {billingCycle} plan and unlock premium features today."
+        },
+        "7/0/init/body/9/argument/1/19/5/3": {
+          "type": "element",
+          "hash": "967d494864f8e26f452b7ac522ad2ffd",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Contact Sales"
+        },
+        "7/0/init/body/9/argument/1/3/1": {
+          "type": "element",
+          "hash": "0e4dad6aca89eca7ef038887ad347680",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Choose Your VibePage Plan"
+        },
+        "7/0/init/body/9/argument/1/3/3": {
+          "type": "element",
+          "hash": "3b2782b196af4ef1b270f38f94e7ebed",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Unlock the full potential of VibePage with our subscription plans. Get points, premium features, and priority support."
+        },
+        "7/0/init/body/9/argument/1/3/7/1": {
+          "type": "element",
+          "hash": "96c7960bb2bd69083d275daf90dae1ee",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Monthly"
+        },
+        "7/0/init/body/9/argument/1/3/7/3": {
+          "type": "element",
+          "hash": "bf3ad9f58a78bd76e2fe33945935fb45",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Annual<element:span>Save 25%</element:span>"
+        },
+        "7/0/init/body/9/argument/1/7/1/expression/0/body/1/expression/right/1": {
+          "type": "element",
+          "hash": "33f2cf6bc7d7a29b75e2a552f5508244",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "🎉 Best Value - Most Popular"
+        },
+        "7/0/init/body/9/argument/1/7/1/expression/0/body/3/5/1/3": {
+          "type": "element",
+          "hash": "d727054cb65d0e95c79cfb34bc3e3f28",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "/{plan.period}"
+        },
+        "7/0/init/body/9/argument/1/7/1/expression/0/body/3/5/3/expression/right": {
+          "type": "element",
+          "hash": "131567e12d88592eaca04e8fcb0ed686",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Equivalent to <function:formatPrice/>/month"
+        },
+        "7/0/init/body/9/argument/1/7/1/expression/0/body/3/9/1/1/1": {
+          "type": "element",
+          "hash": "2f685fafe6ecf62914cf23d7d2f9951a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Points Included"
+        },
+        "7/0/init/body/9/argument/1/7/1/expression/0/body/3/9/1/1/3": {
+          "type": "element",
+          "hash": "6e2698d01abc4022be1c49ab4b2a2e85",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "{plan.points} points"
+        },
+        "7/0/init/body/9/argument/1/7/1/expression/0/body/3/9/1/1/5/expression/right": {
+          "type": "element",
+          "hash": "1ce0682224e793d700242637687dfda2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "+{plan.monthlyPoints} bonus points"
+        },
+        "7/0/init/body/9/argument/1/7/1/expression/0/body/5/11/expression/right": {
+          "type": "element",
+          "hash": "3f0b53e2aa5100671192473e3f761339",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "🔥 Limited time: Get 2 months free with annual plan"
+        },
+        "7/0/init/body/9/argument/1/7/1/expression/0/body/5/7/1": {
+          "type": "element",
+          "hash": "7cb0031802f358a8e49287f2c041b076",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "What's included:"
+        }
+      }
+    },
     "pages/SocialMediaCardStudio.tsx": {
       "scopes": {
         "8/0/init/body/1/0/init/0/1/value": {
