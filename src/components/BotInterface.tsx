@@ -123,7 +123,7 @@ const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollap
     }
 
     // Card Studio queries
-    if (input.includes('card') && (input.includes('studio') || input.includes('create') || input.includes('design'))) {
+    if (input.includes('page') && (input.includes('studio') || input.includes('create') || input.includes('design'))) {
       return {
         content: 'The VibePage Studio is perfect for creating social media cards! You can drag and drop elements like text, images, shapes, and buttons. Customize colors, fonts, add gradient text effects, and save your designs. You need to be signed in to access the full editor.',
         suggestions: [
