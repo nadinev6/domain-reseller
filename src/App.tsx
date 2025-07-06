@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import BotInterface from './components/BotInterface';
 import DomainSearch from './components/DomainSearch';
@@ -16,12 +16,16 @@ import { CartProvider } from './context/CartContext';
 import { CurrencyProvider } from './context/CurrencyContext';
 import { AuthProvider } from './context/AuthContext';
 
-export default function App() {
+function AppContent() {
+  const location = useLocation();
   const [searchResults, setSearchResults] = React.useState([]);
   const [isSearching, setIsSearching] = React.useState(false);
   const [isCartOpen, setIsCartOpen] = React.useState(false);
   const [isHeaderCollapsed, setIsHeaderCollapsed] = React.useState(false);
   const [isBotCollapsed, setIsBotCollapsed] = React.useState(true);
+  
+  // Only show bot on the main page
+  const showBot = location.pathname === '/';
   
   const userGameData = {
     points: 230,
@@ -70,14 +74,23 @@ export default function App() {
                 } />
               </Routes>
               <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-              <BotInterface 
-                isCollapsed={isBotCollapsed}
-                onToggleCollapse={() => setIsBotCollapsed(!isBotCollapsed)}
-              />
+              {showBot && (
+                <BotInterface 
+                  isCollapsed={isBotCollapsed}
+                  onToggleCollapse={() => setIsBotCollapsed(!isBotCollapsed)}
+                />
+              )}
             </div>
           </CartProvider>
         </CurrencyProvider>
       </AuthProvider>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }
