@@ -1,7 +1,8 @@
-import React, { useRef, useCallback, useState, useEffect } from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 import { Trash2, Copy, RotateCw } from 'lucide-react';
 import { CardElement } from '../../types';
 import CardRenderer from './CardRenderer';
+
 
 interface EditorCanvasProps {
   elements: CardElement[];
@@ -51,79 +52,6 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
   const safeElements = elements || [];
   const safeMultiSelectedElementIds = multiSelectedElementIds || [];
 
-  // Global mouse move handler (attached to document)
-  const handleGlobalMouseMove = useCallback((e: MouseEvent) => {
-    if (dragRef.current.isDragging && dragRef.current.elementId) {
-      // Get canvas position to calculate relative coordinates
-      const rect = canvasRef.current?.getBoundingClientRect();
-      if (!rect) return;
-      
-      // Calculate mouse position relative to canvas
-      const canvasMouseX = e.clientX - rect.left;
-      const canvasMouseY = e.clientY - rect.top;
-      
-      // Calculate new element position
-      const newX = canvasMouseX - dragRef.current.startX;
-      const newY = canvasMouseY - dragRef.current.startY;
-      
-      // Get the current element to use its actual dimensions
-      const currentElement = safeElements.find(el => el.id === dragRef.current.elementId);
-      const elementWidth = currentElement?.width || 100;
-      const elementHeight = currentElement?.height || 100;
-      
-      // Constrain to canvas bounds using actual element dimensions
-      const constrainedX = Math.max(0, Math.min(newX, canvasSettings.width - elementWidth));
-      const constrainedY = Math.max(0, Math.min(newY, canvasSettings.height - elementHeight));
-      
-      // Calculate element center for grid guidelines
-      const elementCenterX = constrainedX + elementWidth / 2;
-      const elementCenterY = constrainedY + elementHeight / 2;
-      
-      // Canvas center
-      const canvasCenterX = canvasSettings.width / 2;
-      const canvasCenterY = canvasSettings.height / 2;
-      
-      // Check alignment with center (within 5px threshold)
-      const threshold = 5;
-      const isAlignedVertically = Math.abs(elementCenterX - canvasCenterX) <= threshold;
-      const isAlignedHorizontally = Math.abs(elementCenterY - canvasCenterY) <= threshold;
-      
-      setShowVerticalGuide(isAlignedVertically);
-      setShowHorizontalGuide(isAlignedHorizontally);
-      setVerticalGuideX(canvasCenterX);
-      setHorizontalGuideY(canvasCenterY);
-      
-      onUpdateElement(dragRef.current.elementId, {
-        x: constrainedX,
-        y: constrainedY
-      }, true);
-    }
-  }, [onUpdateElement, canvasSettings, safeElements]);
-
-  // Global mouse up handler (attached to document)
-  const handleGlobalMouseUp = useCallback(() => {
-    if (dragRef.current.isDragging) {
-      dragRef.current.isDragging = false;
-      dragRef.current.elementId = null;
-      
-      // Hide grid guidelines
-      setShowHorizontalGuide(false);
-      setShowVerticalGuide(false);
-      
-      // Remove global event listeners
-      document.removeEventListener('mousemove', handleGlobalMouseMove);
-      document.removeEventListener('mouseup', handleGlobalMouseUp);
-    }
-  }, [handleGlobalMouseMove]);
-
-  // Cleanup effect to remove event listeners on unmount
-  useEffect(() => {
-    return () => {
-      document.removeEventListener('mousemove', handleGlobalMouseMove);
-      document.removeEventListener('mouseup', handleGlobalMouseUp);
-    };
-  }, [handleGlobalMouseMove, handleGlobalMouseUp]);
-
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     e.dataTransfer.dropEffect = 'copy';
@@ -151,25 +79,59 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
     e.stopPropagation();
     onElementClick(element, e);
     
-    // Get canvas position to calculate relative coordinates
-    const rect = canvasRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    
-    // Calculate mouse position relative to canvas
-    const canvasMouseX = e.clientX - rect.left;
-    const canvasMouseY = e.clientY - rect.top;
-    
     dragRef.current = {
       isDragging: true,
-      startX: canvasMouseX - element.x,
-      startY: canvasMouseY - element.y,
+      startX: e.clientX - element.x,
+      startY: e.clientY - element.y,
       elementId: element.id
     };
+  }, [onElementClick]);
 
-    // Add global event listeners for dragging
-    document.addEventListener('mousemove', handleGlobalMouseMove);
-    document.addEventListener('mouseup', handleGlobalMouseUp);
-  }, [onElementClick, handleGlobalMouseMove, handleGlobalMouseUp]);
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (dragRef.current.isDragging && dragRef.current.elementId) {
+      const newX = e.clientX - dragRef.current.startX;
+      const newY = e.clientY - dragRef.current.startY;
+      
+      // Constrain to canvas bounds
+      const constrainedX = Math.max(0, Math.min(newX, canvasSettings.width - 100));
+      const constrainedY = Math.max(0, Math.min(newY, canvasSettings.height - 100));
+      
+      // Calculate element center for grid guidelines
+      const currentElement = safeElements.find(el => el.id === dragRef.current.elementId);
+      const elementWidth = currentElement?.width || 100;
+      const elementHeight = currentElement?.height || 100;
+      const elementCenterX = constrainedX + elementWidth / 2;
+      const elementCenterY = constrainedY + elementHeight / 2;
+      
+      // Canvas center
+      const canvasCenterX = canvasSettings.width / 2;
+      const canvasCenterY = canvasSettings.height / 2;
+      
+      // Check alignment with center (within 5px threshold)
+      const threshold = 5;
+      const isAlignedVertically = Math.abs(elementCenterX - canvasCenterX) <= threshold;
+      const isAlignedHorizontally = Math.abs(elementCenterY - canvasCenterY) <= threshold;
+      
+      setShowVerticalGuide(isAlignedVertically);
+      setShowHorizontalGuide(isAlignedHorizontally);
+      setVerticalGuideX(canvasCenterX);
+      setHorizontalGuideY(canvasCenterY);
+      
+      onUpdateElement(dragRef.current.elementId, {
+        x: constrainedX,
+        y: constrainedY
+      }, true);
+    }
+  }, [onUpdateElement, canvasSettings, elements]);
+
+  const handleMouseUp = useCallback(() => {
+    dragRef.current.isDragging = false;
+    dragRef.current.elementId = null;
+    
+    // Hide grid guidelines
+    setShowHorizontalGuide(false);
+    setShowVerticalGuide(false);
+  }, []);
 
   const handleCanvasClick = useCallback((e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
@@ -189,8 +151,9 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
     onAddElement(newElement.type, newElement.x, newElement.y);
   }, [safeElements.length, onAddElement]);
 
+
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center"> 
       <div
         ref={canvasRef}
         className="relative"
@@ -200,6 +163,8 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
         }}
         onDragOver={handleDragOver}
         onDrop={handleDrop}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
         onClick={handleCanvasClick}
       >
         {/* Render the card using CardRenderer */}
@@ -290,4 +255,4 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
   );
 };
 
-export default EditorCanvas; 
+export default EditorCanvas;
