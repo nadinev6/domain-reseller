@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Check, Star, Zap, Crown, Shield, Headphones, Palette, Gift } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
 import { useCurrency } from '../context/CurrencyContext';
 import { useAuth } from '../context/AuthContext';
 import { AnimatedShinyText } from '../components/magicui/animated-shiny-text';
@@ -290,9 +291,12 @@ const PricingPage: React.FC = () => {
         <Card>
           <CardHeader>
             <CardTitle>Frequently Asked Questions</CardTitle>
+            <CardDescription>
+              Click on any question to expand the answer
+            </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="space-y-6">
+            <Accordion type="single" collapsible defaultValue="item-0">
               <div>
                 <h4 className="font-medium text-gray-900 mb-2">Can I change my plan anytime?</h4>
                 <p className="text-gray-600 text-sm">
@@ -310,14 +314,16 @@ const PricingPage: React.FC = () => {
                 <p className="text-gray-600 text-sm">
                   You'll retain access to all features until the end of your billing period. Your points will remain available for 30 days after cancellation.
                 </p>
-              </div>
-              <div>
-                <h4 className="font-medium text-gray-900 mb-2">Can I use points for domain renewals?</h4>
+                <AccordionItem key={index} value={`item-${index}`}>
+                  <AccordionTrigger className="text-left">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-600">
                 <p className="text-gray-600 text-sm">
-                  Yes! Points can be used for domain registrations, transfers, and renewals. The point value varies by domain extension.
-                </p>
+                  </AccordionContent>
+                </AccordionItem>
               </div>
-            </div>
+            </Accordion>
           </CardContent>
         </Card>
 
