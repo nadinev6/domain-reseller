@@ -2,9 +2,12 @@ import React, { useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { MessageCircle, Send, Minimize2 } from 'lucide-react';
 import { LingoDotDevEngine } from 'lingo.dev/sdk';
-import { useLanguage } from 'lingo.dev/react-client';
+import * as LingoReact from 'lingo.dev/react-client';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
+
+// Debug: Log available exports
+console.log('Available exports:', LingoReact);
 
 interface Suggestion {
   text: string;
@@ -26,7 +29,9 @@ interface BotInterfaceProps {
 
 export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInterfaceProps) {
   const location = useLocation();
-  const { language } = useLanguage();
+  
+  // Try to use the language hook if it exists
+  const language = LingoReact.useLanguage ? LingoReact.useLanguage().language : 'en';
   
   // Initialize Lingo.dev for translation
   const lingo = React.useMemo(() => {
