@@ -3524,6 +3524,13 @@ export default {
           },
           hash: "7cb0031802f358a8e49287f2c041b076",
         },
+        "7/0/init/body/9/argument/1/7/1/expression/0/body/5/9/3/expression/right":
+          {
+            content: {
+              en: "🔥 Limited time: Get 2 months free with annual plan",
+            },
+            hash: "70dcd23e629cb5691109a73ef035a32d",
+          },
       },
     },
     "pages/SocialMediaCardStudio.tsx": {
