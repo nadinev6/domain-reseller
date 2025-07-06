@@ -3949,7 +3949,7 @@ export default {
         },
         "9/0/init/body/5/argument/7/1/1/3": {
           content: {
-            en: "Our powerful studio gives you all the tools to create professional social media cards that stand out",
+            en: "Our powerful studio gives you all the tools to create professional pages that stand out",
             fr: "Notre studio puissant vous donne tous les outils pour créer des cartes pour réseaux sociaux professionnelles qui se démarquent",
           },
           hash: "ec99cddeb585e3d6f5b5c9af0d6b6ae9",
