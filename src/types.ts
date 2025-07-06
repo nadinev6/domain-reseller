@@ -58,6 +58,7 @@ export interface SavedCard {
   id: string;
   title: string;
   user_id: string;
+  published_domain?: string;
   card_data: {
     elements: CardElement[];
     canvasSettings: {
