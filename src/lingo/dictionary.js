@@ -52,6 +52,24 @@ export default {
           },
           hash: "c86ac2c40d42c1ddb2e60e49103bb062",
         },
+        "8/0/init/body/12/argument/11/1/1-placeholder": {
+          content: {
+            en: "Ask me anything about VibePage...",
+          },
+          hash: "7b79fbf096222fc0c96423683165dd2c",
+        },
+        "8/0/init/body/12/argument/3/1/3": {
+          content: {
+            en: "VibePage Assistant",
+          },
+          hash: "7c24c5590cc13478df43676f0fe7d1e0",
+        },
+        "8/0/init/body/4/consequent/1/argument/1/3": {
+          content: {
+            en: "Loading assistant...",
+          },
+          hash: "c86ac2c40d42c1ddb2e60e49103bb062",
+        },
         "9/0/init/body/11/argument/11/1/1-placeholder": {
           content: {
             en: "Ask me anything about VibePage...",
@@ -2910,6 +2928,36 @@ export default {
     },
     "pages/CardStudioEditor.tsx": {
       entries: {
+        "12/0/init/body/19/argument/3/1/1": {
+          content: {
+            en: "Card Studio Editor",
+          },
+          hash: "b5742e7e35009781bb411280887c8fd6",
+        },
+        "12/0/init/body/19/argument/3/1/3/1": {
+          content: {
+            en: "<element:Undo></element:Undo> Undo",
+          },
+          hash: "08e3fdab92aa3e91696af146d278262a",
+        },
+        "12/0/init/body/19/argument/3/1/3/3": {
+          content: {
+            en: "<element:Redo></element:Redo> Redo",
+          },
+          hash: "d7909de12fc2a20aab1a96b3d9add99c",
+        },
+        "12/0/init/body/19/argument/3/3/1": {
+          content: {
+            en: "<element:Eye></element:Eye> Preview",
+          },
+          hash: "1a878634c88abdb0bda86cf849d7d3c4",
+        },
+        "12/0/init/body/19/argument/3/3/3": {
+          content: {
+            en: "<element:Download></element:Download> Export",
+          },
+          hash: "82c7fb0a52965a8cde48deeee9cd663b",
+        },
         "12/0/init/body/20/argument/3/1/1": {
           content: {
             en: "Card Studio Editor",
@@ -3407,6 +3455,183 @@ export default {
           content: {
             en: "Our powerful studio gives you all the tools to create professional social media cards that stand out",
             fr: "Notre studio puissant vous donne tous les outils pour créer des cartes pour réseaux sociaux professionnelles qui se démarquent",
+          },
+          hash: "ec99cddeb585e3d6f5b5c9af0d6b6ae9",
+        },
+        "9/0/init/body/2/0/init/0/1/value": {
+          content: {
+            en: "Drag & Drop Builder",
+          },
+          hash: "e51fac6b60d289c140c25f954c62abfa",
+        },
+        "9/0/init/body/2/0/init/1/1/value": {
+          content: {
+            en: "Professional Templates",
+          },
+          hash: "3b290cf5987b5c26f58adf0e37698947",
+        },
+        "9/0/init/body/2/0/init/2/1/value": {
+          content: {
+            en: "Mobile Responsive",
+          },
+          hash: "a2496a207c757df6f723e8b371828d87",
+        },
+        "9/0/init/body/2/0/init/3/1/value": {
+          content: {
+            en: "Custom Domain",
+          },
+          hash: "07fca8d8208e78bbc1f10b6d2f2b5fc1",
+        },
+        "9/0/init/body/5/argument/11/1/1/1": {
+          content: {
+            en: "Inspiration Gallery",
+          },
+          hash: "7dbf99bd0eedea8a5578b4c00569215f",
+        },
+        "9/0/init/body/5/argument/11/1/1/3": {
+          content: {
+            en: "See what's possible with our Social Media Card Studio",
+          },
+          hash: "9b5a704bd232512dcd8df558607d7ad2",
+        },
+        "9/0/init/body/5/argument/11/1/3/1/1": {
+          content: {
+            en: "All",
+          },
+          hash: "5e2e93f8e2a5f315b6fecdd0a0e6f55f",
+        },
+        "9/0/init/body/5/argument/11/1/3/1/3": {
+          content: {
+            en: "Business",
+          },
+          hash: "7682c7966c6e718836388561e7e68cab",
+        },
+        "9/0/init/body/5/argument/11/1/3/1/5": {
+          content: {
+            en: "Creative",
+          },
+          hash: "97e922b5475e6ecaa86de338a34fbf12",
+        },
+        "9/0/init/body/5/argument/11/1/3/1/7": {
+          content: {
+            en: "Personal",
+          },
+          hash: "1c619008563115c5c99acdab4e8c9717",
+        },
+        "9/0/init/body/5/argument/11/1/3/3/1/1/expression/0/body/3/3/expression/alternate":
+          {
+            content: {
+              en: "Sign Up to Use Template",
+            },
+            hash: "9b0b9e088ac2e222b5dde5a4f9204ed9",
+          },
+        "9/0/init/body/5/argument/11/1/3/3/1/1/expression/0/body/3/3/expression/consequent/1":
+          {
+            content: {
+              en: "Use This Template",
+            },
+            hash: "4d7d9d54fbd130566a540362f17a52f1",
+          },
+        "9/0/init/body/5/argument/11/1/3/3/1/1/expression/0/body/3/5/expression/right":
+          {
+            content: {
+              en: "Get AI Help with This Style",
+            },
+            hash: "b703294c15ebd24ef75348362f591eb8",
+          },
+        "9/0/init/body/5/argument/11/1/3/5/1/1": {
+          content: {
+            en: "Business templates coming soon...",
+          },
+          hash: "0222c0d2eb58ccb70327d084428fad36",
+        },
+        "9/0/init/body/5/argument/11/1/3/7/1/1": {
+          content: {
+            en: "Creative templates coming soon...",
+          },
+          hash: "e49971ab779bbf1d599c9f02d7a2bf4c",
+        },
+        "9/0/init/body/5/argument/11/1/3/9/1/1": {
+          content: {
+            en: "Personal templates coming soon...",
+          },
+          hash: "ac0c901441cebab2f736558ea991ae2d",
+        },
+        "9/0/init/body/5/argument/15/1/1": {
+          content: {
+            en: "Ready to create your first card?",
+          },
+          hash: "36cbb0cce28ee72f3b60c7e24c26cf0e",
+        },
+        "9/0/init/body/5/argument/15/1/3": {
+          content: {
+            en: "Join thousands of creators who are already using our studio to build their online presence",
+          },
+          hash: "552b2e64f452681efd5f3225970e8926",
+        },
+        "9/0/init/body/5/argument/15/1/5/expression/alternate/1": {
+          content: {
+            en: "Sign Up to Start Building",
+          },
+          hash: "901132c04060fe35f5725ad495adb4df",
+        },
+        "9/0/init/body/5/argument/15/1/5/expression/consequent/1/1": {
+          content: {
+            en: "Start Building Now",
+          },
+          hash: "0c5454b229eae33185b02395933ac69b",
+        },
+        "9/0/init/body/5/argument/15/1/7/expression/right/1": {
+          content: {
+            en: "Get AI Template Suggestions",
+          },
+          hash: "b33530969f97a4c48a058710df094342",
+        },
+        "9/0/init/body/5/argument/3/1/1/expression/right/1": {
+          content: {
+            en: "Welcome back, <expression/>!",
+          },
+          hash: "5e3369e6a949a4e8822ede87cd1fd21d",
+        },
+        "9/0/init/body/5/argument/3/1/3": {
+          content: {
+            en: "Social Media Card Studio",
+          },
+          hash: "d8f94c4122abde34682c9489851382ab",
+        },
+        "9/0/init/body/5/argument/3/1/5": {
+          content: {
+            en: "Create stunning social media cards with our drag-and-drop builder",
+          },
+          hash: "ff14492f6c8c06d34fe42a12334122c8",
+        },
+        "9/0/init/body/5/argument/3/1/7/1/expression/alternate/1": {
+          content: {
+            en: "Sign Up to Get Started",
+          },
+          hash: "71272233ac81369c70f181b8eaae7184",
+        },
+        "9/0/init/body/5/argument/3/1/7/1/expression/consequent/1/1/1": {
+          content: {
+            en: "Open Editor",
+          },
+          hash: "012a1d4fc9b058937596f79b059d6b78",
+        },
+        "9/0/init/body/5/argument/3/1/7/1/expression/consequent/3/1": {
+          content: {
+            en: "Start with Template",
+          },
+          hash: "444b443c1b8d0966055e0d217eda64c1",
+        },
+        "9/0/init/body/5/argument/7/1/1/1": {
+          content: {
+            en: "Everything you need to create stunning cards",
+          },
+          hash: "9c71d8af3f47104b7d8beaafae559df3",
+        },
+        "9/0/init/body/5/argument/7/1/1/3": {
+          content: {
+            en: "Our powerful studio gives you all the tools to create professional social media cards that stand out",
           },
           hash: "ec99cddeb585e3d6f5b5c9af0d6b6ae9",
         },
