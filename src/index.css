@@ -89,10 +89,10 @@
 
 @keyframes shiny-text {
   0%, 90%, 100% {
-    background-position: calc(-100% - var(--shiny-width)) 0;
+    --shiny-bg-x-position: calc(-100% - var(--shiny-width));
   }
   30%, 60% {
-    background-position: calc(100% + var(--shiny-width)) 0;
+    --shiny-bg-x-position: calc(100% + var(--shiny-width));
   }
 }
 

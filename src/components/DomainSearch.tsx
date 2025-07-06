@@ -30,7 +30,11 @@ const DomainSearch: React.FC<DomainSearchProps> = ({ onSearch }) => {
     <div className="w-full max-w-4xl mx-auto px-4 mt-8 md:mt-16">
       <div className="text-center mb-8">
         <h1 className="text-3xl md:text-5xl font-extrabold mb-3">
-          <AnimatedShinyText className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 !mx-0 !max-w-none">
+          <AnimatedShinyText 
+            className="bg-clip-text text-transparent !mx-0 !max-w-none"
+            baseGradientFromColor="#4f46e5"
+            baseGradientToColor="#9333ea"
+          >
             Own Your Online Vibe
           </AnimatedShinyText>
         </h1>
