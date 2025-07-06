@@ -1,9 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { MessageCircle, Send, Minimize2, Languages } from 'lucide-react';
-import { LingoDotDevEngine } from 'lingo.dev/sdk';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
+
+// If you're using lingo.dev/react/client, import these hooks
+// import { useTranslation, useLocale } from 'lingo.dev/react/client';
 
 interface Suggestion {
   text: string;
@@ -26,54 +28,57 @@ interface BotInterfaceProps {
 export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInterfaceProps) {
   const location = useLocation();
   
-  // Simple language state - no more problematic imports
-  const [language, setLanguage] = React.useState('en');
+  // Use the same translation system as your main app
+  // Uncomment these if you're using lingo.dev/react/client hooks:
+  // const { t } = useTranslation();
+  // const { locale, setLocale } = useLocale();
   
-  // Initialize Lingo.dev for translation - NOW WITH LANGUAGE DEPENDENCY
-  const lingo = React.useMemo(() => {
-    const apiKey = import.meta.env.VITE_LINGO_API_KEY; // Fixed: Added VITE_ prefix
-    if (apiKey) {
-      return new LingoDotDevEngine({ 
-        apiKey,
-        locale: language // Pass the current language as locale
-      });
-    }
-    return null;
-  }, [language]); // Added language to dependency array
+  // For now, let's use a simple state until we integrate properly
+  const [language, setLanguage] = React.useState('en');
 
-  // Define response templates with keys for translation
+  // Define response templates - these will be the keys for your translation system
   const responseTemplates = {
-    domainSearch: "To search for domains, simply type your desired domain name in the search box above. I'll show you available options with real-time pricing in multiple currencies. You can also filter by extension (.com, .net, .org, etc.) to find the perfect domain for your project.",
-    cardStudio: "Card Studio is our powerful design tool for creating social media graphics! You can drag and drop text, images, and shapes, apply gradients and effects, choose from hundreds of templates, and export in various formats. It's perfect for Instagram posts, Facebook covers, Twitter headers, and more.",
-    pricing: "Domain pricing varies by extension: .com domains typically start at R299/year, .net at R329/year, and country-specific domains vary. You can switch currencies in the header to see prices in MGA, ZAR, USD, EUR, or GBP. We also offer bulk discounts for multiple domains!",
-    design: "Great choice! Our Card Studio makes design easy. Start by choosing a template or blank canvas, then customize with your text, colors, and images. Pro tip: Use our gradient text feature and shadow effects to make your designs pop! Need help with a specific design element?",
-    saveExport: "You can save your designs to your account (requires sign-in) and export in PNG, JPG, or PDF formats. Saved projects are stored in your dashboard for easy access later. Free users get 5 saves per month, while premium users get unlimited saves and exports.",
-    templates: "We have over 500 professionally designed templates! Categories include: Business cards, Social media posts, Event flyers, Logos, Banners, and more. Each template is fully customizable - change colors, fonts, text, and images to match your brand perfectly.",
-    account: "Creating an account is free and gives you access to save projects, purchase domains, and use premium features. Click 'Sign Up' in the top right corner. You'll get 5 free design saves to start, plus access to our domain management tools.",
-    help: "I can help you with: 🔍 Domain searching and registration, 🎨 Card Studio design tips, 💰 Pricing and billing questions, 📱 Mobile optimization, 🔧 Troubleshooting. What specific area would you like guidance on?",
-    mobile: "VibePage works great on mobile! Our Card Studio is touch-optimized for tablets and phones. You can create designs on-the-go, and all templates automatically adjust for different screen sizes. Your designs will look perfect on any device!",
-    designTools: "Our design tools include: 🎨 Color picker with hex/RGB support, 🌈 Gradient builder with multiple color stops, 📝 50+ Google Fonts, ✨ Text effects like shadows and outlines, 🖼️ Image filters and adjustments. Everything you need for professional designs!",
-    default: "I'm here to help with VibePage! I can assist with domain searches, Card Studio design tips, pricing information, and account questions. What would you like to know more about? Feel free to ask specific questions about any feature!",
-    welcome: "Hello! I'm your VibePage assistant. I can help you with domain searches, card creation, and answer questions about your projects. How can I assist you today?",
-    thanks: "You're welcome! I'm here to help whenever you need assistance with VibePage. Feel free to ask about domains, card creation, or any other questions!",
-    greeting: "Hello! Great to meet you! I'm your VibePage assistant. I can help you search for domains, create amazing social media cards, or answer any questions about our platform. What would you like to explore today?"
+    domainSearch: "bot.responses.domainSearch",
+    cardStudio: "bot.responses.cardStudio", 
+    pricing: "bot.responses.pricing",
+    design: "bot.responses.design",
+    saveExport: "bot.responses.saveExport",
+    templates: "bot.responses.templates",
+    account: "bot.responses.account",
+    help: "bot.responses.help",
+    mobile: "bot.responses.mobile",
+    designTools: "bot.responses.designTools",
+    default: "bot.responses.default",
+    welcome: "bot.responses.welcome",
+    thanks: "bot.responses.thanks",
+    greeting: "bot.responses.greeting"
   };
 
-  // Function to translate text using Lingo.dev
-  const translateText = async (text: string, targetLanguage: string = language) => {
-    if (!lingo || targetLanguage === 'en') {
-      return text; // Return original if no translation needed
-    }
+  // Fallback text for when translation keys aren't found
+  const fallbackTexts = {
+    "bot.responses.domainSearch": "To search for domains, simply type your desired domain name in the search box above. I'll show you available options with real-time pricing in multiple currencies. You can also filter by extension (.com, .net, .org, etc.) to find the perfect domain for your project.",
+    "bot.responses.cardStudio": "Card Studio is our powerful design tool for creating social media graphics! You can drag and drop text, images, and shapes, apply gradients and effects, choose from hundreds of templates, and export in various formats. It's perfect for Instagram posts, Facebook covers, Twitter headers, and more.",
+    "bot.responses.pricing": "Domain pricing varies by extension: .com domains typically start at R299/year, .net at R329/year, and country-specific domains vary. You can switch currencies in the header to see prices in MGA, ZAR, USD, EUR, or GBP. We also offer bulk discounts for multiple domains!",
+    "bot.responses.design": "Great choice! Our Card Studio makes design easy. Start by choosing a template or blank canvas, then customize with your text, colors, and images. Pro tip: Use our gradient text feature and shadow effects to make your designs pop! Need help with a specific design element?",
+    "bot.responses.saveExport": "You can save your designs to your account (requires sign-in) and export in PNG, JPG, or PDF formats. Saved projects are stored in your dashboard for easy access later. Free users get 5 saves per month, while premium users get unlimited saves and exports.",
+    "bot.responses.templates": "We have over 500 professionally designed templates! Categories include: Business cards, Social media posts, Event flyers, Logos, Banners, and more. Each template is fully customizable - change colors, fonts, text, and images to match your brand perfectly.",
+    "bot.responses.account": "Creating an account is free and gives you access to save projects, purchase domains, and use premium features. Click 'Sign Up' in the top right corner. You'll get 5 free design saves to start, plus access to our domain management tools.",
+    "bot.responses.help": "I can help you with: 🔍 Domain searching and registration, 🎨 Card Studio design tips, 💰 Pricing and billing questions, 📱 Mobile optimization, 🔧 Troubleshooting. What specific area would you like guidance on?",
+    "bot.responses.mobile": "VibePage works great on mobile! Our Card Studio is touch-optimized for tablets and phones. You can create designs on-the-go, and all templates automatically adjust for different screen sizes. Your designs will look perfect on any device!",
+    "bot.responses.designTools": "Our design tools include: 🎨 Color picker with hex/RGB support, 🌈 Gradient builder with multiple color stops, 📝 50+ Google Fonts, ✨ Text effects like shadows and outlines, 🖼️ Image filters and adjustments. Everything you need for professional designs!",
+    "bot.responses.default": "I'm here to help with VibePage! I can assist with domain searches, Card Studio design tips, pricing information, and account questions. What would you like to know more about? Feel free to ask specific questions about any feature!",
+    "bot.responses.welcome": "Hello! I'm your VibePage assistant. I can help you with domain searches, card creation, and answer questions about your projects. How can I assist you today?",
+    "bot.responses.thanks": "You're welcome! I'm here to help whenever you need assistance with VibePage. Feel free to ask about domains, card creation, or any other questions!",
+    "bot.responses.greeting": "Hello! Great to meet you! I'm your VibePage assistant. I can help you search for domains, create amazing social media cards, or answer any questions about our platform. What would you like to explore today?"
+  };
 
-    try {
-      const translated = await lingo.localizeObject({
-        [text]: text
-      }, targetLanguage);
-      return translated[text] || text;
-    } catch (error) {
-      console.error('Translation error:', error);
-      return text; // Return original text if translation fails
-    }
+  // Function to get translated text - replace this with your app's translation method
+  const getTranslatedText = (key: string): string => {
+    // If you're using lingo.dev/react/client, replace this with:
+    // return t(key) || fallbackTexts[key] || key;
+    
+    // For now, return the fallback text
+    return fallbackTexts[key as keyof typeof fallbackTexts] || key;
   };
 
   const [messages, setMessages] = React.useState<Message[]>([]);
@@ -81,61 +86,54 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
   const [isTyping, setIsTyping] = React.useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Initialize with welcome message - UPDATED TO REFRESH WHEN LANGUAGE CHANGES
+  // Initialize with welcome message
   useEffect(() => {
-    const initializeWelcomeMessage = async () => {
-      const welcomeText = await translateText(responseTemplates.welcome);
-      setMessages([{
-        id: '1',
-        type: 'bot',
-        content: welcomeText,
-        timestamp: new Date()
-      }]);
-    };
+    const welcomeText = getTranslatedText(responseTemplates.welcome);
+    setMessages([{
+      id: '1',
+      type: 'bot',
+      content: welcomeText,
+      timestamp: new Date()
+    }]);
+  }, [language]); // Only depend on language, not on translation system
 
-    initializeWelcomeMessage();
-  }, [language, lingo]); // Added lingo to dependencies
-
-  // Smart local AI-like responses with translation support
+  // Smart local AI-like responses
   const sendToLLM = async (message: string) => {
     // Simulate API delay for better UX
     await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 2000));
     
     const input = message.toLowerCase();
-    let responseKey = 'default';
+    let responseKey = responseTemplates.default;
     
     // Determine which response template to use
     if (input.includes('how') && (input.includes('domain') || input.includes('search'))) {
-      responseKey = 'domainSearch';
+      responseKey = responseTemplates.domainSearch;
     } else if (input.includes('what') && input.includes('card studio')) {
-      responseKey = 'cardStudio';
+      responseKey = responseTemplates.cardStudio;
     } else if (input.includes('price') || input.includes('cost') || input.includes('how much')) {
-      responseKey = 'pricing';
+      responseKey = responseTemplates.pricing;
     } else if (input.includes('design') || input.includes('create') || input.includes('make')) {
-      responseKey = 'design';
+      responseKey = responseTemplates.design;
     } else if (input.includes('save') || input.includes('export') || input.includes('download')) {
-      responseKey = 'saveExport';
+      responseKey = responseTemplates.saveExport;
     } else if (input.includes('template') || input.includes('example')) {
-      responseKey = 'templates';
+      responseKey = responseTemplates.templates;
     } else if (input.includes('account') || input.includes('sign up') || input.includes('register')) {
-      responseKey = 'account';
+      responseKey = responseTemplates.account;
     } else if (input.includes('help') || input.includes('tutorial') || input.includes('guide')) {
-      responseKey = 'help';
+      responseKey = responseTemplates.help;
     } else if (input.includes('mobile') || input.includes('phone') || input.includes('responsive')) {
-      responseKey = 'mobile';
+      responseKey = responseTemplates.mobile;
     } else if (input.includes('color') || input.includes('gradient') || input.includes('font')) {
-      responseKey = 'designTools';
+      responseKey = responseTemplates.designTools;
     } else if (input.includes('thank') || input.includes('thanks')) {
-      responseKey = 'thanks';
+      responseKey = responseTemplates.thanks;
     } else if (input.includes('hello') || input.includes('hi') || input.includes('hey')) {
-      responseKey = 'greeting';
+      responseKey = responseTemplates.greeting;
     }
     
-    // Get and translate the response
-    const baseResponse = responseTemplates[responseKey as keyof typeof responseTemplates];
-    const translatedResponse = await translateText(baseResponse);
-    
-    return translatedResponse;
+    // Get the translated response
+    return getTranslatedText(responseKey);
   };
 
   // Check if BotInterface should be hidden based on current route
@@ -171,7 +169,7 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
         type: 'bot',
-        content: await getFallbackResponse(inputValue),
+        content: getFallbackResponse(inputValue),
         timestamp: new Date()
       };
       setMessages(prev => [...prev, botMessage]);
@@ -196,33 +194,32 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
     scrollToBottom();
   }, [messages]);
 
-  const getFallbackResponse = async (userInput: string): Promise<string> => {
+  const getFallbackResponse = (userInput: string): string => {
     const input = userInput.toLowerCase();
-    let responseKey = 'default';
+    let responseKey = responseTemplates.default;
     
     // Enhanced pattern matching for better responses
     if (input.includes('domain') || input.includes('search')) {
-      responseKey = 'domainSearch';
+      responseKey = responseTemplates.domainSearch;
     } else if (input.includes('card') || input.includes('studio') || input.includes('design')) {
-      responseKey = 'design';
+      responseKey = responseTemplates.design;
     } else if (input.includes('save') || input.includes('export') || input.includes('download')) {
-      responseKey = 'saveExport';
+      responseKey = responseTemplates.saveExport;
     } else if (input.includes('price') || input.includes('cost') || input.includes('currency') || input.includes('payment')) {
-      responseKey = 'pricing';
+      responseKey = responseTemplates.pricing;
     } else if (input.includes('help') || input.includes('tutorial') || input.includes('guide')) {
-      responseKey = 'help';
+      responseKey = responseTemplates.help;
     } else if (input.includes('social media') || input.includes('instagram') || input.includes('facebook') || input.includes('twitter')) {
-      responseKey = 'cardStudio';
+      responseKey = responseTemplates.cardStudio;
     } else if (input.includes('account') || input.includes('login') || input.includes('signup') || input.includes('register')) {
-      responseKey = 'account';
+      responseKey = responseTemplates.account;
     } else if (input.includes('thank') || input.includes('thanks')) {
-      responseKey = 'thanks';
+      responseKey = responseTemplates.thanks;
     } else if (input.includes('hello') || input.includes('hi') || input.includes('hey')) {
-      responseKey = 'greeting';
+      responseKey = responseTemplates.greeting;
     }
     
-    const baseResponse = responseTemplates[responseKey as keyof typeof responseTemplates];
-    return await translateText(baseResponse);
+    return getTranslatedText(responseKey);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -232,9 +229,13 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
     }
   };
 
-  // Handle language change
+  // Handle language change - integrate with your app's language system
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setLanguage(e.target.value);
+    const newLanguage = e.target.value;
+    setLanguage(newLanguage);
+    
+    // If you're using lingo.dev/react/client, replace this with:
+    // setLocale(newLanguage);
   };
 
   // Don't render if on editor pages
