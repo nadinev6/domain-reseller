@@ -114,7 +114,7 @@ const SupportPage: React.FC = () => {
               gradientTo="#8b5cf6"
               gradientOpacity={0.1}
             >
-              <Card className="border-0 shadow-none bg-transparent">
+              <Card className="border-1 shadow-none bg-transparent">
                 <CardHeader>
                   <CardTitle className="flex items-center">
                     <Mail className="w-5 h-5 mr-2" />
