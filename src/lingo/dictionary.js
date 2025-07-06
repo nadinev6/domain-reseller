@@ -272,6 +272,7 @@ export default {
         "5/0/init/body/3/argument/1/1": {
           content: {
             en: "Own Your Online Vibe",
+            fr: "Affirme ton style en ligne",
           },
           hash: "679cbfe370bafccd1fe69d2ad7a4ca60",
         },
