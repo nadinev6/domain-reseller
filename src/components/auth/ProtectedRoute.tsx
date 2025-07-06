@@ -27,7 +27,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, fallback }) =
         <div className="text-center max-w-md mx-auto p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Authentication Required</h2>
           <p className="text-gray-600 mb-6">
-            You need to be signed in to access the Social Media Card Studio.
+            You need to be signed in to access the VibePage Studio.
           </p>
           <p className="text-sm text-gray-500">
             Please sign in from the header to continue.
