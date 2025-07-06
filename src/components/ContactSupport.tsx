@@ -1,18 +1,11 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { MessageCircle, Send, Minimize2, Languages, User, Mail, MessageSquare } from 'lucide-react';
+import { User, Mail, MessageSquare, Send, MessageCircle, Languages } from 'lucide-react';
+import { t } from 'lingo.dev/react';
 import { useTranslation, useLocale } from 'lingo.dev/react/client';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
-import lingoCompiler from "lingo.dev/compiler"; 
 
-interface ContactSupportProps {
-  isCollapsed: boolean;
-  onToggleCollapse: () => void;
-}
-
-export default function ContactSupport({ isCollapsed, onToggleCollapse }: ContactSupportProps) {
-  const location = useLocation();
+export default function ContactSupport() {
   const { t } = useTranslation();
   const { locale, setLocale } = useLocale(); 
 
@@ -26,9 +19,6 @@ export default function ContactSupport({ isCollapsed, onToggleCollapse }: Contac
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState('');
-
-  // Check if ContactSupport should be hidden based on current route
-  const shouldHide = location.pathname.startsWith('/card-studio/editor');
 
   // Handle form input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -126,24 +116,6 @@ export default function ContactSupport({ isCollapsed, onToggleCollapse }: Contac
     setSubmitError('');
   };
 
-  // Don't render if on editor pages
-  if (shouldHide) {
-    return null;
-  }
-
-  if (isCollapsed) {
-    return (
-      <div className="fixed bottom-4 right-4 z-50">
-        <Button
-          onClick={onToggleCollapse}
-          className="w-14 h-14 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg"
-        >
-          <MessageCircle className="w-6 h-6" />
-        </Button>
-      </div>
-    );
-  }
-
   return (
     <>
       {/* Hidden Netlify form for form detection */}
@@ -156,101 +128,91 @@ export default function ContactSupport({ isCollapsed, onToggleCollapse }: Contac
         <input type="text" name="timestamp" />
       </form>
 
-      <div className="fixed bottom-0 right-0 w-full md:w-96 h-96 bg-white border-t md:border-l md:border-t border-gray-200 shadow-lg z-40 flex flex-col">
+      <div className="max-w-2xl mx-auto p-4 bg-white rounded-lg shadow-md">
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
-          <div className="flex items-center space-x-2">
-            <MessageCircle className="w-5 h-5" />
+        <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-t-lg">
+          <div className="flex items-center space-x-3">
+            <MessageCircle className="w-6 h-6" />
             <div>
-              <h3 className="font-semibold text-sm">{t('support.form.title')}</h3>
-              <p className="text-xs text-indigo-100">{t('support.form.subtitle')}</p>
+              <h3 className="font-semibold text-lg">{t('support.form.title')}</h3>
+              <p className="text-sm text-indigo-100">{t('support.form.subtitle')}</p>
             </div>
           </div>
-          <div className="flex items-center space-x-2">
-            {/* Language Selector */}
-            <div className="relative flex items-center">
-              <Languages size={14} className="absolute left-2 text-white/70 pointer-events-none" />
-              <select
-                value={locale}
-                onChange={handleLanguageChange}
-                className="pl-7 pr-3 py-1 text-xs bg-white/20 border border-white/30 rounded text-white focus:outline-none focus:ring-1 focus:ring-white/50 appearance-none cursor-pointer"
-              >
-                <option value="en" className="text-gray-900">EN</option>
-                <option value="fr" className="text-gray-900">FR</option>
-                <option value="mg" className="text-gray-900">MG</option>
-              </select>
-            </div>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={onToggleCollapse}
-              className="text-white hover:bg-white/20 p-1"
+          {/* Language Selector */}
+          <div className="relative flex items-center">
+            <Languages size={16} className="absolute left-2 text-white/70 pointer-events-none" />
+            <select
+              value={locale}
+              onChange={handleLanguageChange}
+              className="pl-8 pr-4 py-2 text-sm bg-white/20 border border-white/30 rounded text-white focus:outline-none focus:ring-2 focus:ring-white/50 appearance-none cursor-pointer"
             >
-              <Minimize2 className="w-4 h-4" />
-            </Button>
+              <option value="en" className="text-gray-900">English</option>
+              <option value="fr" className="text-gray-900">Français</option>
+              <option value="mg" className="text-gray-900">Malagasy</option>
+            </select>
           </div>
         </div>
 
         {/* Content */}
-        <div className="flex-1 overflow-y-auto p-4">
+        <div className="p-6">
           {isSubmitted ? (
             // Success message
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto">
-                <MessageCircle className="w-8 h-8 text-green-600" />
+            <div className="text-center space-y-6">
+              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto">
+                <MessageCircle className="w-10 h-10 text-green-600" />
               </div>
               <div>
-                <h3 className="font-semibold text-green-800">{t('support.form.successTitle')}</h3>
-                <p className="text-sm text-gray-600 mt-1">{t('support.form.successMessage')}</p>
+                <h3 className="text-xl font-semibold text-green-800 mb-2">{t('support.form.successTitle')}</h3>
+                <p className="text-gray-600">{t('support.form.successMessage')}</p>
               </div>
               <Button
                 onClick={resetForm}
-                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white"
+                className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3"
               >
                 {t('support.form.sendAnother')}
               </Button>
             </div>
           ) : (
             // Contact form
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name */}
               <div className="relative">
-                <User className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                <User className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
                 <Input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
                   placeholder={t('support.form.namePlaceholder')}
-                  className="pl-10"
+                  className="pl-12 py-3 text-base"
                   required
                 />
               </div>
 
               {/* Email */}
               <div className="relative">
-                <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
                 <Input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder={t('support.form.emailPlaceholder')}
-                  className="pl-10"
+                  className="pl-12 py-3 text-base"
                   required
                 />
               </div>
 
               {/* Subject */}
               <div className="relative">
-                <MessageSquare className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
                 <Input
                   type="text"
                   name="subject"
                   value={formData.subject}
                   onChange={handleInputChange}
                   placeholder={t('support.form.subjectPlaceholder')}
-                  className="pl-10"
+                  className="pl-12 py-3 text-base"
                   required
                 />
               </div>
@@ -262,15 +224,15 @@ export default function ContactSupport({ isCollapsed, onToggleCollapse }: Contac
                   value={formData.message}
                   onChange={handleInputChange}
                   placeholder={t('support.form.messagePlaceholder')}
-                  rows={4}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none text-sm"
+                  rows={6}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none text-base"
                   required
                 />
               </div>
 
               {/* Error message */}
               {submitError && (
-                <div className="text-red-600 text-sm bg-red-50 p-2 rounded">
+                <div className="text-red-600 text-sm bg-red-50 p-3 rounded border border-red-200">
                   {submitError}
                 </div>
               )}
@@ -279,16 +241,16 @@ export default function ContactSupport({ isCollapsed, onToggleCollapse }: Contac
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white"
+                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 text-base font-medium"
               >
                 {isSubmitting ? (
-                  <div className="flex items-center space-x-2">
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  <div className="flex items-center justify-center space-x-2">
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                     <span>{t('support.form.sending')}</span>
                   </div>
                 ) : (
-                  <div className="flex items-center space-x-2">
-                    <Send className="w-4 h-4" />
+                  <div className="flex items-center justify-center space-x-2">
+                    <Send className="w-5 h-5" />
                     <span>{t('support.form.sendButton')}</span>
                   </div>
                 )}

@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import ContactSupport from './components/ContactSupport';
 import DomainSearch from './components/DomainSearch';
 import DomainResults from './components/DomainResults';
 import Cart from './components/Cart';
 import GameElement from './components/GameElement';
 import DomainsPage from './pages/DomainsPage';
+import SupportPage from './pages/SupportPage';
 import SocialMediaCardStudio from './pages/SocialMediaCardStudio';
 import CardStudioEditor from './pages/CardStudioEditor';
 import Dashboard from './components/dashboard/Dashboard';
@@ -18,8 +18,6 @@ export default function App() {
   const [searchResults, setSearchResults] = React.useState([]);
   const [isSearching, setIsSearching] = React.useState(false);
   const [isCartOpen, setIsCartOpen] = React.useState(false);
-  const [isHeaderCollapsed, setIsHeaderCollapsed] = React.useState(false);
-  const [isBotCollapsed, setIsBotCollapsed] = React.useState(true);
   
   const userGameData = {
     points: 230,
@@ -43,11 +41,10 @@ export default function App() {
             <div className="min-h-screen bg-gray-50 relative">
               <Header 
                 toggleCart={() => setIsCartOpen(!isCartOpen)}
-                isCollapsed={isHeaderCollapsed}
-                onToggleCollapse={() => setIsHeaderCollapsed(!isHeaderCollapsed)}
               />
               <Routes>
                 <Route path="/domains" element={<DomainsPage />} />
+                <Route path="/support" element={<SupportPage />} />
                 <Route path="/card-studio" element={<SocialMediaCardStudio />} />
                 <Route path="/card-studio/editor" element={<CardStudioEditor />} />
                 <Route path="/dashboard" element={<Dashboard />} />
@@ -66,10 +63,6 @@ export default function App() {
                 } />
               </Routes>
               <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-              <ContactSupport 
-                isCollapsed={isBotCollapsed}
-                onToggleCollapse={() => setIsBotCollapsed(!isBotCollapsed)}
-              />
             </div>
           </CartProvider>
         </CurrencyProvider>
