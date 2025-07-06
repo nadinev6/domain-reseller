@@ -147,7 +147,7 @@ const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollap
 
     if (input.includes('gradient') || input.includes('text effect')) {
       return {
-        content: 'Our Card Studio supports beautiful gradient text effects! Select any text element, enable "Gradient Text" in the properties panel, choose your colors and direction. You can create stunning effects like rainbow text, sunset gradients, or professional brand colors.',
+        content: 'Our VibePage Studio supports beautiful gradient text effects! Select any text element, enable "Gradient Text" in the properties panel, choose your colors and direction. You can create stunning effects like rainbow text, sunset gradients, or professional brand colors.',
         suggestions: [
           { text: 'Text styling', action: 'What text styling options are available?' },
           { text: 'Color options', action: 'How do I change text colors?' },
