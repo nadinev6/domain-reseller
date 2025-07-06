@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { MessageCircle, Send, Minimize2 } from 'lucide-react';
 import { LingoDotDevEngine } from 'lingo.dev/sdk';
 import * as LingoReact from 'lingo.dev/react-client';
-import { useLanguage } from 'lingo.dev';
+import { useLanguage } from 'lingo.dev/sdk';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
