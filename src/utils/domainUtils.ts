@@ -2,15 +2,20 @@ import { DomainResult } from '../types';
 
 // TLD data with pricing
 const tldData = [
-  { tld: 'com', price: 12.99 },
-  { tld: 'net', price: 11.99 },
-  { tld: 'org', price: 9.99 },
-  { tld: 'io', price: 39.99 },
-  { tld: 'dev', price: 14.99 },
-  { tld: 'app', price: 15.99 },
-  { tld: 'tech', price: 49.99 },
-  { tld: 'co', price: 24.99 },
-  { tld: 'me', price: 18.99 },
+  { tld: 'com', price: 299.00 },
+  { tld: 'net', price: 329.00 },
+  { tld: 'org', price: 189.00 },
+  { tld: 'io', price: 1279.00 },
+  { tld: 'dev', price: 879.00 },
+  { tld: 'app', price: 459.00 },
+  { tld: 'tech', price: 879.00 },
+  { tld: 'co', price: 739.00 },
+  { tld: 'me', price: 569.00 },
+  { tld: 'co.za', price: 99.00 },
+  { tld: 'biz', price: 459.00 },
+  { tld: 'info', price: 99.00 },
+  { tld: 'online', price: 30.00 },
+  { tld: 'site', price: 30.00 },
 ];
 
 // Generate a deterministic but "random" result based on domain name

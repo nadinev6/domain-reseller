@@ -1,7 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { MessageCircle, Send, Minimize2 } from 'lucide-react';
-import { LingoDotDevEngine } from 'lingo.dev/sdk'; // Import Lingo.dev SDK
+import { LingoDotDevEngine } from 'lingo.dev/sdk';
+import { useLocale } from 'lingo.dev/react-client';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
@@ -25,7 +26,7 @@ interface BotInterfaceProps {
 
 export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInterfaceProps) {
   const location = useLocation();
-  const { lingo, currentLanguage } = useLingo();
+  const { currentLocale } = useLocale();
   const [messages, setMessages] = React.useState<Message[]>([
     {
       id: '1',
@@ -37,6 +38,15 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
   const [inputValue, setInputValue] = React.useState('');
   const [isTyping, setIsTyping] = React.useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Initialize Lingo.dev engine
+  const lingo = React.useMemo(() => {
+    const apiKey = import.meta.env.LINGO_API_KEY;
+    if (apiKey) {
+      return new LingoDotDevEngine({ apiKey });
+    }
+    return null;
+  }, []);
 
   // Check if BotInterface should be hidden based on current route
   const shouldHide = location.pathname.startsWith('/card-studio/editor');
@@ -55,35 +65,46 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
     setInputValue('');
     setIsTyping(true);
 
-    try {
-      // Send message to Lingo.dev LLM for AI response
-      const response = await lingo.chat.sendMessage(currentInput, {
-        language: currentLanguage,
-        context: 'You are a helpful assistant for VibePage, a domain registration and social media card creation platform. Help users with domain searches, card creation, and general questions about the platform.',
-        maxTokens: 150
-      });
+    if (lingo) {
+      try {
+        // Send message to Lingo.dev LLM for AI response
+        const response = await lingo.chat.sendMessage(inputValue, {
+          language: currentLocale,
+          context: 'You are a helpful assistant for VibePage, a domain registration and social media card creation platform. Help users with domain searches, card creation, and general questions about the platform.',
+          maxTokens: 150
+        });
 
+        const botMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          type: 'bot',
+          content: response.content || 'I apologize, but I encountered an issue processing your request. Please try again.',
+          timestamp: new Date()
+        };
+        setMessages(prev => [...prev, botMessage]);
+      } catch (error) {
+        console.error('Error getting AI response:', error);
+        
+        // Fallback to static response if AI fails
+        const botMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          type: 'bot',
+          content: getFallbackResponse(inputValue),
+          timestamp: new Date()
+        };
+        setMessages(prev => [...prev, botMessage]);
+      }
+    } else {
+      // Use fallback response if Lingo.dev is not available
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
         type: 'bot',
-        content: response.content || 'I apologize, but I encountered an issue processing your request. Please try again.',
+        content: getFallbackResponse(inputValue),
         timestamp: new Date()
       };
       setMessages(prev => [...prev, botMessage]);
-    } catch (error) {
-      console.error('Error getting AI response:', error);
-      
-      // Fallback to static response if AI fails
-      const botMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        type: 'bot',
-        content: getFallbackResponse(currentInput),
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, botMessage]);
-    } finally {
-      setIsTyping(false);
     }
+    
+    setIsTyping(false);
   };
 
   const handleSuggestionClick = (suggestion: Suggestion) => {
@@ -101,11 +122,6 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
-
-  // Don't render if on editor pages
-  if (shouldHide) {
-    return null;
-  }
 
   const getFallbackResponse = (userInput: string): string => {
     const input = userInput.toLowerCase();
@@ -135,6 +151,11 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
       handleSendMessage();
     }
   };
+
+  // Don't render if on editor pages
+  if (shouldHide) {
+    return null;
+  }
 
   if (isCollapsed) {
     return (

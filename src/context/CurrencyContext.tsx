@@ -26,10 +26,18 @@ export const CurrencyProvider: React.FC<{ children: ReactNode }> = ({ children }
     { refreshInterval: 3600000 } // Refresh every hour
   );
   
-  const convertPrice = (priceInUSD: number): number => {
-    if (!rates) return priceInUSD;
-    const rate = currency === 'USD' ? 1 : (rates[currency] || 1);
-    return priceInUSD * rate;
+  const convertPrice = (priceInZAR: number): number => {
+    if (!rates || !rates.ZAR) return priceInZAR;
+    
+    // If target currency is ZAR, return original price
+    if (currency === 'ZAR') return priceInZAR;
+    
+    // Convert ZAR to USD first (divide by ZAR rate)
+    const priceInUSD = priceInZAR / rates.ZAR;
+    
+    // Then convert USD to target currency (multiply by target rate)
+    const targetRate = rates[currency] || 1;
+    return priceInUSD * targetRate;
   };
   
   const formatPrice = (price: number): string => {
