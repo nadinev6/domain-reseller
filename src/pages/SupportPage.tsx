@@ -103,6 +103,8 @@ const SupportPage: React.FC = () => {
           </p>
         </div>
 
+        <MagicCard>
+  <div className="p-4">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
           {/* Contact Form */}
           <div className="lg:col-span-2">
@@ -212,6 +214,8 @@ const SupportPage: React.FC = () => {
               </CardContent>
             </Card>
           </div>
+   </div>
+</MagicCard>         
 
           {/* Contact Information */}
           <div className="space-y-6">
