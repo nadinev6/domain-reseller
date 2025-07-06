@@ -342,13 +342,6 @@ const PricingPage: React.FC = () => {
                 {user ? 'Subscribe Now' : 'Sign Up & Subscribe'}
               </AnimatedShinyText>
             </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-white text-white hover:bg-white hover:text-indigo-600"
-            >
-              Contact Sales
-            </Button>
           </div>
         </div>
       </div>
