@@ -1,11 +1,11 @@
-# VibePage - Domain Registration & Social Media Card Studio
+# VibePage - Domain Registration & VibePage Studio
 
 A modern domain registration platform with an integrated social media card studio, powered by AI translations.
 
 ## Features
 
 - **Domain Search & Registration**: Find and register domains with real-time availability checking
-- **VibePage Studio**: Create stunning social media cards with drag-and-drop builder
+- **VibePage Studio**: Create stunning social media pages with drag-and-drop builder
 - **Multi-language Support**: English, French, and Malagasy with AI-powered translations
 - **User Authentication**: Secure sign-up and sign-in with Supabase
 - **Shopping Cart**: Add domains to cart with currency conversion
