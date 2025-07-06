@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X, User, ShoppingCart, LogOut } from 'lucide-react';
 import { useCart } from '../hooks/useCart';
 import { useAuth } from '../context/AuthContext';
@@ -19,6 +19,7 @@ const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
   const [authDialogTab, setAuthDialogTab] = React.useState<'signin' | 'signup'>('signin');
   const { cartItems } = useCart();
   const { user, signOut, loading } = useAuth();
+  const navigate = useNavigate();
 
   const handleAuthClick = (tab: 'signin' | 'signup') => {
     setAuthDialogTab(tab);
@@ -27,6 +28,7 @@ const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
 
   const handleSignOut = async () => {
     await signOut();
+    navigate('/');
   };
 
   // Handle cart click with coming soon message
