@@ -4544,12 +4544,14 @@ export default {
         "7/0/init/body/7/argument/1/5/3/1/1/1/1": {
           content: {
             en: "<element:Mail></element:Mail> Contact Form",
+            fr: "<element:Mail></element:Mail> Formulaire de contact",
           },
           hash: "ffbb5a8d772871491dea4a2862495ff9",
         },
         "7/0/init/body/7/argument/1/5/3/1/1/1/3": {
           content: {
             en: "Send us a message and we'll get back to you as soon as possible.",
+            fr: "Envoyez-nous un message et on vous répondra au plus vite.",
           },
           hash: "e9537e5ca1eebb4c4c09237ae5427373",
         },
@@ -4563,6 +4565,7 @@ export default {
         "7/0/init/body/7/argument/1/5/3/1/1/3/1/expression/alternate/1/1/1": {
           content: {
             en: "Full Name",
+            fr: "Nom complet",
           },
           hash: "ba3094a10db2bb9234cb7e0dc86e40fd",
         },
@@ -4570,12 +4573,14 @@ export default {
           {
             content: {
               en: "Enter your full name",
+              fr: "Saisissez votre nom complet",
             },
             hash: "5c927d18c76f612d106a4b69e437f6be",
           },
         "7/0/init/body/7/argument/1/5/3/1/1/3/1/expression/alternate/1/3/1": {
           content: {
             en: "Email Address",
+            fr: "Email",
           },
           hash: "0ee22bbbe989a0c61a18023407d12dc2",
         },
@@ -4583,60 +4588,70 @@ export default {
           {
             content: {
               en: "Enter your email",
+              fr: "Saisissez votre e-mail",
             },
             hash: "39931962707c99b99a5a073ab579396b",
           },
         "7/0/init/body/7/argument/1/5/3/1/1/3/1/expression/alternate/3/1": {
           content: {
             en: "Subject",
+            fr: "Sujet",
           },
           hash: "de5b885eb327b2f233f3b67aab4c4c0a",
         },
         "7/0/init/body/7/argument/1/5/3/1/1/3/1/expression/alternate/3/3/1": {
           content: {
             en: "Select a subject",
+            fr: "Choisir un sujet",
           },
           hash: "f85e5f81ad47104bf3191fc748779401",
         },
         "7/0/init/body/7/argument/1/5/3/1/1/3/1/expression/alternate/3/3/11": {
           content: {
             en: "Technical Support",
+            fr: "Support technique",
           },
           hash: "3547dd2e544ad65db2a623e3e45a072c",
         },
         "7/0/init/body/7/argument/1/5/3/1/1/3/1/expression/alternate/3/3/13": {
           content: {
             en: "Other",
+            fr: "Autre",
           },
           hash: "79acaa6cd481262bea4e743a422529d2",
         },
         "7/0/init/body/7/argument/1/5/3/1/1/3/1/expression/alternate/3/3/3": {
           content: {
             en: "Domain Registration",
+            fr: "Enregistrement domaine",
           },
           hash: "2fff8a8a4fe899fc3d62b50b2bdf4114",
         },
         "7/0/init/body/7/argument/1/5/3/1/1/3/1/expression/alternate/3/3/5": {
           content: {
             en: "Domain Transfer",
+            fr: "Transfert domaine",
           },
           hash: "ca8d055caaf94645faba76edca6ae361",
         },
         "7/0/init/body/7/argument/1/5/3/1/1/3/1/expression/alternate/3/3/7": {
           content: {
             en: "Card Studio",
+            fr: "Card Studio",
           },
           hash: "0ce64c24736afd2e322a161c9b087623",
         },
         "7/0/init/body/7/argument/1/5/3/1/1/3/1/expression/alternate/3/3/9": {
           content: {
             en: "Billing & Payments",
+            fr: "Facturation et paiements",
           },
           hash: "f0a03d943ac484e1be521ac21fdd34ea",
         },
         "7/0/init/body/7/argument/1/5/3/1/1/3/1/expression/alternate/5/1": {
           content: {
             en: "Message",
+            fr: "Message",
           },
           hash: "f2f72126bd244cfc534eab395e054362",
         },
@@ -4644,6 +4659,7 @@ export default {
           {
             content: {
               en: "Describe your question or issue in detail...",
+              fr: "Détaillez votre question ou problème...",
             },
             hash: "d88b25f56879dd9e4eafbb55e5da4d8a",
           },
@@ -4651,6 +4667,7 @@ export default {
           {
             content: {
               en: "<element:Send></element:Send> Send Message",
+              fr: "<element:Send></element:Send> Envoyer",
             },
             hash: "0f44a92e24c0d4f9ccba8e16d7775c31",
           },
@@ -4658,18 +4675,21 @@ export default {
           {
             content: {
               en: "<element:div></element:div> Sending...",
+              fr: "<element:div></element:div> Envoi en cours...",
             },
             hash: "a7b2a61f7f88bdd327273bb1195fb1f2",
           },
         "7/0/init/body/7/argument/1/5/3/1/1/3/1/expression/consequent/3": {
           content: {
             en: "Message Sent Successfully!",
+            fr: "Message bien reçu !",
           },
           hash: "d4b370ef353a1dd5c48826137803202a",
         },
         "7/0/init/body/7/argument/1/5/3/1/1/3/1/expression/consequent/5": {
           content: {
             en: "Thank you for contacting us. We'll respond within 24 hours.",
+            fr: "Merci de nous avoir contactés. On vous répond sous 24h.",
           },
           hash: "8b468a829b3d34794db894d089127b9a",
         },
