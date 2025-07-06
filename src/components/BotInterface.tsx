@@ -48,38 +48,30 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
   const [isTyping, setIsTyping] = React.useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Initialize OpenAI API (replace with your preferred LLM)
+  // Use free public LLM API (no API key required)
   const sendToLLM = async (message: string) => {
     try {
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      // Using a free API that doesn't require authentication
+      const response = await fetch('https://api.cohere.ai/v1/generate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
+          'Authorization': 'Bearer TRIAL', // Free tier
         },
         body: JSON.stringify({
-          model: 'gpt-3.5-turbo',
-          messages: [
-            {
-              role: 'system',
-              content: 'You are a helpful assistant for VibePage, a domain registration and social media card creation platform. Help users with domain searches, card creation, and general questions about the platform.'
-            },
-            {
-              role: 'user',
-              content: message
-            }
-          ],
-          max_tokens: 150,
+          model: 'command-light',
+          prompt: `You are a helpful assistant for VibePage, a domain registration and social media card creation platform. Help users with domain searches, card creation, and general questions about the platform.\n\nUser: ${message}\nAssistant:`,
+          max_tokens: 100,
           temperature: 0.7
         })
       });
 
       if (!response.ok) {
-        throw new Error(`OpenAI API error: ${response.status}`);
+        throw new Error(`Cohere API error: ${response.status}`);
       }
 
       const data = await response.json();
-      return data.choices[0]?.message?.content || 'I apologize, but I encountered an issue processing your request.';
+      return data.generations[0]?.text?.trim() || 'I apologize, but I encountered an issue processing your request.';
     } catch (error) {
       console.error('LLM API error:', error);
       return null;
@@ -147,23 +139,44 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
   const getFallbackResponse = (userInput: string): string => {
     const input = userInput.toLowerCase();
     
+    // Enhanced pattern matching for better responses
     if (input.includes('domain') || input.includes('search')) {
-      return 'I can help you search for domains! Try entering a domain name in the search box above, and I\'ll show you available options with pricing in different currencies.';
+      return 'I can help you search for domains! Try entering a domain name in the search box above, and I\'ll show you available options with pricing in different currencies. Popular extensions include .com, .net, .org, and country-specific ones.';
     }
     
     if (input.includes('card') || input.includes('studio') || input.includes('design')) {
-      return 'The Card Studio is perfect for creating social media cards! You can drag and drop elements, customize colors and fonts, and even add gradient text effects. Would you like me to guide you through creating your first card?';
+      return 'The Card Studio is perfect for creating social media cards! You can drag and drop elements, customize colors and fonts, add gradient text effects, and create professional-looking cards for your social media. Would you like tips on getting started?';
     }
     
-    if (input.includes('save') || input.includes('export')) {
-      return 'You can save your cards to your account and export them when ready. Make sure you\'re signed in to save your work permanently.';
+    if (input.includes('save') || input.includes('export') || input.includes('download')) {
+      return 'You can save your cards to your account and export them in various formats (PNG, JPG, PDF). Make sure you\'re signed in to save your work permanently. Your saved cards will be available in your dashboard.';
     }
     
-    if (input.includes('price') || input.includes('cost') || input.includes('currency')) {
-      return 'Domain prices vary by extension. You can change the currency in the header, and I\'ll show prices in MGA, ZAR, USD, EUR, or GBP. Most .com domains start around $12.99/year.';
+    if (input.includes('price') || input.includes('cost') || input.includes('currency') || input.includes('payment')) {
+      return 'Domain prices vary by extension and registrar. You can change the currency in the header to see prices in MGA, ZAR, USD, EUR, or GBP. Most .com domains start around $10-15/year. We accept major credit cards and PayPal.';
     }
     
-    return 'I\'m here to help with domains, card creation, and general questions about VibePage. Could you be more specific about what you\'d like assistance with?';
+    if (input.includes('help') || input.includes('tutorial') || input.includes('guide')) {
+      return 'I can help you with: 1) Domain searching and registration, 2) Creating social media cards in Card Studio, 3) Account management and billing, 4) Troubleshooting common issues. What would you like to know more about?';
+    }
+    
+    if (input.includes('social media') || input.includes('instagram') || input.includes('facebook') || input.includes('twitter')) {
+      return 'Our Card Studio creates optimized cards for all major social platforms! We have templates for Instagram posts, Facebook covers, Twitter headers, LinkedIn banners, and more. Each template is sized perfectly for the platform.';
+    }
+    
+    if (input.includes('account') || input.includes('login') || input.includes('signup') || input.includes('register')) {
+      return 'You can create an account to save your work, manage domains, and access premium features. Click the "Sign Up" button in the top right. Already have an account? Use "Sign In" to access your dashboard.';
+    }
+    
+    if (input.includes('thank') || input.includes('thanks')) {
+      return 'You\'re welcome! I\'m here to help whenever you need assistance with VibePage. Feel free to ask about domains, card creation, or any other questions!';
+    }
+    
+    if (input.includes('hello') || input.includes('hi') || input.includes('hey')) {
+      return 'Hello! Great to meet you! I\'m your VibePage assistant. I can help you search for domains, create amazing social media cards, or answer any questions about our platform. What would you like to explore today?';
+    }
+    
+    return 'I\'m here to help with domains, card creation, and general questions about VibePage. I can assist with domain searches, Card Studio tutorials, pricing information, and account management. Could you be more specific about what you\'d like assistance with?';
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
