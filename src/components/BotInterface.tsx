@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { MessageCircle, Send, Minimize2 } from 'lucide-react';
 import { LingoDotDevEngine } from 'lingo.dev/sdk';
+import { useLanguage } from 'lingo.dev/react-client';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
@@ -25,10 +26,11 @@ interface BotInterfaceProps {
 
 export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInterfaceProps) {
   const location = useLocation();
+  const { language } = useLanguage();
   
   // Initialize Lingo.dev for translation
   const lingo = React.useMemo(() => {
-    const apiKey = import.meta.env.VITE_LINGO_API_KEY;
+    const apiKey = import.meta.env.LINGO_API_KEY;
     if (apiKey) {
       return new LingoDotDevEngine({ apiKey });
     }
@@ -39,7 +41,7 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
   const responseTemplates = {
     domainSearch: "To search for domains, simply type your desired domain name in the search box above. I'll show you available options with real-time pricing in multiple currencies. You can also filter by extension (.com, .net, .org, etc.) to find the perfect domain for your project.",
     cardStudio: "Card Studio is our powerful design tool for creating social media graphics! You can drag and drop text, images, and shapes, apply gradients and effects, choose from hundreds of templates, and export in various formats. It's perfect for Instagram posts, Facebook covers, Twitter headers, and more.",
-    pricing: "Domain pricing varies by extension: .com domains typically start at $12.99/year, .net at $14.99/year, and country-specific domains vary. You can switch currencies in the header to see prices in MGA, ZAR, USD, EUR, or GBP. We also offer bulk discounts for multiple domains!",
+    pricing: "Domain pricing varies by extension: .com domains typically start at R299/year, .net at R329/year, and country-specific domains vary. You can switch currencies in the header to see prices in MGA, ZAR, USD, EUR, or GBP. We also offer bulk discounts for multiple domains!",
     design: "Great choice! Our Card Studio makes design easy. Start by choosing a template or blank canvas, then customize with your text, colors, and images. Pro tip: Use our gradient text feature and shadow effects to make your designs pop! Need help with a specific design element?",
     saveExport: "You can save your designs to your account (requires sign-in) and export in PNG, JPG, or PDF formats. Saved projects are stored in your dashboard for easy access later. Free users get 5 saves per month, while premium users get unlimited saves and exports.",
     templates: "We have over 500 professionally designed templates! Categories include: Business cards, Social media posts, Event flyers, Logos, Banners, and more. Each template is fully customizable - change colors, fonts, text, and images to match your brand perfectly.",
@@ -54,7 +56,7 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
   };
 
   // Function to translate text using Lingo.dev
-  const translateText = async (text: string, targetLanguage: string = currentLocale) => {
+  const translateText = async (text: string, targetLanguage: string = language) => {
     if (!lingo || targetLanguage === 'en') {
       return text; // Return original if no translation needed
     }
@@ -69,27 +71,26 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
       return text; // Return original text if translation fails
     }
   };
-  
-  // Option 1: Use a simple state for locale (replace with your actual locale logic)
-  const [currentLocale, setCurrentLocale] = React.useState('en');
-  
-  // Option 2: Or get it from browser
-  // const currentLocale = navigator.language || 'en';
-  
-  // Option 3: Or get it from context/props if you have a language context elsewhere
-  // const { currentLocale } = useContext(YourLanguageContext);
 
   const [messages, setMessages] = React.useState<Message[]>([]);
-    {
-      id: '1',
-      type: 'bot',
-      content: 'Hello! I\'m your VibePage assistant. I can help you with domain searches, card creation, and answer questions about your projects. How can I assist you today?',
-      timestamp: new Date()
-    }
-  ]);
   const [inputValue, setInputValue] = React.useState('');
   const [isTyping, setIsTyping] = React.useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Initialize with welcome message
+  useEffect(() => {
+    const initializeWelcomeMessage = async () => {
+      const welcomeText = await translateText(responseTemplates.welcome);
+      setMessages([{
+        id: '1',
+        type: 'bot',
+        content: welcomeText,
+        timestamp: new Date()
+      }]);
+    };
+
+    initializeWelcomeMessage();
+  }, [language]);
 
   // Smart local AI-like responses with translation support
   const sendToLLM = async (message: string) => {
