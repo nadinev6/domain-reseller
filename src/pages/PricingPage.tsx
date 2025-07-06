@@ -62,7 +62,7 @@ const PricingPage: React.FC = () => {
       perks: [
         { icon: <Crown className="w-4 h-4" />, text: 'Enhanced priority support' },
         { icon: <Zap className="w-4 h-4" />, text: 'Beta feature access' },
-        { icon: <Shield className="w-4 h-4" />, text: '50 free cards included' },
+        { icon: <Palette className="w-4 h-4" />, text: '50 free cards included' },
         { icon: <Star className="w-4 h-4" />, text: '1800 points upfront' }
       ]
     }
