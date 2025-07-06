@@ -4,7 +4,7 @@ import { Save, Download, Undo, Redo, Eye, Loader2 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import ProtectedRoute from '../components/auth/ProtectedRoute';
 import Toolbox from '../components/card-studio/Toolbox';
-import { default as EditorCanvas } from '../components/card-studio/EditorCanvas';
+import EditorCanvas from '../components/card-studio/EditorCanvas';
 import PropertiesPanel from '../components/card-studio/PropertiesPanel';
 import { CardElement } from '../types';
 import { useAuth } from '../context/AuthContext';
