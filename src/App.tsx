@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import BotInterface from './components/BotInterface';
+import ContactSupport from './components/ContactSupport';
 import DomainSearch from './components/DomainSearch';
 import DomainResults from './components/DomainResults';
 import Cart from './components/Cart';
@@ -66,7 +66,7 @@ export default function App() {
                 } />
               </Routes>
               <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-              <BotInterface 
+              <ContactSupport 
                 isCollapsed={isBotCollapsed}
                 onToggleCollapse={() => setIsBotCollapsed(!isBotCollapsed)}
               />

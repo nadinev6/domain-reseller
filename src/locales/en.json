@@ -257,5 +257,28 @@
       "thanks": "You're welcome! I'm here to help whenever you need assistance with VibePage. Feel free to ask about domains, card creation, or any other questions!",
       "greeting": "Hello! Great to meet you! I'm your VibePage assistant. I can help you search for domains, create amazing social media cards, or answer any questions about our platform. What would you like to explore today?"
     }
+  },
+  "support": {
+    "form": {
+      "title": "Contact Support",
+      "subtitle": "How can we help you today?",
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "Your email",
+      "subjectPlaceholder": "Subject",
+      "messagePlaceholder": "Describe your issue or question...",
+      "sendButton": "Send Message",
+      "sending": "Sending...",
+      "successTitle": "Message Sent!",
+      "successMessage": "Thank you for contacting us. We'll get back to you within 24 hours.",
+      "sendAnother": "Send Another Message",
+      "errorMessage": "Failed to send message. Please try again.",
+      "validation": {
+        "nameRequired": "Name is required",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Please enter a valid email",
+        "subjectRequired": "Subject is required",
+        "messageRequired": "Message is required"
+      }
+    }
   }
 }

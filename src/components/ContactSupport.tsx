@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { MessageCircle, Send, Minimize2, Languages, User, Mail, MessageSquare } from 'lucide-react';
+import { useTranslation, useLocale } from 'lingo.dev/react/client';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
-
-// Uncomment these when you have lingo.dev/react/client properly installed
-// import { useTranslation, useLocale } from 'lingo.dev/react/client';
 
 interface ContactSupportProps {
   isCollapsed: boolean;
@@ -14,13 +12,8 @@ interface ContactSupportProps {
 
 export default function ContactSupport({ isCollapsed, onToggleCollapse }: ContactSupportProps) {
   const location = useLocation();
-  
-  // TEMPORARY: Use simple state until lingo.dev/react/client is properly set up
-  const [language, setLanguage] = useState('en');
-  
-  // When you have lingo.dev/react/client working, uncomment these and remove the language state above:
-  // const { t } = useTranslation();
-  // const { locale, setLocale } = useLocale();
+  const { t } = useTranslation();
+  const { locale, setLocale } = useLocale();
 
   // Form state
   const [formData, setFormData] = useState({
@@ -32,72 +25,6 @@ export default function ContactSupport({ isCollapsed, onToggleCollapse }: Contac
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState('');
-
-  // Translation keys and fallback texts
-  const translations = {
-    en: {
-      title: 'Contact Support',
-      subtitle: 'How can we help you today?',
-      namePlaceholder: 'Your name',
-      emailPlaceholder: 'Your email',
-      subjectPlaceholder: 'Subject',
-      messagePlaceholder: 'Describe your issue or question...',
-      sendButton: 'Send Message',
-      sending: 'Sending...',
-      successTitle: 'Message Sent!',
-      successMessage: 'Thank you for contacting us. We\'ll get back to you within 24 hours.',
-      sendAnother: 'Send Another Message',
-      errorMessage: 'Failed to send message. Please try again.',
-      nameRequired: 'Name is required',
-      emailRequired: 'Email is required',
-      emailInvalid: 'Please enter a valid email',
-      subjectRequired: 'Subject is required',
-      messageRequired: 'Message is required'
-    },
-    fr: {
-      title: 'Contacter le Support',
-      subtitle: 'Comment pouvons-nous vous aider aujourd\'hui?',
-      namePlaceholder: 'Votre nom',
-      emailPlaceholder: 'Votre email',
-      subjectPlaceholder: 'Sujet',
-      messagePlaceholder: 'Décrivez votre problème ou question...',
-      sendButton: 'Envoyer le Message',
-      sending: 'Envoi en cours...',
-      successTitle: 'Message Envoyé!',
-      successMessage: 'Merci de nous avoir contactés. Nous vous répondrons dans les 24 heures.',
-      sendAnother: 'Envoyer un Autre Message',
-      errorMessage: 'Échec de l\'envoi du message. Veuillez réessayer.',
-      nameRequired: 'Le nom est requis',
-      emailRequired: 'L\'email est requis',
-      emailInvalid: 'Veuillez entrer un email valide',
-      subjectRequired: 'Le sujet est requis',
-      messageRequired: 'Le message est requis'
-    },
-    mg: {
-      title: 'Mifandraisa amin\'ny Fanampiana',
-      subtitle: 'Ahoana no afaka anampianay anao androany?',
-      namePlaceholder: 'Ny anaranao',
-      emailPlaceholder: 'Ny email-nao',
-      subjectPlaceholder: 'Lohahevitra',
-      messagePlaceholder: 'Lazao ny olana na fanontaniana...',
-      sendButton: 'Mandefa Hafatra',
-      sending: 'Mandefa...',
-      successTitle: 'Lasa ny Hafatra!',
-      successMessage: 'Misaotra anao nifandray taminay. Hamaly izahay ao anatin\'ny 24 ora.',
-      sendAnother: 'Mandefa Hafatra Hafa',
-      errorMessage: 'Tsy afaka nandefa ny hafatra. Andramo indray azafady.',
-      nameRequired: 'Ilaina ny anarana',
-      emailRequired: 'Ilaina ny email',
-      emailInvalid: 'Ampidiro email marina azafady',
-      subjectRequired: 'Ilaina ny lohahevitra',
-      messageRequired: 'Ilaina ny hafatra'
-    }
-  };
-
-  // Get translated text
-  const t = (key: string): string => {
-    return translations[language as keyof typeof translations]?.[key as keyof typeof translations['en']] || key;
-  };
 
   // Check if ContactSupport should be hidden based on current route
   const shouldHide = location.pathname.startsWith('/card-studio/editor');
@@ -116,23 +43,23 @@ export default function ContactSupport({ isCollapsed, onToggleCollapse }: Contac
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
     if (!formData.name.trim()) {
-      setSubmitError(t('nameRequired'));
+      setSubmitError(t('support.form.validation.nameRequired'));
       return false;
     }
     if (!formData.email.trim()) {
-      setSubmitError(t('emailRequired'));
+      setSubmitError(t('support.form.validation.emailRequired'));
       return false;
     }
     if (!emailRegex.test(formData.email)) {
-      setSubmitError(t('emailInvalid'));
+      setSubmitError(t('support.form.validation.emailInvalid'));
       return false;
     }
     if (!formData.subject.trim()) {
-      setSubmitError(t('subjectRequired'));
+      setSubmitError(t('support.form.validation.subjectRequired'));
       return false;
     }
     if (!formData.message.trim()) {
-      setSubmitError(t('messageRequired'));
+      setSubmitError(t('support.form.validation.messageRequired'));
       return false;
     }
     
@@ -162,7 +89,7 @@ export default function ContactSupport({ isCollapsed, onToggleCollapse }: Contac
           email: formData.email,
           subject: formData.subject,
           message: formData.message,
-          language: language,
+          language: locale,
           timestamp: new Date().toISOString()
         }).toString()
       });
@@ -180,7 +107,7 @@ export default function ContactSupport({ isCollapsed, onToggleCollapse }: Contac
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      setSubmitError(t('errorMessage'));
+      setSubmitError(t('support.form.errorMessage'));
     } finally {
       setIsSubmitting(false);
     }
@@ -189,10 +116,7 @@ export default function ContactSupport({ isCollapsed, onToggleCollapse }: Contac
   // Handle language change
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newLanguage = e.target.value;
-    setLanguage(newLanguage);
-    
-    // When you have lingo.dev/react/client working, replace setLanguage with:
-    // setLocale(newLanguage);
+    setLocale(newLanguage);
   };
 
   // Reset form to show contact form again
@@ -237,8 +161,8 @@ export default function ContactSupport({ isCollapsed, onToggleCollapse }: Contac
           <div className="flex items-center space-x-2">
             <MessageCircle className="w-5 h-5" />
             <div>
-              <h3 className="font-semibold text-sm">{t('title')}</h3>
-              <p className="text-xs text-indigo-100">{t('subtitle')}</p>
+              <h3 className="font-semibold text-sm">{t('support.form.title')}</h3>
+              <p className="text-xs text-indigo-100">{t('support.form.subtitle')}</p>
             </div>
           </div>
           <div className="flex items-center space-x-2">
@@ -246,7 +170,7 @@ export default function ContactSupport({ isCollapsed, onToggleCollapse }: Contac
             <div className="relative flex items-center">
               <Languages size={14} className="absolute left-2 text-white/70 pointer-events-none" />
               <select
-                value={language}
+                value={locale}
                 onChange={handleLanguageChange}
                 className="pl-7 pr-3 py-1 text-xs bg-white/20 border border-white/30 rounded text-white focus:outline-none focus:ring-1 focus:ring-white/50 appearance-none cursor-pointer"
               >
@@ -275,14 +199,14 @@ export default function ContactSupport({ isCollapsed, onToggleCollapse }: Contac
                 <MessageCircle className="w-8 h-8 text-green-600" />
               </div>
               <div>
-                <h3 className="font-semibold text-green-800">{t('successTitle')}</h3>
-                <p className="text-sm text-gray-600 mt-1">{t('successMessage')}</p>
+                <h3 className="font-semibold text-green-800">{t('support.form.successTitle')}</h3>
+                <p className="text-sm text-gray-600 mt-1">{t('support.form.successMessage')}</p>
               </div>
               <Button
                 onClick={resetForm}
                 className="w-full bg-indigo-600 hover:bg-indigo-700 text-white"
               >
-                {t('sendAnother')}
+                {t('support.form.sendAnother')}
               </Button>
             </div>
           ) : (
@@ -296,7 +220,7 @@ export default function ContactSupport({ isCollapsed, onToggleCollapse }: Contac
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  placeholder={t('namePlaceholder')}
+                  placeholder={t('support.form.namePlaceholder')}
                   className="pl-10"
                   required
                 />
@@ -310,7 +234,7 @@ export default function ContactSupport({ isCollapsed, onToggleCollapse }: Contac
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  placeholder={t('emailPlaceholder')}
+                  placeholder={t('support.form.emailPlaceholder')}
                   className="pl-10"
                   required
                 />
@@ -324,7 +248,7 @@ export default function ContactSupport({ isCollapsed, onToggleCollapse }: Contac
                   name="subject"
                   value={formData.subject}
                   onChange={handleInputChange}
-                  placeholder={t('subjectPlaceholder')}
+                  placeholder={t('support.form.subjectPlaceholder')}
                   className="pl-10"
                   required
                 />
@@ -336,7 +260,7 @@ export default function ContactSupport({ isCollapsed, onToggleCollapse }: Contac
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  placeholder={t('messagePlaceholder')}
+                  placeholder={t('support.form.messagePlaceholder')}
                   rows={4}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none text-sm"
                   required
@@ -359,12 +283,12 @@ export default function ContactSupport({ isCollapsed, onToggleCollapse }: Contac
                 {isSubmitting ? (
                   <div className="flex items-center space-x-2">
                     <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    <span>{t('sending')}</span>
+                    <span>{t('support.form.sending')}</span>
                   </div>
                 ) : (
                   <div className="flex items-center space-x-2">
                     <Send className="w-4 h-4" />
-                    <span>{t('sendButton')}</span>
+                    <span>{t('support.form.sendButton')}</span>
                   </div>
                 )}
               </Button>
