@@ -26,7 +26,7 @@ interface BotInterfaceProps {
 
 export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInterfaceProps) {
   const location = useLocation();
-  const { currentLocale } = useLocale();
+  const { currentLocale } = useLanguage();
   const [messages, setMessages] = React.useState<Message[]>([
     {
       id: '1',
