@@ -29,14 +29,17 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
   // Simple language state - no more problematic imports
   const [language, setLanguage] = React.useState('en');
   
-  // Initialize Lingo.dev for translation
+  // Initialize Lingo.dev for translation - NOW WITH LANGUAGE DEPENDENCY
   const lingo = React.useMemo(() => {
-    const apiKey = import.meta.env.LINGO_API_KEY;
+    const apiKey = import.meta.env.VITE_LINGO_API_KEY; // Fixed: Added VITE_ prefix
     if (apiKey) {
-      return new LingoDotDevEngine({ apiKey });
+      return new LingoDotDevEngine({ 
+        apiKey,
+        locale: language // Pass the current language as locale
+      });
     }
     return null;
-  }, []);
+  }, [language]); // Added language to dependency array
 
   // Define response templates with keys for translation
   const responseTemplates = {
@@ -78,7 +81,7 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
   const [isTyping, setIsTyping] = React.useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Initialize with welcome message
+  // Initialize with welcome message - UPDATED TO REFRESH WHEN LANGUAGE CHANGES
   useEffect(() => {
     const initializeWelcomeMessage = async () => {
       const welcomeText = await translateText(responseTemplates.welcome);
@@ -91,7 +94,7 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
     };
 
     initializeWelcomeMessage();
-  }, [language]);
+  }, [language, lingo]); // Added lingo to dependencies
 
   // Smart local AI-like responses with translation support
   const sendToLLM = async (message: string) => {
