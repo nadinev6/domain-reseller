@@ -84,6 +84,7 @@ function AppContent() {
           </CartProvider>
         </CurrencyProvider>
       </AuthProvider>
+    </Router>
   );
 }
 
