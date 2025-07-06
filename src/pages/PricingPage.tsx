@@ -52,7 +52,7 @@ const PricingPage: React.FC = () => {
       popular: true,
       features: [
         '1800 points immediately',
-        '+200 points with each domain purchase',
+        '+200 points with each domain',
         'Enhanced priority support',
         '50 free social media cards',
         'All landing page templates',
