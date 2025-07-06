@@ -3954,6 +3954,14 @@
           "skip": false,
           "overrides": {},
           "content": "What's included:"
+        },
+        "7/0/init/body/9/argument/1/7/1/expression/0/body/5/9/3/expression/right": {
+          "type": "element",
+          "hash": "70dcd23e629cb5691109a73ef035a32d",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "🔥 Limited time: Get 2 months free with annual plan"
         }
       }
     },

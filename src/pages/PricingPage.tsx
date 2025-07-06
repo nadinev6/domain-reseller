@@ -143,7 +143,7 @@ const PricingPage: React.FC = () => {
           {plans.map((plan) => (
             <Card 
               key={plan.id}
-              className={`relative overflow-hidden transition-all duration-300 hover:shadow-xl ${
+              className={`relative overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col ${
                 plan.popular 
                   ? 'border-2 border-indigo-500 shadow-lg scale-105' 
                   : 'border border-gray-200 hover:border-indigo-300'
@@ -195,7 +195,7 @@ const PricingPage: React.FC = () => {
                 </div>
               </CardHeader>
 
-              <CardContent>
+              <CardContent className="flex-grow flex flex-col">
                 {/* Key Perks */}
                 <div className="grid grid-cols-2 gap-3 mb-6">
                   {plan.perks.map((perk, index) => (
@@ -207,7 +207,7 @@ const PricingPage: React.FC = () => {
                 </div>
 
                 {/* Features List */}
-                <div className="space-y-3 mb-6">
+                <div className="space-y-3 mb-6 flex-grow">
                   <h4 className="font-medium text-gray-900">What's included:</h4>
                   {plan.features.map((feature, index) => (
                     <div key={index} className="flex items-start space-x-3">
@@ -217,23 +217,25 @@ const PricingPage: React.FC = () => {
                   ))}
                 </div>
 
-                <Button
-                  onClick={() => handleSubscribe(plan.id)}
-                  className={`w-full ${
-                    plan.popular
-                      ? 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700'
-                      : 'bg-indigo-600 hover:bg-indigo-700'
-                  } text-white`}
-                  size="lg"
-                >
-                  {user ? 'Subscribe Now' : 'Sign Up to Subscribe'}
-                </Button>
+                <div className="mt-auto">
+                  <Button
+                    onClick={() => handleSubscribe(plan.id)}
+                    className={`w-full ${
+                      plan.popular
+                        ? 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700'
+                        : 'bg-indigo-600 hover:bg-indigo-700'
+                    } text-white`}
+                    size="lg"
+                  >
+                    {user ? 'Subscribe Now' : 'Sign Up to Subscribe'}
+                  </Button>
 
-                {plan.popular && (
-                  <p className="text-center text-sm text-gray-500 mt-3">
-                    🔥 Limited time: Get 2 months free with annual plan
-                  </p>
-                )}
+                  {plan.popular && (
+                    <p className="text-center text-sm text-gray-500 mt-3">
+                      🔥 Limited time: Get 2 months free with annual plan
+                    </p>
+                  )}
+                </div>
               </CardContent>
             </Card>
           ))}
