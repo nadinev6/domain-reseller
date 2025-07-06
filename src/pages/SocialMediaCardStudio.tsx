@@ -146,7 +146,7 @@ const SocialMediaCardStudio: React.FC = () => {
               Inspiration Gallery
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              See what's possible with our Social Media Card Studio
+              See what's possible with our VibePage Studio
             </p>
           </div>
 
