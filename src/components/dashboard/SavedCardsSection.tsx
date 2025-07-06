@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Palette, Eye, Edit, Trash2, Plus, Loader2 } from 'lucide-react';
+import { t } from 'lingo.dev/react';
 import { Button } from '../ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { useAuth } from '../../context/AuthContext';
@@ -43,7 +44,7 @@ const SavedCardsSection: React.FC = () => {
   };
 
   const deleteCard = async (cardId: string) => {
-    if (!confirm('Are you sure you want to delete this card? This action cannot be undone.')) {
+    if (!confirm(t('cardStudio.savedCards.deleteConfirm'))) {
       return;
     }
 
@@ -57,7 +58,7 @@ const SavedCardsSection: React.FC = () => {
 
       if (error) {
         console.error('Error deleting card:', error);
-        alert('Failed to delete card. Please try again.');
+        alert(t('cardStudio.savedCards.deleteError'));
         return;
       }
 
@@ -71,7 +72,7 @@ const SavedCardsSection: React.FC = () => {
 
     } catch (error) {
       console.error('Unexpected error deleting card:', error);
-      alert('An unexpected error occurred. Please try again.');
+      alert(t('cardStudio.savedCards.deleteError'));
     } finally {
       setDeletingId(null);
     }
@@ -114,13 +115,13 @@ const SavedCardsSection: React.FC = () => {
         <CardHeader>
           <CardTitle className="flex items-center">
             <Palette className="w-5 h-5 mr-2" />
-            Saved Cards
+            {t('cardStudio.savedCards.title')}
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="flex items-center justify-center py-8">
             <Loader2 className="w-6 h-6 animate-spin text-indigo-600" />
-            <span className="ml-2 text-gray-600">Loading your saved cards...</span>
+            <span className="ml-2 text-gray-600">{t('cardStudio.savedCards.loading')}</span>
           </div>
         </CardContent>
       </Card>
@@ -133,17 +134,17 @@ const SavedCardsSection: React.FC = () => {
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center">
             <Palette className="w-5 h-5 mr-2" />
-            Saved Cards
+            {t('cardStudio.savedCards.title')}
           </CardTitle>
           <Link to="/card-studio/editor">
             <Button size="sm" className="flex items-center">
               <Plus className="w-4 h-4 mr-1" />
-              New Card
+              {t('cardStudio.savedCards.newCard')}
             </Button>
           </Link>
         </div>
         <CardDescription>
-          Manage your saved social media card designs
+          {t('cardStudio.savedCards.subtitle')}
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -152,14 +153,14 @@ const SavedCardsSection: React.FC = () => {
             <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
               <Palette className="w-8 h-8 text-gray-400" />
             </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">No saved cards yet</h3>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">{t('cardStudio.savedCards.noCards')}</h3>
             <p className="text-gray-600 mb-4">
-              Create your first social media card to get started
+              {t('cardStudio.savedCards.noCardsDesc')}
             </p>
             <Link to="/card-studio/editor">
               <Button className="flex items-center">
                 <Plus className="w-4 h-4 mr-2" />
-                Create Your First Card
+                {t('cardStudio.savedCards.createFirst')}
               </Button>
             </Link>
           </div>
@@ -182,8 +183,8 @@ const SavedCardsSection: React.FC = () => {
                     <div className="flex-1">
                       <h3 className="font-medium text-gray-900">{card.title}</h3>
                       <div className="text-sm text-gray-500 space-y-1">
-                        <p>Elements: {preview.elementTypes}</p>
-                        <p>Size: {preview.canvasSize} • Created: {formatDate(card.created_at)}</p>
+                        <p>{t('cardStudio.savedCards.elements', { types: preview.elementTypes })}</p>
+                        <p>{t('cardStudio.savedCards.size', { size: preview.canvasSize })} • {t('cardStudio.savedCards.created', { date: formatDate(card.created_at) })}</p>
                       </div>
                     </div>
                   </div>
@@ -193,7 +194,7 @@ const SavedCardsSection: React.FC = () => {
                       variant="outline"
                       size="sm"
                       className="flex items-center"
-                      title="Preview card"
+                      title={t('cardStudio.savedCards.preview')}
                     >
                       <Eye className="w-4 h-4" />
                     </Button>
@@ -202,7 +203,7 @@ const SavedCardsSection: React.FC = () => {
                         variant="outline"
                         size="sm"
                         className="flex items-center"
-                        title="Edit card"
+                        title={t('cardStudio.savedCards.edit')}
                       >
                         <Edit className="w-4 h-4" />
                       </Button>
@@ -213,7 +214,7 @@ const SavedCardsSection: React.FC = () => {
                       onClick={() => deleteCard(card.id)}
                       disabled={deletingId === card.id}
                       className="flex items-center text-red-600 hover:text-red-700 hover:bg-red-50"
-                      title="Delete card"
+                      title={t('cardStudio.savedCards.delete')}
                     >
                       {deletingId === card.id ? (
                         <Loader2 className="w-4 h-4 animate-spin" />

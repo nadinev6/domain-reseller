@@ -1,5 +1,6 @@
 import React, { useRef, useCallback, useState } from 'react';
 import { Trash2, Copy, RotateCw } from 'lucide-react';
+import { t } from 'lingo.dev/react';
 import { CardElement } from '../../types';
 
 
@@ -192,7 +193,7 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
         // Apply gradient or solid color
         if (element.isGradientText && element.gradientColor1 && element.gradientColor2) {
           // For gradient text, we need to handle emojis separately
-          const rawTextContent = element.content || 'Your text here';
+          const rawTextContent = element.content || t('cardStudio.editor.defaultText');
           const emojiRegex = /[\u{1F600}-\u{1F64F}]|[\u{1F300}-\u{1F5FF}]|[\u{1F680}-\u{1F6FF}]|[\u{1F1E0}-\u{1F1FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]/gu;
           
           // Split content into parts (text and emojis)
@@ -261,7 +262,7 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
               style={textStyle}
               onMouseDown={(e) => handleElementMouseDown(e, element)}
             >
-              {element.content || 'Your text here'}
+              {element.content || t('cardStudio.editor.defaultText')}
             </div>
           );
         }
@@ -321,7 +322,7 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
             }}
             onMouseDown={(e) => handleElementMouseDown(e, element)}
           >
-            {element.buttonText || 'Click me'}
+            {element.buttonText || t('cardStudio.editor.defaultButtonText')}
           </button>
         );
         break;
@@ -338,21 +339,21 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
             <button
               onClick={() => duplicateElement(element)}
               className="p-1 hover:bg-gray-100 rounded"
-              title="Duplicate"
+              title={t('cardStudio.editor.duplicate')}
             >
               <Copy className="w-3 h-3" />
             </button>
             <button
               onClick={() => onUpdateElement(element.id, { rotation: (element.rotation || 0) + 15 })}
               className="p-1 hover:bg-gray-100 rounded"
-              title="Rotate"
+              title={t('cardStudio.editor.rotate')}
             >
               <RotateCw className="w-3 h-3" />
             </button>
             <button
               onClick={() => onDeleteElement(element.id)}
               className="p-1 hover:bg-red-100 text-red-600 rounded"
-              title="Delete"
+              title={t('cardStudio.editor.delete')}
             >
               <Trash2 className="w-3 h-3" />
             </button>
@@ -398,8 +399,8 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
           <div className="absolute inset-0 flex items-center justify-center text-gray-400 pointer-events-none">
             <div className="text-center">
               <div className="text-4xl mb-2">🎨</div>
-              <p className="text-lg font-medium">Start Creating</p>
-              <p className="text-sm">Drag elements from the toolbox or click to add them</p>
+              <p className="text-lg font-medium">{t('cardStudio.editor.emptyCanvas')}</p>
+              <p className="text-sm">{t('cardStudio.editor.emptyCanvasDesc')}</p>
             </div>
           </div>
         )}
