@@ -3,6 +3,54 @@ export default {
   files: {
     "components/BotInterface.tsx": {
       entries: {
+        "10/declaration/body/16/argument/11/1/1-placeholder": {
+          content: {
+            en: "Ask me anything about VibePage...",
+          },
+          hash: "7b79fbf096222fc0c96423683165dd2c",
+        },
+        "10/declaration/body/16/argument/3/1/3": {
+          content: {
+            en: "VibePage Assistant",
+          },
+          hash: "7c24c5590cc13478df43676f0fe7d1e0",
+        },
+        "10/declaration/body/20/argument/11/1/1-placeholder": {
+          content: {
+            en: "Ask me anything about VibePage...",
+          },
+          hash: "7b79fbf096222fc0c96423683165dd2c",
+        },
+        "10/declaration/body/20/argument/3/1/3": {
+          content: {
+            en: "VibePage Assistant",
+          },
+          hash: "7c24c5590cc13478df43676f0fe7d1e0",
+        },
+        "11/declaration/body/20/argument/11/1/1-placeholder": {
+          content: {
+            en: "Ask me anything about VibePage...",
+          },
+          hash: "7b79fbf096222fc0c96423683165dd2c",
+        },
+        "11/declaration/body/20/argument/3/1/3": {
+          content: {
+            en: "VibePage Assistant",
+          },
+          hash: "7c24c5590cc13478df43676f0fe7d1e0",
+        },
+        "12/declaration/body/20/argument/11/1/1-placeholder": {
+          content: {
+            en: "Ask me anything about VibePage...",
+          },
+          hash: "7b79fbf096222fc0c96423683165dd2c",
+        },
+        "12/declaration/body/20/argument/3/1/3": {
+          content: {
+            en: "VibePage Assistant",
+          },
+          hash: "7c24c5590cc13478df43676f0fe7d1e0",
+        },
         "6/0/init/body/10/argument/11/1/1-placeholder": {
           content: {
             en: "Ask me anything about VibePage...",
@@ -52,6 +100,18 @@ export default {
           },
           hash: "c86ac2c40d42c1ddb2e60e49103bb062",
         },
+        "7/declaration/body/11/argument/11/1/1-placeholder": {
+          content: {
+            en: "Ask me anything about VibePage...",
+          },
+          hash: "7b79fbf096222fc0c96423683165dd2c",
+        },
+        "7/declaration/body/11/argument/3/1/3": {
+          content: {
+            en: "VibePage Assistant",
+          },
+          hash: "7c24c5590cc13478df43676f0fe7d1e0",
+        },
         "8/declaration/body/12/argument/11/1/1-placeholder": {
           content: {
             en: "Ask me anything about VibePage...",
@@ -63,6 +123,30 @@ export default {
           content: {
             en: "VibePage Assistant",
             fr: "Assistant VibePage",
+          },
+          hash: "7c24c5590cc13478df43676f0fe7d1e0",
+        },
+        "8/declaration/body/14/argument/11/1/1-placeholder": {
+          content: {
+            en: "Ask me anything about VibePage...",
+          },
+          hash: "7b79fbf096222fc0c96423683165dd2c",
+        },
+        "8/declaration/body/14/argument/3/1/3": {
+          content: {
+            en: "VibePage Assistant",
+          },
+          hash: "7c24c5590cc13478df43676f0fe7d1e0",
+        },
+        "8/declaration/body/16/argument/11/1/1-placeholder": {
+          content: {
+            en: "Ask me anything about VibePage...",
+          },
+          hash: "7b79fbf096222fc0c96423683165dd2c",
+        },
+        "8/declaration/body/16/argument/3/1/3": {
+          content: {
+            en: "VibePage Assistant",
           },
           hash: "7c24c5590cc13478df43676f0fe7d1e0",
         },
@@ -86,6 +170,60 @@ export default {
             fr: "Assistant VibePage",
           },
           hash: "7c24c5590cc13478df43676f0fe7d1e0",
+        },
+        "9/declaration/body/15/argument/11/1/1-placeholder": {
+          content: {
+            en: "Ask me anything about VibePage...",
+          },
+          hash: "7b79fbf096222fc0c96423683165dd2c",
+        },
+        "9/declaration/body/15/argument/3/1/3": {
+          content: {
+            en: "VibePage Assistant",
+          },
+          hash: "7c24c5590cc13478df43676f0fe7d1e0",
+        },
+        "9/declaration/body/16/argument/11/1/1-placeholder": {
+          content: {
+            en: "Ask me anything about VibePage...",
+          },
+          hash: "7b79fbf096222fc0c96423683165dd2c",
+        },
+        "9/declaration/body/16/argument/3/1/3": {
+          content: {
+            en: "VibePage Assistant",
+          },
+          hash: "7c24c5590cc13478df43676f0fe7d1e0",
+        },
+        "9/declaration/body/21/argument/11/1/1-placeholder": {
+          content: {
+            en: "Ask me anything about VibePage...",
+          },
+          hash: "7b79fbf096222fc0c96423683165dd2c",
+        },
+        "9/declaration/body/21/argument/3/1/3": {
+          content: {
+            en: "VibePage Assistant",
+          },
+          hash: "7c24c5590cc13478df43676f0fe7d1e0",
+        },
+        "9/declaration/body/21/argument/3/3/3/3/1": {
+          content: {
+            en: "EN",
+          },
+          hash: "4dcca3456893f133e1b6b9560c7a881d",
+        },
+        "9/declaration/body/21/argument/3/3/3/3/3": {
+          content: {
+            en: "FR",
+          },
+          hash: "4b1ab1c37a337a4c06efab7e28db7ffb",
+        },
+        "9/declaration/body/21/argument/3/3/3/3/5": {
+          content: {
+            en: "MG",
+          },
+          hash: "1a19769fdd1c6d79fdf195ffc656e65e",
         },
       },
     },
@@ -2931,6 +3069,36 @@ export default {
     },
     "pages/CardStudioEditor.tsx": {
       entries: {
+        "11/0/init/body/19/argument/3/1/1": {
+          content: {
+            en: "Card Studio Editor",
+          },
+          hash: "b5742e7e35009781bb411280887c8fd6",
+        },
+        "11/0/init/body/19/argument/3/1/3/1": {
+          content: {
+            en: "<element:Undo></element:Undo> Undo",
+          },
+          hash: "08e3fdab92aa3e91696af146d278262a",
+        },
+        "11/0/init/body/19/argument/3/1/3/3": {
+          content: {
+            en: "<element:Redo></element:Redo> Redo",
+          },
+          hash: "d7909de12fc2a20aab1a96b3d9add99c",
+        },
+        "11/0/init/body/19/argument/3/3/1": {
+          content: {
+            en: "<element:Eye></element:Eye> Preview",
+          },
+          hash: "1a878634c88abdb0bda86cf849d7d3c4",
+        },
+        "11/0/init/body/19/argument/3/3/3": {
+          content: {
+            en: "<element:Download></element:Download> Export",
+          },
+          hash: "82c7fb0a52965a8cde48deeee9cd663b",
+        },
         "12/0/init/body/19/argument/3/1/1": {
           content: {
             en: "Card Studio Editor",
@@ -3444,6 +3612,12 @@ export default {
             fr: "Commencer",
           },
           hash: "de740b92861027ad93df4d9c255a3b31",
+        },
+        "8/0/init/body/3/argument/3/1/7/1/expression/consequent/1/1/1": {
+          content: {
+            en: "Open Editor",
+          },
+          hash: "012a1d4fc9b058937596f79b059d6b78",
         },
         "8/0/init/body/3/argument/3/1/7/3/1": {
           content: {
