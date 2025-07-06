@@ -331,7 +331,7 @@ const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollap
 
     // Default response for unrecognized queries
     return {
-      content: 'I\'m here to help with VibePage! I can assist you with domain searches, Card Studio features, pricing information, account management, and general questions. Could you be more specific about what you\'d like to know?',
+      content: 'I\'m here to help with VibePage! I can assist you with domain searches, Studio features, pricing information, account management, and general questions. Could you be more specific about what you\'d like to know?',
       suggestions: [
         { text: 'Domain help', action: 'Help me with domains' },
         { text: 'VibePage Studio help', action: 'Help me with VibePage Studio' },
