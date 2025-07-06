@@ -251,7 +251,7 @@ const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollap
     // Features and capabilities
     if (input.includes('feature') || input.includes('what can') || input.includes('capabilities')) {
       return {
-        content: 'VibePage offers domain registration and management, a powerful Card Studio for social media design, multi-currency pricing, secure authentication, saved designs, responsive templates, and comprehensive support. Everything you need for your online presence!',
+        content: 'VibePage offers domain registration and management, a powerful Page Studio for social media design, multi-currency pricing, secure authentication, saved designs, responsive templates, and comprehensive support. Everything you need for your online presence!',
         suggestions: [
           { text: 'Domain features', action: 'What domain features do you offer?' },
           { text: 'Design features', action: 'What design features are available?' },
