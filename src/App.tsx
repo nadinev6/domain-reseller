@@ -9,6 +9,7 @@ import GameElement from './components/GameElement';
 import DomainsPage from './pages/DomainsPage';
 import SocialMediaCardStudio from './pages/SocialMediaCardStudio';
 import CardStudioEditor from './pages/CardStudioEditor';
+import SupportPage from './pages/SupportPage';
 import Dashboard from './components/dashboard/Dashboard';
 import { CartProvider } from './context/CartContext';
 import { CurrencyProvider } from './context/CurrencyContext';
@@ -50,6 +51,7 @@ export default function App() {
                 <Route path="/domains" element={<DomainsPage />} />
                 <Route path="/card-studio" element={<SocialMediaCardStudio />} />
                 <Route path="/card-studio/editor" element={<CardStudioEditor />} />
+                <Route path="/support" element={<SupportPage />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/" element={
                   <main>

@@ -10,42 +10,21 @@ import { CardElement } from '../types';
 import { useAuth } from '../context/AuthContext';
 import { supabase } from '../lib/supabase';
 import { SavedCard } from '../types';
-import { useTamboComponentState } from '@tambo-ai/react';
 
 const CardStudioEditorContent: React.FC = () => {
   const [searchParams] = useSearchParams();
-  const [elements, setElements] = useTamboComponentState<CardElement[]>([]);
-  const [selectedElement, setSelectedElement] = useTamboComponentState<CardElement | null>(null);
-  const [multiSelectedElementIds, setMultiSelectedElementIds] = useTamboComponentState<string[]>([]);
-  const [canvasSettings, setCanvasSettings] = useTamboComponentState({
+  const [elements, setElements] = React.useState<CardElement[]>([]);
+  const [selectedElement, setSelectedElement] = React.useState<CardElement | null>(null);
+  const [multiSelectedElementIds, setMultiSelectedElementIds] = React.useState<string[]>([]);
+  const [canvasSettings, setCanvasSettings] = React.useState({
     width: 800,
     height: 600,
     backgroundColor: '#ffffff'
   });
-  const [history, setHistory] = useTamboComponentState<CardElement[][]>([[]]);
-  const [historyIndex, setHistoryIndex] = useTamboComponentState(0);
-  const [isSaving, setIsSaving] = useTamboComponentState(false);
+  const [history, setHistory] = React.useState<CardElement[][]>([[]]);
+  const [historyIndex, setHistoryIndex] = React.useState(0);
+  const [isSaving, setIsSaving] = React.useState(false);
   const { user } = useAuth();
-
-  // Top-level check to ensure all useTamboComponentState variables are initialized
-  if (
-    elements === undefined ||
-    selectedElement === undefined ||
-    multiSelectedElementIds === undefined ||
-    canvasSettings === undefined ||
-    history === undefined ||
-    historyIndex === undefined ||
-    isSaving === undefined
-  ) {
-    return (
-      <div className="h-screen bg-gray-100 flex items-center justify-center">
-        <div className="text-center">
-          <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4 text-indigo-600" />
-          <p className="text-gray-600">Initializing Card Studio...</p>
-        </div>
-      </div>
-    );
-  }
 
   // Load card from URL parameter if provided
   React.useEffect(() => {

@@ -7,7 +7,7 @@ import lingoCompiler from 'lingo.dev/compiler';
 // https://vitejs.dev/config/
 export default defineConfig(() => lingoCompiler.vite({
   sourceLocale: 'en',
-  targetLocales: ['fr'],
+  targetLocales: ['fr', 'mg'],
   models: "lingo.dev",
 })({
   plugins: [

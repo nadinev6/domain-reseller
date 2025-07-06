@@ -3827,6 +3827,14 @@
           "overrides": {},
           "content": "Start Building Now"
         },
+        "8/0/init/body/3/argument/15/1/7/expression/right/1": {
+          "type": "element",
+          "hash": "b33530969f97a4c48a058710df094342",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Get AI Template Suggestions"
+        },
         "8/0/init/body/3/argument/3/1/1/expression/right/1": {
           "type": "element",
           "hash": "5e3369e6a949a4e8822ede87cd1fd21d",
@@ -3866,6 +3874,22 @@
           "skip": false,
           "overrides": {},
           "content": "Get Started"
+        },
+        "8/0/init/body/3/argument/3/1/7/1/expression/consequent/1/1/1": {
+          "type": "element",
+          "hash": "012a1d4fc9b058937596f79b059d6b78",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Open Editor"
+        },
+        "8/0/init/body/3/argument/3/1/7/1/expression/consequent/3/1": {
+          "type": "element",
+          "hash": "444b443c1b8d0966055e0d217eda64c1",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Start with Template"
         },
         "8/0/init/body/3/argument/3/1/7/3/1": {
           "type": "element",
