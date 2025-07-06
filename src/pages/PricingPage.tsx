@@ -58,7 +58,6 @@ const PricingPage: React.FC = () => {
         'All landing page templates',
         'Pay per domain with points',
         'Advanced analytics',
-        'Custom branding options',
       ],
       perks: [
         { icon: <Crown className="w-4 h-4" />, text: 'Enhanced priority support' },
