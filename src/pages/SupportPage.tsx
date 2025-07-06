@@ -4,7 +4,7 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
-import { MagicCard } from "@/registry/magicui/magic-card";
+import { MagicCard } from '../components/magicui/magic-card';
 
 
 const SupportPage: React.FC = () => {
@@ -107,111 +107,119 @@ const SupportPage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center">
-                  <Mail className="w-5 h-5 mr-2" />
-                  Contact Form
-                </CardTitle>
-                <CardDescription>
-                  Send us a message and we'll get back to you as soon as possible.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                {isSubmitted ? (
-                  <div className="text-center py-8">
-                    <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                      Message Sent Successfully!
-                    </h3>
-                    <p className="text-gray-600">
-                      Thank you for contacting us. We'll respond within 24 hours.
-                    </p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="name">Full Name</Label>
-                        <Input
-                          id="name"
-                          name="name"
-                          type="text"
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          required
-                          placeholder="Enter your full name"
-                        />
-                      </div>
-                      <div>
-                        <Label htmlFor="email">Email Address</Label>
-                        <Input
-                          id="email"
-                          name="email"
-                          type="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          required
-                          placeholder="Enter your email"
-                        />
-                      </div>
+            <MagicCard 
+              className="overflow-hidden"
+              gradientSize={300}
+              gradientFrom="#3b82f6"
+              gradientTo="#8b5cf6"
+              gradientOpacity={0.1}
+            >
+              <Card className="border-0 shadow-none bg-transparent">
+                <CardHeader>
+                  <CardTitle className="flex items-center">
+                    <Mail className="w-5 h-5 mr-2" />
+                    Contact Form
+                  </CardTitle>
+                  <CardDescription>
+                    Send us a message and we'll get back to you as soon as possible.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {isSubmitted ? (
+                    <div className="text-center py-8">
+                      <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                        Message Sent Successfully!
+                      </h3>
+                      <p className="text-gray-600">
+                        Thank you for contacting us. We'll respond within 24 hours.
+                      </p>
                     </div>
+                  ) : (
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <Label htmlFor="name">Full Name</Label>
+                          <Input
+                            id="name"
+                            name="name"
+                            type="text"
+                            value={formData.name}
+                            onChange={handleInputChange}
+                            required
+                            placeholder="Enter your full name"
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="email">Email Address</Label>
+                          <Input
+                            id="email"
+                            name="email"
+                            type="email"
+                            value={formData.email}
+                            onChange={handleInputChange}
+                            required
+                            placeholder="Enter your email"
+                          />
+                        </div>
+                      </div>
 
-                    <div>
-                      <Label htmlFor="subject">Subject</Label>
-                      <select
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      <div>
+                        <Label htmlFor="subject">Subject</Label>
+                        <select
+                          id="subject"
+                          name="subject"
+                          value={formData.subject}
+                          onChange={handleInputChange}
+                          required
+                          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        >
+                          <option value="">Select a subject</option>
+                          <option value="domain-registration">Domain Registration</option>
+                          <option value="domain-transfer">Domain Transfer</option>
+                          <option value="card-studio">Card Studio</option>
+                          <option value="billing">Billing & Payments</option>
+                          <option value="technical">Technical Support</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <Label htmlFor="message">Message</Label>
+                        <textarea
+                          id="message"
+                          name="message"
+                          value={formData.message}
+                          onChange={handleInputChange}
+                          required
+                          rows={6}
+                          placeholder="Describe your question or issue in detail..."
+                          className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
+                        />
+                      </div>
+
+                      <Button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full flex items-center justify-center"
                       >
-                        <option value="">Select a subject</option>
-                        <option value="domain-registration">Domain Registration</option>
-                        <option value="domain-transfer">Domain Transfer</option>
-                        <option value="card-studio">Card Studio</option>
-                        <option value="billing">Billing & Payments</option>
-                        <option value="technical">Technical Support</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="message">Message</Label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        required
-                        rows={6}
-                        placeholder="Describe your question or issue in detail..."
-                        className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
-                      />
-                    </div>
-
-                    <Button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full flex items-center justify-center"
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
-                          Sending...
-                        </>
-                      ) : (
-                        <>
-                          <Send className="w-4 h-4 mr-2" />
-                          Send Message
-                        </>
-                      )}
-                    </Button>
-                  </form>
-                )}
-              </CardContent>
-            </Card>
+                        {isSubmitting ? (
+                          <>
+                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                            Sending...
+                          </>
+                        ) : (
+                          <>
+                            <Send className="w-4 h-4 mr-2" />
+                            Send Message
+                          </>
+                        )}
+                      </Button>
+                    </form>
+                  )}
+                </CardContent>
+              </Card>
+            </MagicCard>
           </div>
 
           {/* Contact Information */}
