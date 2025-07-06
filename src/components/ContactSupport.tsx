@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { User, Mail, MessageSquare, Send, MessageCircle } from 'lucide-react';
-import { LocaleSwitcher } from "lingo.dev/react/client";
+import { t } from 'lingo.dev/react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
 export default function ContactSupport() {
-  const { t } = useTranslation();
   // Form state
   const [formData, setFormData] = useState({
     name: '',

@@ -1,6 +1,6 @@
 import React, { useRef, useCallback, useState } from 'react';
 import { Trash2, Copy, RotateCw } from 'lucide-react';
-import { useTranslation } from 'lingo.dev/react';
+import { t } from 'lingo.dev/react';
 import { CardElement } from '../../types';
 
 
@@ -29,7 +29,6 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
   onAddElement,
   canvasSettings
 }) => {
-  const { t } = useTranslation();
   const canvasRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef<{
     isDragging: boolean;

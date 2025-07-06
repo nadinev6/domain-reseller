@@ -1,10 +1,9 @@
 import React from 'react';
-import { useTranslation } from 'lingo.dev/react';
+import { t } from 'lingo.dev/react';
 import { HelpCircle, MessageCircle, Clock, CheckCircle } from 'lucide-react';
 import ContactSupport from '../components/ContactSupport';
 
 const SupportPage: React.FC = () => {
-  const { t } = useTranslation();
   const faqs = [
     {
       question: "How do I register a domain?",

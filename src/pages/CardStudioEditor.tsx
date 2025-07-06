@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Save, Download, Undo, Redo, Eye, Loader2 } from 'lucide-react';
-import { useTranslation } from 'lingo.dev/react';
+import { t } from 'lingo.dev/react';
 import { Button } from '../components/ui/button';
 import ProtectedRoute from '../components/auth/ProtectedRoute';
 import Toolbox from '../components/card-studio/Toolbox';
@@ -12,7 +12,6 @@ import { useAuth } from '../context/AuthContext';
 import { supabase } from '../lib/supabase';
 
 const CardStudioEditorContent: React.FC = () => {
-  const { t } = useTranslation();
   const [searchParams] = useSearchParams();
   const [elements, setElements] = useState<CardElement[]>([]);
   const [selectedElement, setSelectedElement] = useState<CardElement | null>(null);
