@@ -145,7 +145,7 @@ const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
                     to={user ? "/card-studio/editor" : "/card-studio"} 
                     className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200"
                   >
-                    Card Studio
+                    VibePage Studio
                   </Link>
                 </li>
                 <li><Link to="/support" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">Support</Link></li>
