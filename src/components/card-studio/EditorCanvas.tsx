@@ -92,14 +92,16 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
       const newX = e.clientX - dragRef.current.startX;
       const newY = e.clientY - dragRef.current.startY;
       
-      // Constrain to canvas bounds
-      const constrainedX = Math.max(0, Math.min(newX, canvasSettings.width - 100));
-      const constrainedY = Math.max(0, Math.min(newY, canvasSettings.height - 100));
-      
-      // Calculate element center for grid guidelines
+      // Get the current element to use its actual dimensions
       const currentElement = safeElements.find(el => el.id === dragRef.current.elementId);
       const elementWidth = currentElement?.width || 100;
       const elementHeight = currentElement?.height || 100;
+      
+      // Constrain to canvas bounds
+      const constrainedX = Math.max(0, Math.min(newX, canvasSettings.width - elementWidth));
+      const constrainedY = Math.max(0, Math.min(newY, canvasSettings.height - elementHeight));
+      
+      // Calculate element center for grid guidelines
       const elementCenterX = constrainedX + elementWidth / 2;
       const elementCenterY = constrainedY + elementHeight / 2;
       
