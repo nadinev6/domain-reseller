@@ -1109,10 +1109,9 @@ export default {
         },
         "9/0/init/body/13/argument/1/1/3": {
           content: {
-            en: "Sign in to access the Social Media Card Studio and manage your domains.",
-            fr: "Connectez-vous pour accéder au Studio de cartes pour réseaux sociaux et gérer vos domaines.",
+            en: "Sign in to access the VibePage Studio and manage your domains.",
           },
-          hash: "3602d259be6efd85ad7065b59ea077ba",
+          hash: "45ae3955b259787f7e0a096454378033",
         },
         "9/0/init/body/13/argument/1/3/1/1": {
           content: {
