@@ -5,7 +5,7 @@ import { Input } from './ui/input';
 import { useTamboComponentState } from '@tambo-ai/react';
 
 interface Suggestion {
-  text: string;
+  text: string; 
   action: string;
 }
 
@@ -73,7 +73,7 @@ const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollap
 
     setMessages(prev => [...prev, userMessage]);
     setInputValue('');
-    setIsTyping(true); 
+    setIsTyping(true);
 
     // Simulate bot response (replace with actual Tambo integration)
     setTimeout(() => {
