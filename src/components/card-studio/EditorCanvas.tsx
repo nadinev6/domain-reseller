@@ -74,25 +74,17 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
     }
   }, [onAddElement]);
 
- const handleElementMouseDown = useCallback((e: React.MouseEvent, element: CardElement) => {
-  e.stopPropagation();
-  onElementClick(element, e);
-  
-  // Get canvas position to calculate relative coordinates
-  const rect = canvasRef.current?.getBoundingClientRect();
-  if (!rect) return;
-  
-  // Calculate mouse position relative to canvas
-  const canvasMouseX = e.clientX - rect.left;
-  const canvasMouseY = e.clientY - rect.top;
-  
-  dragRef.current = {
-    isDragging: true,
-    startX: canvasMouseX - element.x,
-    startY: canvasMouseY - element.y,
-    elementId: element.id
-  };
-}, [onElementClick]);
+  const handleElementMouseDown = useCallback((e: React.MouseEvent, element: CardElement) => {
+    e.stopPropagation();
+    onElementClick(element, e);
+    
+    dragRef.current = {
+      isDragging: true,
+      startX: e.clientX - element.x,
+      startY: e.clientY - element.y,
+      elementId: element.id
+    };
+  }, [onElementClick]); 
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (dragRef.current.isDragging && dragRef.current.elementId) {
