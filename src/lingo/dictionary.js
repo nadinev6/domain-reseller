@@ -1110,6 +1110,7 @@ export default {
         "9/0/init/body/13/argument/1/1/3": {
           content: {
             en: "Sign in to access the VibePage Studio and manage your domains.",
+            fr: "Connectez-vous pour accéder à VibePage Studio et gérer vos domaines.",
           },
           hash: "45ae3955b259787f7e0a096454378033",
         },
