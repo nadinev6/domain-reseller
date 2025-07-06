@@ -38,11 +38,6 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
 
   // Check if BotInterface should be hidden based on current route
   const shouldHide = location.pathname.startsWith('/card-studio/editor');
-  
-  // Don't render if on editor pages
-  if (shouldHide) {
-    return null;
-  }
 
   const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
@@ -86,6 +81,11 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Don't render if on editor pages
+  if (shouldHide) {
+    return null;
+  }
 
   const getBotResponse = (userInput: string): string => {
     const input = userInput.toLowerCase();
