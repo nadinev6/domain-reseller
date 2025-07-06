@@ -547,6 +547,30 @@
           "overrides": {},
           "content": "MG"
         },
+        "7/declaration/body/10/argument/5/3/5/3/1": {
+          "type": "element",
+          "hash": "e1eeeb379f86a015d6e581fcbc4af7f3",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "English"
+        },
+        "7/declaration/body/10/argument/5/3/5/3/3": {
+          "type": "element",
+          "hash": "965fbe07b0c6293182f71b3d09b84fda",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Français"
+        },
+        "7/declaration/body/10/argument/5/3/5/3/5": {
+          "type": "element",
+          "hash": "f36bc256b8512e8bddbedbd5f10fae20",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Malagasy"
+        },
         "7/declaration/body/15/argument/5/3/3/3/3/1": {
           "type": "element",
           "hash": "4dcca3456893f133e1b6b9560c7a881d",
