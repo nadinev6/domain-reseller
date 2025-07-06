@@ -143,5 +143,5 @@ button, a, input {
 
 /* Shiny text animation utility class */
 .animate-shiny-text {
-  animation: shiny-text 4s ease-in-out infinite;
+  animation: shiny-text 12s ease-in-out infinite;
 }
