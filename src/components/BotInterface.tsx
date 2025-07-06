@@ -48,34 +48,56 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
   const [isTyping, setIsTyping] = React.useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Use free public LLM API (no API key required)
+  // Smart local AI-like responses (no API needed)
   const sendToLLM = async (message: string) => {
-    try {
-      // Using a free API that doesn't require authentication
-      const response = await fetch('https://api.cohere.ai/v1/generate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer TRIAL', // Free tier
-        },
-        body: JSON.stringify({
-          model: 'command-light',
-          prompt: `You are a helpful assistant for VibePage, a domain registration and social media card creation platform. Help users with domain searches, card creation, and general questions about the platform.\n\nUser: ${message}\nAssistant:`,
-          max_tokens: 100,
-          temperature: 0.7
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error(`Cohere API error: ${response.status}`);
-      }
-
-      const data = await response.json();
-      return data.generations[0]?.text?.trim() || 'I apologize, but I encountered an issue processing your request.';
-    } catch (error) {
-      console.error('LLM API error:', error);
-      return null;
+    // Simulate API delay for better UX
+    await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 2000));
+    
+    const input = message.toLowerCase();
+    
+    // Context-aware responses based on user input
+    if (input.includes('how') && (input.includes('domain') || input.includes('search'))) {
+      return "To search for domains, simply type your desired domain name in the search box above. I'll show you available options with real-time pricing in multiple currencies. You can also filter by extension (.com, .net, .org, etc.) to find the perfect domain for your project.";
     }
+    
+    if (input.includes('what') && input.includes('card studio')) {
+      return "Card Studio is our powerful design tool for creating social media graphics! You can drag and drop text, images, and shapes, apply gradients and effects, choose from hundreds of templates, and export in various formats. It's perfect for Instagram posts, Facebook covers, Twitter headers, and more.";
+    }
+    
+    if (input.includes('price') || input.includes('cost') || input.includes('how much')) {
+      return "Domain pricing varies by extension: .com domains typically start at $12.99/year, .net at $14.99/year, and country-specific domains vary. You can switch currencies in the header to see prices in MGA, ZAR, USD, EUR, or GBP. We also offer bulk discounts for multiple domains!";
+    }
+    
+    if (input.includes('design') || input.includes('create') || input.includes('make')) {
+      return "Great choice! Our Card Studio makes design easy. Start by choosing a template or blank canvas, then customize with your text, colors, and images. Pro tip: Use our gradient text feature and shadow effects to make your designs pop! Need help with a specific design element?";
+    }
+    
+    if (input.includes('save') || input.includes('export') || input.includes('download')) {
+      return "You can save your designs to your account (requires sign-in) and export in PNG, JPG, or PDF formats. Saved projects are stored in your dashboard for easy access later. Free users get 5 saves per month, while premium users get unlimited saves and exports.";
+    }
+    
+    if (input.includes('template') || input.includes('example')) {
+      return "We have over 500 professionally designed templates! Categories include: Business cards, Social media posts, Event flyers, Logos, Banners, and more. Each template is fully customizable - change colors, fonts, text, and images to match your brand perfectly.";
+    }
+    
+    if (input.includes('account') || input.includes('sign up') || input.includes('register')) {
+      return "Creating an account is free and gives you access to save projects, purchase domains, and use premium features. Click 'Sign Up' in the top right corner. You'll get 5 free design saves to start, plus access to our domain management tools.";
+    }
+    
+    if (input.includes('help') || input.includes('tutorial') || input.includes('guide')) {
+      return "I can help you with: 🔍 Domain searching and registration, 🎨 Card Studio design tips, 💰 Pricing and billing questions, 📱 Mobile optimization, 🔧 Troubleshooting. What specific area would you like guidance on?";
+    }
+    
+    if (input.includes('mobile') || input.includes('phone') || input.includes('responsive')) {
+      return "VibePage works great on mobile! Our Card Studio is touch-optimized for tablets and phones. You can create designs on-the-go, and all templates automatically adjust for different screen sizes. Your designs will look perfect on any device!";
+    }
+    
+    if (input.includes('color') || input.includes('gradient') || input.includes('font')) {
+      return "Our design tools include: 🎨 Color picker with hex/RGB support, 🌈 Gradient builder with multiple color stops, 📝 50+ Google Fonts, ✨ Text effects like shadows and outlines, 🖼️ Image filters and adjustments. Everything you need for professional designs!";
+    }
+    
+    // Default contextual response
+    return "I'm here to help with VibePage! I can assist with domain searches, Card Studio design tips, pricing information, and account questions. What would you like to know more about? Feel free to ask specific questions about any feature!";
   };
 
   // Check if BotInterface should be hidden based on current route
