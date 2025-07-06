@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { User, Mail, MessageSquare, Send, MessageCircle, Languages } from 'lucide-react';
 import { t } from 'lingo.dev/react';
-import { useTranslation, useLocale } from 'lingo.dev/react/client';
+import react from "@vitejs/plugin-react-swc";
+import lingoCompiler from "lingo.dev/compiler"; 
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
