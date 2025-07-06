@@ -1,8 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { MessageCircle, Send, Minimize2 } from 'lucide-react';
-// Remove Lingo.dev since it's for translation, not chat
-// import { LingoDotDevEngine } from 'lingo.dev/sdk';
+import { LingoDotDevEngine } from 'lingo.dev/sdk';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
@@ -27,6 +26,50 @@ interface BotInterfaceProps {
 export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInterfaceProps) {
   const location = useLocation();
   
+  // Initialize Lingo.dev for translation
+  const lingo = React.useMemo(() => {
+    const apiKey = import.meta.env.VITE_LINGO_API_KEY;
+    if (apiKey) {
+      return new LingoDotDevEngine({ apiKey });
+    }
+    return null;
+  }, []);
+
+  // Define response templates with keys for translation
+  const responseTemplates = {
+    domainSearch: "To search for domains, simply type your desired domain name in the search box above. I'll show you available options with real-time pricing in multiple currencies. You can also filter by extension (.com, .net, .org, etc.) to find the perfect domain for your project.",
+    cardStudio: "Card Studio is our powerful design tool for creating social media graphics! You can drag and drop text, images, and shapes, apply gradients and effects, choose from hundreds of templates, and export in various formats. It's perfect for Instagram posts, Facebook covers, Twitter headers, and more.",
+    pricing: "Domain pricing varies by extension: .com domains typically start at $12.99/year, .net at $14.99/year, and country-specific domains vary. You can switch currencies in the header to see prices in MGA, ZAR, USD, EUR, or GBP. We also offer bulk discounts for multiple domains!",
+    design: "Great choice! Our Card Studio makes design easy. Start by choosing a template or blank canvas, then customize with your text, colors, and images. Pro tip: Use our gradient text feature and shadow effects to make your designs pop! Need help with a specific design element?",
+    saveExport: "You can save your designs to your account (requires sign-in) and export in PNG, JPG, or PDF formats. Saved projects are stored in your dashboard for easy access later. Free users get 5 saves per month, while premium users get unlimited saves and exports.",
+    templates: "We have over 500 professionally designed templates! Categories include: Business cards, Social media posts, Event flyers, Logos, Banners, and more. Each template is fully customizable - change colors, fonts, text, and images to match your brand perfectly.",
+    account: "Creating an account is free and gives you access to save projects, purchase domains, and use premium features. Click 'Sign Up' in the top right corner. You'll get 5 free design saves to start, plus access to our domain management tools.",
+    help: "I can help you with: 🔍 Domain searching and registration, 🎨 Card Studio design tips, 💰 Pricing and billing questions, 📱 Mobile optimization, 🔧 Troubleshooting. What specific area would you like guidance on?",
+    mobile: "VibePage works great on mobile! Our Card Studio is touch-optimized for tablets and phones. You can create designs on-the-go, and all templates automatically adjust for different screen sizes. Your designs will look perfect on any device!",
+    designTools: "Our design tools include: 🎨 Color picker with hex/RGB support, 🌈 Gradient builder with multiple color stops, 📝 50+ Google Fonts, ✨ Text effects like shadows and outlines, 🖼️ Image filters and adjustments. Everything you need for professional designs!",
+    default: "I'm here to help with VibePage! I can assist with domain searches, Card Studio design tips, pricing information, and account questions. What would you like to know more about? Feel free to ask specific questions about any feature!",
+    welcome: "Hello! I'm your VibePage assistant. I can help you with domain searches, card creation, and answer questions about your projects. How can I assist you today?",
+    thanks: "You're welcome! I'm here to help whenever you need assistance with VibePage. Feel free to ask about domains, card creation, or any other questions!",
+    greeting: "Hello! Great to meet you! I'm your VibePage assistant. I can help you search for domains, create amazing social media cards, or answer any questions about our platform. What would you like to explore today?"
+  };
+
+  // Function to translate text using Lingo.dev
+  const translateText = async (text: string, targetLanguage: string = currentLocale) => {
+    if (!lingo || targetLanguage === 'en') {
+      return text; // Return original if no translation needed
+    }
+
+    try {
+      const translated = await lingo.localizeObject({
+        [text]: text
+      }, targetLanguage);
+      return translated[text] || text;
+    } catch (error) {
+      console.error('Translation error:', error);
+      return text; // Return original text if translation fails
+    }
+  };
+  
   // Option 1: Use a simple state for locale (replace with your actual locale logic)
   const [currentLocale, setCurrentLocale] = React.useState('en');
   
@@ -35,8 +78,8 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
   
   // Option 3: Or get it from context/props if you have a language context elsewhere
   // const { currentLocale } = useContext(YourLanguageContext);
-  
-  const [messages, setMessages] = React.useState<Message[]>([
+
+  const [messages, setMessages] = React.useState<Message[]>([]);
     {
       id: '1',
       type: 'bot',
@@ -48,56 +91,46 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
   const [isTyping, setIsTyping] = React.useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Smart local AI-like responses (no API needed)
+  // Smart local AI-like responses with translation support
   const sendToLLM = async (message: string) => {
     // Simulate API delay for better UX
     await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 2000));
     
     const input = message.toLowerCase();
+    let responseKey = 'default';
     
-    // Context-aware responses based on user input
+    // Determine which response template to use
     if (input.includes('how') && (input.includes('domain') || input.includes('search'))) {
-      return "To search for domains, simply type your desired domain name in the search box above. I'll show you available options with real-time pricing in multiple currencies. You can also filter by extension (.com, .net, .org, etc.) to find the perfect domain for your project.";
+      responseKey = 'domainSearch';
+    } else if (input.includes('what') && input.includes('card studio')) {
+      responseKey = 'cardStudio';
+    } else if (input.includes('price') || input.includes('cost') || input.includes('how much')) {
+      responseKey = 'pricing';
+    } else if (input.includes('design') || input.includes('create') || input.includes('make')) {
+      responseKey = 'design';
+    } else if (input.includes('save') || input.includes('export') || input.includes('download')) {
+      responseKey = 'saveExport';
+    } else if (input.includes('template') || input.includes('example')) {
+      responseKey = 'templates';
+    } else if (input.includes('account') || input.includes('sign up') || input.includes('register')) {
+      responseKey = 'account';
+    } else if (input.includes('help') || input.includes('tutorial') || input.includes('guide')) {
+      responseKey = 'help';
+    } else if (input.includes('mobile') || input.includes('phone') || input.includes('responsive')) {
+      responseKey = 'mobile';
+    } else if (input.includes('color') || input.includes('gradient') || input.includes('font')) {
+      responseKey = 'designTools';
+    } else if (input.includes('thank') || input.includes('thanks')) {
+      responseKey = 'thanks';
+    } else if (input.includes('hello') || input.includes('hi') || input.includes('hey')) {
+      responseKey = 'greeting';
     }
     
-    if (input.includes('what') && input.includes('card studio')) {
-      return "Card Studio is our powerful design tool for creating social media graphics! You can drag and drop text, images, and shapes, apply gradients and effects, choose from hundreds of templates, and export in various formats. It's perfect for Instagram posts, Facebook covers, Twitter headers, and more.";
-    }
+    // Get and translate the response
+    const baseResponse = responseTemplates[responseKey as keyof typeof responseTemplates];
+    const translatedResponse = await translateText(baseResponse);
     
-    if (input.includes('price') || input.includes('cost') || input.includes('how much')) {
-      return "Domain pricing varies by extension: .com domains typically start at $12.99/year, .net at $14.99/year, and country-specific domains vary. You can switch currencies in the header to see prices in MGA, ZAR, USD, EUR, or GBP. We also offer bulk discounts for multiple domains!";
-    }
-    
-    if (input.includes('design') || input.includes('create') || input.includes('make')) {
-      return "Great choice! Our Card Studio makes design easy. Start by choosing a template or blank canvas, then customize with your text, colors, and images. Pro tip: Use our gradient text feature and shadow effects to make your designs pop! Need help with a specific design element?";
-    }
-    
-    if (input.includes('save') || input.includes('export') || input.includes('download')) {
-      return "You can save your designs to your account (requires sign-in) and export in PNG, JPG, or PDF formats. Saved projects are stored in your dashboard for easy access later. Free users get 5 saves per month, while premium users get unlimited saves and exports.";
-    }
-    
-    if (input.includes('template') || input.includes('example')) {
-      return "We have over 500 professionally designed templates! Categories include: Business cards, Social media posts, Event flyers, Logos, Banners, and more. Each template is fully customizable - change colors, fonts, text, and images to match your brand perfectly.";
-    }
-    
-    if (input.includes('account') || input.includes('sign up') || input.includes('register')) {
-      return "Creating an account is free and gives you access to save projects, purchase domains, and use premium features. Click 'Sign Up' in the top right corner. You'll get 5 free design saves to start, plus access to our domain management tools.";
-    }
-    
-    if (input.includes('help') || input.includes('tutorial') || input.includes('guide')) {
-      return "I can help you with: 🔍 Domain searching and registration, 🎨 Card Studio design tips, 💰 Pricing and billing questions, 📱 Mobile optimization, 🔧 Troubleshooting. What specific area would you like guidance on?";
-    }
-    
-    if (input.includes('mobile') || input.includes('phone') || input.includes('responsive')) {
-      return "VibePage works great on mobile! Our Card Studio is touch-optimized for tablets and phones. You can create designs on-the-go, and all templates automatically adjust for different screen sizes. Your designs will look perfect on any device!";
-    }
-    
-    if (input.includes('color') || input.includes('gradient') || input.includes('font')) {
-      return "Our design tools include: 🎨 Color picker with hex/RGB support, 🌈 Gradient builder with multiple color stops, 📝 50+ Google Fonts, ✨ Text effects like shadows and outlines, 🖼️ Image filters and adjustments. Everything you need for professional designs!";
-    }
-    
-    // Default contextual response
-    return "I'm here to help with VibePage! I can assist with domain searches, Card Studio design tips, pricing information, and account questions. What would you like to know more about? Feel free to ask specific questions about any feature!";
+    return translatedResponse;
   };
 
   // Check if BotInterface should be hidden based on current route
@@ -133,7 +166,7 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
         type: 'bot',
-        content: getFallbackResponse(inputValue),
+        content: await getFallbackResponse(inputValue),
         timestamp: new Date()
       };
       setMessages(prev => [...prev, botMessage]);
@@ -158,47 +191,33 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
     scrollToBottom();
   }, [messages]);
 
-  const getFallbackResponse = (userInput: string): string => {
+  const getFallbackResponse = async (userInput: string): Promise<string> => {
     const input = userInput.toLowerCase();
+    let responseKey = 'default';
     
     // Enhanced pattern matching for better responses
     if (input.includes('domain') || input.includes('search')) {
-      return 'I can help you search for domains! Try entering a domain name in the search box above, and I\'ll show you available options with pricing in different currencies. Popular extensions include .com, .net, .org, and country-specific ones.';
+      responseKey = 'domainSearch';
+    } else if (input.includes('card') || input.includes('studio') || input.includes('design')) {
+      responseKey = 'design';
+    } else if (input.includes('save') || input.includes('export') || input.includes('download')) {
+      responseKey = 'saveExport';
+    } else if (input.includes('price') || input.includes('cost') || input.includes('currency') || input.includes('payment')) {
+      responseKey = 'pricing';
+    } else if (input.includes('help') || input.includes('tutorial') || input.includes('guide')) {
+      responseKey = 'help';
+    } else if (input.includes('social media') || input.includes('instagram') || input.includes('facebook') || input.includes('twitter')) {
+      responseKey = 'cardStudio';
+    } else if (input.includes('account') || input.includes('login') || input.includes('signup') || input.includes('register')) {
+      responseKey = 'account';
+    } else if (input.includes('thank') || input.includes('thanks')) {
+      responseKey = 'thanks';
+    } else if (input.includes('hello') || input.includes('hi') || input.includes('hey')) {
+      responseKey = 'greeting';
     }
     
-    if (input.includes('card') || input.includes('studio') || input.includes('design')) {
-      return 'The Card Studio is perfect for creating social media cards! You can drag and drop elements, customize colors and fonts, add gradient text effects, and create professional-looking cards for your social media. Would you like tips on getting started?';
-    }
-    
-    if (input.includes('save') || input.includes('export') || input.includes('download')) {
-      return 'You can save your cards to your account and export them in various formats (PNG, JPG, PDF). Make sure you\'re signed in to save your work permanently. Your saved cards will be available in your dashboard.';
-    }
-    
-    if (input.includes('price') || input.includes('cost') || input.includes('currency') || input.includes('payment')) {
-      return 'Domain prices vary by extension and registrar. You can change the currency in the header to see prices in MGA, ZAR, USD, EUR, or GBP. Most .com domains start around $10-15/year. We accept major credit cards and PayPal.';
-    }
-    
-    if (input.includes('help') || input.includes('tutorial') || input.includes('guide')) {
-      return 'I can help you with: 1) Domain searching and registration, 2) Creating social media cards in Card Studio, 3) Account management and billing, 4) Troubleshooting common issues. What would you like to know more about?';
-    }
-    
-    if (input.includes('social media') || input.includes('instagram') || input.includes('facebook') || input.includes('twitter')) {
-      return 'Our Card Studio creates optimized cards for all major social platforms! We have templates for Instagram posts, Facebook covers, Twitter headers, LinkedIn banners, and more. Each template is sized perfectly for the platform.';
-    }
-    
-    if (input.includes('account') || input.includes('login') || input.includes('signup') || input.includes('register')) {
-      return 'You can create an account to save your work, manage domains, and access premium features. Click the "Sign Up" button in the top right. Already have an account? Use "Sign In" to access your dashboard.';
-    }
-    
-    if (input.includes('thank') || input.includes('thanks')) {
-      return 'You\'re welcome! I\'m here to help whenever you need assistance with VibePage. Feel free to ask about domains, card creation, or any other questions!';
-    }
-    
-    if (input.includes('hello') || input.includes('hi') || input.includes('hey')) {
-      return 'Hello! Great to meet you! I\'m your VibePage assistant. I can help you search for domains, create amazing social media cards, or answer any questions about our platform. What would you like to explore today?';
-    }
-    
-    return 'I\'m here to help with domains, card creation, and general questions about VibePage. I can assist with domain searches, Card Studio tutorials, pricing information, and account management. Could you be more specific about what you\'d like assistance with?';
+    const baseResponse = responseTemplates[responseKey as keyof typeof responseTemplates];
+    return await translateText(baseResponse);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
