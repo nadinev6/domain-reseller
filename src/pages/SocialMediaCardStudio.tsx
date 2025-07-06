@@ -66,7 +66,7 @@ const SocialMediaCardStudio: React.FC = () => {
               </span>
             </div>
           )}
-          <h1 className="text-4xl md:text-6xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200">
             VibePage Studio
           </h1>
           <p className="text-xl md:text-2xl text-indigo-100 mb-8 max-w-3xl mx-auto">
