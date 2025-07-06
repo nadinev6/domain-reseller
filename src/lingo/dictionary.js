@@ -1296,10 +1296,9 @@ export default {
         },
         "4/0/init/body/2/consequent/0/argument/right/1/3": {
           content: {
-            en: "You need to be signed in to access the Social Media Card Studio.",
-            fr: "Vous devez être connecté pour accéder au Studio de cartes pour réseaux sociaux.",
+            en: "You need to be signed in to access the VibePage Studio.",
           },
-          hash: "cfe70152b2e2bdcbfb10a6923e782f62",
+          hash: "14d52a82fe8063d7926a1ac8f9f0c2aa",
         },
         "4/0/init/body/2/consequent/0/argument/right/1/5": {
           content: {

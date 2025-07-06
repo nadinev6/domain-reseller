@@ -143,7 +143,7 @@ const SavedCardsSection: React.FC = () => {
           </Link>
         </div>
         <CardDescription>
-          Manage your saved social media card designs
+          Manage your saved page designs
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -154,7 +154,7 @@ const SavedCardsSection: React.FC = () => {
             </div>
             <h3 className="text-lg font-medium text-gray-900 mb-2">No saved cards yet</h3>
             <p className="text-gray-600 mb-4">
-              Create your first social media card to get started
+              Create your first page to get started
             </p>
             <Link to="/card-studio/editor">
               <Button className="flex items-center">

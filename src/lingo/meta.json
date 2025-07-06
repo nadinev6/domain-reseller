@@ -3033,11 +3033,11 @@
         },
         "8/0/init/body/10/argument/1/3": {
           "type": "element",
-          "hash": "c234be5f20c6e115ba9fa297043c40a4",
+          "hash": "26e55d6cb3246d3c2d6007c5c872517e",
           "context": "",
           "skip": false,
           "overrides": {},
-          "content": "Manage your saved social media card designs"
+          "content": "Manage your saved page designs"
         },
         "8/0/init/body/10/argument/3/1/expression/alternate/1/expression/0/body/1/argument/1/3/3/1": {
           "type": "element",
@@ -3089,11 +3089,11 @@
         },
         "8/0/init/body/10/argument/3/1/expression/consequent/5": {
           "type": "element",
-          "hash": "a18df01c4a65fe0ac6bfd92d5c481b4e",
+          "hash": "30ea78dae4c43baadfa207e2e71d78ba",
           "context": "",
           "skip": false,
           "overrides": {},
-          "content": "Create your first social media card to get started"
+          "content": "Create your first page to get started"
         },
         "8/0/init/body/10/argument/3/1/expression/consequent/7/1": {
           "type": "element",
