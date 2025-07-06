@@ -923,10 +923,9 @@ export default {
         },
         "11/0/init/body/8/argument/1/1/1/1/3/1/5/1": {
           content: {
-            en: "Card Studio",
-            fr: "Studio de cartes",
+            en: "VibePage Studio",
           },
-          hash: "26bc1b0bd470c77d10074981c8998dbb",
+          hash: "63d75c9db91c1ec71f18a5adc58dc13a",
         },
         "11/0/init/body/8/argument/1/1/1/1/3/1/7/0": {
           content: {
@@ -2933,10 +2932,9 @@ export default {
       entries: {
         "12/0/init/body/19/argument/3/1/1": {
           content: {
-            en: "Card Studio Editor",
-            fr: "Éditeur Card Studio",
+            en: "VibePage Studio",
           },
-          hash: "b5742e7e35009781bb411280887c8fd6",
+          hash: "db724f1796d6be1ff7b6604f0201a072",
         },
         "12/0/init/body/19/argument/3/1/3/1": {
           content: {
