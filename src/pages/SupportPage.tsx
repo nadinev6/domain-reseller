@@ -5,6 +5,7 @@ import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { MagicCard } from '../components/magicui/magic-card';
+import { supabase } from '../lib/supabase';
 
 
 const SupportPage: React.FC = () => {
@@ -28,23 +29,44 @@ const SupportPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setIsSubmitted(false); // Reset submitted state on new submission
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
-    }, 3000);
+    try {
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject,
+            message: formData.message,
+          },
+        ]);
+
+      if (error) {
+        console.error('Error submitting contact form:', error);
+        alert('Failed to send message. Please try again.');
+      } else {
+        setIsSubmitted(true);
+        // Reset form after successful submission
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+        
+        // Auto-hide success message after 5 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 5000);
+      }
+    } catch (err) {
+      console.error('Unexpected error during form submission:', err);
+      alert('An unexpected error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const supportOptions = [
