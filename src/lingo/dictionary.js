@@ -1022,36 +1022,42 @@ export default {
         "11/0/init/body/9/argument/1/1/1/1/1/1/1-alt": {
           content: {
             en: "VibePage Logo",
+            fr: "Logo VibePage",
           },
           hash: "c8d4d18e2fe2ba8714193d7c752f3132",
         },
         "11/0/init/body/9/argument/1/1/1/1/1/3": {
           content: {
             en: "<element:span>Vibe</element:span>Page",
+            fr: "<element:span>Vibe</element:span>Page",
           },
           hash: "6f2da0f76738dbfc35d203a825df1218",
         },
         "11/0/init/body/9/argument/1/1/1/1/3/1/1/0": {
           content: {
             en: "Domains",
+            fr: "Domaines",
           },
           hash: "87955beb56bd7e2da09e44bacb294b6a",
         },
         "11/0/init/body/9/argument/1/1/1/1/3/1/3/0": {
           content: {
             en: "Pricing",
+            fr: "Tarification",
           },
           hash: "ce27f1aeacccc542a174c4b2bce022b0",
         },
         "11/0/init/body/9/argument/1/1/1/1/3/1/5/1": {
           content: {
             en: "VibePage Studio",
+            fr: "VibePage Studio",
           },
           hash: "63d75c9db91c1ec71f18a5adc58dc13a",
         },
         "11/0/init/body/9/argument/1/1/1/1/3/1/7/0": {
           content: {
             en: "Support",
+            fr: "Support",
           },
           hash: "55aab5fd0f31a9cb055a2edeeedfaf63",
         },
@@ -1059,6 +1065,7 @@ export default {
           {
             content: {
               en: "Sign In",
+              fr: "Se connecter",
             },
             hash: "e285e29c642443ecca996fbaae92baec",
           },
@@ -1066,6 +1073,7 @@ export default {
           {
             content: {
               en: "Sign Up",
+              fr: "S'inscrire",
             },
             hash: "c4c2c4a122389310734c8562c6883f03",
           },
@@ -1073,30 +1081,35 @@ export default {
           {
             content: {
               en: "<element:LogOut></element:LogOut> Sign Out",
+              fr: "<element:LogOut></element:LogOut> Se déconnecter",
             },
             hash: "9093e7410d2935ed98a409ee8cdfe3b2",
           },
         "11/0/init/body/9/argument/1/1/3/expression/right/1/1/0": {
           content: {
             en: "Domains",
+            fr: "Domaines",
           },
           hash: "87955beb56bd7e2da09e44bacb294b6a",
         },
         "11/0/init/body/9/argument/1/1/3/expression/right/1/3/0": {
           content: {
             en: "Pricing",
+            fr: "Tarification",
           },
           hash: "ce27f1aeacccc542a174c4b2bce022b0",
         },
         "11/0/init/body/9/argument/1/1/3/expression/right/1/5/1": {
           content: {
             en: "VibePage Studio",
+            fr: "VibePage Studio",
           },
           hash: "3a748785806e9a62b0ec5e730b9b1cc4",
         },
         "11/0/init/body/9/argument/1/1/3/expression/right/1/7/0": {
           content: {
             en: "Support",
+            fr: "Support",
           },
           hash: "55aab5fd0f31a9cb055a2edeeedfaf63",
         },
@@ -1104,6 +1117,7 @@ export default {
           {
             content: {
               en: "Sign In",
+              fr: "Se connecter",
             },
             hash: "e285e29c642443ecca996fbaae92baec",
           },
@@ -1111,6 +1125,7 @@ export default {
           {
             content: {
               en: "Sign Up",
+              fr: "S'inscrire",
             },
             hash: "c4c2c4a122389310734c8562c6883f03",
           },
@@ -1118,6 +1133,7 @@ export default {
           {
             content: {
               en: "Account",
+              fr: "Compte",
             },
             hash: "01215c12fb1cdb93bd0c84c1382bef56",
           },
@@ -1125,6 +1141,7 @@ export default {
           {
             content: {
               en: "Sign Out",
+              fr: "Se déconnecter",
             },
             hash: "f90c8ec008cbc1aea5ccfc7bfef17af1",
           },
@@ -1424,18 +1441,21 @@ export default {
         "3/0/init/body/2/argument/3/expression/right/1/1": {
           content: {
             en: "🎨",
+            fr: "🎨",
           },
           hash: "5a50aeff71fb46d223bc6eeeb90875d2",
         },
         "3/0/init/body/2/argument/3/expression/right/1/3": {
           content: {
             en: "Start Creating",
+            fr: "Commencer à créer",
           },
           hash: "29896ef9fa320fc4d790885fc5638406",
         },
         "3/0/init/body/2/argument/3/expression/right/1/5": {
           content: {
             en: "Drag elements from the toolbox or click to add them",
+            fr: "Faites glisser des éléments depuis la boîte à outils ou cliquez pour les ajouter",
           },
           hash: "cbd2d045a808f3da23bb3592c5572f53",
         },
@@ -1573,6 +1593,7 @@ export default {
           {
             content: {
               en: "Duplicate",
+              fr: "Dupliquer",
             },
             hash: "27756566785c2b8463e21582c4bb619b",
           },
@@ -1580,6 +1601,7 @@ export default {
           {
             content: {
               en: "Rotate",
+              fr: "Pivoter",
             },
             hash: "971ee77cef4133c9ae97bb1a4017cdb8",
           },
@@ -1587,6 +1609,7 @@ export default {
           {
             content: {
               en: "Delete",
+              fr: "Supprimer",
             },
             hash: "8bcf303dd10a645b5baacb02b47d72c9",
           },
@@ -3086,84 +3109,98 @@ export default {
         "7/0/init/body/5/consequent/0/argument/1/3": {
           content: {
             en: "Loading preview...",
+            fr: "Chargement aperçu...",
           },
           hash: "803553089c1462e1873c47790bdeb7a5",
         },
         "7/0/init/body/6/consequent/0/argument/1/3": {
           content: {
             en: "Preview Error",
+            fr: "Erreur d'aperçu",
           },
           hash: "d226773b15b8ff8099263da0b514ca2b",
         },
         "7/0/init/body/6/consequent/0/argument/1/7/1": {
           content: {
             en: "<element:ArrowLeft></element:ArrowLeft> Back to Editor",
+            fr: "<element:ArrowLeft></element:ArrowLeft> Retour à l'éditeur",
           },
           hash: "8628c25dbe2c3935966162408825437f",
         },
         "7/0/init/body/8/argument/3/1/1/1": {
           content: {
             en: "<element:ArrowLeft></element:ArrowLeft> Back to Editor",
+            fr: "<element:ArrowLeft></element:ArrowLeft> Retour à l'éditeur",
           },
           hash: "8628c25dbe2c3935966162408825437f",
         },
         "7/0/init/body/8/argument/3/1/3/1": {
           content: {
             en: "Card Preview",
+            fr: "Aperçu carte",
           },
           hash: "2d3b7b18ea83dd0721c3f4fdd0ed7bed",
         },
         "7/0/init/body/8/argument/3/1/3/3": {
           content: {
             en: "Canvas: {cardData.canvasSettings.width} × {cardData.canvasSettings.height}px",
+            fr: "Canevas : {cardData.canvasSettings.width} × {cardData.canvasSettings.height}px",
           },
           hash: "400bcf9f24dd7f7e8a85e33e394836de",
         },
         "7/0/init/body/8/argument/3/3/1": {
           content: {
             en: "<element:ExternalLink></element:ExternalLink> Open in New Tab",
+            fr: "<element:ExternalLink></element:ExternalLink> Ouvrir dans nouvel onglet",
           },
           hash: "c3be6e421fb445402cb710ca72d333a2",
         },
         "7/0/init/body/8/argument/7/5/1": {
           content: {
             en: "Card Information",
+            fr: "Infos carte",
           },
           hash: "8f5091967724ac82736881416d794837",
         },
         "7/0/init/body/8/argument/7/5/3/1/1": {
           content: {
             en: "Elements:",
+            fr: "Éléments :",
           },
           hash: "df3b8b454d7999d56111aa3eeaa22053",
         },
         "7/0/init/body/8/argument/7/5/3/3/1": {
           content: {
             en: "Canvas Size:",
+            fr: "Taille canevas :",
           },
           hash: "323be08da327e549908422db726fba03",
         },
         "7/0/init/body/8/argument/7/5/3/3/3": {
           content: {
             en: "{cardData.canvasSettings.width} × {cardData.canvasSettings.height}px",
+            fr: "{cardData.canvasSettings.width} × {cardData.canvasSettings.height}px",
           },
           hash: "06aa2e3e586457e20bdceebed6242806",
         },
         "7/0/init/body/8/argument/7/5/3/5/1": {
           content: {
             en: "Background:",
+            fr: "Arrière-plan :",
           },
           hash: "fb5abc501b86138db20142ab371a327c",
         },
         "7/0/init/body/8/argument/7/5/3/7/1": {
           content: {
             en: "Element Types:",
+            fr: "Types d'éléments :",
           },
           hash: "ceeb4e750696a61eaaad9b4097aeeca2",
         },
         "7/0/init/body/8/argument/7/5/5/1": {
           content: {
             en: "<element:strong>💡 Tip:</element:strong> This is a live preview of your card. Interactive elements like buttons will work as expected when published.",
+            fr: "<element:strong>💡 Astuce :</element:strong> Voici l'aperçu en direct de ta carte. Les éléments interactifs comme les boutons fonctionneront normalement une fois publiés.",
           },
           hash: "3252d6168b410dfcdcdf0b6334ad6db6",
         },
