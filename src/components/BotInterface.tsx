@@ -334,7 +334,7 @@ const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollap
       content: 'I\'m here to help with VibePage! I can assist you with domain searches, Card Studio features, pricing information, account management, and general questions. Could you be more specific about what you\'d like to know?',
       suggestions: [
         { text: 'Domain help', action: 'Help me with domains' },
-        { text: 'Card Studio help', action: 'Help me with Card Studio' },
+        { text: 'VibePage Studio help', action: 'Help me with VibePage Studio' },
         { text: 'Account help', action: 'Help me with my account' },
         { text: 'General info', action: 'Tell me about VibePage' }
       ]
