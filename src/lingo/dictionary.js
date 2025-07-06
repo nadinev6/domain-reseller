@@ -975,10 +975,9 @@ export default {
         },
         "11/0/init/body/8/argument/1/1/3/expression/right/1/5/1": {
           content: {
-            en: "Card Studio",
-            fr: "Studio de cartes",
+            en: "VibePage Studio",
           },
-          hash: "1623129380e3e1db674fb167c08d5a33",
+          hash: "3a748785806e9a62b0ec5e730b9b1cc4",
         },
         "11/0/init/body/8/argument/1/1/3/expression/right/1/7/0": {
           content: {
