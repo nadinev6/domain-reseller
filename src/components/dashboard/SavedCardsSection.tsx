@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Palette, Eye, Edit, Trash2, Plus, Loader2 } from 'lucide-react';
-import { t } from 'lingo.dev/react';
+// Simple fallback translation function
+const t = (key: string) => key;
 import { Button } from '../ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { useAuth } from '../../context/AuthContext';

@@ -1,7 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Save, Download, Undo, Redo, Eye, Loader2 } from 'lucide-react';
-import { t } from 'lingo.dev/react';
+// Simple fallback translation function
+const t = (key: string) => key;
 import { Button } from '../components/ui/button';
 import ProtectedRoute from '../components/auth/ProtectedRoute';
 import Toolbox from '../components/card-studio/Toolbox';

@@ -1,5 +1,12 @@
 import React from 'react';
-import { LocaleSwitcher } from 'lingo.dev/react/client';
+// Simple fallback for LocaleSwitcher
+const LocaleSwitcher = ({ locales, className }: { locales: string[]; className?: string }) => (
+  <select className={className}>
+    {locales.map(locale => (
+      <option key={locale} value={locale}>{locale.toUpperCase()}</option>
+    ))}
+  </select>
+);
 import { Languages } from 'lucide-react';
 
 const LanguageSelector: React.FC = () => {  

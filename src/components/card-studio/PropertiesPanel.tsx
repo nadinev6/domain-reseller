@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Settings, Palette, Type, Image, Square, MousePointer, Save, Smile, RotateCcw } from 'lucide-react';
-import { t } from 'lingo.dev/react';
+// Simple fallback translation function
+const t = (key: string) => key;
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import { Button } from '../ui/button';

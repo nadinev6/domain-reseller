@@ -1,6 +1,7 @@
 import React, { useRef, useCallback, useState } from 'react';
 import { Trash2, Copy, RotateCw } from 'lucide-react';
-import { t } from 'lingo.dev/react';
+// Simple fallback translation function
+const t = (key: string) => key;
 import { CardElement } from '../../types';
 
 

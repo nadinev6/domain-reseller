@@ -1,6 +1,7 @@
 import React from 'react';
 import { Type, Image, Square, MousePointer } from 'lucide-react';
-import { t } from 'lingo.dev/react';
+// Simple fallback translation function
+const t = (key: string) => key;
 import { CardElement } from '../../types';
 
 interface ToolboxProps {

@@ -2,7 +2,9 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import { TamboProvider } from '@tambo-ai/react';
-import { LingoProviderWrapper, loadDictionary } from "lingo.dev/react-client";
+// Simple fallback for Lingo.dev components
+const LingoProviderWrapper = ({ children }: { children: React.ReactNode }) => <>{children}</>;
+const loadDictionary = (locale: string) => Promise.resolve({});
 import { z } from 'zod';
 import './index.css';
 
@@ -138,7 +140,7 @@ createRoot(document.getElementById('root')!).render(
       apiKey={import.meta.env.VITE_TAMBO_API_KEY || 'demo-key'}
       components={tamboComponents}
     >
-      <LingoProviderWrapper loadDictionary={(locale) => loadDictionary(locale)}>
+      <LingoProviderWrapper>
         <App />
       </LingoProviderWrapper>
     </TamboProvider>

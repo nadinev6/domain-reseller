@@ -1,5 +1,6 @@
 import React from 'react';
-import { t } from 'lingo.dev/react';
+// Simple fallback translation function
+const t = (key: string) => key;
 import { HelpCircle, MessageCircle, Clock, CheckCircle } from 'lucide-react';
 import ContactSupport from '../components/ContactSupport';
 
