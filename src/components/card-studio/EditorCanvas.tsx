@@ -237,7 +237,7 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
                   borderRadius: element.borderRadius || 0,
                   transform: element.rotation ? `rotate(${element.rotation}deg)` : 'none', // Apply rotation to the interactive div
                   // Background for easier clicking (can be transparent)
-                  backgroundColor: 'rgba(0,0,0,0.0)', // Make it slightly visible for debugging, or fully transparent
+                  backgroundColor: 'transparent', // Changed from rgba(0,0,0,0.0) to 'transparent'
                 }}
                 onMouseDown={(e) => handleElementMouseDown(e, element)}
               />
