@@ -9,7 +9,7 @@ interface TLD {
   renew: number;
 }
 
-// Updated TLDs array with values from the provided images (in ZAR)
+// Updated TLDs array (in ZAR)
 const tlds: TLD[] = [
   { name: '.co.za', register: 99.00, transfer: 0.00, renew: 99.00 },
   { name: '.online', register: 30.00, transfer: 459.00, renew: 459.00 },
