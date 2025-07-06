@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { MessageCircle, Send, Minimize2 } from 'lucide-react';
-import { useLingo } from 'lingo.dev/react';
+import { LingoDotDevEngine } from 'lingo.dev/sdk'; // Import Lingo.dev SDK
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
