@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useState } from 'react';
+import React, { useRef, useCallback, useState, useEffect } from 'react';
 import { Trash2, Copy, RotateCw } from 'lucide-react';
 import { CardElement } from '../../types';
 import CardRenderer from './CardRenderer';
@@ -92,9 +92,14 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
       startY: canvasMouseY - element.y,
       elementId: element.id
     };
-  }, [onElementClick]);
 
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    // Add global mouse event listeners
+    document.addEventListener('mousemove', handleGlobalMouseMove);
+    document.addEventListener('mouseup', handleGlobalMouseUp);
+  }, [onElementClick, handleGlobalMouseMove, handleGlobalMouseUp]);
+
+  // Global mouse move handler
+  const handleGlobalMouseMove = useCallback((e: MouseEvent) => {
     if (dragRef.current.isDragging && dragRef.current.elementId) {
       // Get the canvas bounding rect to calculate relative positions
       const rect = canvasRef.current?.getBoundingClientRect();
@@ -141,14 +146,29 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
     }
   }, [onUpdateElement, canvasSettings, safeElements]);
 
-  const handleMouseUp = useCallback(() => {
-    dragRef.current.isDragging = false;
-    dragRef.current.elementId = null;
-    
-    // Hide grid guidelines
-    setShowHorizontalGuide(false);
-    setShowVerticalGuide(false);
+  // Global mouse up handler
+  const handleGlobalMouseUp = useCallback(() => {
+    if (dragRef.current.isDragging) {
+      dragRef.current.isDragging = false;
+      dragRef.current.elementId = null;
+      
+      // Hide grid guidelines
+      setShowHorizontalGuide(false);
+      setShowVerticalGuide(false);
+      
+      // Remove global mouse event listeners
+      document.removeEventListener('mousemove', handleGlobalMouseMove);
+      document.removeEventListener('mouseup', handleGlobalMouseUp);
+    }
   }, []);
+
+  // Cleanup effect
+  useEffect(() => {
+    return () => {
+      document.removeEventListener('mousemove', handleGlobalMouseMove);
+      document.removeEventListener('mouseup', handleGlobalMouseUp);
+    };
+  }, [handleGlobalMouseMove, handleGlobalMouseUp]);
 
   const handleCanvasClick = useCallback((e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
@@ -179,8 +199,6 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
         }}
         onDragOver={handleDragOver}
         onDrop={handleDrop}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
         onClick={handleCanvasClick}
       >
         {/* Render the card using CardRenderer */}
@@ -271,4 +289,4 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
   );
 };
 
-export default EditorCanvas; 
+export default EditorCanvas;
