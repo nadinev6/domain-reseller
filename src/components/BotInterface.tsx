@@ -31,7 +31,7 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
   
   // Initialize Lingo.dev for translation - NOW WITH LANGUAGE DEPENDENCY
   const lingo = React.useMemo(() => {
-    const apiKey = import.meta.env.VITE_LINGO_API_KEY; // Fixed: Added VITE_ prefix
+    const apiKey = import.meta.env.LINGO_API_KEY;
     if (apiKey) {
       return new LingoDotDevEngine({ 
         apiKey,
