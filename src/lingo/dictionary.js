@@ -797,7 +797,7 @@ export default {
         },
         "11/0/init/body/7/argument/1/1/1/1/3/1/5/1": {
           content: {
-            en: "VibePage Studio",
+            en: "Card Studio",
             fr: "VibePage Studio",
           },
           hash: "26bc1b0bd470c77d10074981c8998dbb",
@@ -1016,6 +1016,115 @@ export default {
             content: {
               en: "Sign Out",
               fr: "Se déconnecter",
+            },
+            hash: "f90c8ec008cbc1aea5ccfc7bfef17af1",
+          },
+        "11/0/init/body/9/argument/1/1/1/1/1/1/1-alt": {
+          content: {
+            en: "VibePage Logo",
+          },
+          hash: "c8d4d18e2fe2ba8714193d7c752f3132",
+        },
+        "11/0/init/body/9/argument/1/1/1/1/1/3": {
+          content: {
+            en: "<element:span>Vibe</element:span>Page",
+          },
+          hash: "6f2da0f76738dbfc35d203a825df1218",
+        },
+        "11/0/init/body/9/argument/1/1/1/1/3/1/1/0": {
+          content: {
+            en: "Domains",
+          },
+          hash: "87955beb56bd7e2da09e44bacb294b6a",
+        },
+        "11/0/init/body/9/argument/1/1/1/1/3/1/3/0": {
+          content: {
+            en: "Pricing",
+          },
+          hash: "ce27f1aeacccc542a174c4b2bce022b0",
+        },
+        "11/0/init/body/9/argument/1/1/1/1/3/1/5/1": {
+          content: {
+            en: "VibePage Studio",
+          },
+          hash: "63d75c9db91c1ec71f18a5adc58dc13a",
+        },
+        "11/0/init/body/9/argument/1/1/1/1/3/1/7/0": {
+          content: {
+            en: "Support",
+          },
+          hash: "55aab5fd0f31a9cb055a2edeeedfaf63",
+        },
+        "11/0/init/body/9/argument/1/1/1/3/7/expression/right/1/expression/alternate/1":
+          {
+            content: {
+              en: "Sign In",
+            },
+            hash: "e285e29c642443ecca996fbaae92baec",
+          },
+        "11/0/init/body/9/argument/1/1/1/3/7/expression/right/1/expression/alternate/3/1":
+          {
+            content: {
+              en: "Sign Up",
+            },
+            hash: "c4c2c4a122389310734c8562c6883f03",
+          },
+        "11/0/init/body/9/argument/1/1/1/3/7/expression/right/1/expression/consequent/3":
+          {
+            content: {
+              en: "<element:LogOut></element:LogOut> Sign Out",
+            },
+            hash: "9093e7410d2935ed98a409ee8cdfe3b2",
+          },
+        "11/0/init/body/9/argument/1/1/3/expression/right/1/1/0": {
+          content: {
+            en: "Domains",
+          },
+          hash: "87955beb56bd7e2da09e44bacb294b6a",
+        },
+        "11/0/init/body/9/argument/1/1/3/expression/right/1/3/0": {
+          content: {
+            en: "Pricing",
+          },
+          hash: "ce27f1aeacccc542a174c4b2bce022b0",
+        },
+        "11/0/init/body/9/argument/1/1/3/expression/right/1/5/1": {
+          content: {
+            en: "VibePage Studio",
+          },
+          hash: "3a748785806e9a62b0ec5e730b9b1cc4",
+        },
+        "11/0/init/body/9/argument/1/1/3/expression/right/1/7/0": {
+          content: {
+            en: "Support",
+          },
+          hash: "55aab5fd0f31a9cb055a2edeeedfaf63",
+        },
+        "11/0/init/body/9/argument/1/1/3/expression/right/1/9/expression/alternate/1/1":
+          {
+            content: {
+              en: "Sign In",
+            },
+            hash: "e285e29c642443ecca996fbaae92baec",
+          },
+        "11/0/init/body/9/argument/1/1/3/expression/right/1/9/expression/alternate/3/1/1":
+          {
+            content: {
+              en: "Sign Up",
+            },
+            hash: "c4c2c4a122389310734c8562c6883f03",
+          },
+        "11/0/init/body/9/argument/1/1/3/expression/right/1/9/expression/consequent/1/0":
+          {
+            content: {
+              en: "Account",
+            },
+            hash: "01215c12fb1cdb93bd0c84c1382bef56",
+          },
+        "11/0/init/body/9/argument/1/1/3/expression/right/1/9/expression/consequent/3/1":
+          {
+            content: {
+              en: "Sign Out",
             },
             hash: "f90c8ec008cbc1aea5ccfc7bfef17af1",
           },
@@ -1310,6 +1419,28 @@ export default {
         },
       },
     },
+    "components/card-studio/CardRenderer.tsx": {
+      entries: {
+        "3/0/init/body/2/argument/3/expression/right/1/1": {
+          content: {
+            en: "🎨",
+          },
+          hash: "5a50aeff71fb46d223bc6eeeb90875d2",
+        },
+        "3/0/init/body/2/argument/3/expression/right/1/3": {
+          content: {
+            en: "Start Creating",
+          },
+          hash: "29896ef9fa320fc4d790885fc5638406",
+        },
+        "3/0/init/body/2/argument/3/expression/right/1/5": {
+          content: {
+            en: "Drag elements from the toolbox or click to add them",
+          },
+          hash: "cbd2d045a808f3da23bb3592c5572f53",
+        },
+      },
+    },
     "components/card-studio/EditorCanvas.tsx": {
       entries: {
         "4/0/init/body/10/argument/1/3/expression/right/1/1": {
@@ -1438,6 +1569,27 @@ export default {
           },
           hash: "8bcf303dd10a645b5baacb02b47d72c9",
         },
+        "5/0/init/body/15/argument/1/7/expression/0/body/2/argument/7/expression/right/1-title":
+          {
+            content: {
+              en: "Duplicate",
+            },
+            hash: "27756566785c2b8463e21582c4bb619b",
+          },
+        "5/0/init/body/15/argument/1/7/expression/0/body/2/argument/7/expression/right/3-title":
+          {
+            content: {
+              en: "Rotate",
+            },
+            hash: "971ee77cef4133c9ae97bb1a4017cdb8",
+          },
+        "5/0/init/body/15/argument/1/7/expression/0/body/2/argument/7/expression/right/5-title":
+          {
+            content: {
+              en: "Delete",
+            },
+            hash: "8bcf303dd10a645b5baacb02b47d72c9",
+          },
       },
     },
     "components/card-studio/PropertiesPanel.tsx": {
@@ -2926,6 +3078,94 @@ export default {
             fr: "Chargement du panier...",
           },
           hash: "99b82d35bc15c1ba769eabc03d2e8db7",
+        },
+      },
+    },
+    "pages/CardPreviewPage.tsx": {
+      entries: {
+        "7/0/init/body/5/consequent/0/argument/1/3": {
+          content: {
+            en: "Loading preview...",
+          },
+          hash: "803553089c1462e1873c47790bdeb7a5",
+        },
+        "7/0/init/body/6/consequent/0/argument/1/3": {
+          content: {
+            en: "Preview Error",
+          },
+          hash: "d226773b15b8ff8099263da0b514ca2b",
+        },
+        "7/0/init/body/6/consequent/0/argument/1/7/1": {
+          content: {
+            en: "<element:ArrowLeft></element:ArrowLeft> Back to Editor",
+          },
+          hash: "8628c25dbe2c3935966162408825437f",
+        },
+        "7/0/init/body/8/argument/3/1/1/1": {
+          content: {
+            en: "<element:ArrowLeft></element:ArrowLeft> Back to Editor",
+          },
+          hash: "8628c25dbe2c3935966162408825437f",
+        },
+        "7/0/init/body/8/argument/3/1/3/1": {
+          content: {
+            en: "Card Preview",
+          },
+          hash: "2d3b7b18ea83dd0721c3f4fdd0ed7bed",
+        },
+        "7/0/init/body/8/argument/3/1/3/3": {
+          content: {
+            en: "Canvas: {cardData.canvasSettings.width} × {cardData.canvasSettings.height}px",
+          },
+          hash: "400bcf9f24dd7f7e8a85e33e394836de",
+        },
+        "7/0/init/body/8/argument/3/3/1": {
+          content: {
+            en: "<element:ExternalLink></element:ExternalLink> Open in New Tab",
+          },
+          hash: "c3be6e421fb445402cb710ca72d333a2",
+        },
+        "7/0/init/body/8/argument/7/5/1": {
+          content: {
+            en: "Card Information",
+          },
+          hash: "8f5091967724ac82736881416d794837",
+        },
+        "7/0/init/body/8/argument/7/5/3/1/1": {
+          content: {
+            en: "Elements:",
+          },
+          hash: "df3b8b454d7999d56111aa3eeaa22053",
+        },
+        "7/0/init/body/8/argument/7/5/3/3/1": {
+          content: {
+            en: "Canvas Size:",
+          },
+          hash: "323be08da327e549908422db726fba03",
+        },
+        "7/0/init/body/8/argument/7/5/3/3/3": {
+          content: {
+            en: "{cardData.canvasSettings.width} × {cardData.canvasSettings.height}px",
+          },
+          hash: "06aa2e3e586457e20bdceebed6242806",
+        },
+        "7/0/init/body/8/argument/7/5/3/5/1": {
+          content: {
+            en: "Background:",
+          },
+          hash: "fb5abc501b86138db20142ab371a327c",
+        },
+        "7/0/init/body/8/argument/7/5/3/7/1": {
+          content: {
+            en: "Element Types:",
+          },
+          hash: "ceeb4e750696a61eaaad9b4097aeeca2",
+        },
+        "7/0/init/body/8/argument/7/5/5/1": {
+          content: {
+            en: "<element:strong>💡 Tip:</element:strong> This is a live preview of your card. Interactive elements like buttons will work as expected when published.",
+          },
+          hash: "3252d6168b410dfcdcdf0b6334ad6db6",
         },
       },
     },
