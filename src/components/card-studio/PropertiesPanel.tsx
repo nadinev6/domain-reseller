@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Settings, Palette, Type, Image, Square, MousePointer, Save, Smile, RotateCcw } from 'lucide-react';
-import { t } from 'lingo.dev/react';
+import { useTranslation } from 'lingo.dev/react';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import { Button } from '../ui/button';
@@ -32,6 +32,7 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
   onUpdateCanvasSettings
 }) => {
 
+  const { t } = useTranslation();
   const [savedColors, setSavedColors] = useState<string[]>([]);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [activeEmojiCategory, setActiveEmojiCategory] = useState<keyof typeof EMOJI_CATEGORIES>('faces');
