@@ -52,15 +52,13 @@ const PricingPage: React.FC = () => {
       popular: true,
       features: [
         '1800 points immediately',
-        '+200 points upfront bonus',
+        '+200 points with each domain purchase',
         'Enhanced priority support',
         '50 free social media cards',
         'All landing page templates',
         'Pay per domain with points',
-        'Exclusive beta feature access',
         'Advanced analytics',
         'Custom branding options',
-        'API access'
       ],
       perks: [
         { icon: <Crown className="w-4 h-4" />, text: 'Enhanced priority support' },
