@@ -797,8 +797,8 @@ export default {
         },
         "11/0/init/body/7/argument/1/1/1/1/3/1/5/1": {
           content: {
-            en: "Card Studio",
-            fr: "Studio de cartes",
+            en: "VibePage Studio",
+            fr: "VibePage Studio",
           },
           hash: "26bc1b0bd470c77d10074981c8998dbb",
         },
