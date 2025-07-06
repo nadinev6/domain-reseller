@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 import { searchDomains } from '../utils/domainUtils';
 import { DomainResult } from '../types';
-import { AnimatedShinyText } from './magicui/animated-shiny-text';
+import { AuroraText } from './magicui/aurora-text';
 
 interface DomainSearchProps {
   onSearch: (results: DomainResult[]) => void;
@@ -30,13 +30,13 @@ const DomainSearch: React.FC<DomainSearchProps> = ({ onSearch }) => {
     <div className="w-full max-w-4xl mx-auto px-4 mt-8 md:mt-16">
       <div className="text-center mb-8">
         <h1 className="text-3xl md:text-5xl font-extrabold mb-3">
-          <AnimatedShinyText 
-            className="bg-clip-text text-transparent !mx-0 !max-w-none"
-            baseGradientFromColor="#4f46e5"
-            baseGradientToColor="#9333ea"
+          <AuroraText 
+            className="!mx-0 !max-w-none"
+            colors={["#4f46e5", "#9333ea", "#3b82f6", "#8b5cf6"]}
+            speed={0.8}
           >
             Own Your Online Vibe
-          </AnimatedShinyText>
+          </AuroraText>
         </h1>
         <p className="text-lg text-gray-600 mb-8">
           Secure your online presence with a domain name that stands out.
