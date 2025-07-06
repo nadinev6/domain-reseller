@@ -3694,10 +3694,9 @@ export default {
         },
         "8/0/init/body/3/argument/3/1/5": {
           content: {
-            en: "Create stunning social media cards with our drag-and-drop builder",
-            fr: "Créez des cartes pour réseaux sociaux impressionnantes avec notre constructeur drag-and-drop",
+            en: "Create stunning social media pages with our drag-and-drop builder",
           },
-          hash: "ff14492f6c8c06d34fe42a12334122c8",
+          hash: "2663098c05c41556ac400efdff4a7d40",
         },
         "8/0/init/body/3/argument/3/1/7/1/expression/alternate/1": {
           content: {
@@ -3949,7 +3948,7 @@ export default {
         },
         "9/0/init/body/5/argument/7/1/1/3": {
           content: {
-            en: "Our powerful studio gives you all the tools to create professional pages that stand out",
+            en: "Our powerful studio gives you all the tools to create professional social media cards that stand out",
             fr: "Notre studio puissant vous donne tous les outils pour créer des cartes pour réseaux sociaux professionnelles qui se démarquent",
           },
           hash: "ec99cddeb585e3d6f5b5c9af0d6b6ae9",
