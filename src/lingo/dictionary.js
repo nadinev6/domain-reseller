@@ -3687,10 +3687,9 @@ export default {
         },
         "8/0/init/body/3/argument/3/1/3": {
           content: {
-            en: "Social Media Card Studio",
-            fr: "Studio de Cartes pour Réseaux Sociaux",
+            en: "VibePage Studio",
           },
-          hash: "d8f94c4122abde34682c9489851382ab",
+          hash: "db724f1796d6be1ff7b6604f0201a072",
         },
         "8/0/init/body/3/argument/3/1/5": {
           content: {
