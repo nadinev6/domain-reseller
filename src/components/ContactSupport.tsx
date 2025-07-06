@@ -8,7 +8,7 @@ import { Input } from './ui/input';
 
 export default function ContactSupport() {
   const { t } = useTranslation();
-  const { locale, setLocale } = useLocale(); 
+  //const { locale, setLocale } = useLocale(); 
 
   // Form state
   const [formData, setFormData] = useState({
