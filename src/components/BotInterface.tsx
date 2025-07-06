@@ -4,7 +4,7 @@ import { MessageCircle, Send, Minimize2, Languages } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
-// If you're using lingo.dev/react/client, import these hooks
+// Uncomment these when you have lingo.dev/react/client properly installed
 // import { useTranslation, useLocale } from 'lingo.dev/react/client';
 
 interface Suggestion {
@@ -28,13 +28,12 @@ interface BotInterfaceProps {
 export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInterfaceProps) {
   const location = useLocation();
   
-  // Use the same translation system as your main app
-  // Uncomment these if you're using lingo.dev/react/client hooks:
-   const { t } = useTranslation();
-   const { locale, setLocale } = useLocale();
+  // TEMPORARY: Use simple state until lingo.dev/react/client is properly set up
+  const [language, setLanguage] = React.useState('en');
   
-  // For now, let's use a simple state until we integrate properly
-  //const [language, setLanguage] = React.useState('en');
+  // When you have lingo.dev/react/client working, uncomment these and remove the language state above:
+  // const { t } = useTranslation();
+  // const { locale, setLocale } = useLocale();
 
   // Define response templates - these will be the keys for your translation system
   const responseTemplates = {
@@ -72,12 +71,13 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
     "bot.responses.greeting": "Hello! Great to meet you! I'm your VibePage assistant. I can help you search for domains, create amazing social media cards, or answer any questions about our platform. What would you like to explore today?"
   };
 
-  // Function to get translated text - replace this with your app's translation method
+  // TEMPORARY: Simple translation function until lingo.dev/react/client is set up
   const getTranslatedText = (key: string): string => {
-    // If you're using lingo.dev/react/client, replace this with:
-    // return t(key) || fallbackTexts[key] || key;
+    // When you have lingo.dev/react/client working, replace this with:
+    // return t(key) || fallbackTexts[key as keyof typeof fallbackTexts] || key;
     
-    // For now, return the fallback text
+    // For now, return the fallback text based on selected language
+    // You can expand this to include French/Malagasy translations
     return fallbackTexts[key as keyof typeof fallbackTexts] || key;
   };
 
@@ -95,7 +95,7 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
       content: welcomeText,
       timestamp: new Date()
     }]);
-  }, [language]); // Only depend on language, not on translation system
+  }, [language]); // Depends on language for re-initialization when language changes
 
   // Smart local AI-like responses
   const sendToLLM = async (message: string) => {
@@ -229,12 +229,12 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
     }
   };
 
-  // Handle language change - integrate with your app's language system
+  // Handle language change
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newLanguage = e.target.value;
     setLanguage(newLanguage);
     
-    // If you're using lingo.dev/react/client, replace this with:
+    // When you have lingo.dev/react/client working, replace setLanguage with:
     // setLocale(newLanguage);
   };
 
