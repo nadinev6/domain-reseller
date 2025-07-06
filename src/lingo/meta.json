@@ -5331,6 +5331,310 @@
           "overrides": {},
           "content": "Choose Your Preferred Support Method"
         },
+        "7/0/init/body/6/argument/1/13/1/1": {
+          "type": "element",
+          "hash": "212c5c784d5580b2f8b9481cb102cb4c",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Frequently Asked Questions"
+        },
+        "7/0/init/body/6/argument/1/13/1/3": {
+          "type": "element",
+          "hash": "a8d5888c9a3dc5c7cb4f053ddf6390d6",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Find quick answers to common questions"
+        },
+        "7/0/init/body/6/argument/1/3/1": {
+          "type": "element",
+          "hash": "c77f76f6ca008de2a9bd04982bc995a2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "How can we help you?"
+        },
+        "7/0/init/body/6/argument/1/3/3": {
+          "type": "element",
+          "hash": "fe00ea83e815cd553f5518668c8482d7",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Our support team is here to assist you with domains, card creation, and any questions you might have."
+        },
+        "7/0/init/body/6/argument/1/5/3/1/1/1/1": {
+          "type": "element",
+          "hash": "ffbb5a8d772871491dea4a2862495ff9",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Mail></element:Mail> Contact Form"
+        },
+        "7/0/init/body/6/argument/1/5/3/1/1/1/3": {
+          "type": "element",
+          "hash": "e9537e5ca1eebb4c4c09237ae5427373",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Send us a message and we'll get back to you as soon as possible."
+        },
+        "7/0/init/body/6/argument/1/5/3/1/1/3/1/expression/alternate/1/1/1": {
+          "type": "element",
+          "hash": "ba3094a10db2bb9234cb7e0dc86e40fd",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Full Name"
+        },
+        "7/0/init/body/6/argument/1/5/3/1/1/3/1/expression/alternate/1/1/3-placeholder": {
+          "type": "attribute",
+          "hash": "5c927d18c76f612d106a4b69e437f6be",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Enter your full name"
+        },
+        "7/0/init/body/6/argument/1/5/3/1/1/3/1/expression/alternate/1/3/1": {
+          "type": "element",
+          "hash": "0ee22bbbe989a0c61a18023407d12dc2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Email Address"
+        },
+        "7/0/init/body/6/argument/1/5/3/1/1/3/1/expression/alternate/1/3/3-placeholder": {
+          "type": "attribute",
+          "hash": "39931962707c99b99a5a073ab579396b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Enter your email"
+        },
+        "7/0/init/body/6/argument/1/5/3/1/1/3/1/expression/alternate/3/1": {
+          "type": "element",
+          "hash": "de5b885eb327b2f233f3b67aab4c4c0a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Subject"
+        },
+        "7/0/init/body/6/argument/1/5/3/1/1/3/1/expression/alternate/3/3/1": {
+          "type": "element",
+          "hash": "f85e5f81ad47104bf3191fc748779401",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Select a subject"
+        },
+        "7/0/init/body/6/argument/1/5/3/1/1/3/1/expression/alternate/3/3/11": {
+          "type": "element",
+          "hash": "3547dd2e544ad65db2a623e3e45a072c",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Technical Support"
+        },
+        "7/0/init/body/6/argument/1/5/3/1/1/3/1/expression/alternate/3/3/13": {
+          "type": "element",
+          "hash": "79acaa6cd481262bea4e743a422529d2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Other"
+        },
+        "7/0/init/body/6/argument/1/5/3/1/1/3/1/expression/alternate/3/3/3": {
+          "type": "element",
+          "hash": "2fff8a8a4fe899fc3d62b50b2bdf4114",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Domain Registration"
+        },
+        "7/0/init/body/6/argument/1/5/3/1/1/3/1/expression/alternate/3/3/5": {
+          "type": "element",
+          "hash": "ca8d055caaf94645faba76edca6ae361",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Domain Transfer"
+        },
+        "7/0/init/body/6/argument/1/5/3/1/1/3/1/expression/alternate/3/3/7": {
+          "type": "element",
+          "hash": "0ce64c24736afd2e322a161c9b087623",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Card Studio"
+        },
+        "7/0/init/body/6/argument/1/5/3/1/1/3/1/expression/alternate/3/3/9": {
+          "type": "element",
+          "hash": "f0a03d943ac484e1be521ac21fdd34ea",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Billing & Payments"
+        },
+        "7/0/init/body/6/argument/1/5/3/1/1/3/1/expression/alternate/5/1": {
+          "type": "element",
+          "hash": "f2f72126bd244cfc534eab395e054362",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Message"
+        },
+        "7/0/init/body/6/argument/1/5/3/1/1/3/1/expression/alternate/5/3-placeholder": {
+          "type": "attribute",
+          "hash": "d88b25f56879dd9e4eafbb55e5da4d8a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Describe your question or issue in detail..."
+        },
+        "7/0/init/body/6/argument/1/5/3/1/1/3/1/expression/alternate/7/1/expression/alternate": {
+          "type": "element",
+          "hash": "0f44a92e24c0d4f9ccba8e16d7775c31",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Send></element:Send> Send Message"
+        },
+        "7/0/init/body/6/argument/1/5/3/1/1/3/1/expression/alternate/7/1/expression/consequent": {
+          "type": "element",
+          "hash": "a7b2a61f7f88bdd327273bb1195fb1f2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:div></element:div> Sending..."
+        },
+        "7/0/init/body/6/argument/1/5/3/1/1/3/1/expression/consequent/3": {
+          "type": "element",
+          "hash": "d4b370ef353a1dd5c48826137803202a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Message Sent Successfully!"
+        },
+        "7/0/init/body/6/argument/1/5/3/1/1/3/1/expression/consequent/5": {
+          "type": "element",
+          "hash": "8b468a829b3d34794db894d089127b9a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Thank you for contacting us. We'll respond within 24 hours."
+        },
+        "7/0/init/body/6/argument/1/5/7/1/1/1": {
+          "type": "element",
+          "hash": "e8b99a3bad79c22c9453e3d29e3a9fed",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Contact Information"
+        },
+        "7/0/init/body/6/argument/1/5/7/1/3/1/3/1": {
+          "type": "element",
+          "hash": "e7f34943a0c2fb849db1839ff6ef5cb5",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Email"
+        },
+        "7/0/init/body/6/argument/1/5/7/1/3/1/3/3": {
+          "type": "element",
+          "hash": "6ee78eea907cae2f229d24157e816088",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "vibepage@safrica.com"
+        },
+        "7/0/init/body/6/argument/1/5/7/1/3/3/3/1": {
+          "type": "element",
+          "hash": "b9537ee90fc5b0116942e0af29d926cc",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Phone"
+        },
+        "7/0/init/body/6/argument/1/5/7/1/3/3/3/3": {
+          "type": "element",
+          "hash": "d39074f6a278f108c68084ddcef63dbf",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "+1 (555) 123-4567"
+        },
+        "7/0/init/body/6/argument/1/5/7/1/3/5/3/1": {
+          "type": "element",
+          "hash": "5a9a8bc26f90d84c90105690a2eb23a1",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Address"
+        },
+        "7/0/init/body/6/argument/1/5/7/1/3/5/3/3": {
+          "type": "element",
+          "hash": "a9e9241761e57645f5792927a1e25e8d",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "123 Tech Street<element:br></element:br> San Francisco, CA 94105<element:br></element:br> United States"
+        },
+        "7/0/init/body/6/argument/1/5/7/1/3/7/3/1": {
+          "type": "element",
+          "hash": "478903f52c8fd8e9108dd7e5f4c3d8fb",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Business Hours"
+        },
+        "7/0/init/body/6/argument/1/5/7/1/3/7/3/3": {
+          "type": "element",
+          "hash": "af0d6fb5ba10cc6eff3ba48d55cedf57",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Monday - Friday: 9AM - 6PM EST<element:br></element:br> Saturday - Sunday: 10AM - 4PM EST"
+        },
+        "7/0/init/body/6/argument/1/5/7/3/1/1": {
+          "type": "element",
+          "hash": "00b6b4966e5a3b8cbc2dcb3eb7b295fc",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Quick Response"
+        },
+        "7/0/init/body/6/argument/1/5/7/3/1/3": {
+          "type": "element",
+          "hash": "6d1368049c84fe385dc56075e84afd89",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Need immediate assistance? Try these options:"
+        },
+        "7/0/init/body/6/argument/1/5/7/3/3/1/1": {
+          "type": "element",
+          "hash": "5b3c0132d44012a44deef4d76c2c4642",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:MessageCircle></element:MessageCircle> Start Live Chat"
+        },
+        "7/0/init/body/6/argument/1/5/7/3/3/1/3": {
+          "type": "element",
+          "hash": "9f4a257252f4f1a111038fceee5b31f4",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Phone></element:Phone> Request Callback"
+        },
+        "7/0/init/body/6/argument/1/9/1": {
+          "type": "element",
+          "hash": "9464100c8c39a98853f7dc1cd3fd3284",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Choose Your Preferred Support Method"
+        },
         "7/0/init/body/7/argument/1/13/1/1": {
           "type": "element",
           "hash": "212c5c784d5580b2f8b9481cb102cb4c",
