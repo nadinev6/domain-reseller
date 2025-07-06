@@ -297,32 +297,30 @@ const PricingPage: React.FC = () => {
           </CardHeader>
           <CardContent>
             <Accordion type="single" collapsible defaultValue="item-0">
-              <div>
-                <h4 className="font-medium text-gray-900 mb-2">Can I change my plan anytime?</h4>
-                <p className="text-gray-600 text-sm">
+              <AccordionItem value="item-0">
+                <AccordionTrigger className="text-left">
+                  Can I change my plan anytime?
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-600">
                   Yes! You can upgrade or downgrade your plan at any time. Changes take effect at your next billing cycle.
-                </p>
-              </div>
-              <div>
-                <h4 className="font-medium text-gray-900 mb-2">Do points expire?</h4>
-                <p className="text-gray-600 text-sm">
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="text-left">
+                  Do points expire?
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-600">
                   Points from subscriptions never expire as long as you maintain an active subscription. Bonus points from purchases expire after 12 months.
-                </p>
-              </div>
-              <div>
-                <h4 className="font-medium text-gray-900 mb-2">What happens if I cancel?</h4>
-                <p className="text-gray-600 text-sm">
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-2">
+                <AccordionTrigger className="text-left">
+                  What happens if I cancel?
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-600">
                   You'll retain access to all features until the end of your billing period. Your points will remain available for 30 days after cancellation.
-                </p>
-                <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger className="text-left">
-                    {item.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-gray-600">
-                <p className="text-gray-600 text-sm">
-                  </AccordionContent>
-                </AccordionItem>
-              </div>
+                </AccordionContent>
+              </AccordionItem>
             </Accordion>
           </CardContent>
         </Card>
