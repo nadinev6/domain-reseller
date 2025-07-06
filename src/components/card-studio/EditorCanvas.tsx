@@ -20,7 +20,7 @@ interface EditorCanvasProps {
 
 const EditorCanvas: React.FC<EditorCanvasProps> = ({
   elements,
-  selectedElement,
+  selectedElement, 
   multiSelectedElementIds,
   onElementClick,
   onUpdateElement,
