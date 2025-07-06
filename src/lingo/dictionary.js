@@ -3695,6 +3695,7 @@ export default {
         "8/0/init/body/3/argument/3/1/5": {
           content: {
             en: "Create stunning social media pages with our drag-and-drop builder",
+            fr: "Créez des pages sociales canon avec notre outil glisser-déposer",
           },
           hash: "2663098c05c41556ac400efdff4a7d40",
         },
