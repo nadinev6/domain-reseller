@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { MessageCircle, Send, Minimize2 } from 'lucide-react';
 import { LingoDotDevEngine } from 'lingo.dev/sdk';
-import { useLanguage } from 'lingo.dev/react-client';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
@@ -26,7 +25,16 @@ interface BotInterfaceProps {
 
 export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInterfaceProps) {
   const location = useLocation();
-  const { currentLocale } = useLanguage();
+  
+  // Option 1: Use a simple state for locale (replace with your actual locale logic)
+  const [currentLocale, setCurrentLocale] = React.useState('en');
+  
+  // Option 2: Or get it from browser
+  // const currentLocale = navigator.language || 'en';
+  
+  // Option 3: Or get it from context/props if you have a language context elsewhere
+  // const { currentLocale } = useContext(YourLanguageContext);
+  
   const [messages, setMessages] = React.useState<Message[]>([
     {
       id: '1',
