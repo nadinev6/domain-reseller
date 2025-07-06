@@ -30,11 +30,11 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
   
   // Use the same translation system as your main app
   // Uncomment these if you're using lingo.dev/react/client hooks:
-  // const { t } = useTranslation();
-  // const { locale, setLocale } = useLocale();
+   const { t } = useTranslation();
+   const { locale, setLocale } = useLocale();
   
   // For now, let's use a simple state until we integrate properly
-  const [language, setLanguage] = React.useState('en');
+  //const [language, setLanguage] = React.useState('en');
 
   // Define response templates - these will be the keys for your translation system
   const responseTemplates = {
