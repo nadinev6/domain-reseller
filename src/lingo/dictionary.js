@@ -388,6 +388,12 @@ export default {
           },
           hash: "f1b6030ec99cae54c5cf237013a57d3c",
         },
+        "6/0/init/body/3/argument/1/1/1": {
+          content: {
+            en: "Own Your Online Vibe",
+          },
+          hash: "109b451b9bf59e3d673216fb39105ab4",
+        },
         "6/0/init/body/3/argument/1/3": {
           content: {
             en: "Secure your online presence with a domain name that stands out.",
