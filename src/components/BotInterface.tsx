@@ -309,7 +309,7 @@ const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollap
     // Greetings and pleasantries
     if (input.includes('hello') || input.includes('hi') || input.includes('hey') || input.includes('good morning') || input.includes('good afternoon')) {
       return {
-        content: 'Hello! Great to see you on VibePage! I\'m here to help you with anything you need - from finding the perfect domain to creating stunning social media cards. What would you like to explore today?',
+        content: 'Hello! Great to see you on VibePage! I\'m here to help you with anything you need - from finding the perfect domain to creating stunning pages. What would you like to explore today?',
         suggestions: [
           { text: 'Get started', action: 'How do I get started with VibePage?' },
           { text: 'Popular features', action: 'What are your most popular features?' },
