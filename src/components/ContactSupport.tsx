@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { User, Mail, MessageSquare, Send, MessageCircle } from 'lucide-react';
-import { useTranslation } from 'lingo.dev/react';
+import { LocaleSwitcher } from "lingo.dev/react/client";
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
