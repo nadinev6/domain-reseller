@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { MessageCircle, Send, Minimize2, Languages, User, Mail, MessageSquare } from 'lucide-react';
-//import { useTranslation, useLocale } from 'lingo.dev/react/client';
+import { useTranslation, useLocale } from 'lingo.dev/react/client';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
@@ -12,8 +12,8 @@ interface ContactSupportProps {
 
 export default function ContactSupport({ isCollapsed, onToggleCollapse }: ContactSupportProps) {
   const location = useLocation();
- // const { t } = useTranslation();
- // const { locale, setLocale } = useLocale(); 
+  const { t } = useTranslation();
+  const { locale, setLocale } = useLocale(); 
 
   // Form state
   const [formData, setFormData] = useState({
