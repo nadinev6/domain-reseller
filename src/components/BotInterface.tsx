@@ -1,7 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { MessageCircle, Send, Minimize2 } from 'lucide-react';
-import { LingoDotDevEngine } from 'lingo.dev/sdk';
+// Remove Lingo.dev since it's for translation, not chat
+// import { LingoDotDevEngine } from 'lingo.dev/sdk';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
@@ -47,14 +48,43 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
   const [isTyping, setIsTyping] = React.useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Initialize Lingo.dev engine
-  const lingo = React.useMemo(() => {
-    const apiKey = import.meta.env.LINGO_API_KEY;
-    if (apiKey) {
-      return new LingoDotDevEngine({ apiKey });
+  // Initialize OpenAI API (replace with your preferred LLM)
+  const sendToLLM = async (message: string) => {
+    try {
+      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
+        },
+        body: JSON.stringify({
+          model: 'gpt-3.5-turbo',
+          messages: [
+            {
+              role: 'system',
+              content: 'You are a helpful assistant for VibePage, a domain registration and social media card creation platform. Help users with domain searches, card creation, and general questions about the platform.'
+            },
+            {
+              role: 'user',
+              content: message
+            }
+          ],
+          max_tokens: 150,
+          temperature: 0.7
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`OpenAI API error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data.choices[0]?.message?.content || 'I apologize, but I encountered an issue processing your request.';
+    } catch (error) {
+      console.error('LLM API error:', error);
+      return null;
     }
-    return null;
-  }, []);
+  };
 
   // Check if BotInterface should be hidden based on current route
   const shouldHide = location.pathname.startsWith('/card-studio/editor');
@@ -73,36 +103,19 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
     setInputValue('');
     setIsTyping(true);
 
-    if (lingo) {
-      try {
-        // Send message to Lingo.dev LLM for AI response
-        const response = await lingo.chat.sendMessage(inputValue, {
-          language: currentLocale,
-          context: 'You are a helpful assistant for VibePage, a domain registration and social media card creation platform. Help users with domain searches, card creation, and general questions about the platform.',
-          maxTokens: 150
-        });
-
-        const botMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          type: 'bot',
-          content: response.content || 'I apologize, but I encountered an issue processing your request. Please try again.',
-          timestamp: new Date()
-        };
-        setMessages(prev => [...prev, botMessage]);
-      } catch (error) {
-        console.error('Error getting AI response:', error);
-        
-        // Fallback to static response if AI fails
-        const botMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          type: 'bot',
-          content: getFallbackResponse(inputValue),
-          timestamp: new Date()
-        };
-        setMessages(prev => [...prev, botMessage]);
-      }
+    // Try to get LLM response
+    const llmResponse = await sendToLLM(inputValue);
+    
+    if (llmResponse) {
+      const botMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        type: 'bot',
+        content: llmResponse,
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, botMessage]);
     } else {
-      // Use fallback response if Lingo.dev is not available
+      // Fallback to static response if LLM fails
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
         type: 'bot',
