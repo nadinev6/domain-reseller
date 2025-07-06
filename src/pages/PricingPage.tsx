@@ -166,7 +166,7 @@ const PricingPage: React.FC = () => {
                   {plan.description}
                 </CardDescription>
                 
-                <div className="mt-4">
+                <div className="mt-4 min-h-[60px]">
                   <div className="flex items-baseline">
                     <span className="text-4xl font-bold text-gray-900">
                       {formatPrice(plan.price)}
@@ -182,7 +182,7 @@ const PricingPage: React.FC = () => {
 
                 {/* Points Highlight */}
                 <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg p-4 mt-4">
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between min-h-[60px]">
                     <div>
                       <p className="text-sm font-medium text-gray-700">Points Included</p>
                       <p className="text-2xl font-bold text-indigo-600">{plan.points} points</p>
@@ -217,7 +217,7 @@ const PricingPage: React.FC = () => {
                   ))}
                 </div>
 
-                <div className="mt-auto">
+                <div className="mt-auto min-h-[80px]">
                   <Button
                     onClick={() => handleSubscribe(plan.id)}
                     className={`w-full ${
