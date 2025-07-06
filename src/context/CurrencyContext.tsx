@@ -1,9 +1,13 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import useSWR from 'swr';
 
-interface ExchangeRates {
-  [key: string]: number;
-}
+// Fixed exchange rates relative to ZAR
+const FIXED_EXCHANGE_RATES = {
+  ZAR: 1,        // 1 ZAR = 1 ZAR
+  EUR: 0.05,     // 1 ZAR = 0.05 EUR
+  USD: 0.06,     // 1 ZAR = 0.06 USD
+  MGA: 255.00,   // 1 ZAR = 255.00 MGA
+  GBP: 0.04      // 1 ZAR = 0.04 GBP (added for completeness)
+};
 
 interface CurrencyContextType {
   currency: string;
@@ -15,21 +19,19 @@ interface CurrencyContextType {
 
 const CurrencyContext = createContext<CurrencyContextType | undefined>(undefined);
 
-const fetcher = (url: string) => fetch(url).then(res => res.json());
-
 export const CurrencyProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [currency, setCurrency] = useState('ZAR');
   
-  const { data: rates, isLoading } = useSWR<ExchangeRates>(
-    'https://open.er-api.com/v6/latest/USD',
-    fetcher,
-    { refreshInterval: 3600000 } // Refresh every hour
-  );
-  
-  const convertPrice = (priceInUSD: number): number => {
-    if (!rates) return priceInUSD;
-    const rate = currency === 'USD' ? 1 : (rates[currency] || 1);
-    return priceInUSD * rate;
+  const convertPrice = (priceInZAR: number): number => {
+    // If target currency is ZAR, return original price
+    if (currency === 'ZAR') return priceInZAR;
+    
+    // Get the conversion rate for the target currency
+    const rate = FIXED_EXCHANGE_RATES[currency as keyof typeof FIXED_EXCHANGE_RATES] || 1;
+    
+    // Convert ZAR to target currency and round down cents
+    const convertedPrice = priceInZAR * rate;
+    return Math.floor(convertedPrice * 100) / 100;
   };
   
   const formatPrice = (price: number): string => {
@@ -48,7 +50,7 @@ export const CurrencyProvider: React.FC<{ children: ReactNode }> = ({ children }
       setCurrency,
       convertPrice,
       formatPrice,
-      isLoading
+      isLoading: false // No loading since we use fixed rates
     }}>
       {children}
     </CurrencyContext.Provider>
@@ -61,4 +63,4 @@ export const useCurrency = () => {
     throw new Error('useCurrency must be used within a CurrencyProvider');
   }
   return context;
-};
+}; 
