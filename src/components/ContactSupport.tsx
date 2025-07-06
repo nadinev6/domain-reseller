@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
-import { User, Mail, MessageSquare, Send, MessageCircle, Languages } from 'lucide-react';
+import { User, Mail, MessageSquare, Send, MessageCircle } from 'lucide-react';
 import { t } from 'lingo.dev/react';
-import react from "@vitejs/plugin-react-swc";
-import lingoCompiler from "lingo.dev/compiler"; 
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
 export default function ContactSupport() {
-  const { t } = useTranslation();
-  //const { locale, setLocale } = useLocale(); 
-
   // Form state
   const [formData, setFormData] = useState({
     name: '',
@@ -81,7 +76,6 @@ export default function ContactSupport() {
           email: formData.email,
           subject: formData.subject,
           message: formData.message,
-          language: locale,
           timestamp: new Date().toISOString()
         }).toString()
       });
@@ -105,12 +99,6 @@ export default function ContactSupport() {
     }
   };
 
-  // Handle language change
-  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newLanguage = e.target.value;
-    setLocale(newLanguage);
-  };
-
   // Reset form to show contact form again
   const resetForm = () => {
     setIsSubmitted(false);
@@ -125,7 +113,6 @@ export default function ContactSupport() {
         <input type="email" name="email" />
         <input type="text" name="subject" />
         <textarea name="message"></textarea>
-        <input type="text" name="language" />
         <input type="text" name="timestamp" />
       </form>
 
@@ -138,19 +125,6 @@ export default function ContactSupport() {
               <h3 className="font-semibold text-lg">{t('support.form.title')}</h3>
               <p className="text-sm text-indigo-100">{t('support.form.subtitle')}</p>
             </div>
-          </div>
-          {/* Language Selector */}
-          <div className="relative flex items-center">
-            <Languages size={16} className="absolute left-2 text-white/70 pointer-events-none" />
-            <select
-              value={locale}
-              onChange={handleLanguageChange}
-              className="pl-8 pr-4 py-2 text-sm bg-white/20 border border-white/30 rounded text-white focus:outline-none focus:ring-2 focus:ring-white/50 appearance-none cursor-pointer"
-            >
-              <option value="en" className="text-gray-900">English</option>
-              <option value="fr" className="text-gray-900">Français</option>
-              <option value="mg" className="text-gray-900">Malagasy</option>
-            </select>
           </div>
         </div>
 
