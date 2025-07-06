@@ -1,6 +1,6 @@
 # VibePage - Domain Registration & VibePage Studio
 
-A modern domain registration platform with an integrated social media card studio, powered by AI translations.
+A modern domain registration platform with an integrated VibePage studio, powered by AI translations.
 
 ## Features
 
