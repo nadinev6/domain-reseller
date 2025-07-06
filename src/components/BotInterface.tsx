@@ -61,27 +61,19 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
 
   // Function to translate text using Lingo.dev
   const translateText = async (text: string, targetLanguage: string = language) => {
-    // Temporarily disable translation to fix the corruption issue
-    // TODO: Implement proper translation once the API is working correctly
-    return text;
-    
-    /* 
     if (!lingo || targetLanguage === 'en') {
       return text; // Return original if no translation needed
     }
 
     try {
-      // Create a simple key for the translation to avoid path-like issues
-      const translationKey = `message_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
       const translated = await lingo.localizeObject({
-        [translationKey]: text
+        [text]: text
       }, targetLanguage);
-      return translated[translationKey] || text;
+      return translated[text] || text;
     } catch (error) {
       console.error('Translation error:', error);
       return text; // Return original text if translation fails
     }
-    */
   };
 
   const [messages, setMessages] = React.useState<Message[]>([]);
@@ -378,4 +370,4 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
       </div>
     </div>
   );
-} 
+}
