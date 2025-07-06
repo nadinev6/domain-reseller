@@ -100,7 +100,7 @@ const SupportPage: React.FC = () => {
             Our support team is here to assist you with domains, card creation, and any questions you might have.
           </p>
         </div>
-<form>
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
           {/* Contact Form */}
           <div className="lg:col-span-2">
@@ -210,7 +210,7 @@ const SupportPage: React.FC = () => {
               </CardContent>
             </Card>
           </div>
-</form>
+
           {/* Contact Information */}
           <div className="space-y-6">
             <Card>
