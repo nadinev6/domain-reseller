@@ -4,6 +4,7 @@ import { MessageCircle, Send, Minimize2, Languages, User, Mail, MessageSquare } 
 import { useTranslation, useLocale } from 'lingo.dev/react/client';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
+import lingoCompiler from "lingo.dev/compiler"; 
 
 interface ContactSupportProps {
   isCollapsed: boolean;
