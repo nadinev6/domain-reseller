@@ -1245,11 +1245,11 @@
         },
         "9/0/init/body/13/argument/1/1/3": {
           "type": "element",
-          "hash": "3602d259be6efd85ad7065b59ea077ba",
+          "hash": "45ae3955b259787f7e0a096454378033",
           "context": "",
           "skip": false,
           "overrides": {},
-          "content": "Sign in to access the Social Media Card Studio and manage your domains."
+          "content": "Sign in to access the VibePage Studio and manage your domains."
         },
         "9/0/init/body/13/argument/1/3/1/1": {
           "type": "element",

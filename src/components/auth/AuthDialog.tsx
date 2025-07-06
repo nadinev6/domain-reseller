@@ -115,7 +115,7 @@ const AuthDialog: React.FC<AuthDialogProps> = ({ isOpen, onClose, defaultTab = '
         <DialogHeader>
           <DialogTitle>Welcome to VibePage</DialogTitle>
           <DialogDescription>
-            Sign in to access the Social Media Card Studio and manage your domains.
+            Sign in to access the VibePage Studio and manage your domains.
           </DialogDescription>
         </DialogHeader>
 
