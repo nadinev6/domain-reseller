@@ -924,6 +924,7 @@ export default {
         "11/0/init/body/8/argument/1/1/1/1/3/1/5/1": {
           content: {
             en: "VibePage Studio",
+            fr: "VibePage Studio",
           },
           hash: "63d75c9db91c1ec71f18a5adc58dc13a",
         },
@@ -2933,6 +2934,7 @@ export default {
         "12/0/init/body/19/argument/3/1/1": {
           content: {
             en: "VibePage Studio",
+            fr: "VibePage Studio",
           },
           hash: "db724f1796d6be1ff7b6604f0201a072",
         },
