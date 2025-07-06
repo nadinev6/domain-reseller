@@ -2706,6 +2706,7 @@ export default {
         "8/0/init/body/10/argument/1/3": {
           content: {
             en: "Manage your saved page designs",
+            fr: "Gérez vos designs sauvegardés",
           },
           hash: "26e55d6cb3246d3c2d6007c5c872517e",
         },
@@ -2759,6 +2760,7 @@ export default {
         "8/0/init/body/10/argument/3/1/expression/consequent/5": {
           content: {
             en: "Create your first page to get started",
+            fr: "Créez votre première page pour commencer",
           },
           hash: "30ea78dae4c43baadfa207e2e71d78ba",
         },
