@@ -271,10 +271,9 @@ export default {
       entries: {
         "5/0/init/body/3/argument/1/1": {
           content: {
-            en: "Find your perfect Name",
-            fr: "Trouvez votre nom parfait",
+            en: "Own Your Online Vibe",
           },
-          hash: "f1b6030ec99cae54c5cf237013a57d3c",
+          hash: "679cbfe370bafccd1fe69d2ad7a4ca60",
         },
         "5/0/init/body/3/argument/1/3": {
           content: {
