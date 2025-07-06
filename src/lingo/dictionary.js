@@ -797,7 +797,7 @@ export default {
         },
         "11/0/init/body/7/argument/1/1/1/1/3/1/5/1": {
           content: {
-            en: "VibePage Studio",
+            en: "Card Studio",
             fr: "VibePage Studio",
           },
           hash: "26bc1b0bd470c77d10074981c8998dbb",
@@ -1016,6 +1016,115 @@ export default {
             content: {
               en: "Sign Out",
               fr: "Se déconnecter",
+            },
+            hash: "f90c8ec008cbc1aea5ccfc7bfef17af1",
+          },
+        "11/0/init/body/9/argument/1/1/1/1/1/1/1-alt": {
+          content: {
+            en: "VibePage Logo",
+          },
+          hash: "c8d4d18e2fe2ba8714193d7c752f3132",
+        },
+        "11/0/init/body/9/argument/1/1/1/1/1/3": {
+          content: {
+            en: "<element:span>Vibe</element:span>Page",
+          },
+          hash: "6f2da0f76738dbfc35d203a825df1218",
+        },
+        "11/0/init/body/9/argument/1/1/1/1/3/1/1/0": {
+          content: {
+            en: "Domains",
+          },
+          hash: "87955beb56bd7e2da09e44bacb294b6a",
+        },
+        "11/0/init/body/9/argument/1/1/1/1/3/1/3/0": {
+          content: {
+            en: "Pricing",
+          },
+          hash: "ce27f1aeacccc542a174c4b2bce022b0",
+        },
+        "11/0/init/body/9/argument/1/1/1/1/3/1/5/1": {
+          content: {
+            en: "VibePage Studio",
+          },
+          hash: "63d75c9db91c1ec71f18a5adc58dc13a",
+        },
+        "11/0/init/body/9/argument/1/1/1/1/3/1/7/0": {
+          content: {
+            en: "Support",
+          },
+          hash: "55aab5fd0f31a9cb055a2edeeedfaf63",
+        },
+        "11/0/init/body/9/argument/1/1/1/3/7/expression/right/1/expression/alternate/1":
+          {
+            content: {
+              en: "Sign In",
+            },
+            hash: "e285e29c642443ecca996fbaae92baec",
+          },
+        "11/0/init/body/9/argument/1/1/1/3/7/expression/right/1/expression/alternate/3/1":
+          {
+            content: {
+              en: "Sign Up",
+            },
+            hash: "c4c2c4a122389310734c8562c6883f03",
+          },
+        "11/0/init/body/9/argument/1/1/1/3/7/expression/right/1/expression/consequent/3":
+          {
+            content: {
+              en: "<element:LogOut></element:LogOut> Sign Out",
+            },
+            hash: "9093e7410d2935ed98a409ee8cdfe3b2",
+          },
+        "11/0/init/body/9/argument/1/1/3/expression/right/1/1/0": {
+          content: {
+            en: "Domains",
+          },
+          hash: "87955beb56bd7e2da09e44bacb294b6a",
+        },
+        "11/0/init/body/9/argument/1/1/3/expression/right/1/3/0": {
+          content: {
+            en: "Pricing",
+          },
+          hash: "ce27f1aeacccc542a174c4b2bce022b0",
+        },
+        "11/0/init/body/9/argument/1/1/3/expression/right/1/5/1": {
+          content: {
+            en: "VibePage Studio",
+          },
+          hash: "3a748785806e9a62b0ec5e730b9b1cc4",
+        },
+        "11/0/init/body/9/argument/1/1/3/expression/right/1/7/0": {
+          content: {
+            en: "Support",
+          },
+          hash: "55aab5fd0f31a9cb055a2edeeedfaf63",
+        },
+        "11/0/init/body/9/argument/1/1/3/expression/right/1/9/expression/alternate/1/1":
+          {
+            content: {
+              en: "Sign In",
+            },
+            hash: "e285e29c642443ecca996fbaae92baec",
+          },
+        "11/0/init/body/9/argument/1/1/3/expression/right/1/9/expression/alternate/3/1/1":
+          {
+            content: {
+              en: "Sign Up",
+            },
+            hash: "c4c2c4a122389310734c8562c6883f03",
+          },
+        "11/0/init/body/9/argument/1/1/3/expression/right/1/9/expression/consequent/1/0":
+          {
+            content: {
+              en: "Account",
+            },
+            hash: "01215c12fb1cdb93bd0c84c1382bef56",
+          },
+        "11/0/init/body/9/argument/1/1/3/expression/right/1/9/expression/consequent/3/1":
+          {
+            content: {
+              en: "Sign Out",
             },
             hash: "f90c8ec008cbc1aea5ccfc7bfef17af1",
           },
@@ -2705,10 +2814,9 @@ export default {
         },
         "8/0/init/body/10/argument/1/3": {
           content: {
-            en: "Manage your saved page designs",
-            fr: "Gérez vos designs sauvegardés",
+            en: "Manage your saved social media card designs",
           },
-          hash: "26e55d6cb3246d3c2d6007c5c872517e",
+          hash: "c234be5f20c6e115ba9fa297043c40a4",
         },
         "8/0/init/body/10/argument/3/1/expression/alternate/1/expression/0/body/1/argument/1/3/3/1":
           {
@@ -2759,10 +2867,9 @@ export default {
         },
         "8/0/init/body/10/argument/3/1/expression/consequent/5": {
           content: {
-            en: "Create your first page to get started",
-            fr: "Créez votre première page pour commencer",
+            en: "Create your first social media card to get started",
           },
-          hash: "30ea78dae4c43baadfa207e2e71d78ba",
+          hash: "a18df01c4a65fe0ac6bfd92d5c481b4e",
         },
         "8/0/init/body/10/argument/3/1/expression/consequent/7/1": {
           content: {
