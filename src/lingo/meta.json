@@ -4195,6 +4195,54 @@
           "overrides": {},
           "content": "Custom Domain"
         },
+        "9/0/init/body/3/argument/11/1/3/1/1": {
+          "type": "element",
+          "hash": "5e2e93f8e2a5f315b6fecdd0a0e6f55f",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "All"
+        },
+        "9/0/init/body/3/argument/11/1/3/1/3": {
+          "type": "element",
+          "hash": "7682c7966c6e718836388561e7e68cab",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Business"
+        },
+        "9/0/init/body/3/argument/11/1/3/1/5": {
+          "type": "element",
+          "hash": "97e922b5475e6ecaa86de338a34fbf12",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Creative"
+        },
+        "9/0/init/body/3/argument/11/1/3/1/7": {
+          "type": "element",
+          "hash": "1c619008563115c5c99acdab4e8c9717",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Personal"
+        },
+        "9/0/init/body/3/argument/7/1/1/1": {
+          "type": "element",
+          "hash": "9c71d8af3f47104b7d8beaafae559df3",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Everything you need to create stunning cards"
+        },
+        "9/0/init/body/3/argument/7/1/1/3": {
+          "type": "element",
+          "hash": "ec99cddeb585e3d6f5b5c9af0d6b6ae9",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Our powerful studio gives you all the tools to create professional social media cards that stand out"
+        },
         "9/0/init/body/5/argument/11/1/1/1": {
           "type": "element",
           "hash": "7dbf99bd0eedea8a5578b4c00569215f",

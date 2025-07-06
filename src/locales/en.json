@@ -59,24 +59,54 @@
     }
   },
   "cardStudio": {
-    "title": "My VibePage Studio",
+    "title": "Social Media Card Studio",
     "subtitle": "Create stunning social media cards with our drag-and-drop builder",
     "getStarted": "Get Started",
     "signUpToStart": "Sign Up to Get Started",
     "examples": "View Examples",
     "features": {
       "dragDrop": "Drag & Drop Builder",
+      "dragDropDesc": "Intuitive drag-and-drop interface for effortless card creation",
       "templates": "Professional Templates",
+      "templatesDesc": "Choose from dozens of professionally designed templates",
       "responsive": "Mobile Responsive",
-      "customDomain": "Custom Domain"
+      "responsiveDesc": "Cards automatically adapt to all screen sizes and devices",
+      "customDomain": "Custom Domain",
+      "customDomainDesc": "Connect your purchased domain for a professional presence"
+    },
+    "examples": {
+      "title": "Inspiration Gallery",
+      "subtitle": "See what's possible with our Social Media Card Studio",
+      "creative": {
+        "title": "Creative Portfolio",
+        "description": "Perfect for artists, designers, and creative professionals"
+      },
+      "business": {
+        "title": "Business Professional",
+        "description": "Clean and modern design for business networking"
+      },
+      "content": {
+        "title": "Content Creator",
+        "description": "Vibrant and engaging for social media influencers"
+      },
+      "useTemplate": "Use This Template",
+      "signUpToUse": "Sign Up to Use Template",
+      "comingSoon": "{{category}} templates coming soon..."
+    },
+    "cta": {
+      "title": "Ready to create your first card?",
+      "subtitle": "Join thousands of creators who are already using our studio to build their online presence",
+      "startBuilding": "Start Building Now",
+      "signUpToStart": "Sign Up to Start Building"
     },
     "editor": {
-      "title": "My VibePage Studio Editor",
+      "title": "Card Studio Editor",
       "toolbox": "Toolbox",
       "toolboxDesc": "Drag elements to canvas or click to add",
       "properties": "Properties",
       "canvas": "Canvas",
       "save": "Save",
+      "saving": "Saving...",
       "export": "Export",
       "preview": "Preview",
       "undo": "Undo",
@@ -108,13 +138,51 @@
       "buttonProperties": "Button Properties",
       "canvasSettings": "Canvas Settings",
       "textContent": "Text Content",
+      "textContentPlaceholder": "Type your text here... Press Enter for new lines",
+      "addEmoji": "Add emoji",
+      "emojiCategories": {
+        "faces": "Faces",
+        "hearts": "Hearts",
+        "symbols": "Symbols",
+        "objects": "Objects"
+      },
+      "closeEmoji": "Close",
       "fontSize": "Font Size",
       "fontWeight": "Font Weight",
+      "fontWeights": {
+        "light": "Light",
+        "normal": "Normal",
+        "bold": "Bold"
+      },
+      "enableGradient": "Enable Gradient Text",
+      "gradientColor1": "Color 1",
+      "gradientColor2": "Color 2",
+      "gradientDirection": "Direction",
+      "gradientDirections": {
+        "toRight": "Left to Right",
+        "toLeft": "Right to Left",
+        "toBottom": "Top to Bottom",
+        "toTop": "Bottom to Top",
+        "diagonal1": "Diagonal ↗",
+        "diagonal2": "Diagonal ↘",
+        "diagonal3": "Diagonal ↖",
+        "diagonal4": "Diagonal ↙"
+      },
       "textColor": "Text Color",
       "textAlign": "Text Alignment",
+      "textAlignments": {
+        "left": "Left",
+        "center": "Center",
+        "right": "Right"
+      },
       "imageUrl": "Image URL",
       "altText": "Alt Text",
       "objectFit": "Object Fit",
+      "objectFits": {
+        "cover": "Cover",
+        "contain": "Contain",
+        "fill": "Fill"
+      },
       "backgroundColor": "Background Color",
       "borderRadius": "Border Radius",
       "borderWidth": "Border Width",
@@ -131,8 +199,63 @@
       "canvasWidth": "Canvas Width",
       "canvasHeight": "Canvas Height",
       "canvasBackground": "Canvas Background",
-      "cardSaved": "Card saved successfully!",
-      "exportFeatureComingSoon": "Export feature coming soon!"
+      "colorPalette": "Color Palette",
+      "saveColor": "Save",
+      "saveColorTitle": "Save current canvas background color",
+      "resetPalette": "Reset color palette",
+      "applyColor": "Apply color: {{color}}",
+      "emptySlot": "Empty slot",
+      "emptyPaletteDesc": "Save colors to quickly apply them to your canvas background",
+      "presets": {
+        "16:9": "16:9",
+        "1:1": "1:1",
+        "3:4": "3:4"
+      },
+      "cardSaved": "Card \"{{title}}\" saved successfully!",
+      "exportFeatureComingSoon": "Export feature coming soon!",
+      "enterCardName": "Enter a name for your card:",
+      "defaultCardName": "My Card",
+      "signInToSave": "You must be signed in to save cards",
+      "saveError": "Failed to save card. Please try again.",
+      "unexpectedError": "An unexpected error occurred. Please try again."
+    },
+    "savedCards": {
+      "title": "Saved Cards",
+      "subtitle": "Manage your saved social media card designs",
+      "newCard": "New Card",
+      "noCards": "No saved cards yet",
+      "noCardsDesc": "Create your first social media card to get started",
+      "createFirst": "Create Your First Card",
+      "elements": "Elements: {{types}}",
+      "size": "Size: {{size}}",
+      "created": "Created: {{date}}",
+      "preview": "Preview card",
+      "edit": "Edit card",
+      "delete": "Delete card",
+      "deleteConfirm": "Are you sure you want to delete this card? This action cannot be undone.",
+      "deleteError": "Failed to delete card. Please try again.",
+      "loadError": "Failed to load card. It may have been deleted or you may not have permission to access it.",
+      "loadUnexpectedError": "An unexpected error occurred while loading the card.",
+      "loading": "Loading your saved cards...",
+      "empty": "Empty"
+    }
+  },
+  "bot": {
+    "responses": {
+      "domainSearch": "To search for domains, simply type your desired domain name in the search box above. I'll show you available options with real-time pricing in multiple currencies. You can also filter by extension (.com, .net, .org, etc.) to find the perfect domain for your project.",
+      "cardStudio": "Card Studio is our powerful design tool for creating social media graphics! You can drag and drop text, images, and shapes, apply gradients and effects, choose from hundreds of templates, and export in various formats. It's perfect for Instagram posts, Facebook covers, Twitter headers, and more.",
+      "pricing": "Domain pricing varies by extension: .com domains typically start at R299/year, .net at R329/year, and country-specific domains vary. You can switch currencies in the header to see prices in MGA, ZAR, USD, EUR, or GBP. We also offer bulk discounts for multiple domains!",
+      "design": "Great choice! Our Card Studio makes design easy. Start by choosing a template or blank canvas, then customize with your text, colors, and images. Pro tip: Use our gradient text feature and shadow effects to make your designs pop! Need help with a specific design element?",
+      "saveExport": "You can save your designs to your account (requires sign-in) and export in PNG, JPG, or PDF formats. Saved projects are stored in your dashboard for easy access later. Free users get 5 saves per month, while premium users get unlimited saves and exports.",
+      "templates": "We have over 500 professionally designed templates! Categories include: Business cards, Social media posts, Event flyers, Logos, Banners, and more. Each template is fully customizable - change colors, fonts, text, and images to match your brand perfectly.",
+      "account": "Creating an account is free and gives you access to save projects, purchase domains, and use premium features. Click 'Sign Up' in the top right corner. You'll get 5 free design saves to start, plus access to our domain management tools.",
+      "help": "I can help you with: 🔍 Domain searching and registration, 🎨 Card Studio design tips, 💰 Pricing and billing questions, 📱 Mobile optimization, 🔧 Troubleshooting. What specific area would you like guidance on?",
+      "mobile": "VibePage works great on mobile! Our Card Studio is touch-optimized for tablets and phones. You can create designs on-the-go, and all templates automatically adjust for different screen sizes. Your designs will look perfect on any device!",
+      "designTools": "Our design tools include: 🎨 Color picker with hex/RGB support, 🌈 Gradient builder with multiple color stops, 📝 50+ Google Fonts, ✨ Text effects like shadows and outlines, 🖼️ Image filters and adjustments. Everything you need for professional designs!",
+      "default": "I'm here to help with VibePage! I can assist with domain searches, Card Studio design tips, pricing information, and account questions. What would you like to know more about? Feel free to ask specific questions about any feature!",
+      "welcome": "Hello! I'm your VibePage assistant. I can help you with domain searches, card creation, and answer questions about your projects. How can I assist you today?",
+      "thanks": "You're welcome! I'm here to help whenever you need assistance with VibePage. Feel free to ask about domains, card creation, or any other questions!",
+      "greeting": "Hello! Great to meet you! I'm your VibePage assistant. I can help you search for domains, create amazing social media cards, or answer any questions about our platform. What would you like to explore today?"
     }
   }
 }

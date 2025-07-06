@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Save, Download, Undo, Redo, Eye, Loader2 } from 'lucide-react';
+import { t } from 'lingo.dev/react';
 import { Button } from '../components/ui/button';
 import ProtectedRoute from '../components/auth/ProtectedRoute';
 import Toolbox from '../components/card-studio/Toolbox';
@@ -44,7 +45,7 @@ const CardStudioEditorContent: React.FC = () => {
 
       if (error) {
         console.error('Error loading card:', error);
-        alert('Failed to load card. It may have been deleted or you may not have permission to access it.');
+        alert(t('cardStudio.savedCards.loadError'));
         return;
       }
 
@@ -61,7 +62,7 @@ const CardStudioEditorContent: React.FC = () => {
       }
     } catch (error) {
       console.error('Unexpected error loading card:', error);
-      alert('An unexpected error occurred while loading the card.');
+      alert(t('cardStudio.savedCards.loadUnexpectedError'));
     }
   };
 
@@ -243,12 +244,12 @@ const CardStudioEditorContent: React.FC = () => {
 
   const saveCard = useCallback(async () => {
     if (!user) {
-      alert('You must be signed in to save cards');
+      alert(t('cardStudio.editor.signInToSave'));
       return;
     }
 
     // Prompt user for card title
-    const title = window.prompt('Enter a name for your card:', 'My Card');
+    const title = window.prompt(t('cardStudio.editor.enterCardName'), t('cardStudio.editor.defaultCardName'));
     if (!title || title.trim() === '') {
       return; // User cancelled or entered empty title
     }
@@ -276,12 +277,12 @@ const CardStudioEditorContent: React.FC = () => {
 
       if (error) {
         console.error('Error saving card:', error);
-        alert('Failed to save card. Please try again.');
+        alert(t('cardStudio.editor.saveError'));
         return;
       }
 
       // Success feedback
-      alert(`Card "${title}" saved successfully!`);
+      alert(t('cardStudio.editor.cardSaved', { title }));
       
       // Optional: Also save to localStorage as backup
       const savedCards = JSON.parse(localStorage.getItem('savedCards') || '[]');
@@ -294,7 +295,7 @@ const CardStudioEditorContent: React.FC = () => {
 
     } catch (error) {
       console.error('Unexpected error saving card:', error);
-      alert('An unexpected error occurred. Please try again.');
+      alert(t('cardStudio.editor.unexpectedError'));
     } finally {
       setIsSaving(false);
     }
@@ -302,7 +303,7 @@ const CardStudioEditorContent: React.FC = () => {
 
   const exportCard = useCallback(() => {
     // TODO: Implement export functionality
-    alert('Export feature coming soon!');
+    alert(t('cardStudio.editor.exportFeatureComingSoon'));
   }, []);
 
   return (
@@ -311,7 +312,7 @@ const CardStudioEditorContent: React.FC = () => {
       <div className="bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <h1 className="text-xl font-semibold text-gray-900">
-            Card Studio Editor
+            {t('cardStudio.editor.title')}
           </h1>
           <div className="flex items-center space-x-2">
             <Button
@@ -322,7 +323,7 @@ const CardStudioEditorContent: React.FC = () => {
               className="flex items-center"
             >
               <Undo className="w-4 h-4 mr-1" />
-              Undo
+              {t('cardStudio.editor.undo')}
             </Button>
             <Button
               variant="outline"
@@ -332,7 +333,7 @@ const CardStudioEditorContent: React.FC = () => {
               className="flex items-center"
             >
               <Redo className="w-4 h-4 mr-1" />
-              Redo
+              {t('cardStudio.editor.redo')}
             </Button>
           </div>
         </div>
@@ -340,11 +341,11 @@ const CardStudioEditorContent: React.FC = () => {
         <div className="flex items-center space-x-2">
           <Button variant="outline" size="sm" className="flex items-center">
             <Eye className="w-4 h-4 mr-1" />
-            Preview
+            {t('cardStudio.editor.preview')}
           </Button>
           <Button variant="outline" size="sm" onClick={exportCard} className="flex items-center">
             <Download className="w-4 h-4 mr-1" />
-            Export
+            {t('cardStudio.editor.export')}
           </Button>
           <Button size="sm" onClick={saveCard} className="flex items-center">
             {isSaving ? (
@@ -352,7 +353,7 @@ const CardStudioEditorContent: React.FC = () => {
             ) : (
               <Save className="w-4 h-4 mr-1" />
             )}
-            {isSaving ? 'Saving...' : 'Save'}
+            {isSaving ? t('cardStudio.editor.saving') : t('cardStudio.editor.save')}
           </Button>
         </div>
       </div>
