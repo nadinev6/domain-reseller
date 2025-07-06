@@ -3573,10 +3573,9 @@ export default {
         },
         "8/0/init/body/3/argument/11/1/1/3": {
           content: {
-            en: "See what's possible with our Social Media Card Studio",
-            fr: "Découvrez ce qui est possible avec notre Studio de Cartes pour Réseaux Sociaux",
+            en: "See what's possible with our VibePage Studio",
           },
-          hash: "9b5a704bd232512dcd8df558607d7ad2",
+          hash: "ef81325b13ee2d546f7b2106fce865e7",
         },
         "8/0/init/body/3/argument/11/1/3/1/1": {
           content: {
