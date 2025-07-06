@@ -3413,6 +3413,7 @@ export default {
         "8/0/init/body/3/argument/15/1/7/expression/right/1": {
           content: {
             en: "Get AI Template Suggestions",
+            fr: "Suggestions de modèles IA",
           },
           hash: "b33530969f97a4c48a058710df094342",
         },
@@ -3454,12 +3455,14 @@ export default {
         "8/0/init/body/3/argument/3/1/7/1/expression/consequent/1/1/1": {
           content: {
             en: "Open Editor",
+            fr: "Ouvrir l'éditeur",
           },
           hash: "012a1d4fc9b058937596f79b059d6b78",
         },
         "8/0/init/body/3/argument/3/1/7/1/expression/consequent/3/1": {
           content: {
             en: "Start with Template",
+            fr: "Commencer avec modèle",
           },
           hash: "444b443c1b8d0966055e0d217eda64c1",
         },
@@ -3697,42 +3700,49 @@ export default {
         "6/0/init/body/7/argument/1/13/1/1": {
           content: {
             en: "Frequently Asked Questions",
+            fr: "FAQ",
           },
           hash: "212c5c784d5580b2f8b9481cb102cb4c",
         },
         "6/0/init/body/7/argument/1/13/1/3": {
           content: {
             en: "Find quick answers to common questions",
+            fr: "Réponses rapides aux questions courantes",
           },
           hash: "a8d5888c9a3dc5c7cb4f053ddf6390d6",
         },
         "6/0/init/body/7/argument/1/3/1": {
           content: {
             en: "How can we help you?",
+            fr: "Comment vous aider ?",
           },
           hash: "c77f76f6ca008de2a9bd04982bc995a2",
         },
         "6/0/init/body/7/argument/1/3/3": {
           content: {
             en: "Our support team is here to assist you with domains, card creation, and any questions you might have.",
+            fr: "Notre équipe est là pour vous aider avec vos domaines, cartes et autres questions.",
           },
           hash: "fe00ea83e815cd553f5518668c8482d7",
         },
         "6/0/init/body/7/argument/1/5/3/1/1/1": {
           content: {
             en: "<element:Mail></element:Mail> Contact Form",
+            fr: "<element:Mail></element:Mail> Formulaire",
           },
           hash: "0bc229a84a04608faef06217d9395418",
         },
         "6/0/init/body/7/argument/1/5/3/1/1/3": {
           content: {
             en: "Send us a message and we'll get back to you as soon as possible.",
+            fr: "Envoyez-nous un message, on vous répond au plus vite.",
           },
           hash: "68ce44812487b9d5865afcc03874f015",
         },
         "6/0/init/body/7/argument/1/5/3/1/3/1/expression/alternate/1/1/1": {
           content: {
             en: "Full Name",
+            fr: "Nom complet",
           },
           hash: "ba3094a10db2bb9234cb7e0dc86e40fd",
         },
@@ -3740,12 +3750,14 @@ export default {
           {
             content: {
               en: "Enter your full name",
+              fr: "Saisissez votre nom complet",
             },
             hash: "5c927d18c76f612d106a4b69e437f6be",
           },
         "6/0/init/body/7/argument/1/5/3/1/3/1/expression/alternate/1/3/1": {
           content: {
             en: "Email Address",
+            fr: "Email",
           },
           hash: "0ee22bbbe989a0c61a18023407d12dc2",
         },
@@ -3753,60 +3765,70 @@ export default {
           {
             content: {
               en: "Enter your email",
+              fr: "Saisissez votre e-mail",
             },
             hash: "39931962707c99b99a5a073ab579396b",
           },
         "6/0/init/body/7/argument/1/5/3/1/3/1/expression/alternate/3/1": {
           content: {
             en: "Subject",
+            fr: "Sujet",
           },
           hash: "de5b885eb327b2f233f3b67aab4c4c0a",
         },
         "6/0/init/body/7/argument/1/5/3/1/3/1/expression/alternate/3/3/1": {
           content: {
             en: "Select a subject",
+            fr: "Choisir un sujet",
           },
           hash: "f85e5f81ad47104bf3191fc748779401",
         },
         "6/0/init/body/7/argument/1/5/3/1/3/1/expression/alternate/3/3/11": {
           content: {
             en: "Technical Support",
+            fr: "Support technique",
           },
           hash: "3547dd2e544ad65db2a623e3e45a072c",
         },
         "6/0/init/body/7/argument/1/5/3/1/3/1/expression/alternate/3/3/13": {
           content: {
             en: "Other",
+            fr: "Autre",
           },
           hash: "79acaa6cd481262bea4e743a422529d2",
         },
         "6/0/init/body/7/argument/1/5/3/1/3/1/expression/alternate/3/3/3": {
           content: {
             en: "Domain Registration",
+            fr: "Enregistrement domaine",
           },
           hash: "2fff8a8a4fe899fc3d62b50b2bdf4114",
         },
         "6/0/init/body/7/argument/1/5/3/1/3/1/expression/alternate/3/3/5": {
           content: {
             en: "Domain Transfer",
+            fr: "Transfert domaine",
           },
           hash: "ca8d055caaf94645faba76edca6ae361",
         },
         "6/0/init/body/7/argument/1/5/3/1/3/1/expression/alternate/3/3/7": {
           content: {
             en: "Card Studio",
+            fr: "Card Studio",
           },
           hash: "0ce64c24736afd2e322a161c9b087623",
         },
         "6/0/init/body/7/argument/1/5/3/1/3/1/expression/alternate/3/3/9": {
           content: {
             en: "Billing & Payments",
+            fr: "Facturation et paiements",
           },
           hash: "f0a03d943ac484e1be521ac21fdd34ea",
         },
         "6/0/init/body/7/argument/1/5/3/1/3/1/expression/alternate/5/1": {
           content: {
             en: "Message",
+            fr: "Message",
           },
           hash: "f2f72126bd244cfc534eab395e054362",
         },
@@ -3814,6 +3836,7 @@ export default {
           {
             content: {
               en: "Describe your question or issue in detail...",
+              fr: "Détaillez votre question ou problème...",
             },
             hash: "d88b25f56879dd9e4eafbb55e5da4d8a",
           },
@@ -3821,6 +3844,7 @@ export default {
           {
             content: {
               en: "<element:Send></element:Send> Send Message",
+              fr: "<element:Send></element:Send> Envoyer",
             },
             hash: "7a8ac00a08ce86a2a3d3c9ee49ca3cc4",
           },
@@ -3828,102 +3852,119 @@ export default {
           {
             content: {
               en: "<element:div></element:div> Sending...",
+              fr: "<element:div></element:div> Envoi...",
             },
             hash: "ad6c57811baef679bebaed27ecf8445a",
           },
         "6/0/init/body/7/argument/1/5/3/1/3/1/expression/consequent/3": {
           content: {
             en: "Message Sent Successfully!",
+            fr: "Message bien reçu !",
           },
           hash: "0894bf64d5ac226799e727f06d5dbc2e",
         },
         "6/0/init/body/7/argument/1/5/3/1/3/1/expression/consequent/5": {
           content: {
             en: "Thank you for contacting us. We'll respond within 24 hours.",
+            fr: "Merci de nous avoir contactés. Réponse sous 24h.",
           },
           hash: "d4e00f6e4d4ea35809fe57b14ee768b0",
         },
         "6/0/init/body/7/argument/1/5/7/1/1/1": {
           content: {
             en: "Contact Information",
+            fr: "Contacts",
           },
           hash: "e8b99a3bad79c22c9453e3d29e3a9fed",
         },
         "6/0/init/body/7/argument/1/5/7/1/3/1/3/1": {
           content: {
             en: "Email",
+            fr: "E-mail",
           },
           hash: "e7f34943a0c2fb849db1839ff6ef5cb5",
         },
         "6/0/init/body/7/argument/1/5/7/1/3/1/3/3": {
           content: {
             en: "support@vibepage.com",
+            fr: "support@vibepage.com",
           },
           hash: "5ec3736f4c98696e30db9a003ad3170c",
         },
         "6/0/init/body/7/argument/1/5/7/1/3/3/3/1": {
           content: {
             en: "Phone",
+            fr: "Téléphone",
           },
           hash: "b9537ee90fc5b0116942e0af29d926cc",
         },
         "6/0/init/body/7/argument/1/5/7/1/3/3/3/3": {
           content: {
             en: "+1 (555) 123-4567",
+            fr: "+1 (555) 123-4567",
           },
           hash: "d39074f6a278f108c68084ddcef63dbf",
         },
         "6/0/init/body/7/argument/1/5/7/1/3/5/3/1": {
           content: {
             en: "Address",
+            fr: "Adresse",
           },
           hash: "5a9a8bc26f90d84c90105690a2eb23a1",
         },
         "6/0/init/body/7/argument/1/5/7/1/3/5/3/3": {
           content: {
             en: "123 Tech Street<element:br></element:br> San Francisco, CA 94105<element:br></element:br> United States",
+            fr: "123 Tech Street<element:br></element:br> San Francisco, CA 94105<element:br></element:br> États-Unis",
           },
           hash: "a9e9241761e57645f5792927a1e25e8d",
         },
         "6/0/init/body/7/argument/1/5/7/1/3/7/3/1": {
           content: {
             en: "Business Hours",
+            fr: "Horaires",
           },
           hash: "478903f52c8fd8e9108dd7e5f4c3d8fb",
         },
         "6/0/init/body/7/argument/1/5/7/1/3/7/3/3": {
           content: {
             en: "Monday - Friday: 9AM - 6PM EST<element:br></element:br> Saturday - Sunday: 10AM - 4PM EST",
+            fr: "Lundi - vendredi : 9h - 18h EST<element:br></element:br> Samedi - dimanche : 10h - 16h EST",
           },
           hash: "af0d6fb5ba10cc6eff3ba48d55cedf57",
         },
         "6/0/init/body/7/argument/1/5/7/3/1/1": {
           content: {
             en: "Quick Response",
+            fr: "Réponse rapide",
           },
           hash: "00b6b4966e5a3b8cbc2dcb3eb7b295fc",
         },
         "6/0/init/body/7/argument/1/5/7/3/1/3": {
           content: {
             en: "Need immediate assistance? Try these options:",
+            fr: "Besoin d'aide immédiate ? Essayez ça :",
           },
           hash: "6d1368049c84fe385dc56075e84afd89",
         },
         "6/0/init/body/7/argument/1/5/7/3/3/1/1": {
           content: {
             en: "<element:MessageCircle></element:MessageCircle> Start Live Chat",
+            fr: "<element:MessageCircle></element:MessageCircle> Chat en direct",
           },
           hash: "5b3c0132d44012a44deef4d76c2c4642",
         },
         "6/0/init/body/7/argument/1/5/7/3/3/1/3": {
           content: {
             en: "<element:Phone></element:Phone> Request Callback",
+            fr: "<element:Phone></element:Phone> Demander un rappel",
           },
           hash: "9f4a257252f4f1a111038fceee5b31f4",
         },
         "6/0/init/body/7/argument/1/9/1": {
           content: {
             en: "Choose Your Preferred Support Method",
+            fr: "Choisissez votre méthode de support",
           },
           hash: "9464100c8c39a98853f7dc1cd3fd3284",
         },
