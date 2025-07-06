@@ -6,48 +6,56 @@ export default {
         "10/declaration/body/16/argument/11/1/1-placeholder": {
           content: {
             en: "Ask me anything about VibePage...",
+            fr: "Demandez-moi n'importe quoi sur VibePage...",
           },
           hash: "7b79fbf096222fc0c96423683165dd2c",
         },
         "10/declaration/body/16/argument/3/1/3": {
           content: {
             en: "VibePage Assistant",
+            fr: "Assistant VibePage",
           },
           hash: "7c24c5590cc13478df43676f0fe7d1e0",
         },
         "10/declaration/body/20/argument/11/1/1-placeholder": {
           content: {
             en: "Ask me anything about VibePage...",
+            fr: "Demandez-moi n'importe quoi sur VibePage...",
           },
           hash: "7b79fbf096222fc0c96423683165dd2c",
         },
         "10/declaration/body/20/argument/3/1/3": {
           content: {
             en: "VibePage Assistant",
+            fr: "Assistant VibePage",
           },
           hash: "7c24c5590cc13478df43676f0fe7d1e0",
         },
         "11/declaration/body/20/argument/11/1/1-placeholder": {
           content: {
             en: "Ask me anything about VibePage...",
+            fr: "Demandez-moi n'importe quoi sur VibePage...",
           },
           hash: "7b79fbf096222fc0c96423683165dd2c",
         },
         "11/declaration/body/20/argument/3/1/3": {
           content: {
             en: "VibePage Assistant",
+            fr: "Assistant VibePage",
           },
           hash: "7c24c5590cc13478df43676f0fe7d1e0",
         },
         "12/declaration/body/20/argument/11/1/1-placeholder": {
           content: {
             en: "Ask me anything about VibePage...",
+            fr: "Demandez-moi n'importe quoi sur VibePage...",
           },
           hash: "7b79fbf096222fc0c96423683165dd2c",
         },
         "12/declaration/body/20/argument/3/1/3": {
           content: {
             en: "VibePage Assistant",
+            fr: "Assistant VibePage",
           },
           hash: "7c24c5590cc13478df43676f0fe7d1e0",
         },
@@ -103,12 +111,14 @@ export default {
         "7/declaration/body/11/argument/11/1/1-placeholder": {
           content: {
             en: "Ask me anything about VibePage...",
+            fr: "Demandez-moi n'importe quoi sur VibePage...",
           },
           hash: "7b79fbf096222fc0c96423683165dd2c",
         },
         "7/declaration/body/11/argument/3/1/3": {
           content: {
             en: "VibePage Assistant",
+            fr: "Assistant VibePage",
           },
           hash: "7c24c5590cc13478df43676f0fe7d1e0",
         },
@@ -129,24 +139,28 @@ export default {
         "8/declaration/body/14/argument/11/1/1-placeholder": {
           content: {
             en: "Ask me anything about VibePage...",
+            fr: "Demandez-moi n'importe quoi sur VibePage...",
           },
           hash: "7b79fbf096222fc0c96423683165dd2c",
         },
         "8/declaration/body/14/argument/3/1/3": {
           content: {
             en: "VibePage Assistant",
+            fr: "Assistant VibePage",
           },
           hash: "7c24c5590cc13478df43676f0fe7d1e0",
         },
         "8/declaration/body/16/argument/11/1/1-placeholder": {
           content: {
             en: "Ask me anything about VibePage...",
+            fr: "Demandez-moi n'importe quoi sur VibePage...",
           },
           hash: "7b79fbf096222fc0c96423683165dd2c",
         },
         "8/declaration/body/16/argument/3/1/3": {
           content: {
             en: "VibePage Assistant",
+            fr: "Assistant VibePage",
           },
           hash: "7c24c5590cc13478df43676f0fe7d1e0",
         },
@@ -174,54 +188,63 @@ export default {
         "9/declaration/body/15/argument/11/1/1-placeholder": {
           content: {
             en: "Ask me anything about VibePage...",
+            fr: "Demandez-moi n'importe quoi sur VibePage...",
           },
           hash: "7b79fbf096222fc0c96423683165dd2c",
         },
         "9/declaration/body/15/argument/3/1/3": {
           content: {
             en: "VibePage Assistant",
+            fr: "Assistant VibePage",
           },
           hash: "7c24c5590cc13478df43676f0fe7d1e0",
         },
         "9/declaration/body/16/argument/11/1/1-placeholder": {
           content: {
             en: "Ask me anything about VibePage...",
+            fr: "Demandez-moi n'importe quoi sur VibePage...",
           },
           hash: "7b79fbf096222fc0c96423683165dd2c",
         },
         "9/declaration/body/16/argument/3/1/3": {
           content: {
             en: "VibePage Assistant",
+            fr: "Assistant VibePage",
           },
           hash: "7c24c5590cc13478df43676f0fe7d1e0",
         },
         "9/declaration/body/21/argument/11/1/1-placeholder": {
           content: {
             en: "Ask me anything about VibePage...",
+            fr: "Demandez-moi n'importe quoi sur VibePage...",
           },
           hash: "7b79fbf096222fc0c96423683165dd2c",
         },
         "9/declaration/body/21/argument/3/1/3": {
           content: {
             en: "VibePage Assistant",
+            fr: "Assistant VibePage",
           },
           hash: "7c24c5590cc13478df43676f0fe7d1e0",
         },
         "9/declaration/body/21/argument/3/3/3/3/1": {
           content: {
             en: "EN",
+            fr: "EN",
           },
           hash: "4dcca3456893f133e1b6b9560c7a881d",
         },
         "9/declaration/body/21/argument/3/3/3/3/3": {
           content: {
             en: "FR",
+            fr: "FR",
           },
           hash: "4b1ab1c37a337a4c06efab7e28db7ffb",
         },
         "9/declaration/body/21/argument/3/3/3/3/5": {
           content: {
             en: "MG",
+            fr: "MG",
           },
           hash: "1a19769fdd1c6d79fdf195ffc656e65e",
         },
@@ -3072,30 +3095,35 @@ export default {
         "11/0/init/body/19/argument/3/1/1": {
           content: {
             en: "Card Studio Editor",
+            fr: "Éditeur Card Studio",
           },
           hash: "b5742e7e35009781bb411280887c8fd6",
         },
         "11/0/init/body/19/argument/3/1/3/1": {
           content: {
             en: "<element:Undo></element:Undo> Undo",
+            fr: "<element:Undo></element:Undo> Annuler",
           },
           hash: "08e3fdab92aa3e91696af146d278262a",
         },
         "11/0/init/body/19/argument/3/1/3/3": {
           content: {
             en: "<element:Redo></element:Redo> Redo",
+            fr: "<element:Redo></element:Redo> Rétablir",
           },
           hash: "d7909de12fc2a20aab1a96b3d9add99c",
         },
         "11/0/init/body/19/argument/3/3/1": {
           content: {
             en: "<element:Eye></element:Eye> Preview",
+            fr: "<element:Eye></element:Eye> Aperçu",
           },
           hash: "1a878634c88abdb0bda86cf849d7d3c4",
         },
         "11/0/init/body/19/argument/3/3/3": {
           content: {
             en: "<element:Download></element:Download> Export",
+            fr: "<element:Download></element:Download> Exporter",
           },
           hash: "82c7fb0a52965a8cde48deeee9cd663b",
         },
@@ -3616,6 +3644,7 @@ export default {
         "8/0/init/body/3/argument/3/1/7/1/expression/consequent/1/1/1": {
           content: {
             en: "Open Editor",
+            fr: "Ouvrir l'éditeur",
           },
           hash: "012a1d4fc9b058937596f79b059d6b78",
         },
