@@ -1,27 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Palette, Eye, Edit, Trash2, Plus, Loader2, Globe, ExternalLink } from 'lucide-react';
+import { Palette, Eye, Edit, Trash2, Plus, Loader2 } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '../ui/dialog';
 import { useAuth } from '../../context/AuthContext';
 import { supabase } from '../../lib/supabase';
 import { SavedCard } from '../../types';
 import { Link } from 'react-router-dom';
 
-// Simulated user domains (in a real app, this would come from the database)
-const SIMULATED_USER_DOMAINS = [
-  { id: '1', name: 'myawesome.com', status: 'active' },
-  { id: '2', name: 'creativestudio.co.za', status: 'active' },
-  { id: '3', name: 'portfolio.net', status: 'active' },
-  { id: '4', name: 'business.org', status: 'pending' }
-];
-
 const SavedCardsSection: React.FC = () => {
   const [savedCards, setSavedCards] = useState<SavedCard[]>([]);
   const [loading, setLoading] = useState(true);
   const [deletingId, setDeletingId] = useState<string | null>(null);
-  const [publishingCardId, setPublishingCardId] = useState<string | null>(null);
-  const [selectedDomain, setSelectedDomain] = useState<string>('');
   const { user } = useAuth();
 
   useEffect(() => {
@@ -85,38 +74,6 @@ const SavedCardsSection: React.FC = () => {
       alert('An unexpected error occurred. Please try again.');
     } finally {
       setDeletingId(null);
-    }
-  const handlePublishToDomain = async () => {
-    if (!publishingCardId || !selectedDomain) return;
-
-    try {
-      // In a real implementation, you would update the database here
-      // For now, we'll just update the local state and show an alert
-      
-      setSavedCards(prev => prev.map(card => 
-        card.id === publishingCardId 
-          ? { ...card, published_domain: selectedDomain }
-          : card
-      ));
-
-      // Also update localStorage backup
-      const localCards = JSON.parse(localStorage.getItem('savedCards') || '[]');
-      const updatedLocalCards = localCards.map((card: any) => 
-        card.id === publishingCardId 
-          ? { ...card, published_domain: selectedDomain }
-          : card
-      );
-      localStorage.setItem('savedCards', JSON.stringify(updatedLocalCards));
-  };
-      alert(`Page successfully published to ${selectedDomain}! 
-      
-Note: For actual persistence, a database column 'published_domain' would need to be added to the 'user_cards' table and updated via Supabase.`);
-      
-      setPublishingCardId(null);
-      setSelectedDomain('');
-    } catch (error) {
-      console.error('Error publishing to domain:', error);
-      alert('Failed to publish to domain. Please try again.');
     }
   };
 
@@ -227,37 +184,11 @@ Note: For actual persistence, a database column 'published_domain' would need to
                       <div className="text-sm text-gray-500 space-y-1">
                         <p>Elements: {preview.elementTypes}</p>
                         <p>Size: {preview.canvasSize} • Created: {formatDate(card.created_at)}</p>
-                        {card.published_domain && (
-                          <div className="flex items-center text-green-600">
-                            <Globe className="w-3 h-3 mr-1" />
-                            <span className="text-xs">Published to {card.published_domain}</span>
-                          </div>
-                        )}
                       </div>
                     </div>
                   </div>
                   
                   <div className="flex items-center space-x-2">
-                    {card.published_domain ? (
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="flex items-center text-green-600 hover:text-green-700 hover:bg-green-50"
-                        title={`Visit ${card.published_domain}`}
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                      </Button>
-                    ) : (
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => setPublishingCardId(card.id)}
-                        className="flex items-center text-indigo-600 hover:text-indigo-700 hover:bg-indigo-50"
-                        title="Publish to domain"
-                      >
-                        <Globe className="w-4 h-4" />
-                      </Button>
-                    )}
                     <Button
                       variant="outline"
                       size="sm"
@@ -297,66 +228,6 @@ Note: For actual persistence, a database column 'published_domain' would need to
           </div>
         )}
       </CardContent>
-
-      {/* Publish to Domain Dialog */}
-      <Dialog open={!!publishingCardId} onOpenChange={() => setPublishingCardId(null)}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Publish Page to Domain</DialogTitle>
-            <DialogDescription>
-              Select one of your domains to publish this page to. Your page will be live at the selected domain.
-            </DialogDescription>
-          </DialogHeader>
-          
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Select Domain
-              </label>
-              <select
-                value={selectedDomain}
-                onChange={(e) => setSelectedDomain(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              >
-                <option value="">Choose a domain...</option>
-                {SIMULATED_USER_DOMAINS.map((domain) => (
-                  <option key={domain.id} value={domain.name} disabled={domain.status !== 'active'}>
-                    {domain.name} {domain.status !== 'active' ? '(Pending)' : ''}
-                  </option>
-                ))}
-              </select>
-            </div>
-            
-            {SIMULATED_USER_DOMAINS.length === 0 && (
-              <div className="text-center py-4">
-                <p className="text-gray-500 mb-4">You don't have any domains yet.</p>
-                <Link to="/domains">
-                  <Button variant="outline">
-                    Register a Domain
-                  </Button>
-                </Link>
-              </div>
-            )}
-            
-            <div className="flex justify-end space-x-2">
-              <Button
-                variant="outline"
-                onClick={() => setPublishingCardId(null)}
-              >
-                Cancel
-              </Button>
-              <Button
-                onClick={handlePublishToDomain}
-                disabled={!selectedDomain}
-                className="flex items-center"
-              >
-                <Globe className="w-4 h-4 mr-2" />
-                Publish to Domain
-              </Button>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
     </Card>
   );
 };
