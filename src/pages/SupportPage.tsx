@@ -71,25 +71,6 @@ const SupportPage: React.FC = () => {
     }
   ];
 
-  const faqItems = [
-    {
-      question: 'How do I register a domain?',
-      answer: 'Simply search for your desired domain name using our search tool, select an available domain, and follow the checkout process.'
-    },
-    {
-      question: 'Can I transfer my existing domain to VibePage?',
-      answer: 'Yes! We support domain transfers from most registrars. The process typically takes 5-7 days to complete.'
-    },
-    {
-      question: 'How do I use the Card Studio?',
-      answer: 'Sign up for an account, navigate to the Card Studio, and use our drag-and-drop editor to create stunning social media cards.'
-    },
-    {
-      question: 'What payment methods do you accept?',
-      answer: 'We accept all major credit cards, PayPal, and bank transfers. All payments are processed securely.'
-    }
-  ]; 
-
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-6xl mx-auto px-4">
@@ -316,25 +297,6 @@ const SupportPage: React.FC = () => {
           </div>
         </div>
 
-        {/* FAQ Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Frequently Asked Questions</CardTitle>
-            <CardDescription>
-              Find quick answers to common questions
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-6">
-              {faqItems.map((item, index) => (
-                <div key={index} className="border-b border-gray-200 pb-4 last:border-b-0">
-                  <h3 className="font-medium text-gray-900 mb-2">{item.question}</h3>
-                  <p className="text-gray-600">{item.answer}</p>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
       </div>
     </div>
   );
