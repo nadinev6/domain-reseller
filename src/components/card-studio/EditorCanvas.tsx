@@ -1,7 +1,7 @@
-import React, { useRef, useCallback, useState } from 'react';
+import React, { useRef, useCallback, useState, useEffect } from 'react';
 import { Trash2, Copy, RotateCw } from 'lucide-react';
-import { CardElement } from '../../types';
-import CardRenderer from './CardRenderer';
+import { CardElement } from '../../types'; // Assuming this path is correct
+import CardRenderer from './CardRenderer'; // Assuming this path is correct
 
 interface EditorCanvasProps {
   elements: CardElement[];
@@ -51,6 +51,7 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
   const safeElements = elements || [];
   const safeMultiSelectedElementIds = multiSelectedElementIds || [];
 
+  // --- Event Handlers for Drag & Drop from Toolbox ---
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     e.dataTransfer.dropEffect = 'copy';
@@ -74,45 +75,24 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
     }
   }, [onAddElement]);
 
-  const handleElementMouseDown = useCallback((e: React.MouseEvent, element: CardElement) => {
-    e.stopPropagation();
-    onElementClick(element, e);
-    
-    // Get the canvas bounding rect to calculate relative positions
-    const rect = canvasRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    
-    // Calculate mouse position relative to canvas
-    const canvasMouseX = e.clientX - rect.left;
-    const canvasMouseY = e.clientY - rect.top;
-    
-    dragRef.current = {
-      isDragging: true,
-      startX: canvasMouseX - element.x,
-      startY: canvasMouseY - element.y,
-      elementId: element.id
-    };
-  }, [onElementClick]);
-
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+  // --- Global Mouse Move and Mouse Up Handlers ---
+  // These are defined outside of useCallback to be stable for window event listeners
+  const globalMouseMoveHandler = useCallback((e: MouseEvent) => {
     if (dragRef.current.isDragging && dragRef.current.elementId) {
-      // Get the canvas bounding rect to calculate relative positions
       const rect = canvasRef.current?.getBoundingClientRect();
       if (!rect) return;
       
-      // Calculate mouse position relative to canvas
       const canvasMouseX = e.clientX - rect.left;
       const canvasMouseY = e.clientY - rect.top;
       
       const newX = canvasMouseX - dragRef.current.startX;
       const newY = canvasMouseY - dragRef.current.startY;
       
-      // Get the current element to use its actual dimensions
       const currentElement = safeElements.find(el => el.id === dragRef.current.elementId);
       const elementWidth = currentElement?.width || 100;
       const elementHeight = currentElement?.height || 100;
       
-      // Constrain to canvas bounds using actual element dimensions
+      // Constrain to canvas bounds
       const constrainedX = Math.max(0, Math.min(newX, canvasSettings.width - elementWidth));
       const constrainedY = Math.max(0, Math.min(newY, canvasSettings.height - elementHeight));
       
@@ -137,50 +117,88 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
       onUpdateElement(dragRef.current.elementId, {
         x: constrainedX,
         y: constrainedY
-      }, true);
+      }, true); // Pass true for isDrag
     }
   }, [onUpdateElement, canvasSettings, safeElements]);
 
-  const handleMouseUp = useCallback(() => {
+  const globalMouseUpHandler = useCallback(() => {
     dragRef.current.isDragging = false;
     dragRef.current.elementId = null;
     
     // Hide grid guidelines
     setShowHorizontalGuide(false);
     setShowVerticalGuide(false);
-  }, []);
 
+    // Remove global event listeners
+    window.removeEventListener('mousemove', globalMouseMoveHandler);
+    window.removeEventListener('mouseup', globalMouseUpHandler);
+  }, [globalMouseMoveHandler]);
+
+  // --- Element Mouse Down Handler (Initiates Drag) ---
+  const handleElementMouseDown = useCallback((e: React.MouseEvent, element: CardElement) => {
+    e.stopPropagation(); // Prevent canvas click from firing
+    onElementClick(element, e);
+    
+    const rect = canvasRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    
+    const canvasMouseX = e.clientX - rect.left;
+    const canvasMouseY = e.clientY - rect.top;
+    
+    dragRef.current = {
+      isDragging: true,
+      startX: canvasMouseX - element.x,
+      startY: canvasMouseY - element.y,
+      elementId: element.id
+    };
+
+    // Attach global event listeners when drag starts
+    window.addEventListener('mousemove', globalMouseMoveHandler);
+    window.addEventListener('mouseup', globalMouseUpHandler);
+  }, [onElementClick, globalMouseMoveHandler, globalMouseUpHandler]);
+
+  // --- Canvas Click Handler (Deselects Elements) ---
   const handleCanvasClick = useCallback((e: React.MouseEvent) => {
+    // Only deselect if the click target is the canvas itself, not an element on it
     if (e.target === e.currentTarget) {
       onElementClick(null, e);
     }
   }, [onElementClick]);
 
+  // --- Element Manipulation Functions ---
   const duplicateElement = useCallback((element: CardElement) => {
     const newElement = {
       ...element,
       id: `element-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-      x: element.x + 20,
+      x: element.x + 20, // Offset duplicated element slightly
       y: element.y + 20,
-      zIndex: safeElements.length + 1
+      zIndex: safeElements.length + 1 // Place duplicated element on top
     };
     
     onAddElement(newElement.type, newElement.x, newElement.y);
   }, [safeElements.length, onAddElement]);
 
+  // --- Cleanup Effect ---
+  useEffect(() => {
+    // Cleanup global event listeners if component unmounts while dragging
+    return () => {
+      window.removeEventListener('mousemove', globalMouseMoveHandler);
+      window.removeEventListener('mouseup', globalMouseUpHandler);
+    };
+  }, [globalMouseMoveHandler, globalMouseUpHandler]);
+
   return (
     <div className="flex justify-center">
       <div
         ref={canvasRef}
-        className="relative"
+        className="relative overflow-hidden border border-gray-300 shadow-lg rounded-lg" // Added some basic styling
         style={{
           width: canvasSettings.width,
           height: canvasSettings.height,
+          backgroundColor: canvasSettings.backgroundColor || '#fff', // Use canvas background color
         }}
         onDragOver={handleDragOver}
         onDrop={handleDrop}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
         onClick={handleCanvasClick}
       >
         {/* Render the card using CardRenderer */}
@@ -195,23 +213,32 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
           const isMultiSelected = safeMultiSelectedElementIds.includes(element.id);
           
           return (
-            <div key={`overlay-${element.id}`} className="absolute pointer-events-none">
+            <div 
+              key={`overlay-${element.id}`} 
+              className="absolute" // This div acts as a container for the interactive overlay and controls
+              style={{
+                left: element.x,
+                top: element.y,
+                width: element.width,
+                height: element.height,
+                zIndex: element.zIndex + 1000, // Ensure overlay is above rendered elements
+                // Add transform for rotation here if needed, or let the inner div handle it
+              }}
+            >
               {/* Interactive overlay for each element */}
               <div
-                className="absolute pointer-events-auto cursor-move"
+                className="absolute w-full h-full cursor-move"
                 style={{
-                  left: element.x,
-                  top: element.y,
-                  width: element.width,
-                  height: element.height,
-                  zIndex: element.zIndex + 1000, // Ensure overlay is above rendered elements
                   border: isSelected 
                     ? '2px solid #3b82f6' 
                     : isMultiSelected 
                     ? '2px solid #8b5cf6' 
                     : '2px solid transparent',
                   borderRadius: element.borderRadius || 0,
-                  transform: element.rotation ? `rotate(${element.rotation}deg)` : undefined,
+                  transform: element.rotation ? `rotate(${element.rotation}deg)` : 'none', // Apply rotation to the interactive div
+                  // Using a very low alpha value for background to ensure hitability
+                  backgroundColor: 'rgba(0,0,0,0.01)', 
+                  pointerEvents: 'auto', // Explicitly ensure it's auto
                 }}
                 onMouseDown={(e) => handleElementMouseDown(e, element)}
               />
@@ -219,11 +246,12 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
               {/* Control buttons */}
               {(isSelected || isMultiSelected) && (
                 <div 
-                  className="absolute pointer-events-auto flex space-x-1 bg-white border border-gray-200 rounded shadow-lg p-1"
+                  className="absolute flex space-x-1 bg-white border border-gray-200 rounded shadow-lg p-1"
                   style={{
-                    left: element.x,
-                    top: element.y - 32,
-                    zIndex: element.zIndex + 1001,
+                    // Position controls relative to the element's top-left corner
+                    left: 0, // Relative to the parent overlay div
+                    top: -32, // Adjust as needed to place above the element
+                    zIndex: 1001, // Ensure controls are above the element overlay
                   }}
                 >
                   <button
@@ -271,4 +299,5 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
   );
 };
 
-export default EditorCanvas;   
+export default EditorCanvas;
+ 
