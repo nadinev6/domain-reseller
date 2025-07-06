@@ -13,7 +13,7 @@ interface ContactSupportProps {
 export default function ContactSupport({ isCollapsed, onToggleCollapse }: ContactSupportProps) {
   const location = useLocation();
   const { t } = useTranslation();
-  const { locale, setLocale } = useLocale();
+ // const { locale, setLocale } = useLocale(); 
 
   // Form state
   const [formData, setFormData] = useState({
