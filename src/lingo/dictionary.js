@@ -2705,10 +2705,9 @@ export default {
         },
         "8/0/init/body/10/argument/1/3": {
           content: {
-            en: "Manage your saved social media card designs",
-            fr: "Gérez vos designs de cartes pour réseaux sociaux",
+            en: "Manage your saved page designs",
           },
-          hash: "c234be5f20c6e115ba9fa297043c40a4",
+          hash: "26e55d6cb3246d3c2d6007c5c872517e",
         },
         "8/0/init/body/10/argument/3/1/expression/alternate/1/expression/0/body/1/argument/1/3/3/1":
           {
@@ -2759,10 +2758,9 @@ export default {
         },
         "8/0/init/body/10/argument/3/1/expression/consequent/5": {
           content: {
-            en: "Create your first social media card to get started",
-            fr: "Crée ta première carte pour commencer",
+            en: "Create your first page to get started",
           },
-          hash: "a18df01c4a65fe0ac6bfd92d5c481b4e",
+          hash: "30ea78dae4c43baadfa207e2e71d78ba",
         },
         "8/0/init/body/10/argument/3/1/expression/consequent/7/1": {
           content: {
@@ -3785,7 +3783,7 @@ export default {
         },
         "9/0/init/body/5/argument/11/1/1/3": {
           content: {
-            en: "See what's possible with our VibePage Studio",
+            en: "See what's possible with our Social Media Card Studio",
             fr: "Découvrez ce qui est possible avec notre Studio de Cartes pour Réseaux Sociaux",
           },
           hash: "9b5a704bd232512dcd8df558607d7ad2",
