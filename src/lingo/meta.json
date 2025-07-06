@@ -4624,6 +4624,82 @@
           "content": "Our powerful studio gives you all the tools to create professional social media cards that stand out"
         }
       }
+    },
+    "pages/SupportPage.tsx": {
+      "scopes": {
+        "4/0/init/body/2/argument/1/13/1/3": {
+          "type": "element",
+          "hash": "c29837d8527ec30267348d507678ba85",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "All Systems Operational"
+        },
+        "4/0/init/body/2/argument/1/13/3": {
+          "type": "element",
+          "hash": "94d94e0ea6ddffade2a6d1e1356ea458",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "All VibePage services are running smoothly. Check our status page for real-time updates."
+        },
+        "4/0/init/body/2/argument/1/13/5": {
+          "type": "element",
+          "hash": "d986b9149c8288e86d4350a37a7f02d2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "View Status Page →"
+        },
+        "4/0/init/body/2/argument/1/3/1": {
+          "type": "element",
+          "hash": "c77f76f6ca008de2a9bd04982bc995a2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "How can we help you?"
+        },
+        "4/0/init/body/2/argument/1/3/3": {
+          "type": "element",
+          "hash": "a1e26faeffa5578969319edf0e1b1258",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Get the support you need for domains, card creation, and everything VibePage"
+        },
+        "4/0/init/body/2/argument/1/9/7/1/1": {
+          "type": "element",
+          "hash": "98ac832509d4caef30304374e2d32649",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:HelpCircle></element:HelpCircle> Frequently Asked Questions"
+        },
+        "4/0/init/body/2/argument/1/9/7/5/1": {
+          "type": "element",
+          "hash": "ebb7d152c75cac5800b4f2a2560b71d3",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Need more help?"
+        },
+        "4/0/init/body/2/argument/1/9/7/5/3": {
+          "type": "element",
+          "hash": "8f7f1cb47ff0d41369e5b83f75a98881",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Can't find what you're looking for? Our comprehensive documentation covers everything from basic setup to advanced features."
+        },
+        "4/0/init/body/2/argument/1/9/7/5/5": {
+          "type": "element",
+          "hash": "06eab1dfdbcbe901ec578b9414577cb5",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Browse Documentation →"
+        }
+      }
     }
   }
 }
