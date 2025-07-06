@@ -29,7 +29,7 @@ const DomainSearch: React.FC<DomainSearchProps> = ({ onSearch }) => {
     <div className="w-full max-w-4xl mx-auto px-4 mt-8 md:mt-16">
       <div className="text-center mb-8">
         <h1 className="text-3xl md:text-5xl font-extrabold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
-          Find your perfect Name
+          Own Your Online Vibe
         </h1>
         <p className="text-lg text-gray-600 mb-8">
           Secure your online presence with a domain name that stands out.
