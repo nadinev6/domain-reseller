@@ -1838,6 +1838,30 @@
           "skip": false,
           "overrides": {},
           "content": "Delete"
+        },
+        "5/0/init/body/16/argument/1/7/expression/0/body/2/argument/7/expression/right/1-title": {
+          "type": "attribute",
+          "hash": "27756566785c2b8463e21582c4bb619b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Duplicate"
+        },
+        "5/0/init/body/16/argument/1/7/expression/0/body/2/argument/7/expression/right/3-title": {
+          "type": "attribute",
+          "hash": "971ee77cef4133c9ae97bb1a4017cdb8",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Rotate"
+        },
+        "5/0/init/body/16/argument/1/7/expression/0/body/2/argument/7/expression/right/5-title": {
+          "type": "attribute",
+          "hash": "8bcf303dd10a645b5baacb02b47d72c9",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Delete"
         }
       }
     },
