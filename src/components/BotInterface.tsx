@@ -1,231 +1,188 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { MessageCircle, Send, Minimize2, Languages } from 'lucide-react';
+import { MessageCircle, Send, Minimize2, Languages, User, Mail, MessageSquare } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
 // Uncomment these when you have lingo.dev/react/client properly installed
 // import { useTranslation, useLocale } from 'lingo.dev/react/client';
 
-interface Suggestion {
-  text: string;
-  action: string;
-}
-
-interface Message {
-  id: string;
-  type: 'user' | 'bot';
-  content: string;
-  timestamp: Date;
-  suggestions?: Suggestion[];
-}
-
-interface BotInterfaceProps {
+interface ContactSupportProps {
   isCollapsed: boolean;
   onToggleCollapse: () => void;
 }
 
-export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInterfaceProps) {
+export default function ContactSupport({ isCollapsed, onToggleCollapse }: ContactSupportProps) {
   const location = useLocation();
   
   // TEMPORARY: Use simple state until lingo.dev/react/client is properly set up
-  const [language, setLanguage] = React.useState('en');
+  const [language, setLanguage] = useState('en');
   
   // When you have lingo.dev/react/client working, uncomment these and remove the language state above:
   // const { t } = useTranslation();
   // const { locale, setLocale } = useLocale();
 
-  // Define response templates - these will be the keys for your translation system
-  const responseTemplates = {
-    domainSearch: "bot.responses.domainSearch",
-    cardStudio: "bot.responses.cardStudio", 
-    pricing: "bot.responses.pricing",
-    design: "bot.responses.design",
-    saveExport: "bot.responses.saveExport",
-    templates: "bot.responses.templates",
-    account: "bot.responses.account",
-    help: "bot.responses.help",
-    mobile: "bot.responses.mobile",
-    designTools: "bot.responses.designTools",
-    default: "bot.responses.default",
-    welcome: "bot.responses.welcome",
-    thanks: "bot.responses.thanks",
-    greeting: "bot.responses.greeting"
-  };
+  // Form state
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
-  // Fallback text for when translation keys aren't found
-  const fallbackTexts = {
-    "bot.responses.domainSearch": "To search for domains, simply type your desired domain name in the search box above. I'll show you available options with real-time pricing in multiple currencies. You can also filter by extension (.com, .net, .org, etc.) to find the perfect domain for your project.",
-    "bot.responses.cardStudio": "Card Studio is our powerful design tool for creating social media graphics! You can drag and drop text, images, and shapes, apply gradients and effects, choose from hundreds of templates, and export in various formats. It's perfect for Instagram posts, Facebook covers, Twitter headers, and more.",
-    "bot.responses.pricing": "Domain pricing varies by extension: .com domains typically start at R299/year, .net at R329/year, and country-specific domains vary. You can switch currencies in the header to see prices in MGA, ZAR, USD, EUR, or GBP. We also offer bulk discounts for multiple domains!",
-    "bot.responses.design": "Great choice! Our Card Studio makes design easy. Start by choosing a template or blank canvas, then customize with your text, colors, and images. Pro tip: Use our gradient text feature and shadow effects to make your designs pop! Need help with a specific design element?",
-    "bot.responses.saveExport": "You can save your designs to your account (requires sign-in) and export in PNG, JPG, or PDF formats. Saved projects are stored in your dashboard for easy access later. Free users get 5 saves per month, while premium users get unlimited saves and exports.",
-    "bot.responses.templates": "We have over 500 professionally designed templates! Categories include: Business cards, Social media posts, Event flyers, Logos, Banners, and more. Each template is fully customizable - change colors, fonts, text, and images to match your brand perfectly.",
-    "bot.responses.account": "Creating an account is free and gives you access to save projects, purchase domains, and use premium features. Click 'Sign Up' in the top right corner. You'll get 5 free design saves to start, plus access to our domain management tools.",
-    "bot.responses.help": "I can help you with: 🔍 Domain searching and registration, 🎨 Card Studio design tips, 💰 Pricing and billing questions, 📱 Mobile optimization, 🔧 Troubleshooting. What specific area would you like guidance on?",
-    "bot.responses.mobile": "VibePage works great on mobile! Our Card Studio is touch-optimized for tablets and phones. You can create designs on-the-go, and all templates automatically adjust for different screen sizes. Your designs will look perfect on any device!",
-    "bot.responses.designTools": "Our design tools include: 🎨 Color picker with hex/RGB support, 🌈 Gradient builder with multiple color stops, 📝 50+ Google Fonts, ✨ Text effects like shadows and outlines, 🖼️ Image filters and adjustments. Everything you need for professional designs!",
-    "bot.responses.default": "I'm here to help with VibePage! I can assist with domain searches, Card Studio design tips, pricing information, and account questions. What would you like to know more about? Feel free to ask specific questions about any feature!",
-    "bot.responses.welcome": "Hello! I'm your VibePage assistant. I can help you with domain searches, card creation, and answer questions about your projects. How can I assist you today?",
-    "bot.responses.thanks": "You're welcome! I'm here to help whenever you need assistance with VibePage. Feel free to ask about domains, card creation, or any other questions!",
-    "bot.responses.greeting": "Hello! Great to meet you! I'm your VibePage assistant. I can help you search for domains, create amazing social media cards, or answer any questions about our platform. What would you like to explore today?"
-  };
-
-  // TEMPORARY: Simple translation function until lingo.dev/react/client is set up
-  const getTranslatedText = (key: string): string => {
-    // When you have lingo.dev/react/client working, replace this with:
-    // return t(key) || fallbackTexts[key as keyof typeof fallbackTexts] || key;
-    
-    // For now, return the fallback text based on selected language
-    // You can expand this to include French/Malagasy translations
-    return fallbackTexts[key as keyof typeof fallbackTexts] || key;
-  };
-
-  const [messages, setMessages] = React.useState<Message[]>([]);
-  const [inputValue, setInputValue] = React.useState('');
-  const [isTyping, setIsTyping] = React.useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  // Initialize with welcome message
-  useEffect(() => {
-    const welcomeText = getTranslatedText(responseTemplates.welcome);
-    setMessages([{
-      id: '1',
-      type: 'bot',
-      content: welcomeText,
-      timestamp: new Date()
-    }]);
-  }, [language]); // Depends on language for re-initialization when language changes
-
-  // Smart local AI-like responses
-  const sendToLLM = async (message: string) => {
-    // Simulate API delay for better UX
-    await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 2000));
-    
-    const input = message.toLowerCase();
-    let responseKey = responseTemplates.default;
-    
-    // Determine which response template to use
-    if (input.includes('how') && (input.includes('domain') || input.includes('search'))) {
-      responseKey = responseTemplates.domainSearch;
-    } else if (input.includes('what') && input.includes('card studio')) {
-      responseKey = responseTemplates.cardStudio;
-    } else if (input.includes('price') || input.includes('cost') || input.includes('how much')) {
-      responseKey = responseTemplates.pricing;
-    } else if (input.includes('design') || input.includes('create') || input.includes('make')) {
-      responseKey = responseTemplates.design;
-    } else if (input.includes('save') || input.includes('export') || input.includes('download')) {
-      responseKey = responseTemplates.saveExport;
-    } else if (input.includes('template') || input.includes('example')) {
-      responseKey = responseTemplates.templates;
-    } else if (input.includes('account') || input.includes('sign up') || input.includes('register')) {
-      responseKey = responseTemplates.account;
-    } else if (input.includes('help') || input.includes('tutorial') || input.includes('guide')) {
-      responseKey = responseTemplates.help;
-    } else if (input.includes('mobile') || input.includes('phone') || input.includes('responsive')) {
-      responseKey = responseTemplates.mobile;
-    } else if (input.includes('color') || input.includes('gradient') || input.includes('font')) {
-      responseKey = responseTemplates.designTools;
-    } else if (input.includes('thank') || input.includes('thanks')) {
-      responseKey = responseTemplates.thanks;
-    } else if (input.includes('hello') || input.includes('hi') || input.includes('hey')) {
-      responseKey = responseTemplates.greeting;
+  // Translation keys and fallback texts
+  const translations = {
+    en: {
+      title: 'Contact Support',
+      subtitle: 'How can we help you today?',
+      namePlaceholder: 'Your name',
+      emailPlaceholder: 'Your email',
+      subjectPlaceholder: 'Subject',
+      messagePlaceholder: 'Describe your issue or question...',
+      sendButton: 'Send Message',
+      sending: 'Sending...',
+      successTitle: 'Message Sent!',
+      successMessage: 'Thank you for contacting us. We\'ll get back to you within 24 hours.',
+      sendAnother: 'Send Another Message',
+      errorMessage: 'Failed to send message. Please try again.',
+      nameRequired: 'Name is required',
+      emailRequired: 'Email is required',
+      emailInvalid: 'Please enter a valid email',
+      subjectRequired: 'Subject is required',
+      messageRequired: 'Message is required'
+    },
+    fr: {
+      title: 'Contacter le Support',
+      subtitle: 'Comment pouvons-nous vous aider aujourd\'hui?',
+      namePlaceholder: 'Votre nom',
+      emailPlaceholder: 'Votre email',
+      subjectPlaceholder: 'Sujet',
+      messagePlaceholder: 'Décrivez votre problème ou question...',
+      sendButton: 'Envoyer le Message',
+      sending: 'Envoi en cours...',
+      successTitle: 'Message Envoyé!',
+      successMessage: 'Merci de nous avoir contactés. Nous vous répondrons dans les 24 heures.',
+      sendAnother: 'Envoyer un Autre Message',
+      errorMessage: 'Échec de l\'envoi du message. Veuillez réessayer.',
+      nameRequired: 'Le nom est requis',
+      emailRequired: 'L\'email est requis',
+      emailInvalid: 'Veuillez entrer un email valide',
+      subjectRequired: 'Le sujet est requis',
+      messageRequired: 'Le message est requis'
+    },
+    mg: {
+      title: 'Mifandraisa amin\'ny Fanampiana',
+      subtitle: 'Ahoana no afaka anampianay anao androany?',
+      namePlaceholder: 'Ny anaranao',
+      emailPlaceholder: 'Ny email-nao',
+      subjectPlaceholder: 'Lohahevitra',
+      messagePlaceholder: 'Lazao ny olana na fanontaniana...',
+      sendButton: 'Mandefa Hafatra',
+      sending: 'Mandefa...',
+      successTitle: 'Lasa ny Hafatra!',
+      successMessage: 'Misaotra anao nifandray taminay. Hamaly izahay ao anatin\'ny 24 ora.',
+      sendAnother: 'Mandefa Hafatra Hafa',
+      errorMessage: 'Tsy afaka nandefa ny hafatra. Andramo indray azafady.',
+      nameRequired: 'Ilaina ny anarana',
+      emailRequired: 'Ilaina ny email',
+      emailInvalid: 'Ampidiro email marina azafady',
+      subjectRequired: 'Ilaina ny lohahevitra',
+      messageRequired: 'Ilaina ny hafatra'
     }
-    
-    // Get the translated response
-    return getTranslatedText(responseKey);
   };
 
-  // Check if BotInterface should be hidden based on current route
+  // Get translated text
+  const t = (key: string): string => {
+    return translations[language as keyof typeof translations]?.[key as keyof typeof translations['en']] || key;
+  };
+
+  // Check if ContactSupport should be hidden based on current route
   const shouldHide = location.pathname.startsWith('/card-studio/editor');
 
-  const handleSendMessage = async () => {
-    if (!inputValue.trim()) return;
+  // Handle form input changes
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
-    const userMessage: Message = {
-      id: Date.now().toString(),
-      type: 'user',
-      content: inputValue,
-      timestamp: new Date()
-    };
-
-    setMessages(prev => [...prev, userMessage]);
-    setInputValue('');
-    setIsTyping(true);
-
-    // Try to get LLM response
-    const llmResponse = await sendToLLM(inputValue);
+  // Validate form
+  const validateForm = (): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
-    if (llmResponse) {
-      const botMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        type: 'bot',
-        content: llmResponse,
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, botMessage]);
-    } else {
-      // Fallback to static response if LLM fails
-      const botMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        type: 'bot',
-        content: getFallbackResponse(inputValue),
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, botMessage]);
+    if (!formData.name.trim()) {
+      setSubmitError(t('nameRequired'));
+      return false;
+    }
+    if (!formData.email.trim()) {
+      setSubmitError(t('emailRequired'));
+      return false;
+    }
+    if (!emailRegex.test(formData.email)) {
+      setSubmitError(t('emailInvalid'));
+      return false;
+    }
+    if (!formData.subject.trim()) {
+      setSubmitError(t('subjectRequired'));
+      return false;
+    }
+    if (!formData.message.trim()) {
+      setSubmitError(t('messageRequired'));
+      return false;
     }
     
-    setIsTyping(false);
+    setSubmitError('');
+    return true;
   };
 
-  const handleSuggestionClick = (suggestion: Suggestion) => {
-    setInputValue(suggestion.action);
-    // Auto-send the suggestion
-    setTimeout(() => {
-      handleSendMessage();
-    }, 100);
-  };
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-
-  const getFallbackResponse = (userInput: string): string => {
-    const input = userInput.toLowerCase();
-    let responseKey = responseTemplates.default;
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     
-    // Enhanced pattern matching for better responses
-    if (input.includes('domain') || input.includes('search')) {
-      responseKey = responseTemplates.domainSearch;
-    } else if (input.includes('card') || input.includes('studio') || input.includes('design')) {
-      responseKey = responseTemplates.design;
-    } else if (input.includes('save') || input.includes('export') || input.includes('download')) {
-      responseKey = responseTemplates.saveExport;
-    } else if (input.includes('price') || input.includes('cost') || input.includes('currency') || input.includes('payment')) {
-      responseKey = responseTemplates.pricing;
-    } else if (input.includes('help') || input.includes('tutorial') || input.includes('guide')) {
-      responseKey = responseTemplates.help;
-    } else if (input.includes('social media') || input.includes('instagram') || input.includes('facebook') || input.includes('twitter')) {
-      responseKey = responseTemplates.cardStudio;
-    } else if (input.includes('account') || input.includes('login') || input.includes('signup') || input.includes('register')) {
-      responseKey = responseTemplates.account;
-    } else if (input.includes('thank') || input.includes('thanks')) {
-      responseKey = responseTemplates.thanks;
-    } else if (input.includes('hello') || input.includes('hi') || input.includes('hey')) {
-      responseKey = responseTemplates.greeting;
-    }
-    
-    return getTranslatedText(responseKey);
-  };
+    if (!validateForm()) return;
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      handleSendMessage();
+    setIsSubmitting(true);
+    setSubmitError('');
+
+    try {
+      // Submit to Netlify Forms
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+          'form-name': 'contact-support',
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          language: language,
+          timestamp: new Date().toISOString()
+        }).toString()
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitError(t('errorMessage'));
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -236,6 +193,12 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
     
     // When you have lingo.dev/react/client working, replace setLanguage with:
     // setLocale(newLanguage);
+  };
+
+  // Reset form to show contact form again
+  const resetForm = () => {
+    setIsSubmitted(false);
+    setSubmitError('');
   };
 
   // Don't render if on editor pages
@@ -257,118 +220,158 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
   }
 
   return (
-    <div className="fixed bottom-0 right-0 w-full md:w-96 h-96 bg-white border-t md:border-l md:border-t border-gray-200 shadow-lg z-40 flex flex-col">
-      {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
-        <div className="flex items-center space-x-2">
-          <MessageCircle className="w-5 h-5" />
-          <h3 className="font-semibold">VibePage Assistant</h3>
-        </div>
-        <div className="flex items-center space-x-2">
-          {/* Language Selector */}
-          <div className="relative flex items-center">
-            <Languages size={14} className="absolute left-2 text-white/70 pointer-events-none" />
-            <select
-              value={language}
-              onChange={handleLanguageChange}
-              className="pl-7 pr-3 py-1 text-xs bg-white/20 border border-white/30 rounded text-white focus:outline-none focus:ring-1 focus:ring-white/50 appearance-none cursor-pointer"
-            >
-              <option value="en" className="text-gray-900">EN</option>
-              <option value="fr" className="text-gray-900">FR</option>
-              <option value="mg" className="text-gray-900">MG</option>
-            </select>
-          </div>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={onToggleCollapse}
-            className="text-white hover:bg-white/20 p-1"
-          >
-            <Minimize2 className="w-4 h-4" />
-          </Button>
-        </div>
-      </div>
+    <>
+      {/* Hidden Netlify form for form detection */}
+      <form name="contact-support" netlify hidden>
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <input type="text" name="subject" />
+        <textarea name="message"></textarea>
+        <input type="text" name="language" />
+        <input type="text" name="timestamp" />
+      </form>
 
-      {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
-        {messages.map((message) => (
-          <div key={message.id}>
-            <div
-              className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
-            >
-              <div
-                className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
-                  message.type === 'user'
-                    ? 'bg-indigo-600 text-white'
-                    : 'bg-gray-100 text-gray-900'
-                }`}
+      <div className="fixed bottom-0 right-0 w-full md:w-96 h-96 bg-white border-t md:border-l md:border-t border-gray-200 shadow-lg z-40 flex flex-col">
+        {/* Header */}
+        <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+          <div className="flex items-center space-x-2">
+            <MessageCircle className="w-5 h-5" />
+            <div>
+              <h3 className="font-semibold text-sm">{t('title')}</h3>
+              <p className="text-xs text-indigo-100">{t('subtitle')}</p>
+            </div>
+          </div>
+          <div className="flex items-center space-x-2">
+            {/* Language Selector */}
+            <div className="relative flex items-center">
+              <Languages size={14} className="absolute left-2 text-white/70 pointer-events-none" />
+              <select
+                value={language}
+                onChange={handleLanguageChange}
+                className="pl-7 pr-3 py-1 text-xs bg-white/20 border border-white/30 rounded text-white focus:outline-none focus:ring-1 focus:ring-white/50 appearance-none cursor-pointer"
               >
-                <p className="text-sm">{message.content}</p>
-                <p className={`text-xs mt-1 ${
-                  message.type === 'user' ? 'text-indigo-200' : 'text-gray-500'
-                }`}>
-                  {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                </p>
-              </div>
+                <option value="en" className="text-gray-900">EN</option>
+                <option value="fr" className="text-gray-900">FR</option>
+                <option value="mg" className="text-gray-900">MG</option>
+              </select>
             </div>
-            
-            {/* Render suggestions if present */}
-            {message.suggestions && message.suggestions.length > 0 && (
-              <div className="flex justify-start mt-2">
-                <div className="max-w-xs lg:max-w-md">
-                  <div className="flex flex-wrap gap-2">
-                    {message.suggestions.map((suggestion, index) => (
-                      <Button
-                        key={index}
-                        variant="outline"
-                        size="sm"
-                        onClick={() => handleSuggestionClick(suggestion)}
-                        className="text-xs bg-white hover:bg-indigo-50 border-indigo-200 text-indigo-700 hover:text-indigo-800"
-                      >
-                        {suggestion.text}
-                      </Button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={onToggleCollapse}
+              className="text-white hover:bg-white/20 p-1"
+            >
+              <Minimize2 className="w-4 h-4" />
+            </Button>
           </div>
-        ))}
-        
-        {isTyping && (
-          <div className="flex justify-start">
-            <div className="bg-gray-100 text-gray-900 px-4 py-2 rounded-lg">
-              <div className="flex space-x-1">
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-              </div>
-            </div>
-          </div>
-        )}
-        
-        <div ref={messagesEndRef} />
-      </div>
+        </div>
 
-      {/* Input */}
-      <div className="p-4 border-t border-gray-200">
-        <div className="flex space-x-2">
-          <Input
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            onKeyPress={handleKeyPress}
-            placeholder="Ask me anything about VibePage..."
-            className="flex-1"
-          />
-          <Button
-            onClick={handleSendMessage}
-            disabled={!inputValue.trim() || isTyping}
-            className="px-3"
-          >
-            <Send className="w-4 h-4" />
-          </Button>
+        {/* Content */}
+        <div className="flex-1 overflow-y-auto p-4">
+          {isSubmitted ? (
+            // Success message
+            <div className="text-center space-y-4">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto">
+                <MessageCircle className="w-8 h-8 text-green-600" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-green-800">{t('successTitle')}</h3>
+                <p className="text-sm text-gray-600 mt-1">{t('successMessage')}</p>
+              </div>
+              <Button
+                onClick={resetForm}
+                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white"
+              >
+                {t('sendAnother')}
+              </Button>
+            </div>
+          ) : (
+            // Contact form
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Name */}
+              <div className="relative">
+                <User className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                <Input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  placeholder={t('namePlaceholder')}
+                  className="pl-10"
+                  required
+                />
+              </div>
+
+              {/* Email */}
+              <div className="relative">
+                <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                <Input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder={t('emailPlaceholder')}
+                  className="pl-10"
+                  required
+                />
+              </div>
+
+              {/* Subject */}
+              <div className="relative">
+                <MessageSquare className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                <Input
+                  type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                  placeholder={t('subjectPlaceholder')}
+                  className="pl-10"
+                  required
+                />
+              </div>
+
+              {/* Message */}
+              <div>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  placeholder={t('messagePlaceholder')}
+                  rows={4}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none text-sm"
+                  required
+                />
+              </div>
+
+              {/* Error message */}
+              {submitError && (
+                <div className="text-red-600 text-sm bg-red-50 p-2 rounded">
+                  {submitError}
+                </div>
+              )}
+
+              {/* Submit button */}
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white"
+              >
+                {isSubmitting ? (
+                  <div className="flex items-center space-x-2">
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    <span>{t('sending')}</span>
+                  </div>
+                ) : (
+                  <div className="flex items-center space-x-2">
+                    <Send className="w-4 h-4" />
+                    <span>{t('sendButton')}</span>
+                  </div>
+                )}
+              </Button>
+            </form>
+          )}
         </div>
       </div>
-    </div>
+    </>
   );
 }
