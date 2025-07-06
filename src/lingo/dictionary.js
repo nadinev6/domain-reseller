@@ -3819,156 +3819,182 @@ export default {
         "8/0/init/body/9/argument/1/11/1/1": {
           content: {
             en: "How the VibePage Points System Works",
+            fr: "Comment fonctionne le système de points VibePage",
           },
           hash: "5961a72f10680dbaa81a734f77c34f77",
         },
         "8/0/init/body/9/argument/1/11/1/3": {
           content: {
             en: "Earn points with subscriptions and purchases, then use them for domains and premium features",
+            fr: "Gagnez des points avec abos et achats, utilisez-les pour domaines et fonctions premium",
           },
           hash: "915801911f7c608dee08848cb11ad55a",
         },
         "8/0/init/body/9/argument/1/11/3/3/1": {
           content: {
             en: "Points Value Examples:",
+            fr: "Exemples de valeur en points :",
           },
           hash: "5e9419b578e831bba5dd2c181615105f",
         },
         "8/0/init/body/9/argument/1/11/3/3/3/1/1": {
           content: {
             en: ".com domain registration:",
+            fr: "Enregistrement domaine .com :",
           },
           hash: "ecf07bc599934a7eb7ff2087623bb2db",
         },
         "8/0/init/body/9/argument/1/11/3/3/3/1/3": {
           content: {
             en: "~300 points",
+            fr: "~300 points",
           },
           hash: "dded8101ea821d41e6a2346e7ec96540",
         },
         "8/0/init/body/9/argument/1/11/3/3/3/3/1": {
           content: {
             en: ".co.za domain registration:",
+            fr: "Enregistrement domaine .co.za :",
           },
           hash: "bd0625b62ade67eaf4d2852086a2bcd7",
         },
         "8/0/init/body/9/argument/1/11/3/3/3/3/3": {
           content: {
             en: "~100 points",
+            fr: "~100 points",
           },
           hash: "c1b8abd7049085bee30e741c3fadaa05",
         },
         "8/0/init/body/9/argument/1/11/3/3/3/5/1": {
           content: {
             en: "Premium card template:",
+            fr: "Template carte premium :",
           },
           hash: "05f04fffd3c107b211858d7d75a7884b",
         },
         "8/0/init/body/9/argument/1/11/3/3/3/5/3": {
           content: {
             en: "50 points",
+            fr: "50 points",
           },
           hash: "ee321c17164a8374f28d66fe00577ab8",
         },
         "8/0/init/body/9/argument/1/11/3/3/3/7/1": {
           content: {
             en: "Priority support ticket:",
+            fr: "Ticket support prioritaire :",
           },
           hash: "d96e39597aa262031771a4c3bb61e848",
         },
         "8/0/init/body/9/argument/1/11/3/3/3/7/3": {
           content: {
             en: "25 points",
+            fr: "25 points",
           },
           hash: "364308a3f9fa2b1bde001c260a6a9ca8",
         },
         "8/0/init/body/9/argument/1/15/1/1": {
           content: {
             en: "Frequently Asked Questions",
+            fr: "FAQ",
           },
           hash: "212c5c784d5580b2f8b9481cb102cb4c",
         },
         "8/0/init/body/9/argument/1/15/1/3": {
           content: {
             en: "Click on any question to expand the answer",
+            fr: "Cliquez sur n'importe quelle question pour voir la réponse",
           },
           hash: "1bf8379ae349cce8c77d9f7edd820602",
         },
         "8/0/init/body/9/argument/1/15/3/1/1/1": {
           content: {
             en: "Can I change my plan anytime?",
+            fr: "Puis-je changer de forfait à tout moment ?",
           },
           hash: "1b99aaf80f446ffdd7ecf33eeb174fb1",
         },
         "8/0/init/body/9/argument/1/15/3/1/1/3": {
           content: {
             en: "Yes! You can upgrade or downgrade your plan at any time. Changes take effect at your next billing cycle.",
+            fr: "Carrément ! Change quand tu veux. Effet au prochain cycle de facturation.",
           },
           hash: "2b07895aafa308149355350cf3efca09",
         },
         "8/0/init/body/9/argument/1/15/3/1/3/1": {
           content: {
             en: "Do points expire?",
+            fr: "Les points expirent-ils ?",
           },
           hash: "8e0501de1b54ced49940ec1ef3aaf72b",
         },
         "8/0/init/body/9/argument/1/15/3/1/3/3": {
           content: {
             en: "Points from subscriptions never expire as long as you maintain an active subscription. Bonus points from purchases expire after 12 months.",
+            fr: "Points d'abonnement valables tant que ton abo est actif. Points bonus expirent après 12 mois.",
           },
           hash: "2e8b35449345e6152197edf1a4e234f3",
         },
         "8/0/init/body/9/argument/1/15/3/1/5/1": {
           content: {
             en: "What happens if I cancel?",
+            fr: "Que se passe-t-il si j'annule ?",
           },
           hash: "4420185a216f4aa15b7efec3c5893adf",
         },
         "8/0/init/body/9/argument/1/15/3/1/5/3": {
           content: {
             en: "You'll retain access to all features until the end of your billing period. Your points will remain available for 30 days after cancellation.",
+            fr: "Accès maintenu jusqu'à fin de période. Points dispo 30 jours après annulation.",
           },
           hash: "45fb0e17d18e0becc7c58c54aa68ab61",
         },
         "8/0/init/body/9/argument/1/19/1": {
           content: {
             en: "Ready to get started?",
+            fr: "Prêt à démarrer ?",
           },
           hash: "21b834a33212960be9e1828d32ef4d91",
         },
         "8/0/init/body/9/argument/1/19/3": {
           content: {
             en: "Join thousands of users who are already building their online presence with VibePage. Start with our {billingCycle} plan and unlock premium features today.",
+            fr: "Rejoins des milliers d'utilisateurs qui créent déjà leur présence en ligne avec VibePage. Commence avec notre forfait {billingCycle} et débloque les fonctions premium aujourd'hui.",
           },
           hash: "1bc54dbc983361f0cf0252ccfe371ce2",
         },
         "8/0/init/body/9/argument/1/19/5/3": {
           content: {
             en: "Contact Sales",
+            fr: "Contacter les ventes",
           },
           hash: "967d494864f8e26f452b7ac522ad2ffd",
         },
         "8/0/init/body/9/argument/1/3/1": {
           content: {
             en: "Choose Your VibePage Plan",
+            fr: "Choisis ton forfait VibePage",
           },
           hash: "0e4dad6aca89eca7ef038887ad347680",
         },
         "8/0/init/body/9/argument/1/3/3": {
           content: {
             en: "Unlock the full potential of VibePage with our subscription plans. Get points, premium features, and priority support.",
+            fr: "Débloque tout le potentiel VibePage. Obtiens points, fonctions premium et support prioritaire.",
           },
           hash: "3b2782b196af4ef1b270f38f94e7ebed",
         },
         "8/0/init/body/9/argument/1/3/7/1": {
           content: {
             en: "Monthly",
+            fr: "Mensuel",
           },
           hash: "96c7960bb2bd69083d275daf90dae1ee",
         },
         "8/0/init/body/9/argument/1/3/7/3": {
           content: {
             en: "Annual<element:span>Save 25%</element:span>",
+            fr: "Annuel<element:span>-25%</element:span>",
           },
           hash: "bf3ad9f58a78bd76e2fe33945935fb45",
         },
@@ -3976,12 +4002,14 @@ export default {
           {
             content: {
               en: "🎉 Best Value - Most Popular",
+              fr: "🎉 Top rapport qualité-prix - Le plus populaire",
             },
             hash: "33f2cf6bc7d7a29b75e2a552f5508244",
           },
         "8/0/init/body/9/argument/1/7/1/expression/0/body/3/5/1/3": {
           content: {
             en: "/{plan.period}",
+            fr: "/{plan.period}",
           },
           hash: "d727054cb65d0e95c79cfb34bc3e3f28",
         },
@@ -3989,18 +4017,21 @@ export default {
           {
             content: {
               en: "Equivalent to <function:formatPrice/>/month",
+              fr: "Équivaut à <function:formatPrice/>/mois",
             },
             hash: "131567e12d88592eaca04e8fcb0ed686",
           },
         "8/0/init/body/9/argument/1/7/1/expression/0/body/3/9/1/1/1": {
           content: {
             en: "Points Included",
+            fr: "Points inclus",
           },
           hash: "2f685fafe6ecf62914cf23d7d2f9951a",
         },
         "8/0/init/body/9/argument/1/7/1/expression/0/body/3/9/1/1/3": {
           content: {
             en: "{plan.points} points",
+            fr: "{plan.points} points",
           },
           hash: "6e2698d01abc4022be1c49ab4b2a2e85",
         },
@@ -4008,12 +4039,14 @@ export default {
           {
             content: {
               en: "+{plan.monthlyPoints} bonus points",
+              fr: "+{plan.monthlyPoints} points bonus",
             },
             hash: "1ce0682224e793d700242637687dfda2",
           },
         "8/0/init/body/9/argument/1/7/1/expression/0/body/5/7/1": {
           content: {
             en: "What's included:",
+            fr: "Ce qui est inclus :",
           },
           hash: "7cb0031802f358a8e49287f2c041b076",
         },
@@ -4021,6 +4054,7 @@ export default {
           {
             content: {
               en: "🔥 Limited time: Get 2 months free with annual plan",
+              fr: "🔥 Offre limitée : 2 mois gratuits avec l'abonnement annuel",
             },
             hash: "70dcd23e629cb5691109a73ef035a32d",
           },
