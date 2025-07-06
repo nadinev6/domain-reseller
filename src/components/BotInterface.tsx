@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { MessageCircle, Send, Minimize2 } from 'lucide-react';
+import { useLingo } from 'lingo.dev/react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
@@ -24,6 +25,7 @@ interface BotInterfaceProps {
 
 export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInterfaceProps) {
   const location = useLocation();
+  const { lingo, currentLanguage } = useLingo();
   const [messages, setMessages] = React.useState<Message[]>([
     {
       id: '1',
@@ -53,17 +55,35 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
     setInputValue('');
     setIsTyping(true);
 
-    // Simulate bot response (replace with actual Tambo integration)
-    setTimeout(() => {
+    try {
+      // Send message to Lingo.dev LLM for AI response
+      const response = await lingo.chat.sendMessage(currentInput, {
+        language: currentLanguage,
+        context: 'You are a helpful assistant for VibePage, a domain registration and social media card creation platform. Help users with domain searches, card creation, and general questions about the platform.',
+        maxTokens: 150
+      });
+
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
         type: 'bot',
-        content: getBotResponse(inputValue),
+        content: response.content || 'I apologize, but I encountered an issue processing your request. Please try again.',
         timestamp: new Date()
       };
       setMessages(prev => [...prev, botMessage]);
+    } catch (error) {
+      console.error('Error getting AI response:', error);
+      
+      // Fallback to static response if AI fails
+      const botMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        type: 'bot',
+        content: getFallbackResponse(currentInput),
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, botMessage]);
+    } finally {
       setIsTyping(false);
-    }, 1000);
+    }
   };
 
   const handleSuggestionClick = (suggestion: Suggestion) => {
@@ -87,7 +107,7 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
     return null;
   }
 
-  const getBotResponse = (userInput: string): string => {
+  const getFallbackResponse = (userInput: string): string => {
     const input = userInput.toLowerCase();
     
     if (input.includes('domain') || input.includes('search')) {
