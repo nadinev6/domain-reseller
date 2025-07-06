@@ -976,6 +976,7 @@ export default {
         "11/0/init/body/8/argument/1/1/3/expression/right/1/5/1": {
           content: {
             en: "VibePage Studio",
+            fr: "VibePage Studio",
           },
           hash: "3a748785806e9a62b0ec5e730b9b1cc4",
         },
