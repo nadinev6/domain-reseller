@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Check, Star, Zap, Crown, Shield, Headphones, Palette, Gift } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
 import { useCurrency } from '../context/CurrencyContext';
 import { useAuth } from '../context/AuthContext';
 import { AnimatedShinyText } from '../components/magicui/animated-shiny-text';
@@ -291,37 +290,34 @@ const PricingPage: React.FC = () => {
         <Card>
           <CardHeader>
             <CardTitle>Frequently Asked Questions</CardTitle>
-            <CardDescription>
-              Click on any question to expand the answer
-            </CardDescription>
           </CardHeader>
           <CardContent>
-            <Accordion type="single" collapsible defaultValue="item-0">
-              <AccordionItem value="item-0">
-                <AccordionTrigger className="text-left">
-                  Can I change my plan anytime?
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-600">
+            <div className="space-y-6">
+              <div>
+                <h4 className="font-medium text-gray-900 mb-2">Can I change my plan anytime?</h4>
+                <p className="text-gray-600 text-sm">
                   Yes! You can upgrade or downgrade your plan at any time. Changes take effect at your next billing cycle.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-1">
-                <AccordionTrigger className="text-left">
-                  Do points expire?
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-600">
+                </p>
+              </div>
+              <div>
+                <h4 className="font-medium text-gray-900 mb-2">Do points expire?</h4>
+                <p className="text-gray-600 text-sm">
                   Points from subscriptions never expire as long as you maintain an active subscription. Bonus points from purchases expire after 12 months.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-2">
-                <AccordionTrigger className="text-left">
-                  What happens if I cancel?
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-600">
+                </p>
+              </div>
+              <div>
+                <h4 className="font-medium text-gray-900 mb-2">What happens if I cancel?</h4>
+                <p className="text-gray-600 text-sm">
                   You'll retain access to all features until the end of your billing period. Your points will remain available for 30 days after cancellation.
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+                </p>
+              </div>
+              <div>
+                <h4 className="font-medium text-gray-900 mb-2">Can I use points for domain renewals?</h4>
+                <p className="text-gray-600 text-sm">
+                  Yes! Points can be used for domain registrations, transfers, and renewals. The point value varies by domain extension.
+                </p>
+              </div>
+            </div>
           </CardContent>
         </Card>
 
