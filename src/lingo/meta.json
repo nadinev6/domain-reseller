@@ -499,6 +499,30 @@
     },
     "components/ContactSupport.tsx": {
       "scopes": {
+        "6/declaration/body/13/argument/5/3/3/3/3/1": {
+          "type": "element",
+          "hash": "4dcca3456893f133e1b6b9560c7a881d",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "EN"
+        },
+        "6/declaration/body/13/argument/5/3/3/3/3/3": {
+          "type": "element",
+          "hash": "4b1ab1c37a337a4c06efab7e28db7ffb",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "FR"
+        },
+        "6/declaration/body/13/argument/5/3/3/3/3/5": {
+          "type": "element",
+          "hash": "1a19769fdd1c6d79fdf195ffc656e65e",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "MG"
+        },
         "7/declaration/body/15/argument/5/3/3/3/3/1": {
           "type": "element",
           "hash": "4dcca3456893f133e1b6b9560c7a881d",
