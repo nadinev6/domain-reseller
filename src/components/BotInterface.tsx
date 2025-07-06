@@ -1,14 +1,9 @@
 import React, { useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { MessageCircle, Send, Minimize2 } from 'lucide-react';
+import { MessageCircle, Send, Minimize2, Languages } from 'lucide-react';
 import { LingoDotDevEngine } from 'lingo.dev/sdk';
-import * as LingoReact from 'lingo.dev/react-client';
-import { useLanguage } from 'lingo.dev/sdk';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
-
-// Debug: Log available exports
-console.log('Available exports:', LingoReact);
 
 interface Suggestion {
   text: string;
@@ -31,8 +26,8 @@ interface BotInterfaceProps {
 export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInterfaceProps) {
   const location = useLocation();
   
-  // Try to use the language hook if it exists
-  const language = LingoReact.useLanguage ? LingoReact.useLanguage().language : 'en';
+  // Simple language state - no more problematic imports
+  const [language, setLanguage] = React.useState('en');
   
   // Initialize Lingo.dev for translation
   const lingo = React.useMemo(() => {
@@ -234,6 +229,11 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
     }
   };
 
+  // Handle language change
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setLanguage(e.target.value);
+  };
+
   // Don't render if on editor pages
   if (shouldHide) {
     return null;
@@ -260,7 +260,20 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
           <MessageCircle className="w-5 h-5" />
           <h3 className="font-semibold">VibePage Assistant</h3>
         </div>
-        <div className="flex items-center space-x-1">
+        <div className="flex items-center space-x-2">
+          {/* Language Selector */}
+          <div className="relative flex items-center">
+            <Languages size={14} className="absolute left-2 text-white/70 pointer-events-none" />
+            <select
+              value={language}
+              onChange={handleLanguageChange}
+              className="pl-7 pr-3 py-1 text-xs bg-white/20 border border-white/30 rounded text-white focus:outline-none focus:ring-1 focus:ring-white/50 appearance-none cursor-pointer"
+            >
+              <option value="en" className="text-gray-900">EN</option>
+              <option value="fr" className="text-gray-900">FR</option>
+              <option value="mg" className="text-gray-900">MG</option>
+            </select>
+          </div>
           <Button
             variant="ghost"
             size="sm"
