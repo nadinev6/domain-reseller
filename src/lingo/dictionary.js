@@ -3528,6 +3528,7 @@ export default {
           {
             content: {
               en: "🔥 Limited time: Get 2 months free with annual plan",
+              fr: "🔥 Offre limitée : 2 mois gratuits avec l'abonnement annuel",
             },
             hash: "70dcd23e629cb5691109a73ef035a32d",
           },
