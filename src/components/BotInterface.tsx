@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { MessageCircle, Send, Minimize2 } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
-import { t } from 'lingo.dev/react'; // Import the t function
+
 
 interface Suggestion {
   text: string;
