@@ -30,7 +30,7 @@ const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollap
       timestamp: new Date(),
       suggestions: [
         { text: 'Search domains', action: 'How do I search for domains?' },
-        { text: 'Card Studio help', action: 'How do I use the Card Studio?' },
+        { text: 'Studio help', action: 'How do I use the VibePage Studio?' },
         { text: 'Pricing info', action: 'What are your domain prices?' },
         { text: 'Account help', action: 'How do I manage my account?' }
       ]
