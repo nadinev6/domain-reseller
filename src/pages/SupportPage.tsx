@@ -70,7 +70,7 @@ const SupportPage: React.FC = () => {
       action: 'Call Now'
     }
   ];
-/*
+
   const faqItems = [
     {
       question: 'How do I register a domain?',
@@ -88,7 +88,7 @@ const SupportPage: React.FC = () => {
       question: 'What payment methods do you accept?',
       answer: 'We accept all major credit cards, PayPal, and bank transfers. All payments are processed securely.'
     }
-  ]; */
+  ]; 
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
