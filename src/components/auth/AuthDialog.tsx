@@ -279,6 +279,7 @@ const AuthDialog: React.FC<AuthDialogProps> = ({ isOpen, onClose, defaultTab = '
                       onChange={(e) => setResetForm({ ...resetForm, email: e.target.value })}
                       className="pl-10"
                       required
+                      required
                     />
                   </div>
                 </div>

@@ -312,6 +312,28 @@ const CardStudioEditorContent: React.FC = () => {
     alert('Export feature coming soon!');
   }, []);
 
+  const handlePreview = useCallback(() => {
+    try {
+      // Create the data object to encode
+      const previewData = {
+        elements,
+        canvasSettings
+      };
+
+      // Serialize to JSON, then encode for URL safety
+      const jsonString = JSON.stringify(previewData);
+      const encodedData = btoa(encodeURIComponent(jsonString));
+      
+      // Construct the preview URL
+      const previewUrl = `/card-studio/preview?data=${encodedData}`;
+      
+      // Open in new tab
+      window.open(previewUrl, '_blank');
+    } catch (error) {
+      console.error('Error generating preview:', error);
+      alert('Failed to generate preview. Please try again.');
+    }
+  }, [elements, canvasSettings]);
   return (
     <div className="h-screen bg-gray-100 flex flex-col">
       {/* Header */}
@@ -345,7 +367,7 @@ const CardStudioEditorContent: React.FC = () => {
         </div>
         
         <div className="flex items-center space-x-2">
-          <Button variant="outline" size="sm" className="flex items-center">
+          <Button variant="outline" size="sm" onClick={handlePreview} className="flex items-center">
             <Eye className="w-4 h-4 mr-1" />
             Preview
           </Button>

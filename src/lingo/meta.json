@@ -1609,6 +1609,34 @@
         }
       }
     },
+    "components/card-studio/CardRenderer.tsx": {
+      "scopes": {
+        "3/0/init/body/2/argument/3/expression/right/1/1": {
+          "type": "element",
+          "hash": "5a50aeff71fb46d223bc6eeeb90875d2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "🎨"
+        },
+        "3/0/init/body/2/argument/3/expression/right/1/3": {
+          "type": "element",
+          "hash": "29896ef9fa320fc4d790885fc5638406",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Start Creating"
+        },
+        "3/0/init/body/2/argument/3/expression/right/1/5": {
+          "type": "element",
+          "hash": "cbd2d045a808f3da23bb3592c5572f53",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Drag elements from the toolbox or click to add them"
+        }
+      }
+    },
     "components/card-studio/EditorCanvas.tsx": {
       "scopes": {
         "4/0/init/body/10/argument/1/3/expression/right/1/1": {
@@ -1748,6 +1776,30 @@
           "content": "Rotate"
         },
         "4/0/init/body/9/0/init/body/4/argument/3/expression/right/5-title": {
+          "type": "attribute",
+          "hash": "8bcf303dd10a645b5baacb02b47d72c9",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Delete"
+        },
+        "5/0/init/body/15/argument/1/7/expression/0/body/2/argument/7/expression/right/1-title": {
+          "type": "attribute",
+          "hash": "27756566785c2b8463e21582c4bb619b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Duplicate"
+        },
+        "5/0/init/body/15/argument/1/7/expression/0/body/2/argument/7/expression/right/3-title": {
+          "type": "attribute",
+          "hash": "971ee77cef4133c9ae97bb1a4017cdb8",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Rotate"
+        },
+        "5/0/init/body/15/argument/1/7/expression/0/body/2/argument/7/expression/right/5-title": {
           "type": "attribute",
           "hash": "8bcf303dd10a645b5baacb02b47d72c9",
           "context": "",
@@ -3417,6 +3469,122 @@
         }
       }
     },
+    "pages/CardPreviewPage.tsx": {
+      "scopes": {
+        "7/0/init/body/5/consequent/0/argument/1/3": {
+          "type": "element",
+          "hash": "803553089c1462e1873c47790bdeb7a5",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Loading preview..."
+        },
+        "7/0/init/body/6/consequent/0/argument/1/3": {
+          "type": "element",
+          "hash": "d226773b15b8ff8099263da0b514ca2b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Preview Error"
+        },
+        "7/0/init/body/6/consequent/0/argument/1/7/1": {
+          "type": "element",
+          "hash": "8628c25dbe2c3935966162408825437f",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:ArrowLeft></element:ArrowLeft> Back to Editor"
+        },
+        "7/0/init/body/8/argument/3/1/1/1": {
+          "type": "element",
+          "hash": "8628c25dbe2c3935966162408825437f",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:ArrowLeft></element:ArrowLeft> Back to Editor"
+        },
+        "7/0/init/body/8/argument/3/1/3/1": {
+          "type": "element",
+          "hash": "2d3b7b18ea83dd0721c3f4fdd0ed7bed",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Card Preview"
+        },
+        "7/0/init/body/8/argument/3/1/3/3": {
+          "type": "element",
+          "hash": "400bcf9f24dd7f7e8a85e33e394836de",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Canvas: {cardData.canvasSettings.width} × {cardData.canvasSettings.height}px"
+        },
+        "7/0/init/body/8/argument/3/3/1": {
+          "type": "element",
+          "hash": "c3be6e421fb445402cb710ca72d333a2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:ExternalLink></element:ExternalLink> Open in New Tab"
+        },
+        "7/0/init/body/8/argument/7/5/1": {
+          "type": "element",
+          "hash": "8f5091967724ac82736881416d794837",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Card Information"
+        },
+        "7/0/init/body/8/argument/7/5/3/1/1": {
+          "type": "element",
+          "hash": "df3b8b454d7999d56111aa3eeaa22053",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Elements:"
+        },
+        "7/0/init/body/8/argument/7/5/3/3/1": {
+          "type": "element",
+          "hash": "323be08da327e549908422db726fba03",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Canvas Size:"
+        },
+        "7/0/init/body/8/argument/7/5/3/3/3": {
+          "type": "element",
+          "hash": "06aa2e3e586457e20bdceebed6242806",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "{cardData.canvasSettings.width} × {cardData.canvasSettings.height}px"
+        },
+        "7/0/init/body/8/argument/7/5/3/5/1": {
+          "type": "element",
+          "hash": "fb5abc501b86138db20142ab371a327c",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Background:"
+        },
+        "7/0/init/body/8/argument/7/5/3/7/1": {
+          "type": "element",
+          "hash": "ceeb4e750696a61eaaad9b4097aeeca2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Element Types:"
+        },
+        "7/0/init/body/8/argument/7/5/5/1": {
+          "type": "element",
+          "hash": "3252d6168b410dfcdcdf0b6334ad6db6",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:strong>💡 Tip:</element:strong> This is a live preview of your card. Interactive elements like buttons will work as expected when published."
+        }
+      }
+    },
     "pages/CardStudioEditor.tsx": {
       "scopes": {
         "12/0/init/body/19/argument/3/1/1": {
@@ -3461,11 +3629,11 @@
         },
         "12/0/init/body/20/argument/3/1/1": {
           "type": "element",
-          "hash": "b5742e7e35009781bb411280887c8fd6",
+          "hash": "db724f1796d6be1ff7b6604f0201a072",
           "context": "",
           "skip": false,
           "overrides": {},
-          "content": "Card Studio Editor"
+          "content": "VibePage Studio"
         },
         "12/0/init/body/20/argument/3/1/3/1": {
           "type": "element",
