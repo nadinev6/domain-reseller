@@ -159,7 +159,7 @@ const BotInterface: React.FC<BotInterfaceProps> = ({ isCollapsed, onToggleCollap
     // Account and authentication
     if (input.includes('account') || input.includes('sign') || input.includes('login') || input.includes('register')) {
       return {
-        content: 'You can sign up or sign in using the buttons in the header. Creating an account gives you access to the Card Studio editor, saved designs, domain management, and your dashboard. We use secure authentication with email and password.',
+        content: 'You can sign up or sign in using the buttons in the header. Creating an account gives you access to the VibePage Studio editor, saved designs, domain management, and your dashboard. We use secure authentication with email and password.',
         suggestions: [
           { text: 'Account benefits', action: 'What are the benefits of creating an account?' },
           { text: 'Password reset', action: 'How do I reset my password?' },
