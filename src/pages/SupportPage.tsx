@@ -225,7 +225,7 @@ const SupportPage: React.FC = () => {
                   <Mail className="w-5 h-5 text-indigo-600 mt-1" />
                   <div>
                     <p className="font-medium">Email</p>
-                    <p className="text-gray-600">support@vibepage.com</p>
+                    <p className="text-gray-600">vibepage@safrica.com</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
