@@ -7,7 +7,7 @@ import { useTamboComponentState } from '@tambo-ai/react';
 interface Suggestion {
   text: string; 
   action: string;
-}
+} 
 
 interface Message {
   id: string;
