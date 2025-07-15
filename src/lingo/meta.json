@@ -1,6 +1,42 @@
 {
   "version": 0.1,
   "files": {
+    "App.tsx": {
+      "scopes": {
+        "10/declaration/body/4/argument/1/1/1/3/9/openingElement/1/value/expression/1/1": {
+          "type": "element",
+          "hash": "62f50b209ebb8fe68dfaa94ffc078898",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Welcome to VibePage"
+        },
+        "10/declaration/body/4/argument/1/1/1/3/9/openingElement/1/value/expression/1/3": {
+          "type": "element",
+          "hash": "d90bc8154b69c57cf7eebecf8f478e98",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Create stunning social media cards and manage your online presence"
+        },
+        "10/declaration/body/4/argument/1/1/1/3/9/openingElement/1/value/expression/1/5/1": {
+          "type": "element",
+          "hash": "8d87137de9a6abf8bbec249780bce0bd",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Get Started with VibePage Studio"
+        },
+        "10/declaration/body/4/argument/1/1/1/3/9/openingElement/1/value/expression/1/5/3": {
+          "type": "element",
+          "hash": "fc8261cf17f34061cdee30155ee91be3",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "View Dashboard"
+        }
+      }
+    },
     "components/BotInterface.tsx": {
       "scopes": {
         "6/0/init/body/10/argument/11/1/1-placeholder": {
@@ -887,6 +923,126 @@
     },
     "components/Header.tsx": {
       "scopes": {
+        "10/0/init/body/6/argument/1/1/1/1/1/1/1-alt": {
+          "type": "attribute",
+          "hash": "c8d4d18e2fe2ba8714193d7c752f3132",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "VibePage Logo"
+        },
+        "10/0/init/body/6/argument/1/1/1/1/1/3": {
+          "type": "element",
+          "hash": "6f2da0f76738dbfc35d203a825df1218",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:span>Vibe</element:span>Page"
+        },
+        "10/0/init/body/6/argument/1/1/1/1/3/1/1/0": {
+          "type": "element",
+          "hash": "ce27f1aeacccc542a174c4b2bce022b0",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Pricing"
+        },
+        "10/0/init/body/6/argument/1/1/1/1/3/1/3/1": {
+          "type": "element",
+          "hash": "26bc1b0bd470c77d10074981c8998dbb",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Card Studio"
+        },
+        "10/0/init/body/6/argument/1/1/1/1/3/1/5/0": {
+          "type": "element",
+          "hash": "55aab5fd0f31a9cb055a2edeeedfaf63",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Support"
+        },
+        "10/0/init/body/6/argument/1/1/1/3/5/expression/right/1/expression/alternate/1": {
+          "type": "element",
+          "hash": "e285e29c642443ecca996fbaae92baec",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Sign In"
+        },
+        "10/0/init/body/6/argument/1/1/1/3/5/expression/right/1/expression/alternate/3/1": {
+          "type": "element",
+          "hash": "c4c2c4a122389310734c8562c6883f03",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Sign Up"
+        },
+        "10/0/init/body/6/argument/1/1/1/3/5/expression/right/1/expression/consequent/3": {
+          "type": "element",
+          "hash": "9093e7410d2935ed98a409ee8cdfe3b2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:LogOut></element:LogOut> Sign Out"
+        },
+        "10/0/init/body/6/argument/1/1/3/expression/right/1/1/0": {
+          "type": "element",
+          "hash": "ce27f1aeacccc542a174c4b2bce022b0",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Pricing"
+        },
+        "10/0/init/body/6/argument/1/1/3/expression/right/1/3/1": {
+          "type": "element",
+          "hash": "1623129380e3e1db674fb167c08d5a33",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Card Studio"
+        },
+        "10/0/init/body/6/argument/1/1/3/expression/right/1/5/0": {
+          "type": "element",
+          "hash": "55aab5fd0f31a9cb055a2edeeedfaf63",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Support"
+        },
+        "10/0/init/body/6/argument/1/1/3/expression/right/1/7/expression/alternate/1/1": {
+          "type": "element",
+          "hash": "e285e29c642443ecca996fbaae92baec",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Sign In"
+        },
+        "10/0/init/body/6/argument/1/1/3/expression/right/1/7/expression/alternate/3/1/1": {
+          "type": "element",
+          "hash": "c4c2c4a122389310734c8562c6883f03",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Sign Up"
+        },
+        "10/0/init/body/6/argument/1/1/3/expression/right/1/7/expression/consequent/1/0": {
+          "type": "element",
+          "hash": "01215c12fb1cdb93bd0c84c1382bef56",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Account"
+        },
+        "10/0/init/body/6/argument/1/1/3/expression/right/1/7/expression/consequent/3/1": {
+          "type": "element",
+          "hash": "f90c8ec008cbc1aea5ccfc7bfef17af1",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Sign Out"
+        },
         "11/0/init/body/7/argument/1/1/1/1/1/1/1-alt": {
           "type": "attribute",
           "hash": "c8d4d18e2fe2ba8714193d7c752f3132",
@@ -2887,6 +3043,54 @@
     },
     "components/dashboard/Dashboard.tsx": {
       "scopes": {
+        "6/0/init/body/0/argument/1/1/1": {
+          "type": "element",
+          "hash": "5b40bbf4d1a6201e0a276c3123826827",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Welcome back, Sarah!"
+        },
+        "6/0/init/body/0/argument/1/1/3": {
+          "type": "element",
+          "hash": "2a192d36a4039d5538ab08981c6c4dc4",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Manage your VibePage cards and account settings"
+        },
+        "6/0/init/body/0/argument/3/1/3/3/1": {
+          "type": "element",
+          "hash": "157a51ac3ffbc527a52379a547499fe2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Quick Actions"
+        },
+        "6/0/init/body/0/argument/3/1/3/3/3/1/1": {
+          "type": "element",
+          "hash": "b29409b6abd9f31adeb4523bb04f10b7",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Palette></element:Palette> Create New Card"
+        },
+        "6/0/init/body/0/argument/3/1/3/3/3/3/1": {
+          "type": "element",
+          "hash": "e03d24a3e85ec8d7fd92932915010754",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:HelpCircle></element:HelpCircle> Open Support Ticket"
+        },
+        "6/0/init/body/0/argument/3/1/3/3/3/5/1": {
+          "type": "element",
+          "hash": "66fcd54664fa6687ab5f2b4b652792bc",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Shield></element:Shield> Security Settings"
+        },
         "7/0/init/body/0/argument/1/1/1": {
           "type": "element",
           "hash": "5b40bbf4d1a6201e0a276c3123826827",
