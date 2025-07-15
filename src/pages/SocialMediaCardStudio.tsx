@@ -2,6 +2,7 @@
 import React from 'react';
 import { Palette, Smartphone, MousePointer, Globe, ArrowRight, Sparkles, Zap } from 'lucide-react';
 import { Button } from '../components/ui/button';
+import { RainbowButton } from '../components/magicui/rainbow-button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { useAuth } from '../context/AuthContext';
@@ -82,20 +83,20 @@ const SocialMediaCardStudio: React.FC = () => {
             {user ? (
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/card-studio/editor">
-                  <Button size="lg" className="bg-gradient-rainbow text-white hover:opacity-90 text-lg px-8 py-3">
-                    <AnimatedShinyText className="text-white !mx-0 !max-w-none">
+                  <RainbowButton size="lg" className="text-lg px-8 py-3">
+                    <AnimatedShinyText className="!mx-0 !max-w-none">
                       Open Standard Editor
                     </AnimatedShinyText>
                     <ArrowRight className="ml-2 w-5 h-5" />
-                  </Button>
+                  </RainbowButton>
                 </Link>
                 <Link to="/card-studio/advanced-editor"> {/* New button for Advanced Editor */}
-                  <Button size="lg" className="bg-gradient-rainbow text-white hover:opacity-90 text-lg px-8 py-3">
-                    <AnimatedShinyText className="text-white !mx-0 !max-w-none">
+                  <RainbowButton size="lg" className="text-lg px-8 py-3">
+                    <AnimatedShinyText className="!mx-0 !max-w-none">
                       Open Advanced Editor
                     </AnimatedShinyText>
                     <Sparkles className="ml-2 w-5 h-5" />
-                  </Button>
+                  </RainbowButton>
                 </Link>
                 <Button 
                   size="lg" 
@@ -109,18 +110,13 @@ const SocialMediaCardStudio: React.FC = () => {
                 </Button>
               </div>
             ) : (
-              <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
-                <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
+              <RainbowButton size="lg" className="text-lg px-8 py-3">
+                <AnimatedShinyText className="!mx-0 !max-w-none">
                   Sign Up to Get Started
                 </AnimatedShinyText>
                 <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+              </RainbowButton>
             )}
-            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-indigo-600 text-lg px-8 py-3">
-              <AnimatedShinyText className="text-indigo-600 hover:text-indigo-600 !mx-0 !max-w-none">
-                View Examples
-              </AnimatedShinyText>
-            </Button>
           </div>
         </div>
       </div>
@@ -250,20 +246,20 @@ const SocialMediaCardStudio: React.FC = () => {
           {user ? (
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/card-studio/editor">
-                <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
-                  <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
+                <RainbowButton size="lg" className="text-lg px-8 py-3">
+                  <AnimatedShinyText className="!mx-0 !max-w-none">
                     Start Standard Editor
                   </AnimatedShinyText>
                   <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
+                </RainbowButton>
               </Link>
               <Link to="/card-studio/advanced-editor"> {/* New button for Advanced Editor */}
-                <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
-                  <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
+                <RainbowButton size="lg" className="text-lg px-8 py-3">
+                  <AnimatedShinyText className="!mx-0 !max-w-none">
                     Start Advanced Editor
                   </AnimatedShinyText>
                   <Sparkles className="ml-2 w-5 h-5" />
-                </Button>
+                </RainbowButton>
               </Link>
               <Button 
                 size="lg" 
@@ -277,12 +273,12 @@ const SocialMediaCardStudio: React.FC = () => {
               </Button>
             </div>
           ) : (
-            <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
-              <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
+            <RainbowButton size="lg" className="text-lg px-8 py-3">
+              <AnimatedShinyText className="!mx-0 !max-w-none">
                 Sign Up to Get Started
               </AnimatedShinyText>
               <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
+            </RainbowButton>
           )}
         </div>
       </div>
