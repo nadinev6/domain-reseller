@@ -248,14 +248,12 @@ const SocialMediaCardStudio: React.FC = () => {
                   <Sparkles className="ml-2 w-5 h-5" />
                 </RainbowButton>
               </Link>
-              <Button 
+              <RainbowButton 
                 size="lg" 
                 onClick={openCopyForgeStudio}
-                className="bg-gradient-to-r from-orange-500 to-red-600 text-white hover:from-orange-600 hover:to-red-700 text-lg px-8 py-3"
-              >
                 Open CopyForge Studio
                 <Zap className="ml-2 w-5 h-5" />
-              </Button>
+              </RainbowButton>
             </div>
           ) : (
             <RainbowButton size="lg" className="text-lg px-8 py-3">
