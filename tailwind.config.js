@@ -81,6 +81,9 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "shiny-text": "shiny-text 2s ease-in-out infinite",
       },
+      backgroundImage: {
+        'gradient-rainbow': 'linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3)',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
