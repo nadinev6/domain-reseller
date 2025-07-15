@@ -1,8 +1,8 @@
 // src/App.tsx
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import BotInterface from './components/BotInterface';
+import BotInterfaceWrapper from './components/BotInterfaceWrapper';
 import SocialMediaCardStudio from './pages/SocialMediaCardStudio';
 import CardStudioEditor from './pages/CardStudioEditor';
 import AdvancedCardStudioEditor from './pages/AdvancedCardStudioEditor';
@@ -12,11 +12,6 @@ import { AuthProvider } from './context/AuthContext';
 
 export default function App() {
   const [isHeaderCollapsed, setIsHeaderCollapsed] = React.useState(false);
-  const [isBotCollapsed, setIsBotCollapsed] = React.useState(true);
-  
-  const location = useLocation();
-  // Determine if BotInterface should be hidden
-  const hideBotInterface = location.pathname.startsWith('/card-studio/editor') || location.pathname.startsWith('/card-studio/advanced-editor');
   
   return (
     <Router>
@@ -59,12 +54,7 @@ export default function App() {
                 </main>
               } />
             </Routes>
-            {!hideBotInterface && (
-              <BotInterface 
-                isCollapsed={isBotCollapsed}
-                onToggleCollapse={() => setIsBotCollapsed(!isBotCollapsed)}
-              />
-            )}
+            <BotInterfaceWrapper />
           </div>
         </CurrencyProvider>
       </AuthProvider>
