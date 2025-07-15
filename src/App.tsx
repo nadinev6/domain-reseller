@@ -27,7 +27,7 @@ export default function App() {
               <Route path="/" element={
                 <main className="pt-20">
                   <div className="max-w-6xl mx-auto px-4 py-12 text-center">
-                    <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-800">
+                    <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900">
                       Welcome to <AuroraText colors={['#4f46e5', '#7c3aed', '#ec4899', '#06b6d4']}>VibePage</AuroraText>
                     </h1>
                     <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
