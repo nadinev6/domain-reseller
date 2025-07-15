@@ -84,12 +84,12 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
   const getBotResponse = (userInput: string): string => {
     const input = userInput.toLowerCase();
     
-    if (input.includes('card') || input.includes('studio') || input.includes('design')) {
-      return 'The Card Studio is perfect for creating social media cards! You can drag and drop elements, customize colors and fonts, and even add gradient text effects. Would you like me to guide you through creating your first card?';
+    if (input.includes('link') || input.includes('short') || input.includes('url') || input.includes('kutt')) {
+      return 'I can help you with link shortening! Our integrated link shortener allows you to create custom, trackable short links for your social media cards. You can set custom URLs, add password protection, set expiration dates, and view detailed analytics. Would you like me to guide you through creating a short link?';
     }
     
-    if (input.includes('link') || input.includes('short') || input.includes('url')) {
-      return 'I can help you with link shortening! Our integrated link shortener allows you to create custom, trackable short links for your social media cards. Would you like to learn more about this feature?';
+    if (input.includes('card') || input.includes('studio') || input.includes('design')) {
+      return 'The Card Studio is perfect for creating social media cards! You can drag and drop elements, customize colors and fonts, and even add gradient text effects. Would you like me to guide you through creating your first card?';
     }
     
     if (input.includes('save') || input.includes('export')) {
@@ -100,7 +100,11 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
       return 'We have various card templates available! You can browse them in the Card Studio and customize them to match your brand. Each template is fully customizable with your own colors, fonts, and content.';
     }
     
-    return 'I\'m here to help with card creation, link shortening, and general questions about VibePage. Could you be more specific about what you\'d like assistance with?';
+    if (input.includes('analytics') || input.includes('stats') || input.includes('clicks')) {
+      return 'You can view detailed analytics for your shortened links including click counts, browser statistics, geographic data, and referrer information. Just go to the Statistics tab in the Link Shortener and enter your link ID to see the data.';
+    }
+    
+    return 'I\'m here to help with card creation, link shortening, analytics, and general questions about VibePage. I can assist you with creating social media cards, shortening URLs, viewing link statistics, and managing your VibePage account. What would you like help with?';
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {

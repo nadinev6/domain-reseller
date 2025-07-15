@@ -1405,6 +1405,338 @@
         }
       }
     },
+    "components/LinkShortener.tsx": {
+      "scopes": {
+        "9/0/init/body/22/argument/1/1": {
+          "type": "element",
+          "hash": "067f08db6494e1398ca3961aae90ee4b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Link2></element:Link2> Link Shortener"
+        },
+        "9/0/init/body/22/argument/1/3": {
+          "type": "element",
+          "hash": "42b668f844d1a8efb71fcdfd948bac90",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Create short, trackable links for your social media cards and campaigns"
+        },
+        "9/0/init/body/22/argument/9/1/1": {
+          "type": "element",
+          "hash": "9a0015c5186228a506183d5dd9accd92",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Shorten URL"
+        },
+        "9/0/init/body/22/argument/9/1/3": {
+          "type": "element",
+          "hash": "6774b3a4ae82401358d6510cbabf47f8",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Statistics"
+        },
+        "9/0/init/body/22/argument/9/1/5": {
+          "type": "element",
+          "hash": "6f70a4d56e68e59eadec809af5786af2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "My Links"
+        },
+        "9/0/init/body/22/argument/9/13/1/1/1/1/1": {
+          "type": "element",
+          "hash": "6f70a4d56e68e59eadec809af5786af2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "My Links"
+        },
+        "9/0/init/body/22/argument/9/13/1/1/1/1/3": {
+          "type": "element",
+          "hash": "bda39aaaf426e18965ee9c96d0feb68a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Manage all your shortened links"
+        },
+        "9/0/init/body/22/argument/9/13/1/3/1/expression/alternate/alternate/1/expression/0/body/1/1/3": {
+          "type": "element",
+          "hash": "f167b2d2313b4674e7274abe9eb56d88",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "→ {link.target}"
+        },
+        "9/0/init/body/22/argument/9/13/1/3/1/expression/alternate/alternate/1/expression/0/body/1/1/5/1": {
+          "type": "element",
+          "hash": "646d864aab5966792b627be467287682",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Created: <function:formatDate/>"
+        },
+        "9/0/init/body/22/argument/9/13/1/3/1/expression/alternate/alternate/1/expression/0/body/1/1/5/3": {
+          "type": "element",
+          "hash": "82aabee053addfafd7950d56217cb4f0",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Clicks: <expression/>"
+        },
+        "9/0/init/body/22/argument/9/13/1/3/1/expression/alternate/alternate/1/expression/0/body/1/1/5/5/expression/right": {
+          "type": "element",
+          "hash": "99ccb4acb838f40b4b4d613bee966170",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "• {link.description}"
+        },
+        "9/0/init/body/22/argument/9/13/1/3/1/expression/alternate/alternate/1/expression/0/body/1/3/1-title": {
+          "type": "attribute",
+          "hash": "672ca245370fa2583f2ccc424b441cfa",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "View statistics"
+        },
+        "9/0/init/body/22/argument/9/13/1/3/1/expression/alternate/alternate/1/expression/0/body/1/3/3-title": {
+          "type": "attribute",
+          "hash": "0b6b10ea692ca7aa54cf5302eb924756",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Delete link"
+        },
+        "9/0/init/body/22/argument/9/13/1/3/1/expression/alternate/consequent/3": {
+          "type": "element",
+          "hash": "7474e8a7ed9d859314d5417f24a2b8bd",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "No links created yet"
+        },
+        "9/0/init/body/22/argument/9/13/1/3/1/expression/alternate/consequent/5": {
+          "type": "element",
+          "hash": "633d52324ef97b8626abe5233a7c1a66",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Create your first shortened link to get started"
+        },
+        "9/0/init/body/22/argument/9/13/1/3/1/expression/consequent/3": {
+          "type": "element",
+          "hash": "21b67016ff604fd6483cd034c1cfbe2e",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Loading your links..."
+        },
+        "9/0/init/body/22/argument/9/5/1/1/1": {
+          "type": "element",
+          "hash": "462ee6e47135c9b1452bdca8347e45ef",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Create Short Link"
+        },
+        "9/0/init/body/22/argument/9/5/1/1/3": {
+          "type": "element",
+          "hash": "ce73036391521f8b3ef2d6037b365c6b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Enter a long URL to create a short, shareable link"
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/1/1": {
+          "type": "element",
+          "hash": "a4b69354330516015d8c68da1473f886",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Long URL *"
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/1/3-placeholder": {
+          "type": "attribute",
+          "hash": "e8d67fbefdae51d8b604b8e46d55d8d2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "https://example.com/very/long/url"
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/11/1/expression/alternate": {
+          "type": "element",
+          "hash": "3fd03b75f137fe10e91cb7d952742f9c",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Link2></element:Link2> Shorten URL"
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/11/1/expression/consequent": {
+          "type": "element",
+          "hash": "84db95a962a78aafa3752f7c05cb1672",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Loader2></element:Loader2> Shortening..."
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/5/1": {
+          "type": "element",
+          "hash": "d5d6df4cb37d0228324dc74371036e5a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<expression/><expression/> Advanced Options"
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/9/expression/right/1/1": {
+          "type": "element",
+          "hash": "00a6c6a0c1f31041b21bd97f1d1325e9",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Custom Short URL (Optional)"
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/9/expression/right/1/3-placeholder": {
+          "type": "attribute",
+          "hash": "ccefb70c4c4a00cef54376858b8fd69f",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "my-custom-link"
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/9/expression/right/1/5": {
+          "type": "element",
+          "hash": "e110a9f2e187cef3ee34437e31599919",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Will create: kutt.it/my-custom-link"
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/9/expression/right/3/1": {
+          "type": "element",
+          "hash": "8161cbc85800660d2c0a2640cd0b54d8",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Password Protection (Optional)"
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/9/expression/right/3/3-placeholder": {
+          "type": "attribute",
+          "hash": "a6d9d130ba9c3218e4e9558b633a5c73",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Enter password"
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/9/expression/right/5/1": {
+          "type": "element",
+          "hash": "a4044499c9096ecb1a7b8e055056576d",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Expiration Date (Optional)"
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/9/expression/right/7/1": {
+          "type": "element",
+          "hash": "d5519551a79f18fc414dc127b773485f",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Description (Optional)"
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/9/expression/right/7/3-placeholder": {
+          "type": "attribute",
+          "hash": "6ba5f7f605918c884673737b676a9a4b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Brief description of this link"
+        },
+        "9/0/init/body/22/argument/9/5/1/3/5/expression/right/1": {
+          "type": "element",
+          "hash": "7e56fa294c76231dff723574a0f74214",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Your shortened URL:"
+        },
+        "9/0/init/body/22/argument/9/5/1/3/5/expression/right/5": {
+          "type": "element",
+          "hash": "d429cb0fe01f4383924ed0d30a81547d",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Original: {shortenedResult.target}"
+        },
+        "9/0/init/body/22/argument/9/9/1/1/1": {
+          "type": "element",
+          "hash": "98ca798242382690a2149966a83f8604",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Link Statistics"
+        },
+        "9/0/init/body/22/argument/9/9/1/1/3": {
+          "type": "element",
+          "hash": "9bf1a54f45ad22c64bf81e02a46e74ab",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Get detailed statistics for any of your shortened links"
+        },
+        "9/0/init/body/22/argument/9/9/1/3/1/1/1": {
+          "type": "element",
+          "hash": "e4973b4f85bfcdf9270371cde6dceead",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Link ID"
+        },
+        "9/0/init/body/22/argument/9/9/1/3/1/1/3-placeholder": {
+          "type": "attribute",
+          "hash": "e332947f716fe2fccaadf756af7602ec",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Enter link ID (from your links list)"
+        },
+        "9/0/init/body/22/argument/9/9/1/3/1/3/1/expression/alternate": {
+          "type": "element",
+          "hash": "15e0c2032c1d03cb325afbd1c60e1f2a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:BarChart3></element:BarChart3> Get Statistics"
+        },
+        "9/0/init/body/22/argument/9/9/1/3/1/3/1/expression/consequent": {
+          "type": "element",
+          "hash": "3a8d62d36aa7c0d65794685e6abfab5d",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Loader2></element:Loader2> Loading..."
+        },
+        "9/0/init/body/22/argument/9/9/1/3/5/expression/right/1": {
+          "type": "element",
+          "hash": "6774b3a4ae82401358d6510cbabf47f8",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Statistics"
+        },
+        "9/0/init/body/22/argument/9/9/1/3/5/expression/right/3/1/3": {
+          "type": "element",
+          "hash": "0846b6e70396e2f39a617cfb64a3069e",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Total Clicks"
+        }
+      }
+    },
     "components/auth/AuthDialog.tsx": {
       "scopes": {
         "9/0/init/body/13/argument/1/1/1": {
@@ -3101,11 +3433,11 @@
         },
         "7/0/init/body/0/argument/1/1/3": {
           "type": "element",
-          "hash": "a3a0b15e419bef7673d6cff936815c09",
+          "hash": "2a192d36a4039d5538ab08981c6c4dc4",
           "context": "",
           "skip": false,
           "overrides": {},
-          "content": "Manage your domains and account settings"
+          "content": "Manage your VibePage cards and account settings"
         },
         "7/0/init/body/0/argument/3/1/3/3/1": {
           "type": "element",
@@ -3117,27 +3449,27 @@
         },
         "7/0/init/body/0/argument/3/1/3/3/3/1/1": {
           "type": "element",
-          "hash": "8a498b55838209e3aa5a4f239bcbf1f1",
+          "hash": "b29409b6abd9f31adeb4523bb04f10b7",
           "context": "",
           "skip": false,
           "overrides": {},
-          "content": "<element:Domain></element:Domain> Register New Domain"
+          "content": "<element:Palette></element:Palette> Create New Card"
         },
         "7/0/init/body/0/argument/3/1/3/3/3/3/1": {
-          "type": "element",
-          "hash": "1748727f713d5b1a98e15f1af700c9e1",
-          "context": "",
-          "skip": false,
-          "overrides": {},
-          "content": "<element:CreditCard></element:CreditCard> Update Payment Method"
-        },
-        "7/0/init/body/0/argument/3/1/3/3/3/5/1": {
           "type": "element",
           "hash": "e03d24a3e85ec8d7fd92932915010754",
           "context": "",
           "skip": false,
           "overrides": {},
           "content": "<element:HelpCircle></element:HelpCircle> Open Support Ticket"
+        },
+        "7/0/init/body/0/argument/3/1/3/3/3/5/1": {
+          "type": "element",
+          "hash": "66fcd54664fa6687ab5f2b4b652792bc",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Shield></element:Shield> Security Settings"
         },
         "7/0/init/body/0/argument/3/1/3/3/3/7/1": {
           "type": "element",
@@ -3515,6 +3847,46 @@
     },
     "pages/AdvancedCardStudioEditor.tsx": {
       "scopes": {
+        "11/0/init/body/19/argument/3/1/1": {
+          "type": "element",
+          "hash": "c0a4963adabd2fbfa8d7ed01400b2004",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Advanced Card Studio Editor"
+        },
+        "11/0/init/body/19/argument/3/1/3/1": {
+          "type": "element",
+          "hash": "08e3fdab92aa3e91696af146d278262a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Undo></element:Undo> Undo"
+        },
+        "11/0/init/body/19/argument/3/1/3/3": {
+          "type": "element",
+          "hash": "d7909de12fc2a20aab1a96b3d9add99c",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Redo></element:Redo> Redo"
+        },
+        "11/0/init/body/19/argument/3/3/1": {
+          "type": "element",
+          "hash": "1a878634c88abdb0bda86cf849d7d3c4",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Eye></element:Eye> Preview"
+        },
+        "11/0/init/body/19/argument/3/3/3": {
+          "type": "element",
+          "hash": "82c7fb0a52965a8cde48deeee9cd663b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Download></element:Download> Export"
+        },
         "13/0/init/body/21/argument/3/1/1": {
           "type": "element",
           "hash": "c0a4963adabd2fbfa8d7ed01400b2004",
@@ -4143,6 +4515,22 @@
           "overrides": {},
           "content": "Start Building Now"
         },
+        "8/0/init/body/3/argument/15/1/5/expression/consequent/1/1/1": {
+          "type": "element",
+          "hash": "b56ef4180feafa91b59c4e7760733a9b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Start Standard Editor"
+        },
+        "8/0/init/body/3/argument/15/1/5/expression/consequent/3/3/1": {
+          "type": "element",
+          "hash": "4e8ba67b78cd0b9f571c8e4d327d178b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Start Advanced Editor"
+        },
         "8/0/init/body/3/argument/3/1/1/expression/right/1": {
           "type": "element",
           "hash": "5e3369e6a949a4e8822ede87cd1fd21d",
@@ -4182,6 +4570,22 @@
           "skip": false,
           "overrides": {},
           "content": "Get Started"
+        },
+        "8/0/init/body/3/argument/3/1/7/1/expression/consequent/1/1/1": {
+          "type": "element",
+          "hash": "9289bf52463a591615ba84706a30503a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Open Standard Editor"
+        },
+        "8/0/init/body/3/argument/3/1/7/1/expression/consequent/3/3/1": {
+          "type": "element",
+          "hash": "a88c0545bcc49f6d96edc370de9a8e06",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Open Advanced Editor"
         },
         "8/0/init/body/3/argument/3/1/7/3/1": {
           "type": "element",

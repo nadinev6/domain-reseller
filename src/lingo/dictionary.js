@@ -1,6 +1,42 @@
 export default {
   version: 0.1,
   files: {
+    "App.tsx": {
+      entries: {
+        "10/declaration/body/4/argument/1/1/1/3/9/openingElement/1/value/expression/1/1":
+          {
+            content: {
+              en: "Welcome to VibePage",
+              fr: "Bienvenue sur VibePage",
+            },
+            hash: "62f50b209ebb8fe68dfaa94ffc078898",
+          },
+        "10/declaration/body/4/argument/1/1/1/3/9/openingElement/1/value/expression/1/3":
+          {
+            content: {
+              en: "Create stunning social media cards and manage your online presence",
+              fr: "Créez des cartes sociales stylées et gérez votre présence en ligne",
+            },
+            hash: "d90bc8154b69c57cf7eebecf8f478e98",
+          },
+        "10/declaration/body/4/argument/1/1/1/3/9/openingElement/1/value/expression/1/5/1":
+          {
+            content: {
+              en: "Get Started with VibePage Studio",
+              fr: "Démarrer avec VibePage Studio",
+            },
+            hash: "8d87137de9a6abf8bbec249780bce0bd",
+          },
+        "10/declaration/body/4/argument/1/1/1/3/9/openingElement/1/value/expression/1/5/3":
+          {
+            content: {
+              en: "View Dashboard",
+              fr: "Voir le tableau de bord",
+            },
+            hash: "fc8261cf17f34061cdee30155ee91be3",
+          },
+      },
+    },
     "components/BotInterface.tsx": {
       entries: {
         "6/0/init/body/10/argument/11/1/1-placeholder": {
@@ -51,6 +87,20 @@ export default {
             fr: "Chargement de l'assistant...",
           },
           hash: "c86ac2c40d42c1ddb2e60e49103bb062",
+        },
+        "8/declaration/body/11/argument/11/1/1-placeholder": {
+          content: {
+            en: "Ask me anything about VibePage...",
+            fr: "Demandez-moi n'importe quoi sur VibePage...",
+          },
+          hash: "7b79fbf096222fc0c96423683165dd2c",
+        },
+        "8/declaration/body/11/argument/3/1/3": {
+          content: {
+            en: "VibePage Assistant",
+            fr: "Assistant VibePage",
+          },
+          hash: "7c24c5590cc13478df43676f0fe7d1e0",
         },
         "8/declaration/body/12/argument/11/1/1-placeholder": {
           content: {
@@ -767,6 +817,118 @@ export default {
     },
     "components/Header.tsx": {
       entries: {
+        "10/0/init/body/6/argument/1/1/1/1/1/1/1-alt": {
+          content: {
+            en: "VibePage Logo",
+            fr: "Logo VibePage",
+          },
+          hash: "c8d4d18e2fe2ba8714193d7c752f3132",
+        },
+        "10/0/init/body/6/argument/1/1/1/1/1/3": {
+          content: {
+            en: "<element:span>Vibe</element:span>Page",
+            fr: "<element:span>Vibe</element:span>Page",
+          },
+          hash: "6f2da0f76738dbfc35d203a825df1218",
+        },
+        "10/0/init/body/6/argument/1/1/1/1/3/1/1/0": {
+          content: {
+            en: "Pricing",
+            fr: "Tarification",
+          },
+          hash: "ce27f1aeacccc542a174c4b2bce022b0",
+        },
+        "10/0/init/body/6/argument/1/1/1/1/3/1/3/1": {
+          content: {
+            en: "Card Studio",
+            fr: "Studio de cartes",
+          },
+          hash: "26bc1b0bd470c77d10074981c8998dbb",
+        },
+        "10/0/init/body/6/argument/1/1/1/1/3/1/5/0": {
+          content: {
+            en: "Support",
+            fr: "Support",
+          },
+          hash: "55aab5fd0f31a9cb055a2edeeedfaf63",
+        },
+        "10/0/init/body/6/argument/1/1/1/3/5/expression/right/1/expression/alternate/1":
+          {
+            content: {
+              en: "Sign In",
+              fr: "Se connecter",
+            },
+            hash: "e285e29c642443ecca996fbaae92baec",
+          },
+        "10/0/init/body/6/argument/1/1/1/3/5/expression/right/1/expression/alternate/3/1":
+          {
+            content: {
+              en: "Sign Up",
+              fr: "S'inscrire",
+            },
+            hash: "c4c2c4a122389310734c8562c6883f03",
+          },
+        "10/0/init/body/6/argument/1/1/1/3/5/expression/right/1/expression/consequent/3":
+          {
+            content: {
+              en: "<element:LogOut></element:LogOut> Sign Out",
+              fr: "<element:LogOut></element:LogOut> Se déconnecter",
+            },
+            hash: "9093e7410d2935ed98a409ee8cdfe3b2",
+          },
+        "10/0/init/body/6/argument/1/1/3/expression/right/1/1/0": {
+          content: {
+            en: "Pricing",
+            fr: "Tarification",
+          },
+          hash: "ce27f1aeacccc542a174c4b2bce022b0",
+        },
+        "10/0/init/body/6/argument/1/1/3/expression/right/1/3/1": {
+          content: {
+            en: "Card Studio",
+            fr: "Studio de cartes",
+          },
+          hash: "1623129380e3e1db674fb167c08d5a33",
+        },
+        "10/0/init/body/6/argument/1/1/3/expression/right/1/5/0": {
+          content: {
+            en: "Support",
+            fr: "Support",
+          },
+          hash: "55aab5fd0f31a9cb055a2edeeedfaf63",
+        },
+        "10/0/init/body/6/argument/1/1/3/expression/right/1/7/expression/alternate/1/1":
+          {
+            content: {
+              en: "Sign In",
+              fr: "Se connecter",
+            },
+            hash: "e285e29c642443ecca996fbaae92baec",
+          },
+        "10/0/init/body/6/argument/1/1/3/expression/right/1/7/expression/alternate/3/1/1":
+          {
+            content: {
+              en: "Sign Up",
+              fr: "S'inscrire",
+            },
+            hash: "c4c2c4a122389310734c8562c6883f03",
+          },
+        "10/0/init/body/6/argument/1/1/3/expression/right/1/7/expression/consequent/1/0":
+          {
+            content: {
+              en: "Account",
+              fr: "Compte",
+            },
+            hash: "01215c12fb1cdb93bd0c84c1382bef56",
+          },
+        "10/0/init/body/6/argument/1/1/3/expression/right/1/7/expression/consequent/3/1":
+          {
+            content: {
+              en: "Sign Out",
+              fr: "Se déconnecter",
+            },
+            hash: "f90c8ec008cbc1aea5ccfc7bfef17af1",
+          },
         "11/0/init/body/7/argument/1/1/1/1/1/1/1-alt": {
           content: {
             en: "VibePage Logo",
@@ -1095,6 +1257,267 @@ export default {
             fr: "GBP",
           },
           hash: "d22bc29e477030157b198f6f72b70330",
+        },
+      },
+    },
+    "components/LinkShortener.tsx": {
+      entries: {
+        "9/0/init/body/22/argument/1/1": {
+          content: {
+            en: "<element:Link2></element:Link2> Link Shortener",
+          },
+          hash: "067f08db6494e1398ca3961aae90ee4b",
+        },
+        "9/0/init/body/22/argument/1/3": {
+          content: {
+            en: "Create short, trackable links for your social media cards and campaigns",
+          },
+          hash: "42b668f844d1a8efb71fcdfd948bac90",
+        },
+        "9/0/init/body/22/argument/9/1/1": {
+          content: {
+            en: "Shorten URL",
+          },
+          hash: "9a0015c5186228a506183d5dd9accd92",
+        },
+        "9/0/init/body/22/argument/9/1/3": {
+          content: {
+            en: "Statistics",
+          },
+          hash: "6774b3a4ae82401358d6510cbabf47f8",
+        },
+        "9/0/init/body/22/argument/9/1/5": {
+          content: {
+            en: "My Links",
+          },
+          hash: "6f70a4d56e68e59eadec809af5786af2",
+        },
+        "9/0/init/body/22/argument/9/13/1/1/1/1/1": {
+          content: {
+            en: "My Links",
+          },
+          hash: "6f70a4d56e68e59eadec809af5786af2",
+        },
+        "9/0/init/body/22/argument/9/13/1/1/1/1/3": {
+          content: {
+            en: "Manage all your shortened links",
+          },
+          hash: "bda39aaaf426e18965ee9c96d0feb68a",
+        },
+        "9/0/init/body/22/argument/9/13/1/3/1/expression/alternate/alternate/1/expression/0/body/1/1/3":
+          {
+            content: {
+              en: "→ {link.target}",
+            },
+            hash: "f167b2d2313b4674e7274abe9eb56d88",
+          },
+        "9/0/init/body/22/argument/9/13/1/3/1/expression/alternate/alternate/1/expression/0/body/1/1/5/1":
+          {
+            content: {
+              en: "Created: <function:formatDate/>",
+            },
+            hash: "646d864aab5966792b627be467287682",
+          },
+        "9/0/init/body/22/argument/9/13/1/3/1/expression/alternate/alternate/1/expression/0/body/1/1/5/3":
+          {
+            content: {
+              en: "Clicks: <expression/>",
+            },
+            hash: "82aabee053addfafd7950d56217cb4f0",
+          },
+        "9/0/init/body/22/argument/9/13/1/3/1/expression/alternate/alternate/1/expression/0/body/1/1/5/5/expression/right":
+          {
+            content: {
+              en: "• {link.description}",
+            },
+            hash: "99ccb4acb838f40b4b4d613bee966170",
+          },
+        "9/0/init/body/22/argument/9/13/1/3/1/expression/alternate/alternate/1/expression/0/body/1/3/1-title":
+          {
+            content: {
+              en: "View statistics",
+            },
+            hash: "672ca245370fa2583f2ccc424b441cfa",
+          },
+        "9/0/init/body/22/argument/9/13/1/3/1/expression/alternate/alternate/1/expression/0/body/1/3/3-title":
+          {
+            content: {
+              en: "Delete link",
+            },
+            hash: "0b6b10ea692ca7aa54cf5302eb924756",
+          },
+        "9/0/init/body/22/argument/9/13/1/3/1/expression/alternate/consequent/3":
+          {
+            content: {
+              en: "No links created yet",
+            },
+            hash: "7474e8a7ed9d859314d5417f24a2b8bd",
+          },
+        "9/0/init/body/22/argument/9/13/1/3/1/expression/alternate/consequent/5":
+          {
+            content: {
+              en: "Create your first shortened link to get started",
+            },
+            hash: "633d52324ef97b8626abe5233a7c1a66",
+          },
+        "9/0/init/body/22/argument/9/13/1/3/1/expression/consequent/3": {
+          content: {
+            en: "Loading your links...",
+          },
+          hash: "21b67016ff604fd6483cd034c1cfbe2e",
+        },
+        "9/0/init/body/22/argument/9/5/1/1/1": {
+          content: {
+            en: "Create Short Link",
+          },
+          hash: "462ee6e47135c9b1452bdca8347e45ef",
+        },
+        "9/0/init/body/22/argument/9/5/1/1/3": {
+          content: {
+            en: "Enter a long URL to create a short, shareable link",
+          },
+          hash: "ce73036391521f8b3ef2d6037b365c6b",
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/1/1": {
+          content: {
+            en: "Long URL *",
+          },
+          hash: "a4b69354330516015d8c68da1473f886",
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/1/3-placeholder": {
+          content: {
+            en: "https://example.com/very/long/url",
+          },
+          hash: "e8d67fbefdae51d8b604b8e46d55d8d2",
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/11/1/expression/alternate": {
+          content: {
+            en: "<element:Link2></element:Link2> Shorten URL",
+          },
+          hash: "3fd03b75f137fe10e91cb7d952742f9c",
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/11/1/expression/consequent": {
+          content: {
+            en: "<element:Loader2></element:Loader2> Shortening...",
+          },
+          hash: "84db95a962a78aafa3752f7c05cb1672",
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/5/1": {
+          content: {
+            en: "<expression/><expression/> Advanced Options",
+          },
+          hash: "d5d6df4cb37d0228324dc74371036e5a",
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/9/expression/right/1/1": {
+          content: {
+            en: "Custom Short URL (Optional)",
+          },
+          hash: "00a6c6a0c1f31041b21bd97f1d1325e9",
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/9/expression/right/1/3-placeholder":
+          {
+            content: {
+              en: "my-custom-link",
+            },
+            hash: "ccefb70c4c4a00cef54376858b8fd69f",
+          },
+        "9/0/init/body/22/argument/9/5/1/3/1/9/expression/right/1/5": {
+          content: {
+            en: "Will create: kutt.it/my-custom-link",
+          },
+          hash: "e110a9f2e187cef3ee34437e31599919",
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/9/expression/right/3/1": {
+          content: {
+            en: "Password Protection (Optional)",
+          },
+          hash: "8161cbc85800660d2c0a2640cd0b54d8",
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/9/expression/right/3/3-placeholder":
+          {
+            content: {
+              en: "Enter password",
+            },
+            hash: "a6d9d130ba9c3218e4e9558b633a5c73",
+          },
+        "9/0/init/body/22/argument/9/5/1/3/1/9/expression/right/5/1": {
+          content: {
+            en: "Expiration Date (Optional)",
+          },
+          hash: "a4044499c9096ecb1a7b8e055056576d",
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/9/expression/right/7/1": {
+          content: {
+            en: "Description (Optional)",
+          },
+          hash: "d5519551a79f18fc414dc127b773485f",
+        },
+        "9/0/init/body/22/argument/9/5/1/3/1/9/expression/right/7/3-placeholder":
+          {
+            content: {
+              en: "Brief description of this link",
+            },
+            hash: "6ba5f7f605918c884673737b676a9a4b",
+          },
+        "9/0/init/body/22/argument/9/5/1/3/5/expression/right/1": {
+          content: {
+            en: "Your shortened URL:",
+          },
+          hash: "7e56fa294c76231dff723574a0f74214",
+        },
+        "9/0/init/body/22/argument/9/5/1/3/5/expression/right/5": {
+          content: {
+            en: "Original: {shortenedResult.target}",
+          },
+          hash: "d429cb0fe01f4383924ed0d30a81547d",
+        },
+        "9/0/init/body/22/argument/9/9/1/1/1": {
+          content: {
+            en: "Link Statistics",
+          },
+          hash: "98ca798242382690a2149966a83f8604",
+        },
+        "9/0/init/body/22/argument/9/9/1/1/3": {
+          content: {
+            en: "Get detailed statistics for any of your shortened links",
+          },
+          hash: "9bf1a54f45ad22c64bf81e02a46e74ab",
+        },
+        "9/0/init/body/22/argument/9/9/1/3/1/1/1": {
+          content: {
+            en: "Link ID",
+          },
+          hash: "e4973b4f85bfcdf9270371cde6dceead",
+        },
+        "9/0/init/body/22/argument/9/9/1/3/1/1/3-placeholder": {
+          content: {
+            en: "Enter link ID (from your links list)",
+          },
+          hash: "e332947f716fe2fccaadf756af7602ec",
+        },
+        "9/0/init/body/22/argument/9/9/1/3/1/3/1/expression/alternate": {
+          content: {
+            en: "<element:BarChart3></element:BarChart3> Get Statistics",
+          },
+          hash: "15e0c2032c1d03cb325afbd1c60e1f2a",
+        },
+        "9/0/init/body/22/argument/9/9/1/3/1/3/1/expression/consequent": {
+          content: {
+            en: "<element:Loader2></element:Loader2> Loading...",
+          },
+          hash: "3a8d62d36aa7c0d65794685e6abfab5d",
+        },
+        "9/0/init/body/22/argument/9/9/1/3/5/expression/right/1": {
+          content: {
+            en: "Statistics",
+          },
+          hash: "6774b3a4ae82401358d6510cbabf47f8",
+        },
+        "9/0/init/body/22/argument/9/9/1/3/5/expression/right/3/1/3": {
+          content: {
+            en: "Total Clicks",
+          },
+          hash: "0846b6e70396e2f39a617cfb64a3069e",
         },
       },
     },
@@ -2562,6 +2985,48 @@ export default {
     },
     "components/dashboard/Dashboard.tsx": {
       entries: {
+        "6/0/init/body/0/argument/1/1/1": {
+          content: {
+            en: "Welcome back, Sarah!",
+            fr: "Bon retour, Sarah !",
+          },
+          hash: "5b40bbf4d1a6201e0a276c3123826827",
+        },
+        "6/0/init/body/0/argument/1/1/3": {
+          content: {
+            en: "Manage your VibePage cards and account settings",
+            fr: "Gérez vos cartes VibePage et paramètres de compte",
+          },
+          hash: "2a192d36a4039d5538ab08981c6c4dc4",
+        },
+        "6/0/init/body/0/argument/3/1/3/3/1": {
+          content: {
+            en: "Quick Actions",
+            fr: "Actions rapides",
+          },
+          hash: "157a51ac3ffbc527a52379a547499fe2",
+        },
+        "6/0/init/body/0/argument/3/1/3/3/3/1/1": {
+          content: {
+            en: "<element:Palette></element:Palette> Create New Card",
+            fr: "<element:Palette></element:Palette> Créer une nouvelle carte",
+          },
+          hash: "b29409b6abd9f31adeb4523bb04f10b7",
+        },
+        "6/0/init/body/0/argument/3/1/3/3/3/3/1": {
+          content: {
+            en: "<element:HelpCircle></element:HelpCircle> Open Support Ticket",
+            fr: "<element:HelpCircle></element:HelpCircle> Ouvrir un ticket d'assistance",
+          },
+          hash: "e03d24a3e85ec8d7fd92932915010754",
+        },
+        "6/0/init/body/0/argument/3/1/3/3/3/5/1": {
+          content: {
+            en: "<element:Shield></element:Shield> Security Settings",
+            fr: "<element:Shield></element:Shield> Paramètres de sécurité",
+          },
+          hash: "66fcd54664fa6687ab5f2b4b652792bc",
+        },
         "7/0/init/body/0/argument/1/1/1": {
           content: {
             en: "Welcome back, Sarah!",
@@ -2571,10 +3036,9 @@ export default {
         },
         "7/0/init/body/0/argument/1/1/3": {
           content: {
-            en: "Manage your domains and account settings",
-            fr: "Gérez vos domaines et paramètres de compte",
+            en: "Manage your VibePage cards and account settings",
           },
-          hash: "a3a0b15e419bef7673d6cff936815c09",
+          hash: "2a192d36a4039d5538ab08981c6c4dc4",
         },
         "7/0/init/body/0/argument/3/1/3/3/1": {
           content: {
@@ -2585,24 +3049,21 @@ export default {
         },
         "7/0/init/body/0/argument/3/1/3/3/3/1/1": {
           content: {
-            en: "<element:Domain></element:Domain> Register New Domain",
-            fr: "<element:Domain></element:Domain> Enregistrer un nouveau domaine",
+            en: "<element:Palette></element:Palette> Create New Card",
           },
-          hash: "8a498b55838209e3aa5a4f239bcbf1f1",
+          hash: "b29409b6abd9f31adeb4523bb04f10b7",
         },
         "7/0/init/body/0/argument/3/1/3/3/3/3/1": {
           content: {
-            en: "<element:CreditCard></element:CreditCard> Update Payment Method",
-            fr: "<element:CreditCard></element:CreditCard> Mettre à jour le moyen de paiement",
+            en: "<element:HelpCircle></element:HelpCircle> Open Support Ticket",
           },
-          hash: "1748727f713d5b1a98e15f1af700c9e1",
+          hash: "e03d24a3e85ec8d7fd92932915010754",
         },
         "7/0/init/body/0/argument/3/1/3/3/3/5/1": {
           content: {
-            en: "<element:HelpCircle></element:HelpCircle> Open Support Ticket",
-            fr: "<element:HelpCircle></element:HelpCircle> Ouvrir un ticket d'assistance",
+            en: "<element:Shield></element:Shield> Security Settings",
           },
-          hash: "e03d24a3e85ec8d7fd92932915010754",
+          hash: "66fcd54664fa6687ab5f2b4b652792bc",
         },
         "7/0/init/body/0/argument/3/1/3/3/3/7/1": {
           content: {
@@ -2907,6 +3368,17 @@ export default {
         },
       },
     },
+    "components/tambo/message-input.tsx": {
+      entries: {
+        "13/0/init/body/5/argument-aria-label": {
+          content: {
+            en: "Chat Message Input",
+            fr: "Saisie de message chat",
+          },
+          hash: "ff8160ca793b4337a2ae3b55ed91b165",
+        },
+      },
+    },
     "components/ui/dialog.tsx": {
       entries: {
         "10/0/init/0/body/3/3/3": {
@@ -2926,6 +3398,115 @@ export default {
             fr: "Chargement du panier...",
           },
           hash: "99b82d35bc15c1ba769eabc03d2e8db7",
+        },
+      },
+    },
+    "pages/AdvancedCardStudioEditor.tsx": {
+      entries: {
+        "11/0/init/body/19/argument/3/1/1": {
+          content: {
+            en: "Advanced Card Studio Editor",
+            fr: "Éditeur avancé de cartes",
+          },
+          hash: "c0a4963adabd2fbfa8d7ed01400b2004",
+        },
+        "11/0/init/body/19/argument/3/1/3/1": {
+          content: {
+            en: "<element:Undo></element:Undo> Undo",
+            fr: "<element:Undo></element:Undo> Annuler",
+          },
+          hash: "08e3fdab92aa3e91696af146d278262a",
+        },
+        "11/0/init/body/19/argument/3/1/3/3": {
+          content: {
+            en: "<element:Redo></element:Redo> Redo",
+            fr: "<element:Redo></element:Redo> Rétablir",
+          },
+          hash: "d7909de12fc2a20aab1a96b3d9add99c",
+        },
+        "11/0/init/body/19/argument/3/3/1": {
+          content: {
+            en: "<element:Eye></element:Eye> Preview",
+            fr: "<element:Eye></element:Eye> Aperçu",
+          },
+          hash: "1a878634c88abdb0bda86cf849d7d3c4",
+        },
+        "11/0/init/body/19/argument/3/3/3": {
+          content: {
+            en: "<element:Download></element:Download> Export",
+            fr: "<element:Download></element:Download> Exporter",
+          },
+          hash: "82c7fb0a52965a8cde48deeee9cd663b",
+        },
+        "13/0/init/body/21/argument/3/1/1": {
+          content: {
+            en: "Advanced Card Studio Editor",
+            fr: "Éditeur avancé de cartes",
+          },
+          hash: "c0a4963adabd2fbfa8d7ed01400b2004",
+        },
+        "13/0/init/body/21/argument/3/1/3/1": {
+          content: {
+            en: "<element:Undo></element:Undo> Undo",
+            fr: "<element:Undo></element:Undo> Annuler",
+          },
+          hash: "08e3fdab92aa3e91696af146d278262a",
+        },
+        "13/0/init/body/21/argument/3/1/3/3": {
+          content: {
+            en: "<element:Redo></element:Redo> Redo",
+            fr: "<element:Redo></element:Redo> Rétablir",
+          },
+          hash: "d7909de12fc2a20aab1a96b3d9add99c",
+        },
+        "13/0/init/body/21/argument/3/3/1": {
+          content: {
+            en: "<element:Eye></element:Eye> Preview",
+            fr: "<element:Eye></element:Eye> Aperçu",
+          },
+          hash: "1a878634c88abdb0bda86cf849d7d3c4",
+        },
+        "13/0/init/body/21/argument/3/3/3": {
+          content: {
+            en: "<element:Download></element:Download> Export",
+            fr: "<element:Download></element:Download> Exporter",
+          },
+          hash: "82c7fb0a52965a8cde48deeee9cd663b",
+        },
+        "14/0/init/body/21/argument/3/1/1": {
+          content: {
+            en: "Advanced Card Studio Editor",
+            fr: "Éditeur avancé de cartes",
+          },
+          hash: "c0a4963adabd2fbfa8d7ed01400b2004",
+        },
+        "14/0/init/body/21/argument/3/1/3/1": {
+          content: {
+            en: "<element:Undo></element:Undo> Undo",
+            fr: "<element:Undo></element:Undo> Annuler",
+          },
+          hash: "08e3fdab92aa3e91696af146d278262a",
+        },
+        "14/0/init/body/21/argument/3/1/3/3": {
+          content: {
+            en: "<element:Redo></element:Redo> Redo",
+            fr: "<element:Redo></element:Redo> Rétablir",
+          },
+          hash: "d7909de12fc2a20aab1a96b3d9add99c",
+        },
+        "14/0/init/body/21/argument/3/3/1": {
+          content: {
+            en: "<element:Eye></element:Eye> Preview",
+            fr: "<element:Eye></element:Eye> Aperçu",
+          },
+          hash: "1a878634c88abdb0bda86cf849d7d3c4",
+        },
+        "14/0/init/body/21/argument/3/3/3": {
+          content: {
+            en: "<element:Download></element:Download> Export",
+            fr: "<element:Download></element:Download> Exporter",
+          },
+          hash: "82c7fb0a52965a8cde48deeee9cd663b",
         },
       },
     },
@@ -3410,6 +3991,18 @@ export default {
           },
           hash: "0c5454b229eae33185b02395933ac69b",
         },
+        "8/0/init/body/3/argument/15/1/5/expression/consequent/1/1/1": {
+          content: {
+            en: "Start Standard Editor",
+          },
+          hash: "b56ef4180feafa91b59c4e7760733a9b",
+        },
+        "8/0/init/body/3/argument/15/1/5/expression/consequent/3/3/1": {
+          content: {
+            en: "Start Advanced Editor",
+          },
+          hash: "4e8ba67b78cd0b9f571c8e4d327d178b",
+        },
         "8/0/init/body/3/argument/3/1/1/expression/right/1": {
           content: {
             en: "Welcome back, <expression/>!",
@@ -3444,6 +4037,18 @@ export default {
             fr: "Commencer",
           },
           hash: "de740b92861027ad93df4d9c255a3b31",
+        },
+        "8/0/init/body/3/argument/3/1/7/1/expression/consequent/1/1/1": {
+          content: {
+            en: "Open Standard Editor",
+          },
+          hash: "9289bf52463a591615ba84706a30503a",
+        },
+        "8/0/init/body/3/argument/3/1/7/1/expression/consequent/3/3/1": {
+          content: {
+            en: "Open Advanced Editor",
+          },
+          hash: "a88c0545bcc49f6d96edc370de9a8e06",
         },
         "8/0/init/body/3/argument/3/1/7/3/1": {
           content: {
@@ -3609,6 +4214,27 @@ export default {
           },
           hash: "0c5454b229eae33185b02395933ac69b",
         },
+        "9/0/init/body/5/argument/15/1/5/expression/consequent/1/1/1": {
+          content: {
+            en: "Start Standard Editor",
+            fr: "Lancer l'éditeur standard",
+          },
+          hash: "b56ef4180feafa91b59c4e7760733a9b",
+        },
+        "9/0/init/body/5/argument/15/1/5/expression/consequent/3/3/1": {
+          content: {
+            en: "Start Advanced Editor",
+            fr: "Lancer l'éditeur avancé",
+          },
+          hash: "4e8ba67b78cd0b9f571c8e4d327d178b",
+        },
+        "9/0/init/body/5/argument/15/1/5/expression/consequent/5/1": {
+          content: {
+            en: "Get AI Template Suggestions",
+            fr: "Obtenir des suggestions IA",
+          },
+          hash: "016f1f9686dce16a49213617d2fc156b",
+        },
         "9/0/init/body/5/argument/15/1/7/expression/right/1": {
           content: {
             en: "Get AI Template Suggestions",
@@ -3646,10 +4272,10 @@ export default {
         },
         "9/0/init/body/5/argument/3/1/7/1/expression/consequent/1/1/1": {
           content: {
-            en: "Open Editor",
-            fr: "Ouvrir l'éditeur",
+            en: "Open Standard Editor",
+            fr: "Ouvrir l'éditeur standard",
           },
-          hash: "012a1d4fc9b058937596f79b059d6b78",
+          hash: "9289bf52463a591615ba84706a30503a",
         },
         "9/0/init/body/5/argument/3/1/7/1/expression/consequent/3/1": {
           content: {
@@ -3657,6 +4283,27 @@ export default {
             fr: "Commencer avec modèle",
           },
           hash: "444b443c1b8d0966055e0d217eda64c1",
+        },
+        "9/0/init/body/5/argument/3/1/7/1/expression/consequent/3/3/1": {
+          content: {
+            en: "Open Advanced Editor",
+            fr: "Ouvrir l'éditeur avancé",
+          },
+          hash: "a88c0545bcc49f6d96edc370de9a8e06",
+        },
+        "9/0/init/body/5/argument/3/1/7/1/expression/consequent/5/1": {
+          content: {
+            en: "Get AI Template Ideas",
+            fr: "Idées de templates IA",
+          },
+          hash: "77436fa1faec25e9cb1d0a9ccae6e8a2",
+        },
+        "9/0/init/body/5/argument/3/1/7/3/1": {
+          content: {
+            en: "View Examples",
+            fr: "Voir les exemples",
+          },
+          hash: "2cbc596b013add7dec72e6cc8f27cc2c",
         },
         "9/0/init/body/5/argument/7/1/1/1": {
           content: {
