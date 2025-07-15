@@ -84,7 +84,7 @@ const SocialMediaCardStudio: React.FC = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/card-studio/editor">
                   <RainbowButton size="lg" className="text-lg px-8 py-3">
-                    <AnimatedShinyText className="!mx-0 !max-w-none">
+                    <AnimatedShinyText className="text-white !mx-0 !max-w-none">
                       Open Standard Editor
                     </AnimatedShinyText>
                     <ArrowRight className="ml-2 w-5 h-5" />
@@ -92,7 +92,7 @@ const SocialMediaCardStudio: React.FC = () => {
                 </Link>
                 <Link to="/card-studio/advanced-editor"> {/* New button for Advanced Editor */}
                   <RainbowButton size="lg" className="text-lg px-8 py-3">
-                    <AnimatedShinyText className="!mx-0 !max-w-none">
+                    <AnimatedShinyText className="text-white !mx-0 !max-w-none">
                       Open Advanced Editor
                     </AnimatedShinyText>
                     <Sparkles className="ml-2 w-5 h-5" />
@@ -111,7 +111,7 @@ const SocialMediaCardStudio: React.FC = () => {
               </div>
             ) : (
               <RainbowButton size="lg" className="text-lg px-8 py-3">
-                <AnimatedShinyText className="!mx-0 !max-w-none">
+                <AnimatedShinyText className="text-white !mx-0 !max-w-none">
                   Sign Up to Get Started
                 </AnimatedShinyText>
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -247,7 +247,7 @@ const SocialMediaCardStudio: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/card-studio/editor">
                 <RainbowButton size="lg" className="text-lg px-8 py-3">
-                  <AnimatedShinyText className="!mx-0 !max-w-none">
+                  <AnimatedShinyText className="text-white !mx-0 !max-w-none">
                     Start Standard Editor
                   </AnimatedShinyText>
                   <ArrowRight className="ml-2 w-5 h-5" />
@@ -255,7 +255,7 @@ const SocialMediaCardStudio: React.FC = () => {
               </Link>
               <Link to="/card-studio/advanced-editor"> {/* New button for Advanced Editor */}
                 <RainbowButton size="lg" className="text-lg px-8 py-3">
-                  <AnimatedShinyText className="!mx-0 !max-w-none">
+                  <AnimatedShinyText className="text-white !mx-0 !max-w-none">
                     Start Advanced Editor
                   </AnimatedShinyText>
                   <Sparkles className="ml-2 w-5 h-5" />
@@ -274,7 +274,7 @@ const SocialMediaCardStudio: React.FC = () => {
             </div>
           ) : (
             <RainbowButton size="lg" className="text-lg px-8 py-3">
-              <AnimatedShinyText className="!mx-0 !max-w-none">
+              <AnimatedShinyText className="text-white !mx-0 !max-w-none">
                 Sign Up to Get Started
               </AnimatedShinyText>
               <ArrowRight className="ml-2 w-5 h-5" />
