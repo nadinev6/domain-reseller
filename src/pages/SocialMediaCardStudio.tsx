@@ -279,6 +279,11 @@ const SocialMediaCardStudio: React.FC = () => {
           ) : (
             <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
               <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
+                Sign Up to Get Started
+              </AnimatedShinyText>
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          )}
         </div>
       </div>
     </div>
