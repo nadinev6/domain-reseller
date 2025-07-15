@@ -67,25 +67,43 @@ const CopyForgeStudio: React.FC = () => {
   // AI Integration Function
   const generateWithAI = async (prompt: string): Promise<string> => {
     try {
-      // Check if Claude is available
+      // Check if OpenAI API key is available
+      const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+      if (apiKey) {
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+          },
+          body: JSON.stringify({
+            model: 'gpt-3.5-turbo',
+            messages: [
+              {
+                role: 'user',
+                content: prompt
+              }
+            ],
+            max_tokens: 1000,
+            temperature: 0.7
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error(`OpenAI API error: ${response.status} ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        return data.choices[0].message.content.trim();
+      }
+      
+      // Check if Claude is available as fallback
       if (typeof window !== 'undefined' && (window as any).claude) {
         const response = await (window as any).claude.complete(prompt);
         return response.trim();
       }
       
-      // Fallback: You can integrate other AI services here
-      // Example for OpenAI, Groq, or other services:
-      /*
-      const response = await fetch('/api/generate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt })
-      });
-      const data = await response.json();
-      return data.content;
-      */
-      
-      throw new Error('AI service not available');
+      throw new Error('AI service not available. Please check your OpenAI API key configuration.');
     } catch (error) {
       console.error('AI Generation Error:', error);
       throw error;
