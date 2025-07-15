@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Zap, Copy, Check, Target, MessageSquare, User, Sparkles, TrendingUp } from 'lucide-react';
 
-import React, { useState } from 'react';
 import { Zap, Copy, Check, Target, MessageSquare, User, Sparkles, TrendingUp } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
