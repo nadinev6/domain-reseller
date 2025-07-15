@@ -1,11 +1,3 @@
-export interface DomainResult {
-  id: string;
-  name: string;
-  available: boolean;
-  price: number;
-  tld: string;
-}
-
 export interface CardElement {
   id: string;
   type: 'text' | 'image' | 'shape' | 'button';

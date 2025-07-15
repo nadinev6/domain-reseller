@@ -84,23 +84,23 @@ export default function BotInterface({ isCollapsed, onToggleCollapse }: BotInter
   const getBotResponse = (userInput: string): string => {
     const input = userInput.toLowerCase();
     
-    if (input.includes('domain') || input.includes('search')) {
-      return 'I can help you search for domains! Try entering a domain name in the search box above, and I\'ll show you available options with pricing in different currencies.';
-    }
-    
     if (input.includes('card') || input.includes('studio') || input.includes('design')) {
       return 'The Card Studio is perfect for creating social media cards! You can drag and drop elements, customize colors and fonts, and even add gradient text effects. Would you like me to guide you through creating your first card?';
+    }
+    
+    if (input.includes('link') || input.includes('short') || input.includes('url')) {
+      return 'I can help you with link shortening! Our integrated link shortener allows you to create custom, trackable short links for your social media cards. Would you like to learn more about this feature?';
     }
     
     if (input.includes('save') || input.includes('export')) {
       return 'You can save your cards to your account and export them when ready. Make sure you\'re signed in to save your work permanently.';
     }
     
-    if (input.includes('price') || input.includes('cost') || input.includes('currency')) {
-      return 'Domain prices vary by extension. You can change the currency in the header, and I\'ll show prices in MGA, ZAR, USD, EUR, or GBP. Most .com domains start around $12.99/year.';
+    if (input.includes('template') || input.includes('example')) {
+      return 'We have various card templates available! You can browse them in the Card Studio and customize them to match your brand. Each template is fully customizable with your own colors, fonts, and content.';
     }
     
-    return 'I\'m here to help with domains, card creation, and general questions about VibePage. Could you be more specific about what you\'d like assistance with?';
+    return 'I\'m here to help with card creation, link shortening, and general questions about VibePage. Could you be more specific about what you\'d like assistance with?';
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {

@@ -6,19 +6,19 @@ const NotificationsPanel: React.FC = () => {
     {
       id: 1,
       type: 'success',
-      message: 'Domain transfer completed successfully',
+      message: 'Card design saved successfully',
       time: '2 hours ago'
     },
     {
       id: 2,
       type: 'warning',
-      message: 'Domain example.com expires in 30 days',
+      message: 'Card template updated with new features',
       time: '1 day ago'
     },
     {
       id: 3,
       type: 'info',
-      message: 'New feature: Domain privacy protection',
+      message: 'New feature: Link shortener integration',
       time: '2 days ago'
     }
   ];

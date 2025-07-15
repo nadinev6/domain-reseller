@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, User, ShoppingCart, LogOut } from 'lucide-react';
-import { useCart } from '../hooks/useCart';
+import { Menu, X, User, LogOut } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import CurrencySelector from './CurrencySelector';
 import LanguageSelector from './LanguageSelector';
@@ -10,14 +9,14 @@ import { Button } from './ui/button';
 import { AnimatedShinyText } from '../components/magicui/animated-shiny-text';
 
 interface HeaderProps {
-  toggleCart: () => void;
+  isCollapsed?: boolean;
+  onToggleCollapse?: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
+const Header: React.FC<HeaderProps> = ({ isCollapsed, onToggleCollapse }) => {
   const [navOpen, setNavOpen] = React.useState(false);
   const [authDialogOpen, setAuthDialogOpen] = React.useState(false);
   const [authDialogTab, setAuthDialogTab] = React.useState<'signin' | 'signup'>('signin');
-  const { cartItems } = useCart();
   const { user, signOut, loading } = useAuth();
 
   const handleAuthClick = (tab: 'signin' | 'signup') => {
@@ -29,11 +28,6 @@ const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
     await signOut();
   };
 
-  // Handle cart click with coming soon message
-  const handleCartClick = () => {
-    alert('Cart functionality is coming soon!');
-  };
-  
   return (
     <>
       <header className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md">
@@ -52,7 +46,6 @@ const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
               </Link>
               <nav className="hidden md:block">
                 <ul className="flex space-x-8">
-                  <li><Link to="/domains" className="hover:text-amber-300 transition-colors duration-200">Domains</Link></li>
                   <li><Link to="/pricing" className="hover:text-amber-300 transition-colors duration-200">Pricing</Link></li>
                   <li>
                     <Link 
@@ -70,19 +63,6 @@ const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
             <div className="flex items-center space-x-4">
               <LanguageSelector />
               <CurrencySelector />
-              
-              <button 
-                onClick={handleCartClick}
-                disabled={true}
-                className="relative p-2 hover:bg-purple-700 rounded-full transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <ShoppingCart size={20} />
-                {cartItems && cartItems.length > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-amber-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                    {cartItems.length}
-                  </span>
-                )}
-              </button>
               
               {!loading && (
                 <>
@@ -138,7 +118,6 @@ const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
           {navOpen && (
             <nav className="mt-4 md:hidden">
               <ul className="space-y-2">
-                <li><Link to="/domains" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">Domains</Link></li>
                 <li><Link to="/pricing" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">Pricing</Link></li>
                 <li>
                   <Link 

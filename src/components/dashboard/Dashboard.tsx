@@ -1,7 +1,5 @@
 import React from 'react';
-import { Shield, CreditCard, HelpCircle, Brain as Domain, ChevronRight, Bell } from 'lucide-react';
-import AccountOverview from './AccountOverview';
-import BillingSection from './BillingSection';
+import { Shield, CreditCard, HelpCircle, ChevronRight, Bell, Palette } from 'lucide-react';
 import SupportSection from './SupportSection';
 import SecuritySection from './SecuritySection';
 import NotificationsPanel from './NotificationsPanel';
@@ -13,16 +11,14 @@ const Dashboard: React.FC = () => {
       <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-8">
         <div className="max-w-6xl mx-auto px-4">
           <h1 className="text-2xl md:text-3xl font-bold mb-2">Welcome back, Sarah!</h1>
-          <p className="text-indigo-100">Manage your domains and account settings</p>
+          <p className="text-indigo-100">Manage your VibePage cards and account settings</p>
         </div>
       </div>
       
       <div className="max-w-6xl mx-auto px-4 -mt-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="md:col-span-2 space-y-6">
-            <AccountOverview />
             <SavedCardsSection />
-            <BillingSection />
             <SupportSection />
             <SecuritySection />
           </div>
@@ -35,16 +31,8 @@ const Dashboard: React.FC = () => {
               <div className="space-y-2">
                 <button className="w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 flex items-center justify-between group transition-colors duration-200">
                   <span className="flex items-center">
-                    <Domain size={18} className="text-indigo-600 mr-3" />
-                    Register New Domain
-                  </span>
-                  <ChevronRight size={16} className="text-gray-400 group-hover:text-indigo-600 transition-colors duration-200" />
-                </button>
-                
-                <button className="w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 flex items-center justify-between group transition-colors duration-200">
-                  <span className="flex items-center">
-                    <CreditCard size={18} className="text-indigo-600 mr-3" />
-                    Update Payment Method
+                    <Palette size={18} className="text-indigo-600 mr-3" />
+                    Create New Card
                   </span>
                   <ChevronRight size={16} className="text-gray-400 group-hover:text-indigo-600 transition-colors duration-200" />
                 </button>
