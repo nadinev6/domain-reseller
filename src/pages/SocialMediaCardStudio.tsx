@@ -83,18 +83,14 @@ const SocialMediaCardStudio: React.FC = () => {
             {user ? (
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/card-studio/editor">
-                  <RainbowButton size="lg" className="text-lg px-8 py-3">
-                    <AnimatedShinyText className="text-white !mx-0 !max-w-none">
-                      Open Standard Editor
-                    </AnimatedShinyText>
+                  <RainbowButton size="lg" className="text-white text-lg px-8 py-3">
+                    Open Standard Editor
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </RainbowButton>
                 </Link>
                 <Link to="/card-studio/advanced-editor"> {/* New button for Advanced Editor */}
-                  <RainbowButton size="lg" className="text-lg px-8 py-3">
-                    <AnimatedShinyText className="text-white !mx-0 !max-w-none">
-                      Open Advanced Editor
-                    </AnimatedShinyText>
+                  <RainbowButton size="lg" className="text-white text-lg px-8 py-3">
+                    Open Advanced Editor
                     <Sparkles className="ml-2 w-5 h-5" />
                   </RainbowButton>
                 </Link>
@@ -103,17 +99,13 @@ const SocialMediaCardStudio: React.FC = () => {
                   onClick={openCopyForgeStudio}
                   className="bg-gradient-to-r from-orange-500 to-red-600 text-white hover:from-orange-600 hover:to-red-700 text-lg px-8 py-3"
                 >
-                  <AnimatedShinyText className="text-white !mx-0 !max-w-none">
-                    Open CopyForge Studio
-                  </AnimatedShinyText>
+                  Open CopyForge Studio
                   <Zap className="ml-2 w-5 h-5" />
                 </Button>
               </div>
             ) : (
-              <RainbowButton size="lg" className="text-lg px-8 py-3">
-                <AnimatedShinyText className="text-white !mx-0 !max-w-none">
-                  Sign Up to Get Started
-                </AnimatedShinyText>
+              <RainbowButton size="lg" className="text-white text-lg px-8 py-3">
+                Sign Up to Get Started
                 <ArrowRight className="ml-2 w-5 h-5" />
               </RainbowButton>
             )}
@@ -246,18 +238,14 @@ const SocialMediaCardStudio: React.FC = () => {
           {user ? (
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/card-studio/editor">
-                <RainbowButton size="lg" className="text-lg px-8 py-3">
-                  <AnimatedShinyText className="text-white !mx-0 !max-w-none">
-                    Start Standard Editor
-                  </AnimatedShinyText>
+                <RainbowButton size="lg" className="text-white text-lg px-8 py-3">
+                  Start Standard Editor
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </RainbowButton>
               </Link>
               <Link to="/card-studio/advanced-editor"> {/* New button for Advanced Editor */}
-                <RainbowButton size="lg" className="text-lg px-8 py-3">
-                  <AnimatedShinyText className="text-white !mx-0 !max-w-none">
-                    Start Advanced Editor
-                  </AnimatedShinyText>
+                <RainbowButton size="lg" className="text-white text-lg px-8 py-3">
+                  Start Advanced Editor
                   <Sparkles className="ml-2 w-5 h-5" />
                 </RainbowButton>
               </Link>
@@ -266,17 +254,13 @@ const SocialMediaCardStudio: React.FC = () => {
                 onClick={openCopyForgeStudio}
                 className="bg-gradient-to-r from-orange-500 to-red-600 text-white hover:from-orange-600 hover:to-red-700 text-lg px-8 py-3"
               >
-                <AnimatedShinyText className="text-white !mx-0 !max-w-none">
-                  Open CopyForge Studio
-                </AnimatedShinyText>
+                Open CopyForge Studio
                 <Zap className="ml-2 w-5 h-5" />
               </Button>
             </div>
           ) : (
-            <RainbowButton size="lg" className="text-lg px-8 py-3">
-              <AnimatedShinyText className="text-white !mx-0 !max-w-none">
-                Sign Up to Get Started
-              </AnimatedShinyText>
+            <RainbowButton size="lg" className="text-white text-lg px-8 py-3">
+              Sign Up to Get Started
               <ArrowRight className="ml-2 w-5 h-5" />
             </RainbowButton>
           )}
