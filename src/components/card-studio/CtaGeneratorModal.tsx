@@ -37,7 +37,7 @@ const TRANSLATIONS = {
     "audienceDescription": "Describe your ideal customer for more targeted messaging",
     "audiencePlaceholder": "Who are you targeting? (age, pain points, desires, etc.)",
     "craftingCtas": "Crafting your CTAs...",
-    "generateCtas": "Generate CTAs & Scripts",
+    "generateCtas": "Generate CTAs Script",
     "generatedContent": "Generated Content",
     "copied": "Copied!",
     "copy": "Copy",
