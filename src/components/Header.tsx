@@ -7,12 +7,7 @@ import AuthDialog from './auth/AuthDialog';
 import { Button } from './ui/button';
 import { AnimatedShinyText } from '../components/magicui/animated-shiny-text';
 
-interface HeaderProps {
-  isCollapsed?: boolean;
-  onToggleCollapse?: () => void;
-}
-
-const Header: React.FC<HeaderProps> = ({ isCollapsed, onToggleCollapse }) => {
+const Header: React.FC = () => {
   const [navOpen, setNavOpen] = React.useState(false);
   const [authDialogOpen, setAuthDialogOpen] = React.useState(false);
   const [authDialogTab, setAuthDialogTab] = React.useState<'signin' | 'signup'>('signin');

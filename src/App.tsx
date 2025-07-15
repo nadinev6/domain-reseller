@@ -2,7 +2,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import BotInterfaceWrapper from './components/BotInterfaceWrapper';
 import SocialMediaCardStudio from './pages/SocialMediaCardStudio';
 import CardStudioEditor from './pages/CardStudioEditor';
 import AdvancedCardStudioEditor from './pages/AdvancedCardStudioEditor';
@@ -11,17 +10,12 @@ import { CurrencyProvider } from './context/CurrencyContext';
 import { AuthProvider } from './context/AuthContext';
 
 export default function App() {
-  const [isHeaderCollapsed, setIsHeaderCollapsed] = React.useState(false);
-  
   return (
     <Router>
       <AuthProvider>
         <CurrencyProvider>
           <div className="min-h-screen bg-gray-50 relative">
-            <Header 
-              isCollapsed={isHeaderCollapsed}
-              onToggleCollapse={() => setIsHeaderCollapsed(!isHeaderCollapsed)}
-            />
+            <Header />
             <Routes>
               <Route path="/card-studio" element={<SocialMediaCardStudio />} />
               <Route path="/card-studio/editor" element={<CardStudioEditor />} />
@@ -54,7 +48,6 @@ export default function App() {
                 </main>
               } />
             </Routes>
-            <BotInterfaceWrapper />
           </div>
         </CurrencyProvider>
       </AuthProvider>
