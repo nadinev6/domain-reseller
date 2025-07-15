@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Menu, X, User, LogOut } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import CurrencySelector from './CurrencySelector';
-import LanguageSelector from './LanguageSelector';
 import AuthDialog from './auth/AuthDialog';
 import { Button } from './ui/button';
 import { AnimatedShinyText } from '../components/magicui/animated-shiny-text';
@@ -61,7 +60,6 @@ const Header: React.FC<HeaderProps> = ({ isCollapsed, onToggleCollapse }) => {
             </div>
             
             <div className="flex items-center space-x-4">
-              <LanguageSelector />
               <CurrencySelector />
               
               {!loading && (

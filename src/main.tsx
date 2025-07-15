@@ -2,7 +2,6 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import { TamboProvider } from '@tambo-ai/react';
-import { LingoProviderWrapper, loadDictionary } from "lingo.dev/react-client";
 import { z } from 'zod';
 import './index.css';
 
@@ -114,9 +113,7 @@ createRoot(document.getElementById('root')!).render(
       apiKey={import.meta.env.VITE_TAMBO_API_KEY || 'demo-key'}
       components={tamboComponents}
     >
-      <LingoProviderWrapper loadDictionary={(locale) => loadDictionary(locale)}>
-        <App />
-      </LingoProviderWrapper>
+      <App />
     </TamboProvider>
   </StrictMode>,
 );
