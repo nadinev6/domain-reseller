@@ -555,8 +555,8 @@ Focus on:
                 /* Hashtags List */
                 <div className="space-y-2 max-h-64 overflow-y-auto">
                   {savedHashtags.length === 0 ? (
-                      <Check className="w-4 h-4 mr-1 text-green-600" />
-                      Copied!
+                    <p className="text-center text-gray-500 py-4">
+                      {t('noSavedHashtags')}
                     </p>
                   ) : (
                     savedHashtags.map((hashtag, index) => (
@@ -585,7 +585,7 @@ Focus on:
                             {t('removeHashtag')}
                           </Button>
                         </div>
-                      Copy to Clipboard
+                      </div>
                     ))
                   )}
                 </div>
