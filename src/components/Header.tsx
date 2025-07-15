@@ -46,7 +46,7 @@ const Header: React.FC = () => {
                       to={user ? "/card-studio/editor" : "/card-studio"} 
                       className="hover:text-amber-300 transition-colors duration-200"
                     >
-                      Card Studio
+                      Studio
                     </Link>
                   </li>
                   <li><Link to="/support" className="hover:text-amber-300 transition-colors duration-200">Support</Link></li>
@@ -117,7 +117,7 @@ const Header: React.FC = () => {
                     to={user ? "/card-studio/editor" : "/card-studio"} 
                     className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200"
                   >
-                    Card Studio
+                    Studio
                   </Link>
                 </li>
                 <li><Link to="/support" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">Support</Link></li>

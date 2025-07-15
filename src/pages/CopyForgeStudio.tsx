@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
-import { Zap, Copy, Check, Target, MessageSquare, User, Sparkles, TrendingUp, Loader2, AlertCircle } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Zap, Copy, Check, Target, User, Sparkles, TrendingUp, Loader2, AlertCircle, Plus, Trash2, Hash } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
+import { useAuth } from '../context/AuthContext';
+import { supabase } from '../lib/supabase';
+import ProtectedRoute from '../components/auth/ProtectedRoute';
 
 // Locale helpers
 const getBrowserLocale = (): string => {
@@ -36,7 +39,17 @@ const TRANSLATIONS = {
     "noContentGenerated": "No content generated yet. Fill out the form above and click 'Generate CTAs' to get started!",
     "errorOccurred": "An error occurred while generating content. Please try again.",
     "fillAllFields": "Please fill in your offer description to generate CTAs.",
-    "aiNotAvailable": "AI service is not available. Please check your setup."
+    "aiNotAvailable": "AI service is not available. Please check your setup.",
+    "mySavedHashtags": "My Saved Hashtags",
+    "addHashtag": "Add Hashtag",
+    "hashtagPlaceholder": "Enter hashtag (without #)",
+    "pasteHashtag": "Paste",
+    "removeHashtag": "Remove",
+    "noSavedHashtags": "No saved hashtags yet. Add some hashtags to get started!",
+    "hashtagExists": "This hashtag already exists in your saved list.",
+    "hashtagAdded": "Hashtag added successfully!",
+    "hashtagRemoved": "Hashtag removed successfully!",
+    "hashtagPasted": "Hashtag pasted to content!"
   },
   "es-ES": {
     "ctaScriptGenerator": "CopyForge Studio",
@@ -45,14 +58,18 @@ const TRANSLATIONS = {
     "generateCTAs": "Generar CTAs",
     "generatingCTAs": "Generando...",
     "copyToClipboard": "Copiar al Portapapeles",
-    "copied": "¡Copiado!"
+    "copied": "¡Copiado!",
+    "mySavedHashtags": "Mis Hashtags Guardados",
+    "addHashtag": "Agregar Hashtag"
   }
 };
 
 const currentLocale = findMatchingLocale(getBrowserLocale());
 const t = (key: string): string => TRANSLATIONS[currentLocale]?.[key] || TRANSLATIONS['en-US'][key] || key;
 
-const CopyForgeStudio: React.FC = () => {
+const CopyForgeStudioContent: React.FC = () => {
+  const { user } = useAuth();
+  
   // Form state
   const [rawOffer, setRawOffer] = useState('');
   const [targetAudience, setTargetAudience] = useState('');
@@ -63,6 +80,120 @@ const CopyForgeStudio: React.FC = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [copySuccess, setCopySuccess] = useState(false);
   const [error, setError] = useState('');
+
+  // Hashtag state
+  const [savedHashtags, setSavedHashtags] = useState<string[]>([]);
+  const [newHashtag, setNewHashtag] = useState('');
+  const [isLoadingSavedHashtags, setIsLoadingSavedHashtags] = useState(false);
+  const [savedHashtagsError, setSavedHashtagsError] = useState('');
+  const [hashtagFeedback, setHashtagFeedback] = useState('');
+
+  // Load saved hashtags on component mount
+  useEffect(() => {
+    if (user) {
+      fetchSavedHashtags();
+    }
+  }, [user]);
+
+  // Fetch user's saved hashtags from Supabase
+  const fetchSavedHashtags = async () => {
+    if (!user) return;
+
+    setIsLoadingSavedHashtags(true);
+    setSavedHashtagsError('');
+
+    try {
+      const { data, error } = await supabase
+        .from('user_hashtags')
+        .select('hashtags')
+        .eq('user_id', user.id)
+        .single();
+
+      if (error && error.code !== 'PGRST116') { // PGRST116 is "not found" error
+        throw error;
+      }
+
+      setSavedHashtags(data?.hashtags || []);
+    } catch (error) {
+      console.error('Error fetching saved hashtags:', error);
+      setSavedHashtagsError('Failed to load saved hashtags');
+    } finally {
+      setIsLoadingSavedHashtags(false);
+    }
+  };
+
+  // Add a new hashtag
+  const addHashtag = async () => {
+    if (!user || !newHashtag.trim()) return;
+
+    const cleanHashtag = newHashtag.trim().replace(/^#/, ''); // Remove # if user added it
+    
+    // Check if hashtag already exists
+    if (savedHashtags.includes(cleanHashtag)) {
+      setHashtagFeedback(t('hashtagExists'));
+      setTimeout(() => setHashtagFeedback(''), 3000);
+      return;
+    }
+
+    try {
+      const updatedHashtags = [...savedHashtags, cleanHashtag];
+
+      const { error } = await supabase
+        .from('user_hashtags')
+        .upsert({
+          user_id: user.id,
+          hashtags: updatedHashtags,
+          updated_at: new Date().toISOString()
+        });
+
+      if (error) throw error;
+
+      setSavedHashtags(updatedHashtags);
+      setNewHashtag('');
+      setHashtagFeedback(t('hashtagAdded'));
+      setTimeout(() => setHashtagFeedback(''), 3000);
+    } catch (error) {
+      console.error('Error adding hashtag:', error);
+      setSavedHashtagsError('Failed to add hashtag');
+    }
+  };
+
+  // Remove a hashtag
+  const removeHashtag = async (hashtagToRemove: string) => {
+    if (!user) return;
+
+    try {
+      const updatedHashtags = savedHashtags.filter(tag => tag !== hashtagToRemove);
+
+      const { error } = await supabase
+        .from('user_hashtags')
+        .upsert({
+          user_id: user.id,
+          hashtags: updatedHashtags,
+          updated_at: new Date().toISOString()
+        });
+
+      if (error) throw error;
+
+      setSavedHashtags(updatedHashtags);
+      setHashtagFeedback(t('hashtagRemoved'));
+      setTimeout(() => setHashtagFeedback(''), 3000);
+    } catch (error) {
+      console.error('Error removing hashtag:', error);
+      setSavedHashtagsError('Failed to remove hashtag');
+    }
+  };
+
+  // Paste hashtag to generated content
+  const handlePasteHashtag = (hashtag: string) => {
+    const hashtagWithSymbol = `#${hashtag}`;
+    const currentContent = generatedContent;
+    const newContent = currentContent ? `${currentContent}\n\n${hashtagWithSymbol}` : hashtagWithSymbol;
+    
+    setGeneratedContent(newContent);
+    setHashtagFeedback(t('hashtagPasted'));
+    setTimeout(() => setHashtagFeedback(''), 2000);
+  };
 
   // AI Integration Function
   const generateWithAI = async (prompt: string): Promise<string> => {
@@ -176,6 +307,14 @@ Focus on:
     if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
       e.preventDefault();
       handleGenerateCTAs();
+    }
+  };
+
+  // Handle hashtag input key press
+  const handleHashtagKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      addHashtag();
     }
   };
 
@@ -303,6 +442,7 @@ Focus on:
 
           {/* Output Section */}
           <div className="space-y-6">
+            {/* Generated Content */}
             <div className="bg-white rounded-xl shadow-sm p-6 border border-orange-100">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center">
@@ -360,10 +500,109 @@ Focus on:
                 )}
               </div>
             </div>
+
+            {/* My Saved Hashtags */}
+            <div className="bg-white rounded-xl shadow-sm p-6 border border-orange-100">
+              <div className="flex items-center mb-4">
+                <Hash className="w-5 h-5 text-orange-600 mr-2" />
+                <h2 className="text-lg font-semibold text-gray-900">
+                  {t('mySavedHashtags')}
+                </h2>
+              </div>
+
+              {/* Add New Hashtag */}
+              <div className="flex gap-2 mb-4">
+                <Input
+                  value={newHashtag}
+                  onChange={(e) => setNewHashtag(e.target.value)}
+                  onKeyDown={handleHashtagKeyPress}
+                  placeholder={t('hashtagPlaceholder')}
+                  className="flex-1"
+                />
+                <Button
+                  onClick={addHashtag}
+                  disabled={!newHashtag.trim()}
+                  size="sm"
+                  className="bg-orange-500 hover:bg-orange-600"
+                >
+                  <Plus className="w-4 h-4 mr-1" />
+                  {t('addHashtag')}
+                </Button>
+              </div>
+
+              {/* Feedback Messages */}
+              {hashtagFeedback && (
+                <div className="mb-4 p-2 bg-green-50 border border-green-200 rounded-md">
+                  <p className="text-sm text-green-700">{hashtagFeedback}</p>
+                </div>
+              )}
+
+              {/* Error Display */}
+              {savedHashtagsError && (
+                <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-md flex items-start">
+                  <AlertCircle className="w-5 h-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <p className="text-sm text-red-700">{savedHashtagsError}</p>
+                </div>
+              )}
+
+              {/* Loading State */}
+              {isLoadingSavedHashtags ? (
+                <div className="flex items-center justify-center py-8">
+                  <Loader2 className="w-6 h-6 animate-spin text-orange-600 mr-2" />
+                  <span className="text-gray-600">Loading hashtags...</span>
+                </div>
+              ) : (
+                /* Hashtags List */
+                <div className="space-y-2 max-h-64 overflow-y-auto">
+                  {savedHashtags.length === 0 ? (
+                    <p className="text-gray-500 text-center py-4">
+                      {t('noSavedHashtags')}
+                    </p>
+                  ) : (
+                    savedHashtags.map((hashtag, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                      >
+                        <span className="font-mono text-sm">#{hashtag}</span>
+                        <div className="flex gap-2">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => handlePasteHashtag(hashtag)}
+                            className="text-orange-600 hover:text-orange-700 hover:bg-orange-50"
+                          >
+                            <Copy className="w-3 h-3 mr-1" />
+                            {t('pasteHashtag')}
+                          </Button>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => removeHashtag(hashtag)}
+                            className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                          >
+                            <Trash2 className="w-3 h-3 mr-1" />
+                            {t('removeHashtag')}
+                          </Button>
+                        </div>
+                      </div>
+                    ))
+                  )}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
     </main>
+  );
+};
+
+const CopyForgeStudio: React.FC = () => {
+  return (
+    <ProtectedRoute>
+      <CopyForgeStudioContent />
+    </ProtectedRoute>
   );
 };
 
