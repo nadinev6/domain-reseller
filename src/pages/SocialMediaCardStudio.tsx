@@ -250,16 +250,16 @@ const SocialMediaCardStudio: React.FC = () => {
           {user ? (
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/card-studio/editor">
-                <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
-                  <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
+                <Button size="lg" className="bg-gradient-rainbow text-white hover:opacity-90 text-lg px-8 py-3">
+                  <AnimatedShinyText className="text-white !mx-0 !max-w-none">
                     Start Standard Editor
                   </AnimatedShinyText>
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
               <Link to="/card-studio/advanced-editor"> {/* New button for Advanced Editor */}
-                <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
-                  <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
+                <Button size="lg" className="bg-gradient-rainbow text-white hover:opacity-90 text-lg px-8 py-3">
+                  <AnimatedShinyText className="text-white !mx-0 !max-w-none">
                     Start Advanced Editor
                   </AnimatedShinyText>
                   <Sparkles className="ml-2 w-5 h-5" />
@@ -282,6 +282,11 @@ const SocialMediaCardStudio: React.FC = () => {
                 Sign Up to Get Started
               </AnimatedShinyText>
               <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          )}
+        </div>
+      </div>
+    </div>
   );
 };
 
