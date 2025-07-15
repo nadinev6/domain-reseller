@@ -1,5 +1,6 @@
 import React from 'react';
 import { Shield, CreditCard, HelpCircle, ChevronRight, Bell, Palette } from 'lucide-react';
+import { useAuth } from '../../context/AuthContext';
 import SupportSection from './SupportSection';
 import SecuritySection from './SecuritySection';
 import NotificationsPanel from './NotificationsPanel';
@@ -7,11 +8,15 @@ import SavedCardsSection from './SavedCardsSection';
 import LinkShortener from '../LinkShortener';
 
 const Dashboard: React.FC = () => {
+  const { user } = useAuth();
+
   return (
     <div className="min-h-screen bg-gray-50 pb-12">
       <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-8">
         <div className="max-w-6xl mx-auto px-4">
-          <h1 className="text-2xl md:text-3xl font-bold mb-2">Welcome back, Sarah!</h1>
+          <h1 className="text-2xl md:text-3xl font-bold mb-2">
+            Welcome back, {user?.user_metadata?.full_name || user?.email || 'User'}!
+          </h1>
           <p className="text-indigo-100">Manage your VibePage cards and account settings</p>
         </div>
       </div>
