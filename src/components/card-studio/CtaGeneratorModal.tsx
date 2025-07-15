@@ -13,7 +13,7 @@ import {
 
 const TRANSLATIONS = {
   "en-US": {
-    "ctaScriptGenerator": "CTA & Script Generator",
+    "ctaScriptGenerator": "CTA Generator",
     "transformIdeasDescription": "Transform your ideas into compelling CTAs and persuasive scripts that convert visitors into customers",
     "yourOfferGoals": "Your Offer & Goals",
     "offerPlaceholder": "Describe what you're selling or promoting... Your product, service, benefit, target action - just get your ideas down!",
