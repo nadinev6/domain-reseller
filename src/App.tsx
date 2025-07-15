@@ -1,6 +1,7 @@
 // src/App.tsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuroraText } from './components/magicui/aurora-text';
 import Header from './components/Header';
 import SocialMediaCardStudio from './pages/SocialMediaCardStudio';
 import CardStudioEditor from './pages/CardStudioEditor';
@@ -26,8 +27,8 @@ export default function App() {
               <Route path="/" element={
                 <main className="pt-20">
                   <div className="max-w-6xl mx-auto px-4 py-12 text-center">
-                    <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
-                      Welcome to VibePage
+                    <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                      Welcome to <AuroraText colors={['#4f46e5', '#7c3aed', '#ec4899', '#06b6d4']}>VibePage</AuroraText>
                     </h1>
                     <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
                       Create stunning social media cards and manage your online presence
