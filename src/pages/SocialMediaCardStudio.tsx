@@ -2,7 +2,6 @@
 import React from 'react';
 import { Palette, Smartphone, MousePointer, Globe, ArrowRight, Sparkles, Zap } from 'lucide-react';
 import { Button } from '../components/ui/button';
-import { RainbowButton } from '../components/magicui/rainbow-button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { useAuth } from '../context/AuthContext';
@@ -83,32 +82,45 @@ const SocialMediaCardStudio: React.FC = () => {
             {user ? (
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/card-studio/editor">
-                  <RainbowButton size="lg" className="text-white text-lg px-8 py-3">
-                    Open Standard Editor
+                  <Button size="lg" className="bg-gradient-rainbow text-white hover:opacity-90 text-lg px-8 py-3">
+                    <AnimatedShinyText className="text-white !mx-0 !max-w-none">
+                      Open Standard Editor
+                    </AnimatedShinyText>
                     <ArrowRight className="ml-2 w-5 h-5" />
-                  </RainbowButton>
+                  </Button>
                 </Link>
                 <Link to="/card-studio/advanced-editor"> {/* New button for Advanced Editor */}
-                  <RainbowButton size="lg" className="text-white text-lg px-8 py-3">
-                    Open Advanced Editor
+                  <Button size="lg" className="bg-gradient-rainbow text-white hover:opacity-90 text-lg px-8 py-3">
+                    <AnimatedShinyText className="text-white !mx-0 !max-w-none">
+                      Open Advanced Editor
+                    </AnimatedShinyText>
                     <Sparkles className="ml-2 w-5 h-5" />
-                  </RainbowButton>
+                  </Button>
                 </Link>
                 <Button 
                   size="lg" 
                   onClick={openCopyForgeStudio}
                   className="bg-gradient-to-r from-orange-500 to-red-600 text-white hover:from-orange-600 hover:to-red-700 text-lg px-8 py-3"
                 >
-                  Open CopyForge Studio
+                  <AnimatedShinyText className="text-white !mx-0 !max-w-none">
+                    Open CopyForge Studio
+                  </AnimatedShinyText>
                   <Zap className="ml-2 w-5 h-5" />
                 </Button>
               </div>
             ) : (
-              <RainbowButton size="lg" className="text-white text-lg px-8 py-3">
-                Sign Up to Get Started
+              <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
+                <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
+                  Sign Up to Get Started
+                </AnimatedShinyText>
                 <ArrowRight className="ml-2 w-5 h-5" />
-              </RainbowButton>
+              </Button>
             )}
+            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-indigo-600 text-lg px-8 py-3">
+              <AnimatedShinyText className="text-indigo-600 hover:text-indigo-600 !mx-0 !max-w-none">
+                View Examples
+              </AnimatedShinyText>
+            </Button>
           </div>
         </div>
       </div>
@@ -238,31 +250,39 @@ const SocialMediaCardStudio: React.FC = () => {
           {user ? (
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/card-studio/editor">
-                <RainbowButton size="lg" className="text-white text-lg px-8 py-3">
-                  Start Standard Editor
+                <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
+                  <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
+                    Start Standard Editor
+                  </AnimatedShinyText>
                   <ArrowRight className="ml-2 w-5 h-5" />
-                </RainbowButton>
+                </Button>
               </Link>
               <Link to="/card-studio/advanced-editor"> {/* New button for Advanced Editor */}
-                <RainbowButton size="lg" className="text-white text-lg px-8 py-3">
-                  Start Advanced Editor
+                <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
+                  <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
+                    Start Advanced Editor
+                  </AnimatedShinyText>
                   <Sparkles className="ml-2 w-5 h-5" />
-                </RainbowButton>
+                </Button>
               </Link>
               <Button 
                 size="lg" 
                 onClick={openCopyForgeStudio}
                 className="bg-gradient-to-r from-orange-500 to-red-600 text-white hover:from-orange-600 hover:to-red-700 text-lg px-8 py-3"
               >
-                Open CopyForge Studio
+                <AnimatedShinyText className="text-white !mx-0 !max-w-none">
+                  Open CopyForge Studio
+                </AnimatedShinyText>
                 <Zap className="ml-2 w-5 h-5" />
               </Button>
             </div>
           ) : (
-            <RainbowButton size="lg" className="text-white text-lg px-8 py-3">
-              Sign Up to Get Started
+            <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
+              <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
+                Sign Up to Get Started
+              </AnimatedShinyText>
               <ArrowRight className="ml-2 w-5 h-5" />
-            </RainbowButton>
+            </Button>
           )}
         </div>
       </div>

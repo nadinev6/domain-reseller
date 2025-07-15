@@ -1,4 +1,4 @@
-import { cn } from "../../lib/utils";
+import { cn } from "@/lib/utils";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, VariantProps } from "class-variance-authority";
 import React from "react";
@@ -60,5 +60,3 @@ const RainbowButton = React.forwardRef<HTMLButtonElement, RainbowButtonProps>(
 RainbowButton.displayName = "RainbowButton";
 
 export { RainbowButton, rainbowButtonVariants, type RainbowButtonProps };
-
-
