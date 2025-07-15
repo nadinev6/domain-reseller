@@ -5,6 +5,7 @@ import Header from './components/Header';
 import SocialMediaCardStudio from './pages/SocialMediaCardStudio';
 import CardStudioEditor from './pages/CardStudioEditor';
 import AdvancedCardStudioEditor from './pages/AdvancedCardStudioEditor';
+import CopyForgeStudio from './pages/CopyForgeStudio';
 import Dashboard from './components/dashboard/Dashboard';
 import { CurrencyProvider } from './context/CurrencyContext';
 import { AuthProvider } from './context/AuthContext';
@@ -20,6 +21,7 @@ export default function App() {
               <Route path="/card-studio" element={<SocialMediaCardStudio />} />
               <Route path="/card-studio/editor" element={<CardStudioEditor />} />
               <Route path="/card-studio/advanced-editor" element={<AdvancedCardStudioEditor />} />
+              <Route path="/copyforge-studio" element={<CopyForgeStudio />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/" element={
                 <main className="pt-20">

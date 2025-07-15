@@ -1,13 +1,12 @@
 // src/pages/AdvancedCardStudioEditor.tsx
 import React, { useState, useCallback, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Save, Download, Undo, Redo, Eye, Loader2, Zap } from 'lucide-react';
+import { Save, Download, Undo, Redo, Eye, Loader2 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import ProtectedRoute from '../components/auth/ProtectedRoute';
 import Toolbox from '../components/card-studio/Toolbox';
 import EditorCanvas from '../components/card-studio/EditorCanvas';
 import PropertiesPanel from '../components/card-studio/PropertiesPanel';
-import CtaGeneratorModal from '../components/card-studio/CtaGeneratorModal';
 import { CardElement } from '../types';
 import { useAuth } from '../context/AuthContext';
 import { supabase } from '../lib/supabase';
@@ -28,7 +27,6 @@ const AdvancedCardStudioEditorContent: React.FC = () => {
   const [history, setHistory] = useState<CardElement[][]>([[]]);
   const [historyIndex, setHistoryIndex] = useState(0);
   const [isSaving, setIsSaving] = useState(false);
-  const [isCtaModalOpen, setIsCtaModalOpen] = useState(false);
 
   // Load card from URL parameter if provided
   useEffect(() => {
@@ -300,34 +298,6 @@ const AdvancedCardStudioEditorContent: React.FC = () => {
     alert('Export feature coming soon!');
   }, []);
 
-  const handleGeneratedCta = useCallback((generatedText: string) => {
-    // Add the generated CTA text as a new text element to the canvas
-    addElement('text', 100, 100);
-    
-    // Find the newly added element and update its content
-    setTimeout(() => {
-      const newElements = [...elements];
-      const lastElement = newElements[newElements.length - 1];
-      if (lastElement && lastElement.type === 'text') {
-        const updatedElement = { ...lastElement, content: generatedText };
-        const updatedElements = newElements.map(el => 
-          el.id === lastElement.id ? updatedElement : el
-        );
-        setElements(updatedElements);
-        setSelectedElement(updatedElement);
-        
-        // Add to history
-        const newHistory = history.slice(0, historyIndex + 1);
-        newHistory.push(updatedElements);
-        setHistory(newHistory);
-        setHistoryIndex(newHistory.length - 1);
-      }
-    }, 0);
-    
-    // Close the modal
-    setIsCtaModalOpen(false);
-  }, [addElement, elements, history, historyIndex]);
-
   return (
     <div className="h-screen bg-gray-100 flex flex-col">
       {/* Header */}
@@ -364,15 +334,6 @@ const AdvancedCardStudioEditorContent: React.FC = () => {
           <Button variant="outline" size="sm" className="flex items-center">
             <Eye className="w-4 h-4 mr-1" />
             Preview
-          </Button>
-          <Button 
-            variant="outline" 
-            size="sm" 
-            onClick={() => setIsCtaModalOpen(true)}
-            className="flex items-center"
-          >
-            <Zap className="w-4 h-4 mr-1" />
-            Generate CTA
           </Button>
           <Button variant="outline" size="sm" onClick={handleExportCard} className="flex items-center">
             <Download className="w-4 h-4 mr-1" />
@@ -422,13 +383,6 @@ const AdvancedCardStudioEditorContent: React.FC = () => {
           />
         </div>
       </div>
-      
-      {/* CTA Generator Modal */}
-      <CtaGeneratorModal 
-        isOpen={isCtaModalOpen}
-        onClose={() => setIsCtaModalOpen(false)}
-        onGenerateCta={handleGeneratedCta}
-      />
     </div>
   );
 };

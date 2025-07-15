@@ -1,15 +1,20 @@
 // src/pages/SocialMediaCardStudio.tsx
 import React from 'react';
-import { Palette, Smartphone, MousePointer, Globe, ArrowRight, Sparkles } from 'lucide-react';
+import { Palette, Smartphone, MousePointer, Globe, ArrowRight, Sparkles, Zap } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { useAuth } from '../context/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AnimatedShinyText } from '../components/magicui/animated-shiny-text';
 
 const SocialMediaCardStudio: React.FC = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const openCopyForgeStudio = () => {
+    window.open('/copyforge-studio', '_blank', 'noopener,noreferrer');
+  };
 
   const features = [
     {
@@ -92,6 +97,16 @@ const SocialMediaCardStudio: React.FC = () => {
                     <Sparkles className="ml-2 w-5 h-5" />
                   </Button>
                 </Link>
+                <Button 
+                  size="lg" 
+                  onClick={openCopyForgeStudio}
+                  className="bg-gradient-to-r from-orange-500 to-red-600 text-white hover:from-orange-600 hover:to-red-700 text-lg px-8 py-3"
+                >
+                  <AnimatedShinyText className="text-white !mx-0 !max-w-none">
+                    Open CopyForge Studio
+                  </AnimatedShinyText>
+                  <Zap className="ml-2 w-5 h-5" />
+                </Button>
               </div>
             ) : (
               <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
@@ -250,6 +265,16 @@ const SocialMediaCardStudio: React.FC = () => {
                   <Sparkles className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
+              <Button 
+                size="lg" 
+                onClick={openCopyForgeStudio}
+                className="bg-gradient-to-r from-orange-500 to-red-600 text-white hover:from-orange-600 hover:to-red-700 text-lg px-8 py-3"
+              >
+                <AnimatedShinyText className="text-white !mx-0 !max-w-none">
+                  Open CopyForge Studio
+                </AnimatedShinyText>
+                <Zap className="ml-2 w-5 h-5" />
+              </Button>
             </div>
           ) : (
             <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-3">
