@@ -1,4 +1,4 @@
-# VibePage - Domain Registration & Social Media Card Studio
+# VibePage - CopyForge & Social Media Card Studio
 
 A modern domain registration platform with an integrated social media card studio, powered by AI translations.
 
