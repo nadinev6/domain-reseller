@@ -1265,42 +1265,49 @@ export default {
         "9/0/init/body/22/argument/1/1": {
           content: {
             en: "<element:Link2></element:Link2> Link Shortener",
+            fr: "<element:Link2></element:Link2> Raccourcisseur de liens",
           },
           hash: "067f08db6494e1398ca3961aae90ee4b",
         },
         "9/0/init/body/22/argument/1/3": {
           content: {
             en: "Create short, trackable links for your social media cards and campaigns",
+            fr: "Crée des liens courts et traçables pour tes réseaux sociaux et campagnes",
           },
           hash: "42b668f844d1a8efb71fcdfd948bac90",
         },
         "9/0/init/body/22/argument/9/1/1": {
           content: {
             en: "Shorten URL",
+            fr: "Raccourcir URL",
           },
           hash: "9a0015c5186228a506183d5dd9accd92",
         },
         "9/0/init/body/22/argument/9/1/3": {
           content: {
             en: "Statistics",
+            fr: "Stats",
           },
           hash: "6774b3a4ae82401358d6510cbabf47f8",
         },
         "9/0/init/body/22/argument/9/1/5": {
           content: {
             en: "My Links",
+            fr: "Mes liens",
           },
           hash: "6f70a4d56e68e59eadec809af5786af2",
         },
         "9/0/init/body/22/argument/9/13/1/1/1/1/1": {
           content: {
             en: "My Links",
+            fr: "Mes liens",
           },
           hash: "6f70a4d56e68e59eadec809af5786af2",
         },
         "9/0/init/body/22/argument/9/13/1/1/1/1/3": {
           content: {
             en: "Manage all your shortened links",
+            fr: "Gère tous tes liens raccourcis",
           },
           hash: "bda39aaaf426e18965ee9c96d0feb68a",
         },
@@ -1308,6 +1315,7 @@ export default {
           {
             content: {
               en: "→ {link.target}",
+              fr: "→ {link.target}",
             },
             hash: "f167b2d2313b4674e7274abe9eb56d88",
           },
@@ -1315,6 +1323,7 @@ export default {
           {
             content: {
               en: "Created: <function:formatDate/>",
+              fr: "Créé : <function:formatDate/>",
             },
             hash: "646d864aab5966792b627be467287682",
           },
@@ -1322,6 +1331,7 @@ export default {
           {
             content: {
               en: "Clicks: <expression/>",
+              fr: "Clics : <expression/>",
             },
             hash: "82aabee053addfafd7950d56217cb4f0",
           },
@@ -1329,6 +1339,7 @@ export default {
           {
             content: {
               en: "• {link.description}",
+              fr: "• {link.description}",
             },
             hash: "99ccb4acb838f40b4b4d613bee966170",
           },
@@ -1336,6 +1347,7 @@ export default {
           {
             content: {
               en: "View statistics",
+              fr: "Voir stats",
             },
             hash: "672ca245370fa2583f2ccc424b441cfa",
           },
@@ -1343,6 +1355,7 @@ export default {
           {
             content: {
               en: "Delete link",
+              fr: "Supprimer lien",
             },
             hash: "0b6b10ea692ca7aa54cf5302eb924756",
           },
@@ -1350,6 +1363,7 @@ export default {
           {
             content: {
               en: "No links created yet",
+              fr: "Aucun lien créé",
             },
             hash: "7474e8a7ed9d859314d5417f24a2b8bd",
           },
@@ -1357,60 +1371,70 @@ export default {
           {
             content: {
               en: "Create your first shortened link to get started",
+              fr: "Crée ton premier lien court pour commencer",
             },
             hash: "633d52324ef97b8626abe5233a7c1a66",
           },
         "9/0/init/body/22/argument/9/13/1/3/1/expression/consequent/3": {
           content: {
             en: "Loading your links...",
+            fr: "Chargement de tes liens...",
           },
           hash: "21b67016ff604fd6483cd034c1cfbe2e",
         },
         "9/0/init/body/22/argument/9/5/1/1/1": {
           content: {
             en: "Create Short Link",
+            fr: "Créer lien court",
           },
           hash: "462ee6e47135c9b1452bdca8347e45ef",
         },
         "9/0/init/body/22/argument/9/5/1/1/3": {
           content: {
             en: "Enter a long URL to create a short, shareable link",
+            fr: "Entre une URL longue pour créer un lien court et partageable",
           },
           hash: "ce73036391521f8b3ef2d6037b365c6b",
         },
         "9/0/init/body/22/argument/9/5/1/3/1/1/1": {
           content: {
             en: "Long URL *",
+            fr: "URL longue *",
           },
           hash: "a4b69354330516015d8c68da1473f886",
         },
         "9/0/init/body/22/argument/9/5/1/3/1/1/3-placeholder": {
           content: {
             en: "https://example.com/very/long/url",
+            fr: "https://example.com/very/long/url",
           },
           hash: "e8d67fbefdae51d8b604b8e46d55d8d2",
         },
         "9/0/init/body/22/argument/9/5/1/3/1/11/1/expression/alternate": {
           content: {
             en: "<element:Link2></element:Link2> Shorten URL",
+            fr: "<element:Link2></element:Link2> Raccourcir URL",
           },
           hash: "3fd03b75f137fe10e91cb7d952742f9c",
         },
         "9/0/init/body/22/argument/9/5/1/3/1/11/1/expression/consequent": {
           content: {
             en: "<element:Loader2></element:Loader2> Shortening...",
+            fr: "<element:Loader2></element:Loader2> En cours...",
           },
           hash: "84db95a962a78aafa3752f7c05cb1672",
         },
         "9/0/init/body/22/argument/9/5/1/3/1/5/1": {
           content: {
             en: "<expression/><expression/> Advanced Options",
+            fr: "<expression/><expression/> Options avancées",
           },
           hash: "d5d6df4cb37d0228324dc74371036e5a",
         },
         "9/0/init/body/22/argument/9/5/1/3/1/9/expression/right/1/1": {
           content: {
             en: "Custom Short URL (Optional)",
+            fr: "URL courte perso (optionnel)",
           },
           hash: "00a6c6a0c1f31041b21bd97f1d1325e9",
         },
@@ -1418,18 +1442,21 @@ export default {
           {
             content: {
               en: "my-custom-link",
+              fr: "mon-lien-perso",
             },
             hash: "ccefb70c4c4a00cef54376858b8fd69f",
           },
         "9/0/init/body/22/argument/9/5/1/3/1/9/expression/right/1/5": {
           content: {
             en: "Will create: kutt.it/my-custom-link",
+            fr: "Créera : kutt.it/mon-lien-perso",
           },
           hash: "e110a9f2e187cef3ee34437e31599919",
         },
         "9/0/init/body/22/argument/9/5/1/3/1/9/expression/right/3/1": {
           content: {
             en: "Password Protection (Optional)",
+            fr: "Protection par mot de passe (optionnel)",
           },
           hash: "8161cbc85800660d2c0a2640cd0b54d8",
         },
@@ -1437,18 +1464,21 @@ export default {
           {
             content: {
               en: "Enter password",
+              fr: "Entre mot de passe",
             },
             hash: "a6d9d130ba9c3218e4e9558b633a5c73",
           },
         "9/0/init/body/22/argument/9/5/1/3/1/9/expression/right/5/1": {
           content: {
             en: "Expiration Date (Optional)",
+            fr: "Date d'expiration (optionnel)",
           },
           hash: "a4044499c9096ecb1a7b8e055056576d",
         },
         "9/0/init/body/22/argument/9/5/1/3/1/9/expression/right/7/1": {
           content: {
             en: "Description (Optional)",
+            fr: "Description (optionnel)",
           },
           hash: "d5519551a79f18fc414dc127b773485f",
         },
@@ -1456,66 +1486,77 @@ export default {
           {
             content: {
               en: "Brief description of this link",
+              fr: "Brève description du lien",
             },
             hash: "6ba5f7f605918c884673737b676a9a4b",
           },
         "9/0/init/body/22/argument/9/5/1/3/5/expression/right/1": {
           content: {
             en: "Your shortened URL:",
+            fr: "Ton URL raccourcie :",
           },
           hash: "7e56fa294c76231dff723574a0f74214",
         },
         "9/0/init/body/22/argument/9/5/1/3/5/expression/right/5": {
           content: {
             en: "Original: {shortenedResult.target}",
+            fr: "Original : {shortenedResult.target}",
           },
           hash: "d429cb0fe01f4383924ed0d30a81547d",
         },
         "9/0/init/body/22/argument/9/9/1/1/1": {
           content: {
             en: "Link Statistics",
+            fr: "Stats du lien",
           },
           hash: "98ca798242382690a2149966a83f8604",
         },
         "9/0/init/body/22/argument/9/9/1/1/3": {
           content: {
             en: "Get detailed statistics for any of your shortened links",
+            fr: "Obtiens des stats détaillées pour tes liens raccourcis",
           },
           hash: "9bf1a54f45ad22c64bf81e02a46e74ab",
         },
         "9/0/init/body/22/argument/9/9/1/3/1/1/1": {
           content: {
             en: "Link ID",
+            fr: "ID du lien",
           },
           hash: "e4973b4f85bfcdf9270371cde6dceead",
         },
         "9/0/init/body/22/argument/9/9/1/3/1/1/3-placeholder": {
           content: {
             en: "Enter link ID (from your links list)",
+            fr: "Entre l'ID du lien (depuis ta liste)",
           },
           hash: "e332947f716fe2fccaadf756af7602ec",
         },
         "9/0/init/body/22/argument/9/9/1/3/1/3/1/expression/alternate": {
           content: {
             en: "<element:BarChart3></element:BarChart3> Get Statistics",
+            fr: "<element:BarChart3></element:BarChart3> Voir stats",
           },
           hash: "15e0c2032c1d03cb325afbd1c60e1f2a",
         },
         "9/0/init/body/22/argument/9/9/1/3/1/3/1/expression/consequent": {
           content: {
             en: "<element:Loader2></element:Loader2> Loading...",
+            fr: "<element:Loader2></element:Loader2> Chargement...",
           },
           hash: "3a8d62d36aa7c0d65794685e6abfab5d",
         },
         "9/0/init/body/22/argument/9/9/1/3/5/expression/right/1": {
           content: {
             en: "Statistics",
+            fr: "Statistiques",
           },
           hash: "6774b3a4ae82401358d6510cbabf47f8",
         },
         "9/0/init/body/22/argument/9/9/1/3/5/expression/right/3/1/3": {
           content: {
             en: "Total Clicks",
+            fr: "Clics totaux",
           },
           hash: "0846b6e70396e2f39a617cfb64a3069e",
         },
@@ -3037,6 +3078,7 @@ export default {
         "7/0/init/body/0/argument/1/1/3": {
           content: {
             en: "Manage your VibePage cards and account settings",
+            fr: "Gérez vos cartes VibePage et paramètres de compte",
           },
           hash: "2a192d36a4039d5538ab08981c6c4dc4",
         },
@@ -3050,18 +3092,21 @@ export default {
         "7/0/init/body/0/argument/3/1/3/3/3/1/1": {
           content: {
             en: "<element:Palette></element:Palette> Create New Card",
+            fr: "<element:Palette></element:Palette> Créer une nouvelle carte",
           },
           hash: "b29409b6abd9f31adeb4523bb04f10b7",
         },
         "7/0/init/body/0/argument/3/1/3/3/3/3/1": {
           content: {
             en: "<element:HelpCircle></element:HelpCircle> Open Support Ticket",
+            fr: "<element:HelpCircle></element:HelpCircle> Ouvrir un ticket d'assistance",
           },
           hash: "e03d24a3e85ec8d7fd92932915010754",
         },
         "7/0/init/body/0/argument/3/1/3/3/3/5/1": {
           content: {
             en: "<element:Shield></element:Shield> Security Settings",
+            fr: "<element:Shield></element:Shield> Paramètres de sécurité",
           },
           hash: "66fcd54664fa6687ab5f2b4b652792bc",
         },
@@ -3994,12 +4039,14 @@ export default {
         "8/0/init/body/3/argument/15/1/5/expression/consequent/1/1/1": {
           content: {
             en: "Start Standard Editor",
+            fr: "Lancer l'éditeur standard",
           },
           hash: "b56ef4180feafa91b59c4e7760733a9b",
         },
         "8/0/init/body/3/argument/15/1/5/expression/consequent/3/3/1": {
           content: {
             en: "Start Advanced Editor",
+            fr: "Lancer l'éditeur avancé",
           },
           hash: "4e8ba67b78cd0b9f571c8e4d327d178b",
         },
@@ -4041,12 +4088,14 @@ export default {
         "8/0/init/body/3/argument/3/1/7/1/expression/consequent/1/1/1": {
           content: {
             en: "Open Standard Editor",
+            fr: "Ouvrir l'éditeur standard",
           },
           hash: "9289bf52463a591615ba84706a30503a",
         },
         "8/0/init/body/3/argument/3/1/7/1/expression/consequent/3/3/1": {
           content: {
             en: "Open Advanced Editor",
+            fr: "Ouvrir l'éditeur avancé",
           },
           hash: "a88c0545bcc49f6d96edc370de9a8e06",
         },
