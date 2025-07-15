@@ -1,6 +1,19 @@
 import { useState } from 'react';
 import { Zap, Copy, Check, Target, MessageSquare, User, Sparkles, TrendingUp } from 'lucide-react';
 
+import React, { useState } from 'react';
+import { Zap, Copy, Check, Target, MessageSquare, User, Sparkles, TrendingUp } from 'lucide-react';
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
+import { Label } from '../ui/label';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '../ui/dialog';
+
 const TRANSLATIONS = {
   "en-US": {
     "ctaScriptGenerator": "CTA & Script Generator",
