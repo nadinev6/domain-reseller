@@ -62,3 +62,60 @@ export interface SavedCard {
   created_at: string;
   updated_at: string;
 }
+
+// Kutt.it API Types
+export interface KuttShortenResponse {
+  id: string;
+  address: string;
+  target: string;
+  visit_count: number;
+  created_at: string;
+  updated_at: string;
+  link: string;
+  description?: string;
+  expire_in?: string;
+  password?: boolean;
+  user_id?: string;
+}
+
+export interface KuttStatsResponse {
+  id: string;
+  clicks: number;
+  views: {
+    [date: string]: number;
+  };
+  stats: {
+    browser: { [key: string]: number };
+    os: { [key: string]: number };
+    country: { [key: string]: number };
+    referrer: { [key: string]: number };
+  };
+}
+
+export interface KuttLink {
+  id: string;
+  address: string;
+  target: string;
+  visit_count: number;
+  created_at: string;
+  updated_at: string;
+  link: string;
+  description?: string;
+  expire_in?: string;
+  password?: boolean;
+  user_id?: string;
+}
+
+export interface KuttUserLinksResponse {
+  data: KuttLink[];
+  pagination: {
+    take: number;
+    skip: number;
+    total: number;
+  };
+}
+
+export interface KuttErrorResponse {
+  error: string;
+  message: string;
+}
