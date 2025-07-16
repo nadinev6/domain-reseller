@@ -168,6 +168,7 @@ const AdvancedCardStudioEditorContent: React.FC = () => {
         textAlign: 'left' as const,
         fontFamily: 'Inter, sans-serif',
         isGradientText: false,
+        isTextShadowEnabled: false,
         gradientColor1: '#3b82f6',
         gradientColor2: '#8b5cf6',
         gradientDirection: 'to right',
@@ -189,6 +190,7 @@ const AdvancedCardStudioEditorContent: React.FC = () => {
         buttonText: 'Click me',
         buttonColor: '#3b82f6',
         buttonTextColor: '#ffffff',
+        isButtonBoxShadowEnabled: false,
         href: '#',
         borderRadius: 6
       })
