@@ -41,6 +41,12 @@ export interface CardElement {
   buttonColor?: string;
   buttonTextColor?: string;
   href?: string;
+  // Button shadow properties
+  buttonBoxShadowColor?: string;
+  buttonBoxShadowOffsetX?: number;
+  buttonBoxShadowOffsetY?: number;
+  buttonBoxShadowBlurRadius?: number;
+  buttonBoxShadowSpreadRadius?: number;
 }
 
 export interface CardTemplate {

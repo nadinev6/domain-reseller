@@ -709,6 +709,149 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
               />
             </div>
 
+            {/* Button Shadow Section */}
+            <div className="space-y-3">
+              <div className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  id="buttonShadowToggle"
+                  checked={!!(selectedElement.buttonBoxShadowColor)}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      handleElementUpdate('buttonBoxShadowColor', 'rgba(0, 0, 0, 0.1)');
+                      handleElementUpdate('buttonBoxShadowOffsetX', 0);
+                      handleElementUpdate('buttonBoxShadowOffsetY', 2);
+                      handleElementUpdate('buttonBoxShadowBlurRadius', 4);
+                      handleElementUpdate('buttonBoxShadowSpreadRadius', 0);
+                    } else {
+                      handleElementUpdate('buttonBoxShadowColor', undefined);
+                      handleElementUpdate('buttonBoxShadowOffsetX', undefined);
+                      handleElementUpdate('buttonBoxShadowOffsetY', undefined);
+                      handleElementUpdate('buttonBoxShadowBlurRadius', undefined);
+                      handleElementUpdate('buttonBoxShadowSpreadRadius', undefined);
+                    }
+                  }}
+                  className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                />
+                <Label htmlFor="buttonShadowToggle" className="text-sm">Enable Button Shadow</Label>
+              </div>
+              
+              {selectedElement.buttonBoxShadowColor && (
+                <div className="space-y-3 p-3 bg-gray-50 rounded-lg">
+                  <div>
+                    <Label htmlFor="buttonShadowColor" className="text-xs">Shadow Color</Label>
+                    <Input
+                      id="buttonShadowColor"
+                      type="color"
+                      value={selectedElement.buttonBoxShadowColor?.startsWith('rgba') ? '#000000' : selectedElement.buttonBoxShadowColor || '#000000'}
+                      onChange={(e) => handleElementUpdate('buttonBoxShadowColor', e.target.value)}
+                    />
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-2">
+                    <div>
+                      <Label htmlFor="buttonShadowOffsetX" className="text-xs">X Offset</Label>
+                      <Input
+                        id="buttonShadowOffsetX"
+                        type="number"
+                        value={selectedElement.buttonBoxShadowOffsetX || 0}
+                        onChange={(e) => handleElementUpdate('buttonBoxShadowOffsetX', parseInt(e.target.value))}
+                        className="text-xs"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="buttonShadowOffsetY" className="text-xs">Y Offset</Label>
+                      <Input
+                        id="buttonShadowOffsetY"
+                        type="number"
+                        value={selectedElement.buttonBoxShadowOffsetY || 0}
+                        onChange={(e) => handleElementUpdate('buttonBoxShadowOffsetY', parseInt(e.target.value))}
+                        className="text-xs"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-2">
+                    <div>
+                      <Label htmlFor="buttonShadowBlur" className="text-xs">Blur Radius</Label>
+                      <Input
+                        id="buttonShadowBlur"
+                        type="number"
+                        min="0"
+                        value={selectedElement.buttonBoxShadowBlurRadius || 0}
+                        onChange={(e) => handleElementUpdate('buttonBoxShadowBlurRadius', parseInt(e.target.value))}
+                        className="text-xs"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="buttonShadowSpread" className="text-xs">Spread Radius</Label>
+                      <Input
+                        id="buttonShadowSpread"
+                        type="number"
+                        value={selectedElement.buttonBoxShadowSpreadRadius || 0}
+                        onChange={(e) => handleElementUpdate('buttonBoxShadowSpreadRadius', parseInt(e.target.value))}
+                        className="text-xs"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="text-xs text-gray-600">
+                    <p className="mb-1">Quick Presets:</p>
+                    <div className="flex space-x-1">
+                      <button
+                        onClick={() => {
+                          handleElementUpdate('buttonBoxShadowOffsetX', 0);
+                          handleElementUpdate('buttonBoxShadowOffsetY', 2);
+                          handleElementUpdate('buttonBoxShadowBlurRadius', 4);
+                          handleElementUpdate('buttonBoxShadowSpreadRadius', 0);
+                          handleElementUpdate('buttonBoxShadowColor', 'rgba(0, 0, 0, 0.1)');
+                        }}
+                        className="px-2 py-1 bg-white rounded text-xs hover:bg-gray-100 transition-colors"
+                      >
+                        Subtle
+                      </button>
+                      <button
+                        onClick={() => {
+                          handleElementUpdate('buttonBoxShadowOffsetX', 0);
+                          handleElementUpdate('buttonBoxShadowOffsetY', 4);
+                          handleElementUpdate('buttonBoxShadowBlurRadius', 8);
+                          handleElementUpdate('buttonBoxShadowSpreadRadius', 0);
+                          handleElementUpdate('buttonBoxShadowColor', 'rgba(0, 0, 0, 0.15)');
+                        }}
+                        className="px-2 py-1 bg-white rounded text-xs hover:bg-gray-100 transition-colors"
+                      >
+                        Lifted
+                      </button>
+                      <button
+                        onClick={() => {
+                          handleElementUpdate('buttonBoxShadowOffsetX', 0);
+                          handleElementUpdate('buttonBoxShadowOffsetY', 8);
+                          handleElementUpdate('buttonBoxShadowBlurRadius', 16);
+                          handleElementUpdate('buttonBoxShadowSpreadRadius', 0);
+                          handleElementUpdate('buttonBoxShadowColor', 'rgba(0, 0, 0, 0.2)');
+                        }}
+                        className="px-2 py-1 bg-white rounded text-xs hover:bg-gray-100 transition-colors"
+                      >
+                        Strong
+                      </button>
+                      <button
+                        onClick={() => {
+                          handleElementUpdate('buttonBoxShadowOffsetX', 0);
+                          handleElementUpdate('buttonBoxShadowOffsetY', 0);
+                          handleElementUpdate('buttonBoxShadowBlurRadius', 0);
+                          handleElementUpdate('buttonBoxShadowSpreadRadius', 2);
+                          handleElementUpdate('buttonBoxShadowColor', '#3b82f6');
+                        }}
+                        className="px-2 py-1 bg-white rounded text-xs hover:bg-gray-100 transition-colors"
+                      >
+                        Outline
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
             {commonProperties}
           </div>
         );

@@ -236,8 +236,7 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
         };
 
         // Apply text shadow if configured
-        if (element.textShadowColor && 
-            (element.textShadowOffsetX !== undefined || element.textShadowOffsetY !== undefined || element.textShadowBlurRadius !== undefined)) {
+        if (element.textShadowColor) {
           const offsetX = element.textShadowOffsetX || 0;
           const offsetY = element.textShadowOffsetY || 0;
           const blurRadius = element.textShadowBlurRadius || 0;
@@ -360,20 +359,31 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
         break;
         
       case 'button':
+        const buttonStyle: React.CSSProperties = {
+          ...baseStyle,
+          backgroundColor: element.buttonColor,
+          color: element.buttonTextColor,
+          border: 'none',
+          borderRadius: element.borderRadius || 6,
+          fontSize: '14px',
+          fontWeight: '500',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        };
+
+        // Apply button box shadow if configured
+        if (element.buttonBoxShadowColor) {
+          const offsetX = element.buttonBoxShadowOffsetX || 0;
+          const offsetY = element.buttonBoxShadowOffsetY || 0;
+          const blurRadius = element.buttonBoxShadowBlurRadius || 0;
+          const spreadRadius = element.buttonBoxShadowSpreadRadius || 0;
+          buttonStyle.boxShadow = `${offsetX}px ${offsetY}px ${blurRadius}px ${spreadRadius}px ${element.buttonBoxShadowColor}`;
+        }
+
         content = (
           <button
-            style={{
-              ...baseStyle,
-              backgroundColor: element.buttonColor,
-              color: element.buttonTextColor,
-              border: 'none',
-              borderRadius: element.borderRadius || 6,
-              fontSize: '14px',
-              fontWeight: '500',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
+            style={buttonStyle}
             onMouseDown={(e) => handleElementMouseDown(e, element)}
           >
             {element.buttonText || 'Click me'}
