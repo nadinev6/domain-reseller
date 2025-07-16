@@ -56,11 +56,27 @@ export interface SavedCard {
       width: number;
       height: number;
       backgroundColor: string;
+      backgroundLayers?: GradientLayer[];
     };
     timestamp: string;
   };
   created_at: string;
   updated_at: string;
+}
+
+// Gradient Layer Types
+export interface GradientLayer {
+  id: string;
+  type: 'linear' | 'radial';
+  colors: GradientColorStop[];
+  direction: string; // For linear: 'to right', '45deg', etc. For radial: 'circle', 'ellipse'
+  opacity: number; // 0-1 for layering effects
+  blendMode?: string; // CSS mix-blend-mode values
+}
+
+export interface GradientColorStop {
+  color: string;
+  position: number; // 0-100 percentage
 }
 
 // Kutt.it API Types

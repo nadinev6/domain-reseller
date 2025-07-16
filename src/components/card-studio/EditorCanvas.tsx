@@ -1,6 +1,6 @@
 import React, { useRef, useCallback, useState } from 'react';
 import { Trash2, Copy, RotateCw } from 'lucide-react';
-import { CardElement } from '../../types';
+import { CardElement, GradientLayer } from '../../types';
 
 
 interface EditorCanvasProps {
@@ -15,6 +15,7 @@ interface EditorCanvasProps {
     width: number;
     height: number;
     backgroundColor: string;
+    backgroundLayers?: GradientLayer[];
   };
 }
 
@@ -137,6 +138,49 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
       onElementClick(null, e);
     }
   }, [onElementClick]);
+
+  // Generate CSS background from gradient layers
+  const generateBackgroundStyle = useCallback(() => {
+    if (!canvasSettings.backgroundLayers || canvasSettings.backgroundLayers.length === 0) {
+      return { backgroundColor: canvasSettings.backgroundColor };
+    }
+
+    const gradientStrings = canvasSettings.backgroundLayers.map(layer => {
+      if (layer.type === 'linear') {
+        const colorStops = layer.colors
+          .sort((a, b) => a.position - b.position)
+          .map(stop => `${stop.color} ${stop.position}%`)
+          .join(', ');
+        
+        const gradient = `linear-gradient(${layer.direction}, ${colorStops})`;
+        
+        // Apply opacity if less than 1
+        if (layer.opacity < 1) {
+          return `linear-gradient(${layer.direction}, ${layer.colors
+            .sort((a, b) => a.position - b.position)
+            .map(stop => {
+              // Convert hex to rgba for opacity
+              const hex = stop.color.replace('#', '');
+              const r = parseInt(hex.substr(0, 2), 16);
+              const g = parseInt(hex.substr(2, 2), 16);
+              const b = parseInt(hex.substr(4, 2), 16);
+              return `rgba(${r}, ${g}, ${b}, ${layer.opacity}) ${stop.position}%`;
+            })
+            .join(', ')})`;
+        }
+        
+        return gradient;
+      }
+      
+      // Fallback for unsupported types
+      return `linear-gradient(to bottom, ${layer.colors[0]?.color || '#ffffff'}, ${layer.colors[1]?.color || '#f3f4f6'})`;
+    });
+
+    return {
+      backgroundImage: gradientStrings.join(', '),
+      backgroundColor: canvasSettings.backgroundColor // Fallback
+    };
+  }, [canvasSettings]);
 
   const duplicateElement = useCallback((element: CardElement) => {
     const newElement = {
@@ -370,7 +414,7 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
         style={{
           width: canvasSettings.width,
           height: canvasSettings.height,
-          backgroundColor: canvasSettings.backgroundColor
+          ...generateBackgroundStyle()
         }}
         onDragOver={handleDragOver}
         onDrop={handleDrop}

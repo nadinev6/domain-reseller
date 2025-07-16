@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Settings, Palette, Type, Image, Square, MousePointer, Save, Smile, RotateCcw, Zap, Maximize2 } from 'lucide-react';
+import { Settings, Palette, Type, Image, Square, MousePointer, Save, Smile, RotateCcw, Zap, Maximize2, Plus, Trash2, Layers } from 'lucide-react';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import { Button } from '../ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
-import { CardElement } from '../../types';
+import { CardElement, GradientLayer } from '../../types';
 
 // Common emojis for the magic box
 const EMOJI_CATEGORIES = {
@@ -21,6 +21,7 @@ interface PropertiesPanelProps {
     width: number;
     height: number;
     backgroundColor: string;
+    backgroundLayers?: GradientLayer[];
   };
   onUpdateCanvasSettings: (settings: any) => void;
   onMagicResize?: (preset: any, resizeMode: 'scale' | 'fit') => void;
@@ -114,6 +115,44 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
         [field]: value
       });
     }
+  };
+
+  // Gradient layer management functions
+  const addGradientLayer = () => {
+    const newLayer: GradientLayer = {
+      id: `layer-${Date.now()}`,
+      type: 'linear',
+      colors: [
+        { color: '#3b82f6', position: 0 },
+        { color: '#8b5cf6', position: 100 }
+      ],
+      direction: 'to right',
+      opacity: 0.8
+    };
+
+    const updatedLayers = [...(canvasSettings.backgroundLayers || []), newLayer];
+    handleCanvasUpdate('backgroundLayers', updatedLayers);
+  };
+
+  const removeGradientLayer = (layerId: string) => {
+    const updatedLayers = (canvasSettings.backgroundLayers || []).filter(layer => layer.id !== layerId);
+    handleCanvasUpdate('backgroundLayers', updatedLayers);
+  };
+
+  const updateGradientLayer = (layerId: string, updates: Partial<GradientLayer>) => {
+    const updatedLayers = (canvasSettings.backgroundLayers || []).map(layer =>
+      layer.id === layerId ? { ...layer, ...updates } : layer
+    );
+    handleCanvasUpdate('backgroundLayers', updatedLayers);
+  };
+
+  const updateGradientColor = (layerId: string, colorIndex: number, newColor: string) => {
+    const layer = canvasSettings.backgroundLayers?.find(l => l.id === layerId);
+    if (!layer) return;
+
+    const updatedColors = [...layer.colors];
+    updatedColors[colorIndex] = { ...updatedColors[colorIndex], color: newColor };
+    updateGradientLayer(layerId, { colors: updatedColors });
   };
 
   const renderElementProperties = () => {
@@ -654,6 +693,221 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
               >
                 3:4
               </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Gradient Background Generator */}
+        <div>
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center space-x-2 text-purple-600">
+              <Layers className="w-5 h-5" />
+              <h3 className="font-semibold">Gradient Background</h3>
+            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={addGradientLayer}
+              className="flex items-center text-xs"
+            >
+              <Plus className="w-3 h-3 mr-1" />
+              Add Layer
+            </Button>
+          </div>
+
+          <div className="space-y-4">
+            {/* Fallback Background Color */}
+            <div>
+              <Label htmlFor="fallbackBackground" className="text-xs">Fallback Background</Label>
+              <Input
+                id="fallbackBackground"
+                type="color"
+                value={canvasSettings.backgroundColor}
+                onChange={(e) => handleCanvasUpdate('backgroundColor', e.target.value)}
+              />
+            </div>
+
+            {/* Gradient Layers */}
+            {canvasSettings.backgroundLayers && canvasSettings.backgroundLayers.length > 0 && (
+              <div className="space-y-3">
+                {canvasSettings.backgroundLayers.map((layer, index) => (
+                  <div key={layer.id} className="p-3 border border-gray-200 rounded-lg bg-gray-50">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-xs font-medium text-gray-700">
+                        Layer {index + 1} ({layer.type})
+                      </span>
+                      {canvasSettings.backgroundLayers!.length > 1 && (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => removeGradientLayer(layer.id)}
+                          className="text-red-600 hover:text-red-700 hover:bg-red-50 p-1 h-6 w-6"
+                        >
+                          <Trash2 className="w-3 h-3" />
+                        </Button>
+                      )}
+                    </div>
+
+                    {/* Gradient Colors */}
+                    <div className="grid grid-cols-2 gap-2 mb-3">
+                      <div>
+                        <Label className="text-xs">Start Color</Label>
+                        <Input
+                          type="color"
+                          value={layer.colors[0]?.color || '#3b82f6'}
+                          onChange={(e) => updateGradientColor(layer.id, 0, e.target.value)}
+                        />
+                      </div>
+                      <div>
+                        <Label className="text-xs">End Color</Label>
+                        <Input
+                          type="color"
+                          value={layer.colors[1]?.color || '#8b5cf6'}
+                          onChange={(e) => updateGradientColor(layer.id, 1, e.target.value)}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Direction */}
+                    <div className="mb-3">
+                      <Label className="text-xs">Direction</Label>
+                      <Select
+                        value={layer.direction}
+                        onValueChange={(value) => updateGradientLayer(layer.id, { direction: value })}
+                      >
+                        <SelectTrigger className="h-8 text-xs">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="to right">Left to Right</SelectItem>
+                          <SelectItem value="to left">Right to Left</SelectItem>
+                          <SelectItem value="to bottom">Top to Bottom</SelectItem>
+                          <SelectItem value="to top">Bottom to Top</SelectItem>
+                          <SelectItem value="to bottom right">Top-Left to Bottom-Right</SelectItem>
+                          <SelectItem value="to bottom left">Top-Right to Bottom-Left</SelectItem>
+                          <SelectItem value="45deg">45° Diagonal</SelectItem>
+                          <SelectItem value="90deg">90° Vertical</SelectItem>
+                          <SelectItem value="135deg">135° Diagonal</SelectItem>
+                          <SelectItem value="180deg">180° Horizontal</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    {/* Opacity */}
+                    <div>
+                      <Label className="text-xs">Opacity: {Math.round(layer.opacity * 100)}%</Label>
+                      <input
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.1"
+                        value={layer.opacity}
+                        onChange={(e) => updateGradientLayer(layer.id, { opacity: parseFloat(e.target.value) })}
+                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Quick Gradient Presets */}
+            <div>
+              <Label className="text-xs font-medium mb-2 block">Quick Presets</Label>
+              <div className="grid grid-cols-2 gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    const preset: GradientLayer = {
+                      id: `preset-${Date.now()}`,
+                      type: 'linear',
+                      colors: [
+                        { color: '#667eea', position: 0 },
+                        { color: '#764ba2', position: 100 }
+                      ],
+                      direction: '45deg',
+                      opacity: 1
+                    };
+                    handleCanvasUpdate('backgroundLayers', [preset]);
+                  }}
+                  className="text-xs"
+                >
+                  Purple Haze
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    const preset: GradientLayer = {
+                      id: `preset-${Date.now()}`,
+                      type: 'linear',
+                      colors: [
+                        { color: '#f093fb', position: 0 },
+                        { color: '#f5576c', position: 100 }
+                      ],
+                      direction: 'to right',
+                      opacity: 1
+                    };
+                    handleCanvasUpdate('backgroundLayers', [preset]);
+                  }}
+                  className="text-xs"
+                >
+                  Pink Sunset
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    const preset: GradientLayer = {
+                      id: `preset-${Date.now()}`,
+                      type: 'linear',
+                      colors: [
+                        { color: '#4facfe', position: 0 },
+                        { color: '#00f2fe', position: 100 }
+                      ],
+                      direction: 'to bottom',
+                      opacity: 1
+                    };
+                    handleCanvasUpdate('backgroundLayers', [preset]);
+                  }}
+                  className="text-xs"
+                >
+                  Ocean Blue
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    const layers: GradientLayer[] = [
+                      {
+                        id: `layer-1-${Date.now()}`,
+                        type: 'linear',
+                        colors: [
+                          { color: '#ff9a9e', position: 0 },
+                          { color: '#fecfef', position: 100 }
+                        ],
+                        direction: 'to bottom',
+                        opacity: 1
+                      },
+                      {
+                        id: `layer-2-${Date.now()}`,
+                        type: 'linear',
+                        colors: [
+                          { color: '#a8edea', position: 0 },
+                          { color: '#fed6e3', position: 100 }
+                        ],
+                        direction: '45deg',
+                        opacity: 0.6
+                      }
+                    ];
+                    handleCanvasUpdate('backgroundLayers', layers);
+                  }}
+                  className="text-xs"
+                >
+                  Layered Dream
+                </Button>
+              </div>
             </div>
           </div>
         </div>

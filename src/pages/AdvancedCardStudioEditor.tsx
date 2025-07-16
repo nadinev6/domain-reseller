@@ -93,7 +93,23 @@ const AdvancedCardStudioEditorContent: React.FC = () => {
       if (data) {
         const { elements: loadedElements, canvasSettings: loadedCanvasSettings } = data.card_data;
         setElements(loadedElements);
-        setCanvasSettings(loadedCanvasSettings);
+        // Ensure backward compatibility with old canvas settings
+        const updatedCanvasSettings = {
+          ...loadedCanvasSettings,
+          backgroundLayers: loadedCanvasSettings.backgroundLayers || [
+            {
+              id: 'layer-1',
+              type: 'linear' as const,
+              colors: [
+                { color: loadedCanvasSettings.backgroundColor || '#ffffff', position: 0 },
+                { color: loadedCanvasSettings.backgroundColor || '#ffffff', position: 100 }
+              ],
+              direction: 'to bottom',
+              opacity: 1
+            }
+          ]
+        };
+        setCanvasSettings(updatedCanvasSettings);
         
         // Reset history with loaded state
         setHistory([loadedElements]);
