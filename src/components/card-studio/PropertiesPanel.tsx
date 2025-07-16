@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Settings, Palette, Type, Image, Square, MousePointer, Save, Smile, RotateCcw } from 'lucide-react';
+import { Settings, Palette, Type, Image, Square, MousePointer, Save, Smile, RotateCcw, Zap, Maximize2 } from 'lucide-react';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import { Button } from '../ui/button';
@@ -22,18 +22,29 @@ interface PropertiesPanelProps {
     backgroundColor: string;
   };
   onUpdateCanvasSettings: (settings: any) => void;
+  onMagicResize?: (preset: any, resizeMode: 'scale' | 'fit') => void;
+  socialMediaPresets?: Array<{
+    name: string;
+    width: number;
+    height: number;
+    aspectRatio: string;
+    description: string;
+  }>;
 }
 
 const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
   selectedElement,
   onUpdateElement,
   canvasSettings,
-  onUpdateCanvasSettings
+  onUpdateCanvasSettings,
+  onMagicResize,
+  socialMediaPresets = []
 }) => {
 
   const [savedColors, setSavedColors] = useState<string[]>([]);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [activeEmojiCategory, setActiveEmojiCategory] = useState<keyof typeof EMOJI_CATEGORIES>('faces');
+  const [selectedResizeMode, setSelectedResizeMode] = useState<'scale' | 'fit'>('scale');
 
   // Load saved colors from localStorage on component mount
   useEffect(() => {
@@ -645,6 +656,97 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
             </div>
           </div>
         </div>
+
+        {/* Magic Resize Section */}
+        {onMagicResize && socialMediaPresets.length > 0 && (
+          <div>
+            <div className="flex items-center space-x-2 text-indigo-600 mb-4">
+              <Zap className="w-5 h-5" />
+              <h3 className="font-semibold">Magic Resize</h3>
+            </div>
+            
+            <div className="space-y-4">
+              {/* Resize Mode Selection */}
+              <div>
+                <Label className="text-sm font-medium mb-2 block">Resize Mode</Label>
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    onClick={() => setSelectedResizeMode('scale')}
+                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                      selectedResizeMode === 'scale'
+                        ? 'bg-indigo-100 text-indigo-800 border-2 border-indigo-300'
+                        : 'bg-gray-50 text-gray-700 border-2 border-transparent hover:bg-gray-100'
+                    }`}
+                  >
+                    <div className="flex items-center justify-center mb-1">
+                      <Maximize2 className="w-4 h-4" />
+                    </div>
+                    Scale & Crop
+                  </button>
+                  <button
+                    onClick={() => setSelectedResizeMode('fit')}
+                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                      selectedResizeMode === 'fit'
+                        ? 'bg-indigo-100 text-indigo-800 border-2 border-indigo-300'
+                        : 'bg-gray-50 text-gray-700 border-2 border-transparent hover:bg-gray-100'
+                    }`}
+                  >
+                    <div className="flex items-center justify-center mb-1">
+                      <Square className="w-4 h-4" />
+                    </div>
+                    Fit to Canvas
+                  </button>
+                </div>
+                <p className="text-xs text-gray-500 mt-2">
+                  {selectedResizeMode === 'scale' 
+                    ? 'Elements scale proportionally and may be cropped'
+                    : 'Elements fit within canvas and are centered'
+                  }
+                </p>
+              </div>
+
+              {/* Social Media Presets */}
+              <div>
+                <Label className="text-sm font-medium mb-3 block">Social Media Formats</Label>
+                <div className="space-y-2">
+                  {socialMediaPresets.map((preset, index) => (
+                    <button
+                      key={index}
+                      onClick={() => onMagicResize(preset, selectedResizeMode)}
+                      className="w-full p-3 text-left border border-gray-200 rounded-lg hover:border-indigo-300 hover:bg-indigo-50 transition-all duration-200 group"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex-1">
+                          <div className="font-medium text-gray-900 group-hover:text-indigo-900">
+                            {preset.name}
+                          </div>
+                          <div className="text-xs text-gray-500 group-hover:text-indigo-600 mt-1">
+                            {preset.aspectRatio} • {preset.width}×{preset.height}
+                          </div>
+                          <div className="text-xs text-gray-400 group-hover:text-indigo-500">
+                            {preset.description}
+                          </div>
+                        </div>
+                        <div className="ml-3">
+                          <Zap className="w-4 h-4 text-gray-400 group-hover:text-indigo-600 transition-colors duration-200" />
+                        </div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Current Canvas Info */}
+              <div className="p-3 bg-gray-50 rounded-lg">
+                <div className="text-xs font-medium text-gray-700 mb-1">Current Canvas</div>
+                <div className="text-xs text-gray-600">
+                  {canvasSettings.width}×{canvasSettings.height} • 
+                  {(canvasSettings.width / canvasSettings.height).toFixed(2)}:1 ratio
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Element Properties */}
         {selectedElement ? (

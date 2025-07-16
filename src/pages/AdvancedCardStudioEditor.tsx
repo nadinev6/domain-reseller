@@ -11,6 +11,45 @@ import { CardElement } from '../types';
 import { useAuth } from '../context/AuthContext';
 import { supabase } from '../lib/supabase';
 
+// Social Media Presets for Magic Resize
+const SOCIAL_MEDIA_PRESETS = [
+  {
+    name: 'Instagram Story',
+    width: 1080,
+    height: 1920,
+    aspectRatio: '9:16',
+    description: 'Vertical story format'
+  },
+  {
+    name: 'Facebook Post',
+    width: 1200,
+    height: 1200,
+    aspectRatio: '1:1',
+    description: 'Square post format'
+  },
+  {
+    name: 'Landscape Post',
+    width: 1200,
+    height: 628,
+    aspectRatio: '1.91:1',
+    description: 'For links and images'
+  },
+  {
+    name: 'Portrait Post',
+    width: 628,
+    height: 1200,
+    aspectRatio: '1:1.91',
+    description: 'Vertical post format'
+  },
+  {
+    name: 'YouTube Thumbnail',
+    width: 1280,
+    height: 720,
+    aspectRatio: '16:9',
+    description: 'Widescreen format'
+  }
+];
+
 const AdvancedCardStudioEditorContent: React.FC = () => {
   const [searchParams] = useSearchParams();
   const { user } = useAuth();
@@ -217,6 +256,69 @@ const AdvancedCardStudioEditorContent: React.FC = () => {
     setHistoryIndex(newHistory.length - 1);
   }, [elements, selectedElement, multiSelectedElementIds, history, historyIndex]);
 
+  const handleMagicResize = useCallback((preset: typeof SOCIAL_MEDIA_PRESETS[0], resizeMode: 'scale' | 'fit' = 'scale') => {
+    const oldWidth = canvasSettings.width;
+    const oldHeight = canvasSettings.height;
+    const newWidth = preset.width;
+    const newHeight = preset.height;
+
+    // Update canvas settings
+    setCanvasSettings({
+      ...canvasSettings,
+      width: newWidth,
+      height: newHeight
+    });
+
+    if (elements.length === 0) {
+      // No elements to scale, just update canvas
+      return;
+    }
+
+    let scaledElements: CardElement[];
+
+    if (resizeMode === 'scale') {
+      // Scale and crop mode - scale elements proportionally
+      const scaleX = newWidth / oldWidth;
+      const scaleY = newHeight / oldHeight;
+      const scaleFactor = Math.min(scaleX, scaleY); // Use smaller scale to fit within bounds
+
+      scaledElements = elements.map(element => ({
+        ...element,
+        x: Math.round(element.x * scaleFactor),
+        y: Math.round(element.y * scaleFactor),
+        width: Math.round(element.width * scaleFactor),
+        height: Math.round(element.height * scaleFactor)
+      }));
+    } else {
+      // Fit to canvas mode - center elements and maintain proportions
+      const scaleX = newWidth / oldWidth;
+      const scaleY = newHeight / oldHeight;
+      const scaleFactor = Math.min(scaleX, scaleY);
+      
+      // Calculate offset to center content
+      const offsetX = (newWidth - (oldWidth * scaleFactor)) / 2;
+      const offsetY = (newHeight - (oldHeight * scaleFactor)) / 2;
+
+      scaledElements = elements.map(element => ({
+        ...element,
+        x: Math.round((element.x * scaleFactor) + offsetX),
+        y: Math.round((element.y * scaleFactor) + offsetY),
+        width: Math.round(element.width * scaleFactor),
+        height: Math.round(element.height * scaleFactor)
+      }));
+    }
+
+    setElements(scaledElements);
+    setSelectedElement(null);
+    setMultiSelectedElementIds([]);
+
+    // Add to history
+    const newHistory = history.slice(0, historyIndex + 1);
+    newHistory.push(scaledElements);
+    setHistory(newHistory);
+    setHistoryIndex(newHistory.length - 1);
+  }, [canvasSettings, elements, history, historyIndex]);
+
   const handleUndo = useCallback(() => {
     if (historyIndex > 0) {
       const newIndex = historyIndex - 1;
@@ -380,6 +482,8 @@ const AdvancedCardStudioEditorContent: React.FC = () => {
             onUpdateElement={updateElement}
             canvasSettings={canvasSettings}
             onUpdateCanvasSettings={setCanvasSettings}
+            onMagicResize={handleMagicResize}
+            socialMediaPresets={SOCIAL_MEDIA_PRESETS}
           />
         </div>
       </div>
