@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, Globe, Wordpress, Palette, ShoppingCart, Mail, Server } from 'lucide-react';
+import { ExternalLink, Globe, WholeWord as Wordpress, Palette, ShoppingCart, Mail, Server } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 
