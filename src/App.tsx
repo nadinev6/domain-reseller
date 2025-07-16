@@ -8,6 +8,7 @@ import CardStudioEditor from './pages/CardStudioEditor';
 import AdvancedCardStudioEditor from './pages/AdvancedCardStudioEditor';
 import CopyForgeStudio from './pages/CopyForgeStudio';
 import Dashboard from './components/dashboard/Dashboard';
+import SolutionsPage from './pages/SolutionsPage';
 import { CurrencyProvider } from './context/CurrencyContext';
 import { AuthProvider } from './context/AuthContext';
 
@@ -24,6 +25,7 @@ export default function App() {
               <Route path="/card-studio/advanced-editor" element={<AdvancedCardStudioEditor />} />
               <Route path="/copyforge-studio" element={<CopyForgeStudio />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/solutions" element={<SolutionsPage />} />
               <Route path="/" element={
                 <main className="pt-20">
                   <div className="max-w-6xl mx-auto px-4 py-12 text-center">
