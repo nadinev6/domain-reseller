@@ -170,7 +170,9 @@ const AdvancedCardStudioEditorContent: React.FC = () => {
         isGradientText: false,
         gradientColor1: '#3b82f6',
         gradientColor2: '#8b5cf6',
-        gradientDirection: 'to right'
+        gradientDirection: 'to right',
+        textDecoration: 'none',
+        textTransform: 'none'
       }),
       ...(elementType === 'image' && {
         src: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400',

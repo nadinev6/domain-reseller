@@ -19,6 +19,14 @@ export interface CardElement {
   gradientColor1?: string;
   gradientColor2?: string;
   gradientDirection?: string;
+  // Text styling properties
+  textDecoration?: 'none' | 'underline' | 'overline' | 'line-through';
+  textTransform?: 'none' | 'uppercase' | 'capitalize' | 'lowercase';
+  // Text shadow properties
+  textShadowColor?: string;
+  textShadowOffsetX?: number;
+  textShadowOffsetY?: number;
+  textShadowBlurRadius?: number;
   // Image-specific properties
   src?: string;
   alt?: string;

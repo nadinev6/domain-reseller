@@ -225,6 +225,8 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
           fontWeight: element.fontWeight,
           textAlign: element.textAlign,
           fontFamily: element.fontFamily,
+          textDecoration: element.textDecoration || 'none',
+          textTransform: element.textTransform || 'none',
           display: 'flex',
           alignItems: 'center',
           padding: '8px',
@@ -232,6 +234,15 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
           overflow: 'hidden',
           whiteSpace: 'pre-wrap'
         };
+
+        // Apply text shadow if configured
+        if (element.textShadowColor && 
+            (element.textShadowOffsetX !== undefined || element.textShadowOffsetY !== undefined || element.textShadowBlurRadius !== undefined)) {
+          const offsetX = element.textShadowOffsetX || 0;
+          const offsetY = element.textShadowOffsetY || 0;
+          const blurRadius = element.textShadowBlurRadius || 0;
+          textStyle.textShadow = `${offsetX}px ${offsetY}px ${blurRadius}px ${element.textShadowColor}`;
+        }
 
         // Apply gradient or solid color
         if (element.isGradientText && element.gradientColor1 && element.gradientColor2) {

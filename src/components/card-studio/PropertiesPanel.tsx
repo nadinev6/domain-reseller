@@ -377,6 +377,155 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
             </div>
 
             <div>
+              <Label htmlFor="textDecoration">Text Decoration</Label>
+              <Select
+                value={selectedElement.textDecoration || 'none'}
+                onValueChange={(value) => handleElementUpdate('textDecoration', value)}
+              >
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="none">None</SelectItem>
+                  <SelectItem value="underline">Underline</SelectItem>
+                  <SelectItem value="overline">Overline</SelectItem>
+                  <SelectItem value="line-through">Line Through</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div>
+              <Label htmlFor="textTransform">Text Transform</Label>
+              <Select
+                value={selectedElement.textTransform || 'none'}
+                onValueChange={(value) => handleElementUpdate('textTransform', value)}
+              >
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="none">None</SelectItem>
+                  <SelectItem value="uppercase">UPPERCASE</SelectItem>
+                  <SelectItem value="capitalize">Capitalize</SelectItem>
+                  <SelectItem value="lowercase">lowercase</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Text Shadow Section */}
+            <div className="space-y-3">
+              <div className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  id="textShadowToggle"
+                  checked={!!(selectedElement.textShadowColor)}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      handleElementUpdate('textShadowColor', '#000000');
+                      handleElementUpdate('textShadowOffsetX', 2);
+                      handleElementUpdate('textShadowOffsetY', 2);
+                      handleElementUpdate('textShadowBlurRadius', 4);
+                    } else {
+                      handleElementUpdate('textShadowColor', undefined);
+                      handleElementUpdate('textShadowOffsetX', undefined);
+                      handleElementUpdate('textShadowOffsetY', undefined);
+                      handleElementUpdate('textShadowBlurRadius', undefined);
+                    }
+                  }}
+                  className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                />
+                <Label htmlFor="textShadowToggle" className="text-sm">Enable Text Shadow</Label>
+              </div>
+              
+              {selectedElement.textShadowColor && (
+                <div className="space-y-3 p-3 bg-gray-50 rounded-lg">
+                  <div>
+                    <Label htmlFor="textShadowColor" className="text-xs">Shadow Color</Label>
+                    <Input
+                      id="textShadowColor"
+                      type="color"
+                      value={selectedElement.textShadowColor || '#000000'}
+                      onChange={(e) => handleElementUpdate('textShadowColor', e.target.value)}
+                    />
+                  </div>
+                  
+                  <div className="grid grid-cols-3 gap-2">
+                    <div>
+                      <Label htmlFor="textShadowOffsetX" className="text-xs">X Offset</Label>
+                      <Input
+                        id="textShadowOffsetX"
+                        type="number"
+                        value={selectedElement.textShadowOffsetX || 0}
+                        onChange={(e) => handleElementUpdate('textShadowOffsetX', parseInt(e.target.value))}
+                        className="text-xs"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="textShadowOffsetY" className="text-xs">Y Offset</Label>
+                      <Input
+                        id="textShadowOffsetY"
+                        type="number"
+                        value={selectedElement.textShadowOffsetY || 0}
+                        onChange={(e) => handleElementUpdate('textShadowOffsetY', parseInt(e.target.value))}
+                        className="text-xs"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="textShadowBlurRadius" className="text-xs">Blur</Label>
+                      <Input
+                        id="textShadowBlurRadius"
+                        type="number"
+                        min="0"
+                        value={selectedElement.textShadowBlurRadius || 0}
+                        onChange={(e) => handleElementUpdate('textShadowBlurRadius', parseInt(e.target.value))}
+                        className="text-xs"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="text-xs text-gray-600">
+                    <p className="mb-1">Quick Presets:</p>
+                    <div className="flex space-x-1">
+                      <button
+                        onClick={() => {
+                          handleElementUpdate('textShadowOffsetX', 2);
+                          handleElementUpdate('textShadowOffsetY', 2);
+                          handleElementUpdate('textShadowBlurRadius', 4);
+                          handleElementUpdate('textShadowColor', '#000000');
+                        }}
+                        className="px-2 py-1 bg-white rounded text-xs hover:bg-gray-100 transition-colors"
+                      >
+                        Subtle
+                      </button>
+                      <button
+                        onClick={() => {
+                          handleElementUpdate('textShadowOffsetX', 4);
+                          handleElementUpdate('textShadowOffsetY', 4);
+                          handleElementUpdate('textShadowBlurRadius', 8);
+                          handleElementUpdate('textShadowColor', '#000000');
+                        }}
+                        className="px-2 py-1 bg-white rounded text-xs hover:bg-gray-100 transition-colors"
+                      >
+                        Bold
+                      </button>
+                      <button
+                        onClick={() => {
+                          handleElementUpdate('textShadowOffsetX', 0);
+                          handleElementUpdate('textShadowOffsetY', 0);
+                          handleElementUpdate('textShadowBlurRadius', 10);
+                          handleElementUpdate('textShadowColor', '#3b82f6');
+                        }}
+                        className="px-2 py-1 bg-white rounded text-xs hover:bg-gray-100 transition-colors"
+                      >
+                        Glow
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div>
               <Label htmlFor="textAlign">Text Align</Label>
               <select
                 id="textAlign"
