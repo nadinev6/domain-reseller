@@ -3,6 +3,7 @@ import { Settings, Palette, Type, Image, Square, MousePointer, Save, Smile, Rota
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import { Button } from '../ui/button';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { CardElement } from '../../types';
 
 // Common emojis for the magic box
@@ -708,32 +709,28 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
               {/* Social Media Presets */}
               <div>
                 <Label className="text-sm font-medium mb-3 block">Social Media Formats</Label>
-                <div className="space-y-2">
-                  {socialMediaPresets.map((preset, index) => (
-                    <button
-                      key={index}
-                      onClick={() => onMagicResize(preset, selectedResizeMode)}
-                      className="w-full p-3 text-left border border-gray-200 rounded-lg hover:border-indigo-300 hover:bg-indigo-50 transition-all duration-200 group"
-                    >
-                      <div className="flex items-center justify-between">
-                        <div className="flex-1">
-                          <div className="font-medium text-gray-900 group-hover:text-indigo-900">
-                            {preset.name}
-                          </div>
-                          <div className="text-xs text-gray-500 group-hover:text-indigo-600 mt-1">
+                <Select onValueChange={(value) => {
+                  const preset = socialMediaPresets.find(p => p.name === value);
+                  if (preset) {
+                    onMagicResize(preset, selectedResizeMode);
+                  }
+                }}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Choose a social media format..." />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {socialMediaPresets.map((preset, index) => (
+                      <SelectItem key={index} value={preset.name}>
+                        <div className="flex flex-col">
+                          <div className="font-medium">{preset.name}</div>
+                          <div className="text-xs text-gray-500">
                             {preset.aspectRatio} • {preset.width}×{preset.height}
                           </div>
-                          <div className="text-xs text-gray-400 group-hover:text-indigo-500">
-                            {preset.description}
-                          </div>
                         </div>
-                        <div className="ml-3">
-                          <Zap className="w-4 h-4 text-gray-400 group-hover:text-indigo-600 transition-colors duration-200" />
-                        </div>
-                      </div>
-                    </button>
-                  ))}
-                </div>
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
 
               {/* Current Canvas Info */}
