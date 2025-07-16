@@ -166,7 +166,7 @@ const AdvancedCardStudioEditorContent: React.FC = () => {
         fontWeight: '400',
         color: '#000000',
         textAlign: 'left' as const,
-        fontFamily: 'Inter, sans-serif',
+        fontFamily: 'Inter',
         isGradientText: false,
         isTextShadowEnabled: false,
         gradientColor1: '#3b82f6',

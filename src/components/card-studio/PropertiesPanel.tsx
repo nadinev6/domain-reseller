@@ -733,39 +733,37 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
 
             {/* Button Shadow Section */}
             <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <Label className="text-sm font-medium">Button Shadow</Label>
-                <div className="flex items-center space-x-2">
-                  <Checkbox
-                    id="buttonShadowEnabled"
-                    checked={!!selectedElement.isButtonBoxShadowEnabled}
-                    onCheckedChange={(checked) => {
-                      if (checked) {
-                        handleElementUpdate({
-                          isButtonBoxShadowEnabled: true,
-                          buttonBoxShadowColor: 'rgba(0, 0, 0, 0.1)',
-                          buttonBoxShadowOffsetX: 0,
-                          buttonBoxShadowOffsetY: 2,
-                          buttonBoxShadowBlurRadius: 4,
-                          buttonBoxShadowSpreadRadius: 0
-                        });
-                      } else {
-                        handleElementUpdate({
-                          isButtonBoxShadowEnabled: false,
-                          buttonBoxShadowColor: undefined,
-                          buttonBoxShadowOffsetX: undefined,
-                          buttonBoxShadowOffsetY: undefined,
-                          buttonBoxShadowBlurRadius: undefined,
-                          buttonBoxShadowSpreadRadius: undefined
-                        });
-                      }
-                    }}
-                  />
-                  <Label htmlFor="buttonShadowEnabled" className="text-sm">Enable</Label>
-                </div>
+            <div>
+              <div className="flex items-center space-x-2 mb-3">
+                <Checkbox
+                  id="buttonShadowEnabled"
+                  checked={selectedElement.isButtonBoxShadowEnabled || false}
+                  onCheckedChange={(checked) => {
+                    if (checked) {
+                      handleElementUpdate({
+                        isButtonBoxShadowEnabled: true,
+                        buttonBoxShadowColor: 'rgba(0, 0, 0, 0.1)',
+                        buttonBoxShadowOffsetX: 0,
+                        buttonBoxShadowOffsetY: 2,
+                        buttonBoxShadowBlurRadius: 4,
+                        buttonBoxShadowSpreadRadius: 0
+                      });
+                    } else {
+                      handleElementUpdate({
+                        isButtonBoxShadowEnabled: false,
+                        buttonBoxShadowColor: undefined,
+                        buttonBoxShadowOffsetX: undefined,
+                        buttonBoxShadowOffsetY: undefined,
+                        buttonBoxShadowBlurRadius: undefined,
+                        buttonBoxShadowSpreadRadius: undefined
+                      });
+                    }
+                  }}
+                />
+                <Label htmlFor="buttonShadowEnabled">Enable Button Shadow</Label>
               </div>
               
-              {selectedElement.isButtonBoxShadowEnabled && (
+                <div className="space-y-3 p-3 bg-gray-50 rounded-lg">
                 <div className="space-y-3 p-3 bg-gray-50 rounded-lg">
                   <div>
                     <Label htmlFor="buttonShadowColor" className="text-xs">Shadow Color</Label>
