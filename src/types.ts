@@ -30,6 +30,8 @@ export interface CardElement {
   textShadowBlurRadius?: number;
   // Text shadow enable flag
   isTextShadowEnabled?: boolean;
+  // Text decoration color
+  textDecorationColor?: string;
   // Image-specific properties
   src?: string;
   alt?: string;

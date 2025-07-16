@@ -169,6 +169,7 @@ const AdvancedCardStudioEditorContent: React.FC = () => {
         fontFamily: 'Inter',
         isGradientText: false,
         isTextShadowEnabled: false,
+        textDecorationColor: undefined,
         gradientColor1: '#3b82f6',
         gradientColor2: '#8b5cf6',
         gradientDirection: 'to right',
