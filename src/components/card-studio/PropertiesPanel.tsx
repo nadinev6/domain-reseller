@@ -437,21 +437,17 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
                     checked={!!selectedElement.isTextShadowEnabled}
                     onCheckedChange={(checked) => {
                       if (checked) {
-                        handleElementUpdate({
-                          isTextShadowEnabled: true,
-                          textShadowColor: '#000000',
-                          textShadowOffsetX: 2,
-                          textShadowOffsetY: 2,
-                          textShadowBlurRadius: 4
-                        });
+                        handleElementUpdate('isTextShadowEnabled', true);
+                        handleElementUpdate('textShadowColor', '#000000');
+                        handleElementUpdate('textShadowOffsetX', 2);
+                        handleElementUpdate('textShadowOffsetY', 2);
+                        handleElementUpdate('textShadowBlurRadius', 4);
                       } else {
-                        handleElementUpdate({
-                          isTextShadowEnabled: false,
-                          textShadowColor: undefined,
-                          textShadowOffsetX: undefined,
-                          textShadowOffsetY: undefined,
-                          textShadowBlurRadius: undefined
-                        });
+                        handleElementUpdate('isTextShadowEnabled', false);
+                        handleElementUpdate('textShadowColor', undefined);
+                        handleElementUpdate('textShadowOffsetX', undefined);
+                        handleElementUpdate('textShadowOffsetY', undefined);
+                        handleElementUpdate('textShadowBlurRadius', undefined);
                       }
                     }}
                   />
@@ -733,37 +729,32 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
 
             {/* Button Shadow Section */}
             <div className="space-y-3">
-            <div>
               <div className="flex items-center space-x-2 mb-3">
                 <Checkbox
                   id="buttonShadowEnabled"
                   checked={selectedElement.isButtonBoxShadowEnabled || false}
                   onCheckedChange={(checked) => {
                     if (checked) {
-                      handleElementUpdate({
-                        isButtonBoxShadowEnabled: true,
-                        buttonBoxShadowColor: 'rgba(0, 0, 0, 0.1)',
-                        buttonBoxShadowOffsetX: 0,
-                        buttonBoxShadowOffsetY: 2,
-                        buttonBoxShadowBlurRadius: 4,
-                        buttonBoxShadowSpreadRadius: 0
-                      });
+                      handleElementUpdate('isButtonBoxShadowEnabled', true);
+                      handleElementUpdate('buttonBoxShadowColor', 'rgba(0, 0, 0, 0.1)');
+                      handleElementUpdate('buttonBoxShadowOffsetX', 0);
+                      handleElementUpdate('buttonBoxShadowOffsetY', 2);
+                      handleElementUpdate('buttonBoxShadowBlurRadius', 4);
+                      handleElementUpdate('buttonBoxShadowSpreadRadius', 0);
                     } else {
-                      handleElementUpdate({
-                        isButtonBoxShadowEnabled: false,
-                        buttonBoxShadowColor: undefined,
-                        buttonBoxShadowOffsetX: undefined,
-                        buttonBoxShadowOffsetY: undefined,
-                        buttonBoxShadowBlurRadius: undefined,
-                        buttonBoxShadowSpreadRadius: undefined
-                      });
+                      handleElementUpdate('isButtonBoxShadowEnabled', false);
+                      handleElementUpdate('buttonBoxShadowColor', undefined);
+                      handleElementUpdate('buttonBoxShadowOffsetX', undefined);
+                      handleElementUpdate('buttonBoxShadowOffsetY', undefined);
+                      handleElementUpdate('buttonBoxShadowBlurRadius', undefined);
+                      handleElementUpdate('buttonBoxShadowSpreadRadius', undefined);
                     }
                   }}
                 />
                 <Label htmlFor="buttonShadowEnabled">Enable Button Shadow</Label>
               </div>
               
-                <div className="space-y-3 p-3 bg-gray-50 rounded-lg">
+              {selectedElement.isButtonBoxShadowEnabled && (
                 <div className="space-y-3 p-3 bg-gray-50 rounded-lg">
                   <div>
                     <Label htmlFor="buttonShadowColor" className="text-xs">Shadow Color</Label>
