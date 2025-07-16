@@ -120,7 +120,7 @@ const Header: React.FC = () => {
                     Studio
                   </Link>
                 </li>
-                <li><Link to="/solutions" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">Solutions</Link></li>
+                <li><Link to="/support" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">Support</Link></li>
                 {user ? (
                   <>
                     <li><Link to="/dashboard" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">Account</Link></li>
@@ -154,6 +154,7 @@ const Header: React.FC = () => {
                       </button>
                     </li>
                   </>
+                )}
                 <li><Link to="/solutions" className="hover:text-amber-300 transition-colors duration-200">Solutions</Link></li>
               </ul>
             </nav>
@@ -168,6 +169,6 @@ const Header: React.FC = () => {
       />
     </>
   );
-}
+};
 
-export default Header
+export default Header;
