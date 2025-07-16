@@ -236,7 +236,7 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
         };
 
         // Apply text shadow if configured
-        if (element.textShadowColor) {
+        if (element.isTextShadowEnabled && element.textShadowColor) {
           const offsetX = element.textShadowOffsetX || 0;
           const offsetY = element.textShadowOffsetY || 0;
           const blurRadius = element.textShadowBlurRadius || 0;
@@ -373,7 +373,7 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
         };
 
         // Apply button box shadow if configured
-        if (element.buttonBoxShadowColor) {
+        if (element.isButtonBoxShadowEnabled && element.buttonBoxShadowColor) {
           const offsetX = element.buttonBoxShadowOffsetX || 0;
           const offsetY = element.buttonBoxShadowOffsetY || 0;
           const blurRadius = element.buttonBoxShadowBlurRadius || 0;

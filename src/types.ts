@@ -27,6 +27,8 @@ export interface CardElement {
   textShadowOffsetX?: number;
   textShadowOffsetY?: number;
   textShadowBlurRadius?: number;
+  // Text shadow enable flag
+  isTextShadowEnabled?: boolean;
   // Image-specific properties
   src?: string;
   alt?: string;
@@ -47,6 +49,8 @@ export interface CardElement {
   buttonBoxShadowOffsetY?: number;
   buttonBoxShadowBlurRadius?: number;
   buttonBoxShadowSpreadRadius?: number;
+  // Button shadow enable flag
+  isButtonBoxShadowEnabled?: boolean;
 }
 
 export interface CardTemplate {
