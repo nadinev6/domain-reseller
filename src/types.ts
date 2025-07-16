@@ -22,6 +22,7 @@ export interface CardElement {
   // Text styling properties
   textDecoration?: 'none' | 'underline' | 'overline' | 'line-through';
   textTransform?: 'none' | 'uppercase' | 'capitalize' | 'lowercase';
+  textDecorationColor?: string;
   // Text shadow properties
   textShadowColor?: string;
   textShadowOffsetX?: number;

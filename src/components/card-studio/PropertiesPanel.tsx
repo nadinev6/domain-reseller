@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Settings, Palette, Type, Image, Square, MousePointer, Save, Smile, RotateCcw, Zap, Maximize2, Plus, Trash2, Layers } from 'lucide-react';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
+import { Checkbox } from '../ui/checkbox';
 import { Checkbox } from '../ui/checkbox';
 import { Button } from '../ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
@@ -43,6 +45,18 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
   onMagicResize,
   socialMediaPresets = []
 }) => {
+  // Google Fonts selection
+  const googleFonts = [
+    'Inter',
+    'Roboto',
+    'Open Sans',
+    'Lato',
+    'Montserrat',
+    'Playfair Display',
+    'Poppins',
+    'Source Sans Pro'
+  ];
+
 
   const [savedColors, setSavedColors] = useState<string[]>([]);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);

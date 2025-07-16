@@ -227,6 +227,7 @@ const EditorCanvas: React.FC<EditorCanvasProps> = ({
           fontFamily: element.fontFamily,
           textDecoration: element.textDecoration || 'none',
           textTransform: element.textTransform || 'none',
+          textDecorationColor: element.textDecorationColor,
           display: 'flex',
           alignItems: 'center',
           padding: '8px',
