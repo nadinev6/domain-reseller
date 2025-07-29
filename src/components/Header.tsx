@@ -1,13 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, User, LogOut } from 'lucide-react';
+import { useI18n } from '../hooks/useI18n';
 import { useAuth } from '../context/AuthContext';
 import CurrencySelector from './CurrencySelector';
+import LanguageSelector from './LanguageSelector';
 import AuthDialog from './auth/AuthDialog';
 import { Button } from './ui/button';
 import { AnimatedShinyText } from '../components/magicui/animated-shiny-text';
 
 const Header: React.FC = () => {
+  const { t } = useI18n();
   const [navOpen, setNavOpen] = React.useState(false);
   const [authDialogOpen, setAuthDialogOpen] = React.useState(false);
   const [authDialogTab, setAuthDialogTab] = React.useState<'signin' | 'signup'>('signin');
@@ -40,21 +43,22 @@ const Header: React.FC = () => {
               </Link>
               <nav className="hidden md:block">
                 <ul className="flex space-x-8">
-                  <li><Link to="/pricing" className="hover:text-amber-300 transition-colors duration-200">Pricing</Link></li>
+                  <li><Link to="/pricing" className="hover:text-amber-300 transition-colors duration-200">{t('common.pricing', 'Pricing')}</Link></li>
                   <li>
                     <Link 
                       to={user ? "/card-studio/editor" : "/card-studio"} 
                       className="hover:text-amber-300 transition-colors duration-200"
                     >
-                      Studio
+                      {t('studio.title', 'Studio')}
                     </Link>
                   </li>
-                  <li><Link to="/solutions" className="hover:text-amber-300 transition-colors duration-200">Solutions</Link></li>
+                  <li><Link to="/solutions" className="hover:text-amber-300 transition-colors duration-200">{t('common.solutions', 'Solutions')}</Link></li>
                 </ul>
               </nav>
             </div>
             
             <div className="flex items-center space-x-4">
+              <LanguageSelector variant="compact" />
               <CurrencySelector />
               
               {!loading && (
@@ -71,7 +75,7 @@ const Header: React.FC = () => {
                         className="text-white hover:bg-purple-700"
                       >
                         <LogOut size={16} className="mr-1" />
-                        Sign Out
+                        {t('auth.signOut')}
                       </Button>
                     </div>
                   ) : (
@@ -82,7 +86,7 @@ const Header: React.FC = () => {
                         onClick={() => handleAuthClick('signin')}
                         className="text-white hover:bg-purple-700"
                       >
-                        Sign In
+                        {t('auth.signIn')}
                       </Button>
                       <Button
                         variant="outline"
@@ -91,7 +95,7 @@ const Header: React.FC = () => {
                         className="border-white text-white hover:bg-white hover:text-indigo-600"
                       >
                         <AnimatedShinyText className="text-indigo-600 !mx-0 !max-w-none">
-                          Sign Up
+                          {t('auth.signUp')}
                         </AnimatedShinyText>
                       </Button>
                     </div>
@@ -111,25 +115,25 @@ const Header: React.FC = () => {
           {navOpen && (
             <nav className="mt-4 md:hidden">
               <ul className="space-y-2">
-                <li><Link to="/pricing" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">Pricing</Link></li>
+                <li><Link to="/pricing" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">{t('common.pricing', 'Pricing')}</Link></li>
                 <li>
                   <Link 
                     to={user ? "/card-studio/editor" : "/card-studio"} 
                     className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200"
                   >
-                    Studio
+                    {t('studio.title', 'Studio')}
                   </Link>
                 </li>
-                <li><Link to="/solutions" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">Solutions</Link></li>
+                <li><Link to="/solutions" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">{t('common.solutions', 'Solutions')}</Link></li>
                 {user ? (
                   <>
-                    <li><Link to="/dashboard" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">Account</Link></li>
+                    <li><Link to="/dashboard" className="block py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200">{t('dashboard.title')}</Link></li>
                     <li>
                       <button 
                         onClick={handleSignOut}
                         className="block w-full text-left py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200"
                       >
-                        Sign Out
+                        {t('auth.signOut')}
                       </button>
                     </li>
                   </>
@@ -140,7 +144,7 @@ const Header: React.FC = () => {
                         onClick={() => handleAuthClick('signin')}
                         className="block w-full text-left py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200"
                       >
-                        Sign In
+                        {t('auth.signIn')}
                       </button>
                     </li>
                     <li>
@@ -149,7 +153,7 @@ const Header: React.FC = () => {
                         className="block w-full text-left py-2 hover:bg-purple-700 px-3 rounded transition-colors duration-200"
                       >
                         <AnimatedShinyText className="text-white !mx-0 !max-w-none">
-                          Sign Up
+                          {t('auth.signUp')}
                         </AnimatedShinyText>
                       </button>
                     </li>

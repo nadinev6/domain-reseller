@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import { TamboProvider } from '@tambo-ai/react';
 import { z } from 'zod';
+import './i18n'; // Initialize i18n
 import './index.css';
 
 // Component schemas for Tambo integration

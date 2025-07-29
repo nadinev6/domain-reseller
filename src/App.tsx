@@ -1,6 +1,7 @@
 // src/App.tsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useI18n } from './hooks/useI18n';
 import { AuroraText } from './components/magicui/aurora-text';
 import Header from './components/Header';
 import SocialMediaCardStudio from './pages/SocialMediaCardStudio';
@@ -13,11 +14,19 @@ import { CurrencyProvider } from './context/CurrencyContext';
 import { AuthProvider } from './context/AuthContext';
 
 export default function App() {
+  const { isRTL, currentLanguage } = useI18n();
+  
+  // Apply RTL class to document
+  React.useEffect(() => {
+    document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+    document.documentElement.lang = currentLanguage;
+  }, [isRTL, currentLanguage]);
+
   return (
     <Router>
       <AuthProvider>
         <CurrencyProvider>
-          <div className="min-h-screen bg-gray-50 relative">
+          <div className={`min-h-screen bg-gray-50 relative ${isRTL ? 'rtl' : 'ltr'}`}>
             <Header />
             <Routes>
               <Route path="/card-studio" element={<SocialMediaCardStudio />} />
@@ -29,25 +38,9 @@ export default function App() {
               <Route path="/" element={
                 <main className="pt-20">
                   <div className="max-w-6xl mx-auto px-4 py-12 text-center">
-                    <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900">
-                      Welcome to <AuroraText colors={['#4f46e5', '#7c3aed', '#ec4899', '#06b6d4']}>VibePage</AuroraText>
-                    </h1>
-                    <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                      Create stunning social media cards and manage your online presence
-                    </p>
+                    <WelcomeSection />
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                      <a 
-                        href="/card-studio" 
-                        className="inline-flex items-center px-8 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-200 text-lg font-medium"
-                      >
-                        Get Started with VibePage Studio
-                      </a>
-                      <a 
-                        href="/dashboard" 
-                        className="inline-flex items-center px-8 py-3 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition-colors duration-200 text-lg font-medium"
-                      >
-                        View Dashboard
-                      </a>
+                      <CTAButtons />
                     </div>
                   </div>
                 </main>
@@ -59,3 +52,40 @@ export default function App() {
     </Router>
   );
 }
+
+// Separate components for better organization
+const WelcomeSection: React.FC = () => {
+  const { t } = useI18n();
+  
+  return (
+    <>
+      <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900">
+        {t('common.welcome')} to <AuroraText colors={['#4f46e5', '#7c3aed', '#ec4899', '#06b6d4']}>VibePage</AuroraText>
+      </h1>
+      <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
+        {t('studio.description')}
+      </p>
+    </>
+  );
+};
+
+const CTAButtons: React.FC = () => {
+  const { t } = useI18n();
+  
+  return (
+    <>
+      <a 
+        href="/card-studio" 
+        className="inline-flex items-center px-8 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-200 text-lg font-medium"
+      >
+        {t('studio.openStandardEditor')}
+      </a>
+      <a 
+        href="/dashboard" 
+        className="inline-flex items-center px-8 py-3 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition-colors duration-200 text-lg font-medium"
+      >
+        {t('dashboard.title')}
+      </a>
+    </>
+  );
+};
